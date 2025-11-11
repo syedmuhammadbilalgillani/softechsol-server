@@ -26,7 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} antialiased [&::-webkit-scrollbar]:w-2
+          [&::-webkit-scrollbar]:h-1.5!
+        [&::-webkit-scrollbar-track]:bg-white
+        [&::-webkit-scrollbar-thumb]:bg-dark-blue
+          [&::-webkit-scrollbar-thumb]:cursor-pointer
+        dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+        dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -3,11 +3,10 @@
 import { ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import {
   SidebarFooter,
@@ -30,25 +29,25 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-
+import LogoutButton from "../logout-button";
 
 export const SidebarHead = () => {
   // const user = useUserStore((state) => state.user) as User | null;
   const router = useRouter();
   // const { hasPermission } = usePermission();
   // const isStoreEdit = hasPermission(PERMISSIONS.STOREMANAGEMENT);
-  
+
   return (
     <div className="flex flex-col items-center justify-center py-4 px-2 rounded-lg transition-colors duration-200 cursor-pointer group">
       <div className="relative mb-2">
         {/* {companyLogo} */}
         {/* {isStoreEdit && ( */}
-          <div
-            onClick={() => router.push("/admin/store/edit")}
-            className="absolute -bottom-1 -right-1 bg-gray-100 dark:bg-gray-700 p-0.5 px-2 rounded-full shadow-sm border border-gray-200 dark:border-gray-600 group-amber-500 dark:group-amber-500 transition-colors duration-200"
-          >
-            <i className="fa-duotone fa-solid fa-pen text-xs rounded-full"></i>
-          </div>
+        <div
+          onClick={() => router.push("/admin/store/edit")}
+          className="absolute -bottom-1 -right-1 bg-gray-100 dark:bg-gray-700 p-0.5 px-2 rounded-full shadow-sm border border-gray-200 dark:border-gray-600 group-amber-500 dark:group-amber-500 transition-colors duration-200"
+        >
+          <i className="fa-duotone fa-solid fa-pen text-xs rounded-full"></i>
+        </div>
         {/* // )} */}
       </div>
 
@@ -145,11 +144,11 @@ export function NavMain({
   );
 }
 export const SidebarFooterMenu = () => {
-  const router = useRouter();
+  // const router = useRouter();
   // const user = useUserStore((state) => state.user) as User | null;
   // const clearTenant = useTenantStore((state) => state.clearTenant);
   // const clearUser = useUserStore((state) => state.clearUser);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // const handleLogout = useCallback(async () => {
   //   try {
@@ -192,6 +191,8 @@ export const SidebarFooterMenu = () => {
                 side="top"
                 className="w-[--radix-popper-anchor-width]"
               >
+                <LogoutButton />
+
                 {/* <DropdownMenuItem></DropdownMenuItem>
                 <DropdownMenuItem>Billing</DropdownMenuItem> */}
                 {/* <DropdownMenuItem onClick={handleLogout}>

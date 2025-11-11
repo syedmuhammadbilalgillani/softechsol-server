@@ -1,60 +1,117 @@
-// app/auth/signin/page.tsx
-
 "use client";
 
-import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import logger from "@/utils/logger";
 
-const SignIn = () => {
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
+
     const res = await signIn("credentials", {
       redirect: false,
       email,
       password,
     });
+
     logger.debug(res, "res");
+    setLoading(false);
+
     if (res?.error) {
       setError(res.error);
     } else if (res?.ok) {
-      router.push("/dashboard"); // Redirect to the home page or dashboard
+      router.push("/");
     }
   };
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Sign In</button>
-        {error && <p>{error}</p>}
-      </form>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
+      <Card className="w-full max-w-md shadow-xl border border-gray-200">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl font-semibold tracking-tight">
+            Sign in to your account
+          </CardTitle>
+          <CardDescription>
+            Enter your credentials to access the dashboard
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            {error && (
+              <Alert variant="destructive" className="mt-2">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+
+            <Button
+              type="submit"
+              className="w-full mt-4"
+              disabled={loading}
+            >
+              {loading ? "Signing in..." : "Sign In"}
+            </Button>
+          </form>
+        </CardContent>
+
+        <CardFooter className="flex flex-col items-center text-sm text-gray-500">
+          <p>
+            Don’t have an account?{" "}
+            <a
+              href="/auth/signup"
+              className="font-medium text-blue-600 hover:underline"
+            >
+              Sign up
+            </a>
+          </p>
+        </CardFooter>
+      </Card>
     </div>
   );
-};
-
-export default SignIn;
+}

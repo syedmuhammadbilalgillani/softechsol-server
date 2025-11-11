@@ -1,4 +1,3 @@
-import LogoutButton from "@/components/logout-button";
 import AppSidebar from "@/components/SidebarLayout/AppSidebar";
 import {
   SidebarInset,
@@ -18,15 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div lang="en">
-      <SidebarProvider>
-        <AppSidebar />
-        <SidebarInset className="p-4">
-          <SidebarTrigger />
-          {children}
-          <LogoutButton />
-        </SidebarInset>
-      </SidebarProvider>
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset className="p-4">
+        <SidebarTrigger />
+        {children}
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

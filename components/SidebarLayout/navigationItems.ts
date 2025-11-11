@@ -6,7 +6,7 @@ export const navigation = [
     items: [
       {
         title: "Dashboard",
-        url: "/dashboard",
+        url: "/",
         icon: Home,
         isActive: true,
         // requiredPermissions: [PERMISSIONS.DASHBOARD],
