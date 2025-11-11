@@ -1,0 +1,463 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+  AUTHOR
+}
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// Admin users who manage the website
+model User {
+  user_id    Int          @id @default(autoincrement())
+  username   String       @unique
+  email      String       @unique
+  password   String
+  role       Role         @default(EDITOR)
+  first_name String?
+  last_name  String?
+  avatar     String?
+  is_active  Boolean      @default(true)
+  last_login DateTime?
+  created_at DateTime     @default(now())
+  updated_at DateTime     @updatedAt
+  
+  blogs      Blog[]
+  activities Activity[]
+  
+  @@index([email])
+  @@index([username])
+}
+
+// Blog Categories
+model BlogCategory {
+  category_id  Int      @id @default(autoincrement())
+  name         String   @unique
+  slug         String   @unique
+  description  String?  @db.Text
+  color        String?  // For UI theming (e.g., "#3B82F6")
+  icon         String?  // Icon name or emoji
+  parent_id    Int?     // For nested categories
+  parent       BlogCategory?  @relation("BlogCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
+  children     BlogCategory[] @relation("BlogCategoryHierarchy")
+  display_order Int     @default(0)
+  is_active    Boolean  @default(true)
+  post_count   Int      @default(0) // Cache count for performance
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  
+  // SEO Fields
+  meta_title       String?
+  meta_description String?
+  
+  blogs        BlogCategoryRelation[]
+  
+  @@index([slug])
+  @@index([parent_id])
+  @@index([display_order])
+}
+
+// Many-to-many relation for Blog and Categories
+model BlogCategoryRelation {
+  blog         Blog         @relation(fields: [blog_id], references: [blog_id], onDelete: Cascade)
+  blog_id      Int
+  category     BlogCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+  category_id  Int
+  assigned_at  DateTime     @default(now())
+  
+  @@id([blog_id, category_id])
+  @@index([blog_id])
+  @@index([category_id])
+}
+
+// Company blog/articles
+model Blog {
+  blog_id          Int       @id @default(autoincrement())
+  title            String
+  slug             String    @unique
+  excerpt          String?   @db.Text
+  content          String    @db.Text
+  featured_image   String?
+  image_alt        String?
+  status           Status    @default(DRAFT)
+  is_featured      Boolean   @default(false)
+  view_count       Int       @default(0)
+  reading_time     Int?
+  tags             String[]  // Additional flexible tags
+  publish_date     DateTime?
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  
+  // SEO Fields
+  meta_title       String?
+  meta_description String?   @db.Text
+  meta_keywords    String?
+  og_image         String?
+  
+  author           User      @relation(fields: [author_id], references: [user_id], onDelete: Cascade)
+  author_id        Int
+  categories       BlogCategoryRelation[]
+  
+  @@index([slug])
+  @@index([status])
+  @@index([author_id])
+  @@index([publish_date])
+  @@index([is_featured])
+}
+
+// Service Categories
+model ServiceCategory {
+  category_id  Int      @id @default(autoincrement())
+  name         String   @unique
+  slug         String   @unique
+  description  String?  @db.Text
+  color        String?
+  icon         String?
+  parent_id    Int?     // For nested categories
+  parent       ServiceCategory?  @relation("ServiceCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
+  children     ServiceCategory[] @relation("ServiceCategoryHierarchy")
+  display_order Int     @default(0)
+  is_active    Boolean  @default(true)
+  service_count Int     @default(0)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  
+  // SEO Fields
+  meta_title       String?
+  meta_description String?
+  
+  services     ServiceCategoryRelation[]
+  
+  @@index([slug])
+  @@index([parent_id])
+  @@index([display_order])
+}
+
+// Many-to-many relation for Service and Categories
+model ServiceCategoryRelation {
+  service      Service         @relation(fields: [service_id], references: [service_id], onDelete: Cascade)
+  service_id   Int
+  category     ServiceCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+  category_id  Int
+  assigned_at  DateTime        @default(now())
+  
+  @@id([service_id, category_id])
+  @@index([service_id])
+  @@index([category_id])
+}
+
+// Showcase of completed client work
+model Portfolio {
+  portfolio_id     Int       @id @default(autoincrement())
+  title            String
+  slug             String    @unique
+  description      String    @db.Text
+  short_description String?  @db.Text
+  featured_image   String
+  image_alt        String?
+  gallery          String[]
+  client_name      String?
+  client_logo      String?
+  industry         String?
+  project_url      String?
+  case_study_url   String?
+  technologies     String[]
+  year_completed   Int?
+  team_size        Int?
+  duration         String?
+  results          String?   @db.Text
+  status           Status    @default(PUBLISHED)
+  is_featured      Boolean   @default(false)
+  display_order    Int       @default(0)
+  view_count       Int       @default(0)
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  
+  // SEO Fields
+  meta_title       String?
+  meta_description String?   @db.Text
+  meta_keywords    String?
+  og_image         String?
+  
+  service          Service   @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
+  serviceId        Int
+  
+  @@index([slug])
+  @@index([status])
+  @@index([serviceId])
+  @@index([display_order])
+  @@index([is_featured])
+  @@index([industry])
+}
+
+// Internal projects/products
+model Project {
+  project_id       Int       @id @default(autoincrement())
+  title            String
+  slug             String    @unique
+  description      String    @db.Text
+  short_description String?  @db.Text
+  featured_image   String
+  image_alt        String?
+  gallery          String[]
+  project_type     String?
+  project_url      String?
+  github_url       String?
+  demo_url         String?
+  documentation_url String?
+  download_url     String?
+  version          String?
+  license          String?
+  technologies     String[]
+  features         String[]
+  status           Status    @default(PUBLISHED)
+  is_featured      Boolean   @default(false)
+  is_active        Boolean   @default(true)
+  display_order    Int       @default(0)
+  view_count       Int       @default(0)
+  download_count   Int       @default(0)
+  star_count       Int       @default(0)
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  
+  // SEO Fields
+  meta_title       String?
+  meta_description String?   @db.Text
+  meta_keywords    String?
+  og_image         String?
+  
+  service          Service   @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
+  serviceId        Int
+  
+  @@index([slug])
+  @@index([status])
+  @@index([serviceId])
+  @@index([display_order])
+  @@index([is_featured])
+  @@index([project_type])
+}
+
+// Contact form submissions
+model ContactUs {
+  contact_id   Int       @id @default(autoincrement())
+  name         String
+  email        String
+  phone        String?
+  company      String?
+  company_size String?
+  budget       String?
+  subject      String?
+  message      String    @db.Text
+  inquiry_type String?
+  status       String    @default("NEW")
+  priority     String    @default("NORMAL")
+  submitted_at DateTime  @default(now())
+  responded_at DateTime?
+  ip_address   String?
+  utm_source   String?
+  utm_medium   String?
+  utm_campaign String?
+  referrer     String?
+  notes        String?   @db.Text
+  
+  @@index([status])
+  @@index([priority])
+  @@index([submitted_at])
+  @@index([email])
+  @@index([inquiry_type])
+}
+
+// Company events
+model Activity {
+  activity_id      Int       @id @default(autoincrement())
+  title            String
+  slug             String    @unique
+  description      String    @db.Text
+  short_description String?  @db.Text
+  featured_image   String?
+  image_alt        String?
+  gallery          String[]
+  activity_type    String
+  location         String?
+  venue            String?
+  address          String?
+  city             String?
+  country          String?
+  activity_date    DateTime
+  end_date         DateTime?
+  timezone         String?
+  duration         String?
+  max_participants Int?
+  current_participants Int   @default(0)
+  registration_url String?
+  meeting_link     String?
+  price            Decimal?  @db.Decimal(10, 2)
+  is_free          Boolean   @default(true)
+  speakers         String[]
+  topics           String[]
+  target_audience  String?
+  status           Status    @default(PUBLISHED)
+  is_featured      Boolean   @default(false)
+  is_past          Boolean   @default(false)
+  recording_url    String?
+  slides_url       String?
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  
+  // SEO Fields
+  meta_title       String?
+  meta_description String?   @db.Text
+  meta_keywords    String?
+  og_image         String?
+  
+  userId           Int
+  user             User      @relation(fields: [userId], references: [user_id], onDelete: Cascade)
+  
+  @@index([slug])
+  @@index([status])
+  @@index([activity_date])
+  @@index([is_featured])
+  @@index([is_past])
+  @@index([activity_type])
+}
+
+// Client testimonials
+model Testimonial {
+  testimonial_id   Int       @id @default(autoincrement())
+  customer_name    String
+  customer_title   String?
+  company          String?
+  company_logo     String?
+  company_website  String?
+  content          String    @db.Text
+  rating           Int
+  avatar           String?
+  location         String?
+  industry         String?
+  project_type     String?
+  is_featured      Boolean   @default(false)
+  is_video         Boolean   @default(false)
+  video_url        String?
+  video_thumbnail  String?
+  status           Status    @default(DRAFT)
+  display_order    Int       @default(0)
+  approved_at      DateTime?
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  
+  @@index([status])
+  @@index([is_featured])
+  @@index([display_order])
+  @@index([rating])
+  @@index([industry])
+}
+
+// Software services
+model Service {
+  service_id       Int       @id @default(autoincrement())
+  title            String
+  slug             String    @unique
+  short_description String?  @db.Text
+  description      String    @db.Text
+  icon             String?
+  featured_image   String?
+  image_alt        String?
+  
+  // Pricing
+  price            Decimal?  @db.Decimal(10, 2)
+  price_type       String?
+  currency         String    @default("USD")
+  price_note       String?
+  
+  // Service details
+  features         String[]
+  deliverables     String[]
+  technologies     String[]
+  process_steps    String[]
+  duration         String?
+  ideal_for        String[]
+  
+  // Status
+  status           Status    @default(PUBLISHED)
+  is_featured      Boolean   @default(false)
+  is_popular       Boolean   @default(false)
+  display_order    Int       @default(0)
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  
+  // SEO Fields
+  meta_title       String?
+  meta_description String?   @db.Text
+  meta_keywords    String?
+  og_image         String?
+  
+  // CTA
+  cta_text         String?
+  cta_url          String?
+  
+  categories       ServiceCategoryRelation[]
+  portfolio        Portfolio[]
+  project          Project[]
+  
+  @@index([slug])
+  @@index([status])
+  @@index([display_order])
+  @@index([is_featured])
+  @@index([is_popular])
+}
+// ```
+
+// ## What I Added:
+
+// ### **1. BlogCategory Model**
+// - Hierarchical categories (parent/child support)
+// - Color & icon for UI
+// - Post count caching
+// - SEO fields for category pages
+
+// ### **2. ServiceCategory Model**
+// - Same structure as BlogCategory
+// - Service count tracking
+// - Hierarchical support
+
+// ### **3. Many-to-Many Relations**
+// - `BlogCategoryRelation` - One blog can have multiple categories
+// - `ServiceCategoryRelation` - One service can have multiple categories
+
+// ## Example Category Structure:
+
+// ### **Blog Categories:**
+// ```
+// - Technology (parent)
+//   - AI & Machine Learning (child)
+//   - Cloud Computing (child)
+//   - Mobile Development (child)
+// - Business (parent)
+//   - Startups (child)
+//   - Digital Transformation (child)
+// - Tutorials (parent)
+// ```
+
+// ### **Service Categories:**
+// ```
+// - Development (parent)
+//   - Web Development (child)
+//   - Mobile Apps (child)
+//   - API Development (child)
+// - Design (parent)
+//   - UI/UX Design (child)
+//   - Branding (child)
+// - Consulting (parent)
