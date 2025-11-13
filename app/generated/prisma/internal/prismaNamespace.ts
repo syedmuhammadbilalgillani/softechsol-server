@@ -398,9 +398,6 @@ export const ModelName = {
   Blog: 'Blog',
   ServiceCategory: 'ServiceCategory',
   ServiceCategoryRelation: 'ServiceCategoryRelation',
-  PortfolioGallery: 'PortfolioGallery',
-  Portfolio: 'Portfolio',
-  ProjectGallery: 'ProjectGallery',
   Project: 'Project',
   ContactUs: 'ContactUs',
   ActivityGallery: 'ActivityGallery',
@@ -422,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "serviceCategory" | "serviceCategoryRelation" | "portfolioGallery" | "portfolio" | "projectGallery" | "project" | "contactUs" | "activityGallery" | "activity" | "testimonial" | "service"
+    modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "serviceCategory" | "serviceCategoryRelation" | "project" | "contactUs" | "activityGallery" | "activity" | "testimonial" | "service"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1015,228 +1012,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ServiceCategoryRelationCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ServiceCategoryRelationCountAggregateOutputType> | number
-        }
-      }
-    }
-    PortfolioGallery: {
-      payload: Prisma.$PortfolioGalleryPayload<ExtArgs>
-      fields: Prisma.PortfolioGalleryFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.PortfolioGalleryFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.PortfolioGalleryFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
-        }
-        findFirst: {
-          args: Prisma.PortfolioGalleryFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.PortfolioGalleryFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
-        }
-        findMany: {
-          args: Prisma.PortfolioGalleryFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>[]
-        }
-        create: {
-          args: Prisma.PortfolioGalleryCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
-        }
-        createMany: {
-          args: Prisma.PortfolioGalleryCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.PortfolioGalleryCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>[]
-        }
-        delete: {
-          args: Prisma.PortfolioGalleryDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
-        }
-        update: {
-          args: Prisma.PortfolioGalleryUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
-        }
-        deleteMany: {
-          args: Prisma.PortfolioGalleryDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.PortfolioGalleryUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.PortfolioGalleryUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>[]
-        }
-        upsert: {
-          args: Prisma.PortfolioGalleryUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
-        }
-        aggregate: {
-          args: Prisma.PortfolioGalleryAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePortfolioGallery>
-        }
-        groupBy: {
-          args: Prisma.PortfolioGalleryGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PortfolioGalleryGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.PortfolioGalleryCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PortfolioGalleryCountAggregateOutputType> | number
-        }
-      }
-    }
-    Portfolio: {
-      payload: Prisma.$PortfolioPayload<ExtArgs>
-      fields: Prisma.PortfolioFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.PortfolioFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.PortfolioFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        findFirst: {
-          args: Prisma.PortfolioFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.PortfolioFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        findMany: {
-          args: Prisma.PortfolioFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>[]
-        }
-        create: {
-          args: Prisma.PortfolioCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        createMany: {
-          args: Prisma.PortfolioCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.PortfolioCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>[]
-        }
-        delete: {
-          args: Prisma.PortfolioDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        update: {
-          args: Prisma.PortfolioUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        deleteMany: {
-          args: Prisma.PortfolioDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.PortfolioUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.PortfolioUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>[]
-        }
-        upsert: {
-          args: Prisma.PortfolioUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioPayload>
-        }
-        aggregate: {
-          args: Prisma.PortfolioAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePortfolio>
-        }
-        groupBy: {
-          args: Prisma.PortfolioGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PortfolioGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.PortfolioCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PortfolioCountAggregateOutputType> | number
-        }
-      }
-    }
-    ProjectGallery: {
-      payload: Prisma.$ProjectGalleryPayload<ExtArgs>
-      fields: Prisma.ProjectGalleryFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.ProjectGalleryFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.ProjectGalleryFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
-        }
-        findFirst: {
-          args: Prisma.ProjectGalleryFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.ProjectGalleryFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
-        }
-        findMany: {
-          args: Prisma.ProjectGalleryFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>[]
-        }
-        create: {
-          args: Prisma.ProjectGalleryCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
-        }
-        createMany: {
-          args: Prisma.ProjectGalleryCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.ProjectGalleryCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>[]
-        }
-        delete: {
-          args: Prisma.ProjectGalleryDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
-        }
-        update: {
-          args: Prisma.ProjectGalleryUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
-        }
-        deleteMany: {
-          args: Prisma.ProjectGalleryDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.ProjectGalleryUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.ProjectGalleryUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>[]
-        }
-        upsert: {
-          args: Prisma.ProjectGalleryUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
-        }
-        aggregate: {
-          args: Prisma.ProjectGalleryAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateProjectGallery>
-        }
-        groupBy: {
-          args: Prisma.ProjectGalleryGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ProjectGalleryGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.ProjectGalleryCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ProjectGalleryCountAggregateOutputType> | number
         }
       }
     }
@@ -1840,92 +1615,14 @@ export const ServiceCategoryRelationScalarFieldEnum = {
 export type ServiceCategoryRelationScalarFieldEnum = (typeof ServiceCategoryRelationScalarFieldEnum)[keyof typeof ServiceCategoryRelationScalarFieldEnum]
 
 
-export const PortfolioGalleryScalarFieldEnum = {
-  id: 'id',
-  portfolio_id: 'portfolio_id',
-  image_id: 'image_id',
-  display_order: 'display_order',
-  created_at: 'created_at'
-} as const
-
-export type PortfolioGalleryScalarFieldEnum = (typeof PortfolioGalleryScalarFieldEnum)[keyof typeof PortfolioGalleryScalarFieldEnum]
-
-
-export const PortfolioScalarFieldEnum = {
-  portfolio_id: 'portfolio_id',
-  title: 'title',
-  slug: 'slug',
-  description: 'description',
-  short_description: 'short_description',
-  featured_image_id: 'featured_image_id',
-  client_name: 'client_name',
-  client_logo_id: 'client_logo_id',
-  industry: 'industry',
-  project_url: 'project_url',
-  case_study_url: 'case_study_url',
-  technologies: 'technologies',
-  year_completed: 'year_completed',
-  team_size: 'team_size',
-  duration: 'duration',
-  results: 'results',
-  status: 'status',
-  is_featured: 'is_featured',
-  display_order: 'display_order',
-  view_count: 'view_count',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description',
-  meta_keywords: 'meta_keywords',
-  og_image_id: 'og_image_id',
-  serviceId: 'serviceId'
-} as const
-
-export type PortfolioScalarFieldEnum = (typeof PortfolioScalarFieldEnum)[keyof typeof PortfolioScalarFieldEnum]
-
-
-export const ProjectGalleryScalarFieldEnum = {
-  id: 'id',
-  project_id: 'project_id',
-  image_id: 'image_id',
-  display_order: 'display_order',
-  created_at: 'created_at'
-} as const
-
-export type ProjectGalleryScalarFieldEnum = (typeof ProjectGalleryScalarFieldEnum)[keyof typeof ProjectGalleryScalarFieldEnum]
-
-
 export const ProjectScalarFieldEnum = {
   project_id: 'project_id',
   title: 'title',
-  slug: 'slug',
-  description: 'description',
   short_description: 'short_description',
   featured_image_id: 'featured_image_id',
-  project_type: 'project_type',
-  project_url: 'project_url',
-  github_url: 'github_url',
-  demo_url: 'demo_url',
-  documentation_url: 'documentation_url',
-  download_url: 'download_url',
-  version: 'version',
-  license: 'license',
-  technologies: 'technologies',
-  features: 'features',
   status: 'status',
-  is_featured: 'is_featured',
-  is_active: 'is_active',
-  display_order: 'display_order',
-  view_count: 'view_count',
-  download_count: 'download_count',
-  star_count: 'star_count',
   created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description',
-  meta_keywords: 'meta_keywords',
-  og_image_id: 'og_image_id',
-  serviceId: 'serviceId'
+  updated_at: 'updated_at'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
@@ -2302,9 +1999,6 @@ export type GlobalOmitConfig = {
   blog?: Prisma.BlogOmit
   serviceCategory?: Prisma.ServiceCategoryOmit
   serviceCategoryRelation?: Prisma.ServiceCategoryRelationOmit
-  portfolioGallery?: Prisma.PortfolioGalleryOmit
-  portfolio?: Prisma.PortfolioOmit
-  projectGallery?: Prisma.ProjectGalleryOmit
   project?: Prisma.ProjectOmit
   contactUs?: Prisma.ContactUsOmit
   activityGallery?: Prisma.ActivityGalleryOmit

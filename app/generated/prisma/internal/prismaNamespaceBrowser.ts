@@ -57,9 +57,6 @@ export const ModelName = {
   Blog: 'Blog',
   ServiceCategory: 'ServiceCategory',
   ServiceCategoryRelation: 'ServiceCategoryRelation',
-  PortfolioGallery: 'PortfolioGallery',
-  Portfolio: 'Portfolio',
-  ProjectGallery: 'ProjectGallery',
   Project: 'Project',
   ContactUs: 'ContactUs',
   ActivityGallery: 'ActivityGallery',
@@ -201,92 +198,14 @@ export const ServiceCategoryRelationScalarFieldEnum = {
 export type ServiceCategoryRelationScalarFieldEnum = (typeof ServiceCategoryRelationScalarFieldEnum)[keyof typeof ServiceCategoryRelationScalarFieldEnum]
 
 
-export const PortfolioGalleryScalarFieldEnum = {
-  id: 'id',
-  portfolio_id: 'portfolio_id',
-  image_id: 'image_id',
-  display_order: 'display_order',
-  created_at: 'created_at'
-} as const
-
-export type PortfolioGalleryScalarFieldEnum = (typeof PortfolioGalleryScalarFieldEnum)[keyof typeof PortfolioGalleryScalarFieldEnum]
-
-
-export const PortfolioScalarFieldEnum = {
-  portfolio_id: 'portfolio_id',
-  title: 'title',
-  slug: 'slug',
-  description: 'description',
-  short_description: 'short_description',
-  featured_image_id: 'featured_image_id',
-  client_name: 'client_name',
-  client_logo_id: 'client_logo_id',
-  industry: 'industry',
-  project_url: 'project_url',
-  case_study_url: 'case_study_url',
-  technologies: 'technologies',
-  year_completed: 'year_completed',
-  team_size: 'team_size',
-  duration: 'duration',
-  results: 'results',
-  status: 'status',
-  is_featured: 'is_featured',
-  display_order: 'display_order',
-  view_count: 'view_count',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description',
-  meta_keywords: 'meta_keywords',
-  og_image_id: 'og_image_id',
-  serviceId: 'serviceId'
-} as const
-
-export type PortfolioScalarFieldEnum = (typeof PortfolioScalarFieldEnum)[keyof typeof PortfolioScalarFieldEnum]
-
-
-export const ProjectGalleryScalarFieldEnum = {
-  id: 'id',
-  project_id: 'project_id',
-  image_id: 'image_id',
-  display_order: 'display_order',
-  created_at: 'created_at'
-} as const
-
-export type ProjectGalleryScalarFieldEnum = (typeof ProjectGalleryScalarFieldEnum)[keyof typeof ProjectGalleryScalarFieldEnum]
-
-
 export const ProjectScalarFieldEnum = {
   project_id: 'project_id',
   title: 'title',
-  slug: 'slug',
-  description: 'description',
   short_description: 'short_description',
   featured_image_id: 'featured_image_id',
-  project_type: 'project_type',
-  project_url: 'project_url',
-  github_url: 'github_url',
-  demo_url: 'demo_url',
-  documentation_url: 'documentation_url',
-  download_url: 'download_url',
-  version: 'version',
-  license: 'license',
-  technologies: 'technologies',
-  features: 'features',
   status: 'status',
-  is_featured: 'is_featured',
-  is_active: 'is_active',
-  display_order: 'display_order',
-  view_count: 'view_count',
-  download_count: 'download_count',
-  star_count: 'star_count',
   created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description',
-  meta_keywords: 'meta_keywords',
-  og_image_id: 'og_image_id',
-  serviceId: 'serviceId'
+  updated_at: 'updated_at'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]

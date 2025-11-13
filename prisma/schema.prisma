@@ -35,13 +35,7 @@ model GalleryItem {
   blogFeaturedImages         Blog[]             @relation("BlogFeaturedImage")
   blogOgImages               Blog[]             @relation("BlogOgImage")
   companyFeaturedImages      MyCompanies[]      @relation("CompanyFeaturedImage")
-  portfolioFeaturedImages    Portfolio[]        @relation("PortfolioFeaturedImage")
-  portfolioGalleries         PortfolioGallery[]
-  portfolioClientLogos       Portfolio[]        @relation("PortfolioClientLogo")
-  portfolioOgImages          Portfolio[]        @relation("PortfolioOgImage")
   projectFeaturedImages      Project[]          @relation("ProjectFeaturedImage")
-  projectGalleries           ProjectGallery[]
-  projectOgImages            Project[]          @relation("ProjectOgImage")
   activityFeaturedImages     Activity[]         @relation("ActivityFeaturedImage")
   activityGalleries          ActivityGallery[]
   activityOgImages           Activity[]         @relation("ActivityOgImage")
@@ -200,135 +194,23 @@ model ServiceCategoryRelation {
   @@index([category_id])
 }
 
-// Portfolio Gallery Junction Table
-model PortfolioGallery {
-  id            String      @id @default(cuid())
-  portfolio     Portfolio   @relation(fields: [portfolio_id], references: [portfolio_id], onDelete: Cascade)
-  portfolio_id  Int
-  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
-  image_id      String
-  display_order Int         @default(0)
-  created_at    DateTime    @default(now())
 
-  @@unique([portfolio_id, image_id])
-  @@index([portfolio_id])
-  @@index([image_id])
-  @@index([display_order])
-}
 
-// Showcase of completed client work
-model Portfolio {
-  portfolio_id      Int                @id @default(autoincrement())
-  title             String
-  slug              String             @unique
-  description       String             @db.Text
-  short_description String?            @db.Text
-  featured_image    GalleryItem?       @relation("PortfolioFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
-  featured_image_id String?
-  gallery           PortfolioGallery[]
-  client_name       String?
-  client_logo       GalleryItem?       @relation("PortfolioClientLogo", fields: [client_logo_id], references: [id], onDelete: SetNull)
-  client_logo_id    String?
-  industry          String?
-  project_url       String?
-  case_study_url    String?
-  technologies      String[]
-  year_completed    Int?
-  team_size         Int?
-  duration          String?
-  results           String?            @db.Text
-  status            Status             @default(PUBLISHED)
-  is_featured       Boolean            @default(false)
-  display_order     Int                @default(0)
-  view_count        Int                @default(0)
-  created_at        DateTime           @default(now())
-  updated_at        DateTime           @updatedAt
 
-  // SEO Fields
-  meta_title       String?
-  meta_description String?      @db.Text
-  meta_keywords    String?
-  og_image         GalleryItem? @relation("PortfolioOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
-  og_image_id      String?
 
-  service   Service @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
-  serviceId Int
-
-  @@index([slug])
-  @@index([status])
-  @@index([serviceId])
-  @@index([display_order])
-  @@index([is_featured])
-  @@index([industry])
-  @@index([featured_image_id])
-  @@index([client_logo_id])
-  @@index([og_image_id])
-}
-
-// Project Gallery Junction Table
-model ProjectGallery {
-  id            String      @id @default(cuid())
-  project       Project     @relation(fields: [project_id], references: [project_id], onDelete: Cascade)
-  project_id    Int
-  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
-  image_id      String
-  display_order Int         @default(0)
-  created_at    DateTime    @default(now())
-
-  @@unique([project_id, image_id])
-  @@index([project_id])
-  @@index([image_id])
-  @@index([display_order])
-}
 
 // Internal projects/products
 model Project {
   project_id        Int              @id @default(autoincrement())
   title             String
-  slug              String           @unique
-  description       String           @db.Text
   short_description String?          @db.Text
   featured_image    GalleryItem?     @relation("ProjectFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
   featured_image_id String?
-  gallery           ProjectGallery[]
-  project_type      String?
-  project_url       String?
-  github_url        String?
-  demo_url          String?
-  documentation_url String?
-  download_url      String?
-  version           String?
-  license           String?
-  technologies      String[]
-  features          String[]
   status            Status           @default(PUBLISHED)
-  is_featured       Boolean          @default(false)
-  is_active         Boolean          @default(true)
-  display_order     Int              @default(0)
-  view_count        Int              @default(0)
-  download_count    Int              @default(0)
-  star_count        Int              @default(0)
   created_at        DateTime         @default(now())
   updated_at        DateTime         @updatedAt
-
-  // SEO Fields
-  meta_title       String?
-  meta_description String?      @db.Text
-  meta_keywords    String?
-  og_image         GalleryItem? @relation("ProjectOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
-  og_image_id      String?
-
-  service   Service @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
-  serviceId Int
-
-  @@index([slug])
   @@index([status])
-  @@index([serviceId])
-  @@index([display_order])
-  @@index([is_featured])
-  @@index([project_type])
-  @@index([featured_image_id])
-  @@index([og_image_id])
+ 
 }
 
 // Contact form submissions
@@ -516,8 +398,6 @@ model Service {
   cta_url  String?
 
   categories ServiceCategoryRelation[]
-  portfolio  Portfolio[]
-  project    Project[]
 
   @@index([slug])
   @@index([status])

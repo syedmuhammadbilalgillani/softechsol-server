@@ -202,13 +202,7 @@ export type GalleryItemWhereInput = {
   blogFeaturedImages?: Prisma.BlogListRelationFilter
   blogOgImages?: Prisma.BlogListRelationFilter
   companyFeaturedImages?: Prisma.MyCompaniesListRelationFilter
-  portfolioFeaturedImages?: Prisma.PortfolioListRelationFilter
-  portfolioGalleries?: Prisma.PortfolioGalleryListRelationFilter
-  portfolioClientLogos?: Prisma.PortfolioListRelationFilter
-  portfolioOgImages?: Prisma.PortfolioListRelationFilter
   projectFeaturedImages?: Prisma.ProjectListRelationFilter
-  projectGalleries?: Prisma.ProjectGalleryListRelationFilter
-  projectOgImages?: Prisma.ProjectListRelationFilter
   activityFeaturedImages?: Prisma.ActivityListRelationFilter
   activityGalleries?: Prisma.ActivityGalleryListRelationFilter
   activityOgImages?: Prisma.ActivityListRelationFilter
@@ -231,13 +225,7 @@ export type GalleryItemOrderByWithRelationInput = {
   blogFeaturedImages?: Prisma.BlogOrderByRelationAggregateInput
   blogOgImages?: Prisma.BlogOrderByRelationAggregateInput
   companyFeaturedImages?: Prisma.MyCompaniesOrderByRelationAggregateInput
-  portfolioFeaturedImages?: Prisma.PortfolioOrderByRelationAggregateInput
-  portfolioGalleries?: Prisma.PortfolioGalleryOrderByRelationAggregateInput
-  portfolioClientLogos?: Prisma.PortfolioOrderByRelationAggregateInput
-  portfolioOgImages?: Prisma.PortfolioOrderByRelationAggregateInput
   projectFeaturedImages?: Prisma.ProjectOrderByRelationAggregateInput
-  projectGalleries?: Prisma.ProjectGalleryOrderByRelationAggregateInput
-  projectOgImages?: Prisma.ProjectOrderByRelationAggregateInput
   activityFeaturedImages?: Prisma.ActivityOrderByRelationAggregateInput
   activityGalleries?: Prisma.ActivityGalleryOrderByRelationAggregateInput
   activityOgImages?: Prisma.ActivityOrderByRelationAggregateInput
@@ -263,13 +251,7 @@ export type GalleryItemWhereUniqueInput = Prisma.AtLeast<{
   blogFeaturedImages?: Prisma.BlogListRelationFilter
   blogOgImages?: Prisma.BlogListRelationFilter
   companyFeaturedImages?: Prisma.MyCompaniesListRelationFilter
-  portfolioFeaturedImages?: Prisma.PortfolioListRelationFilter
-  portfolioGalleries?: Prisma.PortfolioGalleryListRelationFilter
-  portfolioClientLogos?: Prisma.PortfolioListRelationFilter
-  portfolioOgImages?: Prisma.PortfolioListRelationFilter
   projectFeaturedImages?: Prisma.ProjectListRelationFilter
-  projectGalleries?: Prisma.ProjectGalleryListRelationFilter
-  projectOgImages?: Prisma.ProjectListRelationFilter
   activityFeaturedImages?: Prisma.ActivityListRelationFilter
   activityGalleries?: Prisma.ActivityGalleryListRelationFilter
   activityOgImages?: Prisma.ActivityListRelationFilter
@@ -318,13 +300,7 @@ export type GalleryItemCreateInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -347,13 +323,7 @@ export type GalleryItemUncheckedCreateInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -376,13 +346,7 @@ export type GalleryItemUpdateInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -405,13 +369,7 @@ export type GalleryItemUncheckedUpdateInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -568,91 +526,9 @@ export type GalleryItemUpdateOneWithoutBlogOgImagesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutBlogOgImagesInput, Prisma.GalleryItemUpdateWithoutBlogOgImagesInput>, Prisma.GalleryItemUncheckedUpdateWithoutBlogOgImagesInput>
 }
 
-export type GalleryItemCreateNestedOneWithoutPortfolioGalleriesInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioGalleriesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioGalleriesInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-}
-
-export type GalleryItemUpdateOneRequiredWithoutPortfolioGalleriesNestedInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioGalleriesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioGalleriesInput
-  upsert?: Prisma.GalleryItemUpsertWithoutPortfolioGalleriesInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutPortfolioGalleriesInput, Prisma.GalleryItemUpdateWithoutPortfolioGalleriesInput>, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioGalleriesInput>
-}
-
-export type GalleryItemCreateNestedOneWithoutPortfolioFeaturedImagesInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioFeaturedImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioFeaturedImagesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioFeaturedImagesInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-}
-
-export type GalleryItemCreateNestedOneWithoutPortfolioClientLogosInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioClientLogosInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioClientLogosInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioClientLogosInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-}
-
-export type GalleryItemCreateNestedOneWithoutPortfolioOgImagesInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioOgImagesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioOgImagesInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-}
-
-export type GalleryItemUpdateOneWithoutPortfolioFeaturedImagesNestedInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioFeaturedImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioFeaturedImagesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioFeaturedImagesInput
-  upsert?: Prisma.GalleryItemUpsertWithoutPortfolioFeaturedImagesInput
-  disconnect?: Prisma.GalleryItemWhereInput | boolean
-  delete?: Prisma.GalleryItemWhereInput | boolean
-  connect?: Prisma.GalleryItemWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutPortfolioFeaturedImagesInput, Prisma.GalleryItemUpdateWithoutPortfolioFeaturedImagesInput>, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioFeaturedImagesInput>
-}
-
-export type GalleryItemUpdateOneWithoutPortfolioClientLogosNestedInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioClientLogosInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioClientLogosInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioClientLogosInput
-  upsert?: Prisma.GalleryItemUpsertWithoutPortfolioClientLogosInput
-  disconnect?: Prisma.GalleryItemWhereInput | boolean
-  delete?: Prisma.GalleryItemWhereInput | boolean
-  connect?: Prisma.GalleryItemWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutPortfolioClientLogosInput, Prisma.GalleryItemUpdateWithoutPortfolioClientLogosInput>, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioClientLogosInput>
-}
-
-export type GalleryItemUpdateOneWithoutPortfolioOgImagesNestedInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioOgImagesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutPortfolioOgImagesInput
-  upsert?: Prisma.GalleryItemUpsertWithoutPortfolioOgImagesInput
-  disconnect?: Prisma.GalleryItemWhereInput | boolean
-  delete?: Prisma.GalleryItemWhereInput | boolean
-  connect?: Prisma.GalleryItemWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutPortfolioOgImagesInput, Prisma.GalleryItemUpdateWithoutPortfolioOgImagesInput>, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioOgImagesInput>
-}
-
-export type GalleryItemCreateNestedOneWithoutProjectGalleriesInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectGalleriesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutProjectGalleriesInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-}
-
-export type GalleryItemUpdateOneRequiredWithoutProjectGalleriesNestedInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectGalleriesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutProjectGalleriesInput
-  upsert?: Prisma.GalleryItemUpsertWithoutProjectGalleriesInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutProjectGalleriesInput, Prisma.GalleryItemUpdateWithoutProjectGalleriesInput>, Prisma.GalleryItemUncheckedUpdateWithoutProjectGalleriesInput>
-}
-
 export type GalleryItemCreateNestedOneWithoutProjectFeaturedImagesInput = {
   create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectFeaturedImagesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectFeaturedImagesInput>
   connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutProjectFeaturedImagesInput
-  connect?: Prisma.GalleryItemWhereUniqueInput
-}
-
-export type GalleryItemCreateNestedOneWithoutProjectOgImagesInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectOgImagesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutProjectOgImagesInput
   connect?: Prisma.GalleryItemWhereUniqueInput
 }
 
@@ -664,16 +540,6 @@ export type GalleryItemUpdateOneWithoutProjectFeaturedImagesNestedInput = {
   delete?: Prisma.GalleryItemWhereInput | boolean
   connect?: Prisma.GalleryItemWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutProjectFeaturedImagesInput, Prisma.GalleryItemUpdateWithoutProjectFeaturedImagesInput>, Prisma.GalleryItemUncheckedUpdateWithoutProjectFeaturedImagesInput>
-}
-
-export type GalleryItemUpdateOneWithoutProjectOgImagesNestedInput = {
-  create?: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectOgImagesInput>
-  connectOrCreate?: Prisma.GalleryItemCreateOrConnectWithoutProjectOgImagesInput
-  upsert?: Prisma.GalleryItemUpsertWithoutProjectOgImagesInput
-  disconnect?: Prisma.GalleryItemWhereInput | boolean
-  delete?: Prisma.GalleryItemWhereInput | boolean
-  connect?: Prisma.GalleryItemWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.GalleryItemUpdateToOneWithWhereWithoutProjectOgImagesInput, Prisma.GalleryItemUpdateWithoutProjectOgImagesInput>, Prisma.GalleryItemUncheckedUpdateWithoutProjectOgImagesInput>
 }
 
 export type GalleryItemCreateNestedOneWithoutActivityGalleriesInput = {
@@ -813,13 +679,7 @@ export type GalleryItemCreateWithoutUserAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -841,13 +701,7 @@ export type GalleryItemUncheckedCreateWithoutUserAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -885,13 +739,7 @@ export type GalleryItemUpdateWithoutUserAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -913,13 +761,7 @@ export type GalleryItemUncheckedUpdateWithoutUserAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -941,13 +783,7 @@ export type GalleryItemCreateWithoutCompanyFeaturedImagesInput = {
   userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -969,13 +805,7 @@ export type GalleryItemUncheckedCreateWithoutCompanyFeaturedImagesInput = {
   userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -1013,13 +843,7 @@ export type GalleryItemUpdateWithoutCompanyFeaturedImagesInput = {
   userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -1041,13 +865,7 @@ export type GalleryItemUncheckedUpdateWithoutCompanyFeaturedImagesInput = {
   userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -1069,13 +887,7 @@ export type GalleryItemCreateWithoutBlogFeaturedImagesInput = {
   userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -1097,13 +909,7 @@ export type GalleryItemUncheckedCreateWithoutBlogFeaturedImagesInput = {
   userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -1130,13 +936,7 @@ export type GalleryItemCreateWithoutBlogOgImagesInput = {
   userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -1158,13 +958,7 @@ export type GalleryItemUncheckedCreateWithoutBlogOgImagesInput = {
   userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -1202,13 +996,7 @@ export type GalleryItemUpdateWithoutBlogFeaturedImagesInput = {
   userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -1230,13 +1018,7 @@ export type GalleryItemUncheckedUpdateWithoutBlogFeaturedImagesInput = {
   userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -1269,13 +1051,7 @@ export type GalleryItemUpdateWithoutBlogOgImagesInput = {
   userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -1297,653 +1073,7 @@ export type GalleryItemUncheckedUpdateWithoutBlogOgImagesInput = {
   userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUncheckedUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemCreateWithoutPortfolioGalleriesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemUncheckedCreateWithoutPortfolioGalleriesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemCreateOrConnectWithoutPortfolioGalleriesInput = {
-  where: Prisma.GalleryItemWhereUniqueInput
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioGalleriesInput>
-}
-
-export type GalleryItemUpsertWithoutPortfolioGalleriesInput = {
-  update: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioGalleriesInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioGalleriesInput>
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioGalleriesInput>
-  where?: Prisma.GalleryItemWhereInput
-}
-
-export type GalleryItemUpdateToOneWithWhereWithoutPortfolioGalleriesInput = {
-  where?: Prisma.GalleryItemWhereInput
-  data: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioGalleriesInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioGalleriesInput>
-}
-
-export type GalleryItemUpdateWithoutPortfolioGalleriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUncheckedUpdateWithoutPortfolioGalleriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUncheckedUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemCreateWithoutPortfolioFeaturedImagesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemUncheckedCreateWithoutPortfolioFeaturedImagesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemCreateOrConnectWithoutPortfolioFeaturedImagesInput = {
-  where: Prisma.GalleryItemWhereUniqueInput
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioFeaturedImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioFeaturedImagesInput>
-}
-
-export type GalleryItemCreateWithoutPortfolioClientLogosInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemUncheckedCreateWithoutPortfolioClientLogosInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemCreateOrConnectWithoutPortfolioClientLogosInput = {
-  where: Prisma.GalleryItemWhereUniqueInput
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioClientLogosInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioClientLogosInput>
-}
-
-export type GalleryItemCreateWithoutPortfolioOgImagesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemUncheckedCreateWithoutPortfolioOgImagesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemCreateOrConnectWithoutPortfolioOgImagesInput = {
-  where: Prisma.GalleryItemWhereUniqueInput
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioOgImagesInput>
-}
-
-export type GalleryItemUpsertWithoutPortfolioFeaturedImagesInput = {
-  update: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioFeaturedImagesInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioFeaturedImagesInput>
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioFeaturedImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioFeaturedImagesInput>
-  where?: Prisma.GalleryItemWhereInput
-}
-
-export type GalleryItemUpdateToOneWithWhereWithoutPortfolioFeaturedImagesInput = {
-  where?: Prisma.GalleryItemWhereInput
-  data: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioFeaturedImagesInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioFeaturedImagesInput>
-}
-
-export type GalleryItemUpdateWithoutPortfolioFeaturedImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUncheckedUpdateWithoutPortfolioFeaturedImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUncheckedUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUpsertWithoutPortfolioClientLogosInput = {
-  update: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioClientLogosInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioClientLogosInput>
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioClientLogosInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioClientLogosInput>
-  where?: Prisma.GalleryItemWhereInput
-}
-
-export type GalleryItemUpdateToOneWithWhereWithoutPortfolioClientLogosInput = {
-  where?: Prisma.GalleryItemWhereInput
-  data: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioClientLogosInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioClientLogosInput>
-}
-
-export type GalleryItemUpdateWithoutPortfolioClientLogosInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUncheckedUpdateWithoutPortfolioClientLogosInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUncheckedUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUpsertWithoutPortfolioOgImagesInput = {
-  update: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioOgImagesInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioOgImagesInput>
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutPortfolioOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutPortfolioOgImagesInput>
-  where?: Prisma.GalleryItemWhereInput
-}
-
-export type GalleryItemUpdateToOneWithWhereWithoutPortfolioOgImagesInput = {
-  where?: Prisma.GalleryItemWhereInput
-  data: Prisma.XOR<Prisma.GalleryItemUpdateWithoutPortfolioOgImagesInput, Prisma.GalleryItemUncheckedUpdateWithoutPortfolioOgImagesInput>
-}
-
-export type GalleryItemUpdateWithoutPortfolioOgImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUncheckedUpdateWithoutPortfolioOgImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUncheckedUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemCreateWithoutProjectGalleriesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemUncheckedCreateWithoutProjectGalleriesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemCreateOrConnectWithoutProjectGalleriesInput = {
-  where: Prisma.GalleryItemWhereUniqueInput
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectGalleriesInput>
-}
-
-export type GalleryItemUpsertWithoutProjectGalleriesInput = {
-  update: Prisma.XOR<Prisma.GalleryItemUpdateWithoutProjectGalleriesInput, Prisma.GalleryItemUncheckedUpdateWithoutProjectGalleriesInput>
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectGalleriesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectGalleriesInput>
-  where?: Prisma.GalleryItemWhereInput
-}
-
-export type GalleryItemUpdateToOneWithWhereWithoutProjectGalleriesInput = {
-  where?: Prisma.GalleryItemWhereInput
-  data: Prisma.XOR<Prisma.GalleryItemUpdateWithoutProjectGalleriesInput, Prisma.GalleryItemUncheckedUpdateWithoutProjectGalleriesInput>
-}
-
-export type GalleryItemUpdateWithoutProjectGalleriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUncheckedUpdateWithoutProjectGalleriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -1966,12 +1096,6 @@ export type GalleryItemCreateWithoutProjectFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -1994,12 +1118,6 @@ export type GalleryItemUncheckedCreateWithoutProjectFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -2013,67 +1131,6 @@ export type GalleryItemUncheckedCreateWithoutProjectFeaturedImagesInput = {
 export type GalleryItemCreateOrConnectWithoutProjectFeaturedImagesInput = {
   where: Prisma.GalleryItemWhereUniqueInput
   create: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectFeaturedImagesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectFeaturedImagesInput>
-}
-
-export type GalleryItemCreateWithoutProjectOgImagesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemUncheckedCreateWithoutProjectOgImagesInput = {
-  id?: string
-  url: string
-  altText: string
-  description?: string | null
-  publicId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  userAvatars?: Prisma.UserUncheckedCreateNestedManyWithoutAvatarInput
-  blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
-  blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
-  activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedCreateNestedManyWithoutCompany_logoInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedCreateNestedManyWithoutVideo_thumbnailInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput
-  serviceOgImages?: Prisma.ServiceUncheckedCreateNestedManyWithoutOg_imageInput
-}
-
-export type GalleryItemCreateOrConnectWithoutProjectOgImagesInput = {
-  where: Prisma.GalleryItemWhereUniqueInput
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectOgImagesInput>
 }
 
 export type GalleryItemUpsertWithoutProjectFeaturedImagesInput = {
@@ -2099,12 +1156,6 @@ export type GalleryItemUpdateWithoutProjectFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -2127,79 +1178,6 @@ export type GalleryItemUncheckedUpdateWithoutProjectFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUncheckedUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUncheckedUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUncheckedUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUpsertWithoutProjectOgImagesInput = {
-  update: Prisma.XOR<Prisma.GalleryItemUpdateWithoutProjectOgImagesInput, Prisma.GalleryItemUncheckedUpdateWithoutProjectOgImagesInput>
-  create: Prisma.XOR<Prisma.GalleryItemCreateWithoutProjectOgImagesInput, Prisma.GalleryItemUncheckedCreateWithoutProjectOgImagesInput>
-  where?: Prisma.GalleryItemWhereInput
-}
-
-export type GalleryItemUpdateToOneWithWhereWithoutProjectOgImagesInput = {
-  where?: Prisma.GalleryItemWhereInput
-  data: Prisma.XOR<Prisma.GalleryItemUpdateWithoutProjectOgImagesInput, Prisma.GalleryItemUncheckedUpdateWithoutProjectOgImagesInput>
-}
-
-export type GalleryItemUpdateWithoutProjectOgImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
-  activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
-  activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
-  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
-  testimonialCompanyLogos?: Prisma.TestimonialUpdateManyWithoutCompany_logoNestedInput
-  testimonialVideoThumbnails?: Prisma.TestimonialUpdateManyWithoutVideo_thumbnailNestedInput
-  serviceFeaturedImages?: Prisma.ServiceUpdateManyWithoutFeatured_imageNestedInput
-  serviceOgImages?: Prisma.ServiceUpdateManyWithoutOg_imageNestedInput
-}
-
-export type GalleryItemUncheckedUpdateWithoutProjectOgImagesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  url?: Prisma.StringFieldUpdateOperationsInput | string
-  altText?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  publicId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  userAvatars?: Prisma.UserUncheckedUpdateManyWithoutAvatarNestedInput
-  blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-  companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
-  projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -2222,13 +1200,7 @@ export type GalleryItemCreateWithoutActivityGalleriesInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
   testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
@@ -2250,13 +1222,7 @@ export type GalleryItemUncheckedCreateWithoutActivityGalleriesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
   testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
@@ -2294,13 +1260,7 @@ export type GalleryItemUpdateWithoutActivityGalleriesInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
   testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
@@ -2322,13 +1282,7 @@ export type GalleryItemUncheckedUpdateWithoutActivityGalleriesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
   testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
@@ -2350,13 +1304,7 @@ export type GalleryItemCreateWithoutActivityFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
   testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
@@ -2378,13 +1326,7 @@ export type GalleryItemUncheckedCreateWithoutActivityFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
   testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
@@ -2411,13 +1353,7 @@ export type GalleryItemCreateWithoutActivityOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarInput
@@ -2439,13 +1375,7 @@ export type GalleryItemUncheckedCreateWithoutActivityOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarInput
@@ -2483,13 +1413,7 @@ export type GalleryItemUpdateWithoutActivityFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
   testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
@@ -2511,13 +1435,7 @@ export type GalleryItemUncheckedUpdateWithoutActivityFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
   testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
@@ -2550,13 +1468,7 @@ export type GalleryItemUpdateWithoutActivityOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarNestedInput
@@ -2578,13 +1490,7 @@ export type GalleryItemUncheckedUpdateWithoutActivityOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarNestedInput
@@ -2606,13 +1512,7 @@ export type GalleryItemCreateWithoutTestimonialCompanyLogosInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -2634,13 +1534,7 @@ export type GalleryItemUncheckedCreateWithoutTestimonialCompanyLogosInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -2667,13 +1561,7 @@ export type GalleryItemCreateWithoutTestimonialAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -2695,13 +1583,7 @@ export type GalleryItemUncheckedCreateWithoutTestimonialAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -2728,13 +1610,7 @@ export type GalleryItemCreateWithoutTestimonialVideoThumbnailsInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -2756,13 +1632,7 @@ export type GalleryItemUncheckedCreateWithoutTestimonialVideoThumbnailsInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -2800,13 +1670,7 @@ export type GalleryItemUpdateWithoutTestimonialCompanyLogosInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -2828,13 +1692,7 @@ export type GalleryItemUncheckedUpdateWithoutTestimonialCompanyLogosInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -2867,13 +1725,7 @@ export type GalleryItemUpdateWithoutTestimonialAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -2895,13 +1747,7 @@ export type GalleryItemUncheckedUpdateWithoutTestimonialAvatarsInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -2934,13 +1780,7 @@ export type GalleryItemUpdateWithoutTestimonialVideoThumbnailsInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -2962,13 +1802,7 @@ export type GalleryItemUncheckedUpdateWithoutTestimonialVideoThumbnailsInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -2990,13 +1824,7 @@ export type GalleryItemCreateWithoutServiceFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -3018,13 +1846,7 @@ export type GalleryItemUncheckedCreateWithoutServiceFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -3051,13 +1873,7 @@ export type GalleryItemCreateWithoutServiceOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityCreateNestedManyWithoutOg_imageInput
@@ -3079,13 +1895,7 @@ export type GalleryItemUncheckedCreateWithoutServiceOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
   blogOgImages?: Prisma.BlogUncheckedCreateNestedManyWithoutOg_imageInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutImageInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedCreateNestedManyWithoutClient_logoInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedCreateNestedManyWithoutOg_imageInput
   projectFeaturedImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutImageInput
-  projectOgImages?: Prisma.ProjectUncheckedCreateNestedManyWithoutOg_imageInput
   activityFeaturedImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutImageInput
   activityOgImages?: Prisma.ActivityUncheckedCreateNestedManyWithoutOg_imageInput
@@ -3123,13 +1933,7 @@ export type GalleryItemUpdateWithoutServiceFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -3151,13 +1955,7 @@ export type GalleryItemUncheckedUpdateWithoutServiceFeaturedImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -3190,13 +1988,7 @@ export type GalleryItemUpdateWithoutServiceOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUpdateManyWithoutOg_imageNestedInput
@@ -3218,13 +2010,7 @@ export type GalleryItemUncheckedUpdateWithoutServiceOgImagesInput = {
   blogFeaturedImages?: Prisma.BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
   blogOgImages?: Prisma.BlogUncheckedUpdateManyWithoutOg_imageNestedInput
   companyFeaturedImages?: Prisma.MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioFeaturedImages?: Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  portfolioGalleries?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutImageNestedInput
-  portfolioClientLogos?: Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput
-  portfolioOgImages?: Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput
   projectFeaturedImages?: Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput
-  projectGalleries?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutImageNestedInput
-  projectOgImages?: Prisma.ProjectUncheckedUpdateManyWithoutOg_imageNestedInput
   activityFeaturedImages?: Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput
   activityGalleries?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutImageNestedInput
   activityOgImages?: Prisma.ActivityUncheckedUpdateManyWithoutOg_imageNestedInput
@@ -3244,13 +2030,7 @@ export type GalleryItemCountOutputType = {
   blogFeaturedImages: number
   blogOgImages: number
   companyFeaturedImages: number
-  portfolioFeaturedImages: number
-  portfolioGalleries: number
-  portfolioClientLogos: number
-  portfolioOgImages: number
   projectFeaturedImages: number
-  projectGalleries: number
-  projectOgImages: number
   activityFeaturedImages: number
   activityGalleries: number
   activityOgImages: number
@@ -3266,13 +2046,7 @@ export type GalleryItemCountOutputTypeSelect<ExtArgs extends runtime.Types.Exten
   blogFeaturedImages?: boolean | GalleryItemCountOutputTypeCountBlogFeaturedImagesArgs
   blogOgImages?: boolean | GalleryItemCountOutputTypeCountBlogOgImagesArgs
   companyFeaturedImages?: boolean | GalleryItemCountOutputTypeCountCompanyFeaturedImagesArgs
-  portfolioFeaturedImages?: boolean | GalleryItemCountOutputTypeCountPortfolioFeaturedImagesArgs
-  portfolioGalleries?: boolean | GalleryItemCountOutputTypeCountPortfolioGalleriesArgs
-  portfolioClientLogos?: boolean | GalleryItemCountOutputTypeCountPortfolioClientLogosArgs
-  portfolioOgImages?: boolean | GalleryItemCountOutputTypeCountPortfolioOgImagesArgs
   projectFeaturedImages?: boolean | GalleryItemCountOutputTypeCountProjectFeaturedImagesArgs
-  projectGalleries?: boolean | GalleryItemCountOutputTypeCountProjectGalleriesArgs
-  projectOgImages?: boolean | GalleryItemCountOutputTypeCountProjectOgImagesArgs
   activityFeaturedImages?: boolean | GalleryItemCountOutputTypeCountActivityFeaturedImagesArgs
   activityGalleries?: boolean | GalleryItemCountOutputTypeCountActivityGalleriesArgs
   activityOgImages?: boolean | GalleryItemCountOutputTypeCountActivityOgImagesArgs
@@ -3324,49 +2098,7 @@ export type GalleryItemCountOutputTypeCountCompanyFeaturedImagesArgs<ExtArgs ext
 /**
  * GalleryItemCountOutputType without action
  */
-export type GalleryItemCountOutputTypeCountPortfolioFeaturedImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PortfolioWhereInput
-}
-
-/**
- * GalleryItemCountOutputType without action
- */
-export type GalleryItemCountOutputTypeCountPortfolioGalleriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PortfolioGalleryWhereInput
-}
-
-/**
- * GalleryItemCountOutputType without action
- */
-export type GalleryItemCountOutputTypeCountPortfolioClientLogosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PortfolioWhereInput
-}
-
-/**
- * GalleryItemCountOutputType without action
- */
-export type GalleryItemCountOutputTypeCountPortfolioOgImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PortfolioWhereInput
-}
-
-/**
- * GalleryItemCountOutputType without action
- */
 export type GalleryItemCountOutputTypeCountProjectFeaturedImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProjectWhereInput
-}
-
-/**
- * GalleryItemCountOutputType without action
- */
-export type GalleryItemCountOutputTypeCountProjectGalleriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProjectGalleryWhereInput
-}
-
-/**
- * GalleryItemCountOutputType without action
- */
-export type GalleryItemCountOutputTypeCountProjectOgImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ProjectWhereInput
 }
 
@@ -3439,13 +2171,7 @@ export type GalleryItemSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   blogFeaturedImages?: boolean | Prisma.GalleryItem$blogFeaturedImagesArgs<ExtArgs>
   blogOgImages?: boolean | Prisma.GalleryItem$blogOgImagesArgs<ExtArgs>
   companyFeaturedImages?: boolean | Prisma.GalleryItem$companyFeaturedImagesArgs<ExtArgs>
-  portfolioFeaturedImages?: boolean | Prisma.GalleryItem$portfolioFeaturedImagesArgs<ExtArgs>
-  portfolioGalleries?: boolean | Prisma.GalleryItem$portfolioGalleriesArgs<ExtArgs>
-  portfolioClientLogos?: boolean | Prisma.GalleryItem$portfolioClientLogosArgs<ExtArgs>
-  portfolioOgImages?: boolean | Prisma.GalleryItem$portfolioOgImagesArgs<ExtArgs>
   projectFeaturedImages?: boolean | Prisma.GalleryItem$projectFeaturedImagesArgs<ExtArgs>
-  projectGalleries?: boolean | Prisma.GalleryItem$projectGalleriesArgs<ExtArgs>
-  projectOgImages?: boolean | Prisma.GalleryItem$projectOgImagesArgs<ExtArgs>
   activityFeaturedImages?: boolean | Prisma.GalleryItem$activityFeaturedImagesArgs<ExtArgs>
   activityGalleries?: boolean | Prisma.GalleryItem$activityGalleriesArgs<ExtArgs>
   activityOgImages?: boolean | Prisma.GalleryItem$activityOgImagesArgs<ExtArgs>
@@ -3493,13 +2219,7 @@ export type GalleryItemInclude<ExtArgs extends runtime.Types.Extensions.Internal
   blogFeaturedImages?: boolean | Prisma.GalleryItem$blogFeaturedImagesArgs<ExtArgs>
   blogOgImages?: boolean | Prisma.GalleryItem$blogOgImagesArgs<ExtArgs>
   companyFeaturedImages?: boolean | Prisma.GalleryItem$companyFeaturedImagesArgs<ExtArgs>
-  portfolioFeaturedImages?: boolean | Prisma.GalleryItem$portfolioFeaturedImagesArgs<ExtArgs>
-  portfolioGalleries?: boolean | Prisma.GalleryItem$portfolioGalleriesArgs<ExtArgs>
-  portfolioClientLogos?: boolean | Prisma.GalleryItem$portfolioClientLogosArgs<ExtArgs>
-  portfolioOgImages?: boolean | Prisma.GalleryItem$portfolioOgImagesArgs<ExtArgs>
   projectFeaturedImages?: boolean | Prisma.GalleryItem$projectFeaturedImagesArgs<ExtArgs>
-  projectGalleries?: boolean | Prisma.GalleryItem$projectGalleriesArgs<ExtArgs>
-  projectOgImages?: boolean | Prisma.GalleryItem$projectOgImagesArgs<ExtArgs>
   activityFeaturedImages?: boolean | Prisma.GalleryItem$activityFeaturedImagesArgs<ExtArgs>
   activityGalleries?: boolean | Prisma.GalleryItem$activityGalleriesArgs<ExtArgs>
   activityOgImages?: boolean | Prisma.GalleryItem$activityOgImagesArgs<ExtArgs>
@@ -3520,13 +2240,7 @@ export type $GalleryItemPayload<ExtArgs extends runtime.Types.Extensions.Interna
     blogFeaturedImages: Prisma.$BlogPayload<ExtArgs>[]
     blogOgImages: Prisma.$BlogPayload<ExtArgs>[]
     companyFeaturedImages: Prisma.$MyCompaniesPayload<ExtArgs>[]
-    portfolioFeaturedImages: Prisma.$PortfolioPayload<ExtArgs>[]
-    portfolioGalleries: Prisma.$PortfolioGalleryPayload<ExtArgs>[]
-    portfolioClientLogos: Prisma.$PortfolioPayload<ExtArgs>[]
-    portfolioOgImages: Prisma.$PortfolioPayload<ExtArgs>[]
     projectFeaturedImages: Prisma.$ProjectPayload<ExtArgs>[]
-    projectGalleries: Prisma.$ProjectGalleryPayload<ExtArgs>[]
-    projectOgImages: Prisma.$ProjectPayload<ExtArgs>[]
     activityFeaturedImages: Prisma.$ActivityPayload<ExtArgs>[]
     activityGalleries: Prisma.$ActivityGalleryPayload<ExtArgs>[]
     activityOgImages: Prisma.$ActivityPayload<ExtArgs>[]
@@ -3942,13 +2656,7 @@ export interface Prisma__GalleryItemClient<T, Null = never, ExtArgs extends runt
   blogFeaturedImages<T extends Prisma.GalleryItem$blogFeaturedImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$blogFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   blogOgImages<T extends Prisma.GalleryItem$blogOgImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$blogOgImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   companyFeaturedImages<T extends Prisma.GalleryItem$companyFeaturedImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$companyFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MyCompaniesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  portfolioFeaturedImages<T extends Prisma.GalleryItem$portfolioFeaturedImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$portfolioFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  portfolioGalleries<T extends Prisma.GalleryItem$portfolioGalleriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$portfolioGalleriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioGalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  portfolioClientLogos<T extends Prisma.GalleryItem$portfolioClientLogosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$portfolioClientLogosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  portfolioOgImages<T extends Prisma.GalleryItem$portfolioOgImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$portfolioOgImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projectFeaturedImages<T extends Prisma.GalleryItem$projectFeaturedImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$projectFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  projectGalleries<T extends Prisma.GalleryItem$projectGalleriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$projectGalleriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectGalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  projectOgImages<T extends Prisma.GalleryItem$projectOgImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$projectOgImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activityFeaturedImages<T extends Prisma.GalleryItem$activityFeaturedImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$activityFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activityGalleries<T extends Prisma.GalleryItem$activityGalleriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$activityGalleriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityGalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activityOgImages<T extends Prisma.GalleryItem$activityOgImagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GalleryItem$activityOgImagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4477,153 +3185,9 @@ export type GalleryItem$companyFeaturedImagesArgs<ExtArgs extends runtime.Types.
 }
 
 /**
- * GalleryItem.portfolioFeaturedImages
- */
-export type GalleryItem$portfolioFeaturedImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Portfolio
-   */
-  select?: Prisma.PortfolioSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Portfolio
-   */
-  omit?: Prisma.PortfolioOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PortfolioInclude<ExtArgs> | null
-  where?: Prisma.PortfolioWhereInput
-  orderBy?: Prisma.PortfolioOrderByWithRelationInput | Prisma.PortfolioOrderByWithRelationInput[]
-  cursor?: Prisma.PortfolioWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PortfolioScalarFieldEnum | Prisma.PortfolioScalarFieldEnum[]
-}
-
-/**
- * GalleryItem.portfolioGalleries
- */
-export type GalleryItem$portfolioGalleriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the PortfolioGallery
-   */
-  select?: Prisma.PortfolioGallerySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the PortfolioGallery
-   */
-  omit?: Prisma.PortfolioGalleryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PortfolioGalleryInclude<ExtArgs> | null
-  where?: Prisma.PortfolioGalleryWhereInput
-  orderBy?: Prisma.PortfolioGalleryOrderByWithRelationInput | Prisma.PortfolioGalleryOrderByWithRelationInput[]
-  cursor?: Prisma.PortfolioGalleryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PortfolioGalleryScalarFieldEnum | Prisma.PortfolioGalleryScalarFieldEnum[]
-}
-
-/**
- * GalleryItem.portfolioClientLogos
- */
-export type GalleryItem$portfolioClientLogosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Portfolio
-   */
-  select?: Prisma.PortfolioSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Portfolio
-   */
-  omit?: Prisma.PortfolioOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PortfolioInclude<ExtArgs> | null
-  where?: Prisma.PortfolioWhereInput
-  orderBy?: Prisma.PortfolioOrderByWithRelationInput | Prisma.PortfolioOrderByWithRelationInput[]
-  cursor?: Prisma.PortfolioWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PortfolioScalarFieldEnum | Prisma.PortfolioScalarFieldEnum[]
-}
-
-/**
- * GalleryItem.portfolioOgImages
- */
-export type GalleryItem$portfolioOgImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Portfolio
-   */
-  select?: Prisma.PortfolioSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Portfolio
-   */
-  omit?: Prisma.PortfolioOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PortfolioInclude<ExtArgs> | null
-  where?: Prisma.PortfolioWhereInput
-  orderBy?: Prisma.PortfolioOrderByWithRelationInput | Prisma.PortfolioOrderByWithRelationInput[]
-  cursor?: Prisma.PortfolioWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PortfolioScalarFieldEnum | Prisma.PortfolioScalarFieldEnum[]
-}
-
-/**
  * GalleryItem.projectFeaturedImages
  */
 export type GalleryItem$projectFeaturedImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Project
-   */
-  select?: Prisma.ProjectSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Project
-   */
-  omit?: Prisma.ProjectOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjectInclude<ExtArgs> | null
-  where?: Prisma.ProjectWhereInput
-  orderBy?: Prisma.ProjectOrderByWithRelationInput | Prisma.ProjectOrderByWithRelationInput[]
-  cursor?: Prisma.ProjectWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ProjectScalarFieldEnum | Prisma.ProjectScalarFieldEnum[]
-}
-
-/**
- * GalleryItem.projectGalleries
- */
-export type GalleryItem$projectGalleriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ProjectGallery
-   */
-  select?: Prisma.ProjectGallerySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ProjectGallery
-   */
-  omit?: Prisma.ProjectGalleryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjectGalleryInclude<ExtArgs> | null
-  where?: Prisma.ProjectGalleryWhereInput
-  orderBy?: Prisma.ProjectGalleryOrderByWithRelationInput | Prisma.ProjectGalleryOrderByWithRelationInput[]
-  cursor?: Prisma.ProjectGalleryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ProjectGalleryScalarFieldEnum | Prisma.ProjectGalleryScalarFieldEnum[]
-}
-
-/**
- * GalleryItem.projectOgImages
- */
-export type GalleryItem$projectOgImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Project
    */

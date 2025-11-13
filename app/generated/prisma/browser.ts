@@ -58,21 +58,6 @@ export type ServiceCategory = Prisma.ServiceCategoryModel
  */
 export type ServiceCategoryRelation = Prisma.ServiceCategoryRelationModel
 /**
- * Model PortfolioGallery
- * 
- */
-export type PortfolioGallery = Prisma.PortfolioGalleryModel
-/**
- * Model Portfolio
- * 
- */
-export type Portfolio = Prisma.PortfolioModel
-/**
- * Model ProjectGallery
- * 
- */
-export type ProjectGallery = Prisma.ProjectGalleryModel
-/**
  * Model Project
  * 
  */

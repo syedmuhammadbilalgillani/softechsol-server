@@ -1,10 +1,11 @@
 import DataTable from "@/components/data-table";
-import CompanyForm from "@/components/forms/company-form";
+import CompaniesForm from "@/components/forms/companies-form";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
 import Image from "next/image";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
+import CompanyPage from "./company-page";
 
 const MyCompanies = async () => {
   const companies = await prisma.myCompanies.findMany({
@@ -22,27 +23,10 @@ const MyCompanies = async () => {
             paragraph="Manage your companies"
           />
         </div>
-        <CompanyForm />
+        <CompaniesForm />
       </div>
       <Suspense>
-        <DataTable
-          columns={[
-            {
-              label: "Image",
-              key: "featured_image.url",
-              render: (row: any) => (
-                <Image
-                  src={row?.featured_image?.url}
-                  alt={row.featured_image?.altText}
-                  width={100}
-                  height={100}
-                />
-              ),
-            },
-          ]}
-          data={companies}
-          loading={false}
-        />
+        <CompanyPage companies={companies} />
       </Suspense>
     </div>
   );

@@ -22,9 +22,10 @@ export async function POST(request: Request) {
 }
 export async function DELETE(request: Request) {
   try {
-    const { featured_image_id } = await request.json();
+    const { company_id } = await request.json();
+    logger.debug(company_id, "company_id");
     const company = await prisma.myCompanies.delete({
-      where: { company_id: Number(featured_image_id) },
+      where: { company_id: Number(company_id) },
     });
     return NextResponse.json(company);
   } catch (error) {
