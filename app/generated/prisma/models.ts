@@ -8,15 +8,20 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/GalleryItem'
 export type * from './models/User'
 export type * from './models/BlogCategory'
+export type * from './models/MyCompanies'
 export type * from './models/BlogCategoryRelation'
 export type * from './models/Blog'
 export type * from './models/ServiceCategory'
 export type * from './models/ServiceCategoryRelation'
+export type * from './models/PortfolioGallery'
 export type * from './models/Portfolio'
+export type * from './models/ProjectGallery'
 export type * from './models/Project'
 export type * from './models/ContactUs'
+export type * from './models/ActivityGallery'
 export type * from './models/Activity'
 export type * from './models/Testimonial'
 export type * from './models/Service'

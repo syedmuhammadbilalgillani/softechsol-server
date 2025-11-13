@@ -20,6 +20,42 @@ enum Status {
   ARCHIVED
 }
 
+// Centralized Gallery/Media Management
+model GalleryItem {
+  id          String   @id @default(cuid())
+  url         String
+  altText     String
+  description String?
+  publicId    String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations to all models using images
+  userAvatars                User[]             @relation("UserAvatar")
+  blogFeaturedImages         Blog[]             @relation("BlogFeaturedImage")
+  blogOgImages               Blog[]             @relation("BlogOgImage")
+  companyFeaturedImages      MyCompanies[]      @relation("CompanyFeaturedImage")
+  portfolioFeaturedImages    Portfolio[]        @relation("PortfolioFeaturedImage")
+  portfolioGalleries         PortfolioGallery[]
+  portfolioClientLogos       Portfolio[]        @relation("PortfolioClientLogo")
+  portfolioOgImages          Portfolio[]        @relation("PortfolioOgImage")
+  projectFeaturedImages      Project[]          @relation("ProjectFeaturedImage")
+  projectGalleries           ProjectGallery[]
+  projectOgImages            Project[]          @relation("ProjectOgImage")
+  activityFeaturedImages     Activity[]         @relation("ActivityFeaturedImage")
+  activityGalleries          ActivityGallery[]
+  activityOgImages           Activity[]         @relation("ActivityOgImage")
+  testimonialAvatars         Testimonial[]      @relation("TestimonialAvatar")
+  testimonialCompanyLogos    Testimonial[]      @relation("TestimonialCompanyLogo")
+  testimonialVideoThumbnails Testimonial[]      @relation("TestimonialVideoThumbnail")
+  serviceFeaturedImages      Service[]          @relation("ServiceFeaturedImage")
+  serviceOgImages            Service[]          @relation("ServiceOgImage")
+
+  @@index([publicId])
+  @@index([url])
+  @@index([altText])
+}
+
 // Admin users who manage the website
 model User {
   user_id    Int          @id @default(autoincrement())
@@ -29,55 +65,60 @@ model User {
   role       Role         @default(EDITOR)
   first_name String?
   last_name  String?
-  avatar     String?
+  avatar     GalleryItem? @relation("UserAvatar", fields: [avatar_id], references: [id], onDelete: SetNull)
+  avatar_id  String?
   is_active  Boolean      @default(true)
   last_login DateTime?
   created_at DateTime     @default(now())
   updated_at DateTime     @updatedAt
-  
+
   blogs      Blog[]
   activities Activity[]
-  
+
   @@index([email])
   @@index([username])
+  @@index([avatar_id])
 }
 
 // Blog Categories
 model BlogCategory {
-  category_id  Int      @id @default(autoincrement())
-  name         String   @unique
-  slug         String   @unique
-  description  String?  @db.Text
-  color        String?  // For UI theming (e.g., "#3B82F6")
-  icon         String?  // Icon name or emoji
-  parent_id    Int?     // For nested categories
-  parent       BlogCategory?  @relation("BlogCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
-  children     BlogCategory[] @relation("BlogCategoryHierarchy")
-  display_order Int     @default(0)
-  is_active    Boolean  @default(true)
-  post_count   Int      @default(0) // Cache count for performance
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
-  
+  category_id   Int            @id @default(autoincrement())
+  name          String         @unique
+  slug          String         @unique
+  description   String?        @db.Text
+  color         String?
+  icon          String? // Icon name or emoji (keeping as string for icon names)
+  parent_id     Int?
+  parent        BlogCategory?  @relation("BlogCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
+  children      BlogCategory[] @relation("BlogCategoryHierarchy")
+  is_active     Boolean        @default(true)
+  created_at    DateTime       @default(now())
+  updated_at    DateTime       @updatedAt
+
   // SEO Fields
   meta_title       String?
   meta_description String?
-  
-  blogs        BlogCategoryRelation[]
-  
+
+  blogs BlogCategoryRelation[]
+
   @@index([slug])
   @@index([parent_id])
-  @@index([display_order])
+}
+// Companies 
+model MyCompanies {
+  company_id   Int            @id @default(autoincrement())
+  featured_image    GalleryItem? @relation("CompanyFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
+  featured_image_id String?
 }
 
 // Many-to-many relation for Blog and Categories
 model BlogCategoryRelation {
-  blog         Blog         @relation(fields: [blog_id], references: [blog_id], onDelete: Cascade)
-  blog_id      Int
-  category     BlogCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
-  category_id  Int
-  assigned_at  DateTime     @default(now())
-  
+  blog        Blog         @relation(fields: [blog_id], references: [blog_id], onDelete: Cascade)
+  blog_id     Int
+  category    BlogCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+  category_id Int
+  assigned_at DateTime     @default(now())
+
   @@id([blog_id, category_id])
   @@index([blog_id])
   @@index([category_id])
@@ -85,62 +126,65 @@ model BlogCategoryRelation {
 
 // Company blog/articles
 model Blog {
-  blog_id          Int       @id @default(autoincrement())
-  title            String
-  slug             String    @unique
-  excerpt          String?   @db.Text
-  content          String    @db.Text
-  featured_image   String?
-  image_alt        String?
-  status           Status    @default(DRAFT)
-  is_featured      Boolean   @default(false)
-  view_count       Int       @default(0)
-  reading_time     Int?
-  tags             String[]  // Additional flexible tags
-  publish_date     DateTime?
-  created_at       DateTime  @default(now())
-  updated_at       DateTime  @updatedAt
-  
+  blog_id           Int          @id @default(autoincrement())
+  title             String
+  slug              String       @unique
+  excerpt           String?      @db.Text
+  content           String       @db.Text
+  featured_image    GalleryItem? @relation("BlogFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
+  featured_image_id String?
+  status            Status       @default(DRAFT)
+  is_featured       Boolean      @default(false)
+  view_count        Int          @default(0)
+  reading_time      Int?
+  tags              String[]
+  publish_date      DateTime?
+  created_at        DateTime     @default(now())
+  updated_at        DateTime     @updatedAt
+
   // SEO Fields
   meta_title       String?
-  meta_description String?   @db.Text
+  meta_description String?      @db.Text
   meta_keywords    String?
-  og_image         String?
-  
-  author           User      @relation(fields: [author_id], references: [user_id], onDelete: Cascade)
-  author_id        Int
-  categories       BlogCategoryRelation[]
-  
+  og_image         GalleryItem? @relation("BlogOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
+  og_image_id      String?
+
+  author     User                   @relation(fields: [author_id], references: [user_id], onDelete: Cascade)
+  author_id  Int
+  categories BlogCategoryRelation[]
+
   @@index([slug])
   @@index([status])
   @@index([author_id])
   @@index([publish_date])
   @@index([is_featured])
+  @@index([featured_image_id])
+  @@index([og_image_id])
 }
 
 // Service Categories
 model ServiceCategory {
-  category_id  Int      @id @default(autoincrement())
-  name         String   @unique
-  slug         String   @unique
-  description  String?  @db.Text
-  color        String?
-  icon         String?
-  parent_id    Int?     // For nested categories
-  parent       ServiceCategory?  @relation("ServiceCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
-  children     ServiceCategory[] @relation("ServiceCategoryHierarchy")
-  display_order Int     @default(0)
-  is_active    Boolean  @default(true)
-  service_count Int     @default(0)
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
-  
+  category_id   Int               @id @default(autoincrement())
+  name          String            @unique
+  slug          String            @unique
+  description   String?           @db.Text
+  color         String?
+  icon          String?
+  parent_id     Int?
+  parent        ServiceCategory?  @relation("ServiceCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
+  children      ServiceCategory[] @relation("ServiceCategoryHierarchy")
+  display_order Int               @default(0)
+  is_active     Boolean           @default(true)
+  service_count Int               @default(0)
+  created_at    DateTime          @default(now())
+  updated_at    DateTime          @updatedAt
+
   // SEO Fields
   meta_title       String?
   meta_description String?
-  
-  services     ServiceCategoryRelation[]
-  
+
+  services ServiceCategoryRelation[]
+
   @@index([slug])
   @@index([parent_id])
   @@index([display_order])
@@ -148,106 +192,146 @@ model ServiceCategory {
 
 // Many-to-many relation for Service and Categories
 model ServiceCategoryRelation {
-  service      Service         @relation(fields: [service_id], references: [service_id], onDelete: Cascade)
-  service_id   Int
-  category     ServiceCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
-  category_id  Int
-  assigned_at  DateTime        @default(now())
-  
+  service     Service         @relation(fields: [service_id], references: [service_id], onDelete: Cascade)
+  service_id  Int
+  category    ServiceCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+  category_id Int
+  assigned_at DateTime        @default(now())
+
   @@id([service_id, category_id])
   @@index([service_id])
   @@index([category_id])
 }
 
+// Portfolio Gallery Junction Table
+model PortfolioGallery {
+  id            String      @id @default(cuid())
+  portfolio     Portfolio   @relation(fields: [portfolio_id], references: [portfolio_id], onDelete: Cascade)
+  portfolio_id  Int
+  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
+  image_id      String
+  display_order Int         @default(0)
+  created_at    DateTime    @default(now())
+
+  @@unique([portfolio_id, image_id])
+  @@index([portfolio_id])
+  @@index([image_id])
+  @@index([display_order])
+}
+
 // Showcase of completed client work
 model Portfolio {
-  portfolio_id     Int       @id @default(autoincrement())
-  title            String
-  slug             String    @unique
-  description      String    @db.Text
-  short_description String?  @db.Text
-  featured_image   String
-  image_alt        String?
-  gallery          String[]
-  client_name      String?
-  client_logo      String?
-  industry         String?
-  project_url      String?
-  case_study_url   String?
-  technologies     String[]
-  year_completed   Int?
-  team_size        Int?
-  duration         String?
-  results          String?   @db.Text
-  status           Status    @default(PUBLISHED)
-  is_featured      Boolean   @default(false)
-  display_order    Int       @default(0)
-  view_count       Int       @default(0)
-  created_at       DateTime  @default(now())
-  updated_at       DateTime  @updatedAt
-  
+  portfolio_id      Int                @id @default(autoincrement())
+  title             String
+  slug              String             @unique
+  description       String             @db.Text
+  short_description String?            @db.Text
+  featured_image    GalleryItem?       @relation("PortfolioFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
+  featured_image_id String?
+  gallery           PortfolioGallery[]
+  client_name       String?
+  client_logo       GalleryItem?       @relation("PortfolioClientLogo", fields: [client_logo_id], references: [id], onDelete: SetNull)
+  client_logo_id    String?
+  industry          String?
+  project_url       String?
+  case_study_url    String?
+  technologies      String[]
+  year_completed    Int?
+  team_size         Int?
+  duration          String?
+  results           String?            @db.Text
+  status            Status             @default(PUBLISHED)
+  is_featured       Boolean            @default(false)
+  display_order     Int                @default(0)
+  view_count        Int                @default(0)
+  created_at        DateTime           @default(now())
+  updated_at        DateTime           @updatedAt
+
   // SEO Fields
   meta_title       String?
-  meta_description String?   @db.Text
+  meta_description String?      @db.Text
   meta_keywords    String?
-  og_image         String?
-  
-  service          Service   @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
-  serviceId        Int
-  
+  og_image         GalleryItem? @relation("PortfolioOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
+  og_image_id      String?
+
+  service   Service @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
+  serviceId Int
+
   @@index([slug])
   @@index([status])
   @@index([serviceId])
   @@index([display_order])
   @@index([is_featured])
   @@index([industry])
+  @@index([featured_image_id])
+  @@index([client_logo_id])
+  @@index([og_image_id])
+}
+
+// Project Gallery Junction Table
+model ProjectGallery {
+  id            String      @id @default(cuid())
+  project       Project     @relation(fields: [project_id], references: [project_id], onDelete: Cascade)
+  project_id    Int
+  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
+  image_id      String
+  display_order Int         @default(0)
+  created_at    DateTime    @default(now())
+
+  @@unique([project_id, image_id])
+  @@index([project_id])
+  @@index([image_id])
+  @@index([display_order])
 }
 
 // Internal projects/products
 model Project {
-  project_id       Int       @id @default(autoincrement())
-  title            String
-  slug             String    @unique
-  description      String    @db.Text
-  short_description String?  @db.Text
-  featured_image   String
-  image_alt        String?
-  gallery          String[]
-  project_type     String?
-  project_url      String?
-  github_url       String?
-  demo_url         String?
+  project_id        Int              @id @default(autoincrement())
+  title             String
+  slug              String           @unique
+  description       String           @db.Text
+  short_description String?          @db.Text
+  featured_image    GalleryItem?     @relation("ProjectFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
+  featured_image_id String?
+  gallery           ProjectGallery[]
+  project_type      String?
+  project_url       String?
+  github_url        String?
+  demo_url          String?
   documentation_url String?
-  download_url     String?
-  version          String?
-  license          String?
-  technologies     String[]
-  features         String[]
-  status           Status    @default(PUBLISHED)
-  is_featured      Boolean   @default(false)
-  is_active        Boolean   @default(true)
-  display_order    Int       @default(0)
-  view_count       Int       @default(0)
-  download_count   Int       @default(0)
-  star_count       Int       @default(0)
-  created_at       DateTime  @default(now())
-  updated_at       DateTime  @updatedAt
-  
+  download_url      String?
+  version           String?
+  license           String?
+  technologies      String[]
+  features          String[]
+  status            Status           @default(PUBLISHED)
+  is_featured       Boolean          @default(false)
+  is_active         Boolean          @default(true)
+  display_order     Int              @default(0)
+  view_count        Int              @default(0)
+  download_count    Int              @default(0)
+  star_count        Int              @default(0)
+  created_at        DateTime         @default(now())
+  updated_at        DateTime         @updatedAt
+
   // SEO Fields
   meta_title       String?
-  meta_description String?   @db.Text
+  meta_description String?      @db.Text
   meta_keywords    String?
-  og_image         String?
-  
-  service          Service   @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
-  serviceId        Int
-  
+  og_image         GalleryItem? @relation("ProjectOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
+  og_image_id      String?
+
+  service   Service @relation(fields: [serviceId], references: [service_id], onDelete: Cascade)
+  serviceId Int
+
   @@index([slug])
   @@index([status])
   @@index([serviceId])
   @@index([display_order])
   @@index([is_featured])
   @@index([project_type])
+  @@index([featured_image_id])
+  @@index([og_image_id])
 }
 
 // Contact form submissions
@@ -272,7 +356,7 @@ model ContactUs {
   utm_campaign String?
   referrer     String?
   notes        String?   @db.Text
-  
+
   @@index([status])
   @@index([priority])
   @@index([submitted_at])
@@ -280,184 +364,169 @@ model ContactUs {
   @@index([inquiry_type])
 }
 
+// Activity Gallery Junction Table
+model ActivityGallery {
+  id            String      @id @default(cuid())
+  activity      Activity    @relation(fields: [activity_id], references: [activity_id], onDelete: Cascade)
+  activity_id   Int
+  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
+  image_id      String
+  display_order Int         @default(0)
+  created_at    DateTime    @default(now())
+
+  @@unique([activity_id, image_id])
+  @@index([activity_id])
+  @@index([image_id])
+  @@index([display_order])
+}
+
 // Company events
 model Activity {
-  activity_id      Int       @id @default(autoincrement())
-  title            String
-  slug             String    @unique
-  description      String    @db.Text
-  short_description String?  @db.Text
-  featured_image   String?
-  image_alt        String?
-  gallery          String[]
-  activity_type    String
-  location         String?
-  venue            String?
-  address          String?
-  city             String?
-  country          String?
-  activity_date    DateTime
-  end_date         DateTime?
-  timezone         String?
-  duration         String?
-  max_participants Int?
-  current_participants Int   @default(0)
-  registration_url String?
-  meeting_link     String?
-  price            Decimal?  @db.Decimal(10, 2)
-  is_free          Boolean   @default(true)
-  speakers         String[]
-  topics           String[]
-  target_audience  String?
-  status           Status    @default(PUBLISHED)
-  is_featured      Boolean   @default(false)
-  is_past          Boolean   @default(false)
-  recording_url    String?
-  slides_url       String?
-  created_at       DateTime  @default(now())
-  updated_at       DateTime  @updatedAt
-  
+  activity_id          Int               @id @default(autoincrement())
+  title                String
+  slug                 String            @unique
+  description          String            @db.Text
+  short_description    String?           @db.Text
+  featured_image       GalleryItem?      @relation("ActivityFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
+  featured_image_id    String?
+  gallery              ActivityGallery[]
+  activity_type        String
+  location             String?
+  venue                String?
+  address              String?
+  city                 String?
+  country              String?
+  activity_date        DateTime
+  end_date             DateTime?
+  timezone             String?
+  duration             String?
+  max_participants     Int?
+  current_participants Int               @default(0)
+  registration_url     String?
+  meeting_link         String?
+  price                Decimal?          @db.Decimal(10, 2)
+  is_free              Boolean           @default(true)
+  speakers             String[]
+  topics               String[]
+  target_audience      String?
+  status               Status            @default(PUBLISHED)
+  is_featured          Boolean           @default(false)
+  is_past              Boolean           @default(false)
+  recording_url        String?
+  slides_url           String?
+  created_at           DateTime          @default(now())
+  updated_at           DateTime          @updatedAt
+
   // SEO Fields
   meta_title       String?
-  meta_description String?   @db.Text
+  meta_description String?      @db.Text
   meta_keywords    String?
-  og_image         String?
-  
-  userId           Int
-  user             User      @relation(fields: [userId], references: [user_id], onDelete: Cascade)
-  
+  og_image         GalleryItem? @relation("ActivityOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
+  og_image_id      String?
+
+  userId Int
+  user   User @relation(fields: [userId], references: [user_id], onDelete: Cascade)
+
   @@index([slug])
   @@index([status])
   @@index([activity_date])
   @@index([is_featured])
   @@index([is_past])
   @@index([activity_type])
+  @@index([featured_image_id])
+  @@index([og_image_id])
 }
 
 // Client testimonials
 model Testimonial {
-  testimonial_id   Int       @id @default(autoincrement())
-  customer_name    String
-  customer_title   String?
-  company          String?
-  company_logo     String?
-  company_website  String?
-  content          String    @db.Text
-  rating           Int
-  avatar           String?
-  location         String?
-  industry         String?
-  project_type     String?
-  is_featured      Boolean   @default(false)
-  is_video         Boolean   @default(false)
-  video_url        String?
-  video_thumbnail  String?
-  status           Status    @default(DRAFT)
-  display_order    Int       @default(0)
-  approved_at      DateTime?
-  created_at       DateTime  @default(now())
-  updated_at       DateTime  @updatedAt
-  
+  testimonial_id     Int          @id @default(autoincrement())
+  customer_name      String
+  customer_title     String?
+  company            String?
+  company_logo       GalleryItem? @relation("TestimonialCompanyLogo", fields: [company_logo_id], references: [id], onDelete: SetNull)
+  company_logo_id    String?
+  company_website    String?
+  content            String       @db.Text
+  rating             Int
+  avatar             GalleryItem? @relation("TestimonialAvatar", fields: [avatar_id], references: [id], onDelete: SetNull)
+  avatar_id          String?
+  location           String?
+  industry           String?
+  project_type       String?
+  is_featured        Boolean      @default(false)
+  is_video           Boolean      @default(false)
+  video_url          String?
+  video_thumbnail    GalleryItem? @relation("TestimonialVideoThumbnail", fields: [video_thumbnail_id], references: [id], onDelete: SetNull)
+  video_thumbnail_id String?
+  status             Status       @default(DRAFT)
+  display_order      Int          @default(0)
+  approved_at        DateTime?
+  created_at         DateTime     @default(now())
+  updated_at         DateTime     @updatedAt
+
   @@index([status])
   @@index([is_featured])
   @@index([display_order])
   @@index([rating])
   @@index([industry])
+  @@index([avatar_id])
+  @@index([company_logo_id])
+  @@index([video_thumbnail_id])
 }
 
 // Software services
 model Service {
-  service_id       Int       @id @default(autoincrement())
-  title            String
-  slug             String    @unique
-  short_description String?  @db.Text
-  description      String    @db.Text
-  icon             String?
-  featured_image   String?
-  image_alt        String?
-  
+  service_id        Int          @id @default(autoincrement())
+  title             String
+  slug              String       @unique
+  short_description String?      @db.Text
+  description       String       @db.Text
+  icon              String? // Icon name or emoji (keeping as string)
+  featured_image    GalleryItem? @relation("ServiceFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
+  featured_image_id String?
+
   // Pricing
-  price            Decimal?  @db.Decimal(10, 2)
-  price_type       String?
-  currency         String    @default("USD")
-  price_note       String?
-  
+  price      Decimal? @db.Decimal(10, 2)
+  price_type String?
+  currency   String   @default("USD")
+  price_note String?
+
   // Service details
-  features         String[]
-  deliverables     String[]
-  technologies     String[]
-  process_steps    String[]
-  duration         String?
-  ideal_for        String[]
-  
+  features      String[]
+  deliverables  String[]
+  technologies  String[]
+  process_steps String[]
+  duration      String?
+  ideal_for     String[]
+
   // Status
-  status           Status    @default(PUBLISHED)
-  is_featured      Boolean   @default(false)
-  is_popular       Boolean   @default(false)
-  display_order    Int       @default(0)
-  created_at       DateTime  @default(now())
-  updated_at       DateTime  @updatedAt
-  
+  status        Status   @default(PUBLISHED)
+  is_featured   Boolean  @default(false)
+  is_popular    Boolean  @default(false)
+  display_order Int      @default(0)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
   // SEO Fields
   meta_title       String?
-  meta_description String?   @db.Text
+  meta_description String?      @db.Text
   meta_keywords    String?
-  og_image         String?
-  
+  og_image         GalleryItem? @relation("ServiceOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
+  og_image_id      String?
+
   // CTA
-  cta_text         String?
-  cta_url          String?
-  
-  categories       ServiceCategoryRelation[]
-  portfolio        Portfolio[]
-  project          Project[]
-  
+  cta_text String?
+  cta_url  String?
+
+  categories ServiceCategoryRelation[]
+  portfolio  Portfolio[]
+  project    Project[]
+
   @@index([slug])
   @@index([status])
   @@index([display_order])
   @@index([is_featured])
   @@index([is_popular])
+  @@index([featured_image_id])
+  @@index([og_image_id])
 }
-// ```
-
-// ## What I Added:
-
-// ### **1. BlogCategory Model**
-// - Hierarchical categories (parent/child support)
-// - Color & icon for UI
-// - Post count caching
-// - SEO fields for category pages
-
-// ### **2. ServiceCategory Model**
-// - Same structure as BlogCategory
-// - Service count tracking
-// - Hierarchical support
-
-// ### **3. Many-to-Many Relations**
-// - `BlogCategoryRelation` - One blog can have multiple categories
-// - `ServiceCategoryRelation` - One service can have multiple categories
-
-// ## Example Category Structure:
-
-// ### **Blog Categories:**
-// ```
-// - Technology (parent)
-//   - AI & Machine Learning (child)
-//   - Cloud Computing (child)
-//   - Mobile Development (child)
-// - Business (parent)
-//   - Startups (child)
-//   - Digital Transformation (child)
-// - Tutorials (parent)
-// ```
-
-// ### **Service Categories:**
-// ```
-// - Development (parent)
-//   - Web Development (child)
-//   - Mobile Apps (child)
-//   - API Development (child)
-// - Design (parent)
-//   - UI/UX Design (child)
-//   - Branding (child)
-// - Consulting (parent)

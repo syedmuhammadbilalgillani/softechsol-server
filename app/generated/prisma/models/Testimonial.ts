@@ -43,18 +43,18 @@ export type TestimonialMinAggregateOutputType = {
   customer_name: string | null
   customer_title: string | null
   company: string | null
-  company_logo: string | null
+  company_logo_id: string | null
   company_website: string | null
   content: string | null
   rating: number | null
-  avatar: string | null
+  avatar_id: string | null
   location: string | null
   industry: string | null
   project_type: string | null
   is_featured: boolean | null
   is_video: boolean | null
   video_url: string | null
-  video_thumbnail: string | null
+  video_thumbnail_id: string | null
   status: $Enums.Status | null
   display_order: number | null
   approved_at: Date | null
@@ -67,18 +67,18 @@ export type TestimonialMaxAggregateOutputType = {
   customer_name: string | null
   customer_title: string | null
   company: string | null
-  company_logo: string | null
+  company_logo_id: string | null
   company_website: string | null
   content: string | null
   rating: number | null
-  avatar: string | null
+  avatar_id: string | null
   location: string | null
   industry: string | null
   project_type: string | null
   is_featured: boolean | null
   is_video: boolean | null
   video_url: string | null
-  video_thumbnail: string | null
+  video_thumbnail_id: string | null
   status: $Enums.Status | null
   display_order: number | null
   approved_at: Date | null
@@ -91,18 +91,18 @@ export type TestimonialCountAggregateOutputType = {
   customer_name: number
   customer_title: number
   company: number
-  company_logo: number
+  company_logo_id: number
   company_website: number
   content: number
   rating: number
-  avatar: number
+  avatar_id: number
   location: number
   industry: number
   project_type: number
   is_featured: number
   is_video: number
   video_url: number
-  video_thumbnail: number
+  video_thumbnail_id: number
   status: number
   display_order: number
   approved_at: number
@@ -129,18 +129,18 @@ export type TestimonialMinAggregateInputType = {
   customer_name?: true
   customer_title?: true
   company?: true
-  company_logo?: true
+  company_logo_id?: true
   company_website?: true
   content?: true
   rating?: true
-  avatar?: true
+  avatar_id?: true
   location?: true
   industry?: true
   project_type?: true
   is_featured?: true
   is_video?: true
   video_url?: true
-  video_thumbnail?: true
+  video_thumbnail_id?: true
   status?: true
   display_order?: true
   approved_at?: true
@@ -153,18 +153,18 @@ export type TestimonialMaxAggregateInputType = {
   customer_name?: true
   customer_title?: true
   company?: true
-  company_logo?: true
+  company_logo_id?: true
   company_website?: true
   content?: true
   rating?: true
-  avatar?: true
+  avatar_id?: true
   location?: true
   industry?: true
   project_type?: true
   is_featured?: true
   is_video?: true
   video_url?: true
-  video_thumbnail?: true
+  video_thumbnail_id?: true
   status?: true
   display_order?: true
   approved_at?: true
@@ -177,18 +177,18 @@ export type TestimonialCountAggregateInputType = {
   customer_name?: true
   customer_title?: true
   company?: true
-  company_logo?: true
+  company_logo_id?: true
   company_website?: true
   content?: true
   rating?: true
-  avatar?: true
+  avatar_id?: true
   location?: true
   industry?: true
   project_type?: true
   is_featured?: true
   is_video?: true
   video_url?: true
-  video_thumbnail?: true
+  video_thumbnail_id?: true
   status?: true
   display_order?: true
   approved_at?: true
@@ -288,18 +288,18 @@ export type TestimonialGroupByOutputType = {
   customer_name: string
   customer_title: string | null
   company: string | null
-  company_logo: string | null
+  company_logo_id: string | null
   company_website: string | null
   content: string
   rating: number
-  avatar: string | null
+  avatar_id: string | null
   location: string | null
   industry: string | null
   project_type: string | null
   is_featured: boolean
   is_video: boolean
   video_url: string | null
-  video_thumbnail: string | null
+  video_thumbnail_id: string | null
   status: $Enums.Status
   display_order: number
   approved_at: Date | null
@@ -335,23 +335,26 @@ export type TestimonialWhereInput = {
   customer_name?: Prisma.StringFilter<"Testimonial"> | string
   customer_title?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   company?: Prisma.StringNullableFilter<"Testimonial"> | string | null
-  company_logo?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company_logo_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   company_website?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   content?: Prisma.StringFilter<"Testimonial"> | string
   rating?: Prisma.IntFilter<"Testimonial"> | number
-  avatar?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  avatar_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   location?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   industry?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   project_type?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   is_featured?: Prisma.BoolFilter<"Testimonial"> | boolean
   is_video?: Prisma.BoolFilter<"Testimonial"> | boolean
   video_url?: Prisma.StringNullableFilter<"Testimonial"> | string | null
-  video_thumbnail?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  video_thumbnail_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   status?: Prisma.EnumStatusFilter<"Testimonial"> | $Enums.Status
   display_order?: Prisma.IntFilter<"Testimonial"> | number
   approved_at?: Prisma.DateTimeNullableFilter<"Testimonial"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"Testimonial"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Testimonial"> | Date | string
+  company_logo?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  avatar?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  video_thumbnail?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
 }
 
 export type TestimonialOrderByWithRelationInput = {
@@ -359,23 +362,26 @@ export type TestimonialOrderByWithRelationInput = {
   customer_name?: Prisma.SortOrder
   customer_title?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.SortOrderInput | Prisma.SortOrder
-  company_logo?: Prisma.SortOrderInput | Prisma.SortOrder
+  company_logo_id?: Prisma.SortOrderInput | Prisma.SortOrder
   company_website?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatar_id?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   industry?: Prisma.SortOrderInput | Prisma.SortOrder
   project_type?: Prisma.SortOrderInput | Prisma.SortOrder
   is_featured?: Prisma.SortOrder
   is_video?: Prisma.SortOrder
   video_url?: Prisma.SortOrderInput | Prisma.SortOrder
-  video_thumbnail?: Prisma.SortOrderInput | Prisma.SortOrder
+  video_thumbnail_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   display_order?: Prisma.SortOrder
   approved_at?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  company_logo?: Prisma.GalleryItemOrderByWithRelationInput
+  avatar?: Prisma.GalleryItemOrderByWithRelationInput
+  video_thumbnail?: Prisma.GalleryItemOrderByWithRelationInput
 }
 
 export type TestimonialWhereUniqueInput = Prisma.AtLeast<{
@@ -386,23 +392,26 @@ export type TestimonialWhereUniqueInput = Prisma.AtLeast<{
   customer_name?: Prisma.StringFilter<"Testimonial"> | string
   customer_title?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   company?: Prisma.StringNullableFilter<"Testimonial"> | string | null
-  company_logo?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company_logo_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   company_website?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   content?: Prisma.StringFilter<"Testimonial"> | string
   rating?: Prisma.IntFilter<"Testimonial"> | number
-  avatar?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  avatar_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   location?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   industry?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   project_type?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   is_featured?: Prisma.BoolFilter<"Testimonial"> | boolean
   is_video?: Prisma.BoolFilter<"Testimonial"> | boolean
   video_url?: Prisma.StringNullableFilter<"Testimonial"> | string | null
-  video_thumbnail?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  video_thumbnail_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
   status?: Prisma.EnumStatusFilter<"Testimonial"> | $Enums.Status
   display_order?: Prisma.IntFilter<"Testimonial"> | number
   approved_at?: Prisma.DateTimeNullableFilter<"Testimonial"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"Testimonial"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Testimonial"> | Date | string
+  company_logo?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  avatar?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  video_thumbnail?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
 }, "testimonial_id">
 
 export type TestimonialOrderByWithAggregationInput = {
@@ -410,18 +419,18 @@ export type TestimonialOrderByWithAggregationInput = {
   customer_name?: Prisma.SortOrder
   customer_title?: Prisma.SortOrderInput | Prisma.SortOrder
   company?: Prisma.SortOrderInput | Prisma.SortOrder
-  company_logo?: Prisma.SortOrderInput | Prisma.SortOrder
+  company_logo_id?: Prisma.SortOrderInput | Prisma.SortOrder
   company_website?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatar_id?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   industry?: Prisma.SortOrderInput | Prisma.SortOrder
   project_type?: Prisma.SortOrderInput | Prisma.SortOrder
   is_featured?: Prisma.SortOrder
   is_video?: Prisma.SortOrder
   video_url?: Prisma.SortOrderInput | Prisma.SortOrder
-  video_thumbnail?: Prisma.SortOrderInput | Prisma.SortOrder
+  video_thumbnail_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   display_order?: Prisma.SortOrder
   approved_at?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -442,18 +451,18 @@ export type TestimonialScalarWhereWithAggregatesInput = {
   customer_name?: Prisma.StringWithAggregatesFilter<"Testimonial"> | string
   customer_title?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   company?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
-  company_logo?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
+  company_logo_id?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   company_website?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   content?: Prisma.StringWithAggregatesFilter<"Testimonial"> | string
   rating?: Prisma.IntWithAggregatesFilter<"Testimonial"> | number
-  avatar?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
+  avatar_id?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   industry?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   project_type?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   is_featured?: Prisma.BoolWithAggregatesFilter<"Testimonial"> | boolean
   is_video?: Prisma.BoolWithAggregatesFilter<"Testimonial"> | boolean
   video_url?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
-  video_thumbnail?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
+  video_thumbnail_id?: Prisma.StringNullableWithAggregatesFilter<"Testimonial"> | string | null
   status?: Prisma.EnumStatusWithAggregatesFilter<"Testimonial"> | $Enums.Status
   display_order?: Prisma.IntWithAggregatesFilter<"Testimonial"> | number
   approved_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Testimonial"> | Date | string | null
@@ -465,23 +474,23 @@ export type TestimonialCreateInput = {
   customer_name: string
   customer_title?: string | null
   company?: string | null
-  company_logo?: string | null
   company_website?: string | null
   content: string
   rating: number
-  avatar?: string | null
   location?: string | null
   industry?: string | null
   project_type?: string | null
   is_featured?: boolean
   is_video?: boolean
   video_url?: string | null
-  video_thumbnail?: string | null
   status?: $Enums.Status
   display_order?: number
   approved_at?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
+  company_logo?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialCompanyLogosInput
+  avatar?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialAvatarsInput
+  video_thumbnail?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialVideoThumbnailsInput
 }
 
 export type TestimonialUncheckedCreateInput = {
@@ -489,18 +498,18 @@ export type TestimonialUncheckedCreateInput = {
   customer_name: string
   customer_title?: string | null
   company?: string | null
-  company_logo?: string | null
+  company_logo_id?: string | null
   company_website?: string | null
   content: string
   rating: number
-  avatar?: string | null
+  avatar_id?: string | null
   location?: string | null
   industry?: string | null
   project_type?: string | null
   is_featured?: boolean
   is_video?: boolean
   video_url?: string | null
-  video_thumbnail?: string | null
+  video_thumbnail_id?: string | null
   status?: $Enums.Status
   display_order?: number
   approved_at?: Date | string | null
@@ -512,23 +521,23 @@ export type TestimonialUpdateInput = {
   customer_name?: Prisma.StringFieldUpdateOperationsInput | string
   customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  video_thumbnail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   display_order?: Prisma.IntFieldUpdateOperationsInput | number
   approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company_logo?: Prisma.GalleryItemUpdateOneWithoutTestimonialCompanyLogosNestedInput
+  avatar?: Prisma.GalleryItemUpdateOneWithoutTestimonialAvatarsNestedInput
+  video_thumbnail?: Prisma.GalleryItemUpdateOneWithoutTestimonialVideoThumbnailsNestedInput
 }
 
 export type TestimonialUncheckedUpdateInput = {
@@ -536,18 +545,18 @@ export type TestimonialUncheckedUpdateInput = {
   customer_name?: Prisma.StringFieldUpdateOperationsInput | string
   customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  video_thumbnail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_thumbnail_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   display_order?: Prisma.IntFieldUpdateOperationsInput | number
   approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -560,18 +569,18 @@ export type TestimonialCreateManyInput = {
   customer_name: string
   customer_title?: string | null
   company?: string | null
-  company_logo?: string | null
+  company_logo_id?: string | null
   company_website?: string | null
   content: string
   rating: number
-  avatar?: string | null
+  avatar_id?: string | null
   location?: string | null
   industry?: string | null
   project_type?: string | null
   is_featured?: boolean
   is_video?: boolean
   video_url?: string | null
-  video_thumbnail?: string | null
+  video_thumbnail_id?: string | null
   status?: $Enums.Status
   display_order?: number
   approved_at?: Date | string | null
@@ -583,18 +592,15 @@ export type TestimonialUpdateManyMutationInput = {
   customer_name?: Prisma.StringFieldUpdateOperationsInput | string
   customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  video_thumbnail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   display_order?: Prisma.IntFieldUpdateOperationsInput | number
   approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -607,18 +613,18 @@ export type TestimonialUncheckedUpdateManyInput = {
   customer_name?: Prisma.StringFieldUpdateOperationsInput | string
   customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.StringFieldUpdateOperationsInput | string
   rating?: Prisma.IntFieldUpdateOperationsInput | number
-  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
   video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  video_thumbnail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_thumbnail_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   display_order?: Prisma.IntFieldUpdateOperationsInput | number
   approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -626,23 +632,33 @@ export type TestimonialUncheckedUpdateManyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type TestimonialListRelationFilter = {
+  every?: Prisma.TestimonialWhereInput
+  some?: Prisma.TestimonialWhereInput
+  none?: Prisma.TestimonialWhereInput
+}
+
+export type TestimonialOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type TestimonialCountOrderByAggregateInput = {
   testimonial_id?: Prisma.SortOrder
   customer_name?: Prisma.SortOrder
   customer_title?: Prisma.SortOrder
   company?: Prisma.SortOrder
-  company_logo?: Prisma.SortOrder
+  company_logo_id?: Prisma.SortOrder
   company_website?: Prisma.SortOrder
   content?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  avatar?: Prisma.SortOrder
+  avatar_id?: Prisma.SortOrder
   location?: Prisma.SortOrder
   industry?: Prisma.SortOrder
   project_type?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
   is_video?: Prisma.SortOrder
   video_url?: Prisma.SortOrder
-  video_thumbnail?: Prisma.SortOrder
+  video_thumbnail_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   display_order?: Prisma.SortOrder
   approved_at?: Prisma.SortOrder
@@ -661,18 +677,18 @@ export type TestimonialMaxOrderByAggregateInput = {
   customer_name?: Prisma.SortOrder
   customer_title?: Prisma.SortOrder
   company?: Prisma.SortOrder
-  company_logo?: Prisma.SortOrder
+  company_logo_id?: Prisma.SortOrder
   company_website?: Prisma.SortOrder
   content?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  avatar?: Prisma.SortOrder
+  avatar_id?: Prisma.SortOrder
   location?: Prisma.SortOrder
   industry?: Prisma.SortOrder
   project_type?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
   is_video?: Prisma.SortOrder
   video_url?: Prisma.SortOrder
-  video_thumbnail?: Prisma.SortOrder
+  video_thumbnail_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   display_order?: Prisma.SortOrder
   approved_at?: Prisma.SortOrder
@@ -685,18 +701,18 @@ export type TestimonialMinOrderByAggregateInput = {
   customer_name?: Prisma.SortOrder
   customer_title?: Prisma.SortOrder
   company?: Prisma.SortOrder
-  company_logo?: Prisma.SortOrder
+  company_logo_id?: Prisma.SortOrder
   company_website?: Prisma.SortOrder
   content?: Prisma.SortOrder
   rating?: Prisma.SortOrder
-  avatar?: Prisma.SortOrder
+  avatar_id?: Prisma.SortOrder
   location?: Prisma.SortOrder
   industry?: Prisma.SortOrder
   project_type?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
   is_video?: Prisma.SortOrder
   video_url?: Prisma.SortOrder
-  video_thumbnail?: Prisma.SortOrder
+  video_thumbnail_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   display_order?: Prisma.SortOrder
   approved_at?: Prisma.SortOrder
@@ -710,6 +726,645 @@ export type TestimonialSumOrderByAggregateInput = {
   display_order?: Prisma.SortOrder
 }
 
+export type TestimonialCreateNestedManyWithoutAvatarInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutAvatarInput, Prisma.TestimonialUncheckedCreateWithoutAvatarInput> | Prisma.TestimonialCreateWithoutAvatarInput[] | Prisma.TestimonialUncheckedCreateWithoutAvatarInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutAvatarInput | Prisma.TestimonialCreateOrConnectWithoutAvatarInput[]
+  createMany?: Prisma.TestimonialCreateManyAvatarInputEnvelope
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+}
+
+export type TestimonialCreateNestedManyWithoutCompany_logoInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutCompany_logoInput, Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput> | Prisma.TestimonialCreateWithoutCompany_logoInput[] | Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput | Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput[]
+  createMany?: Prisma.TestimonialCreateManyCompany_logoInputEnvelope
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+}
+
+export type TestimonialCreateNestedManyWithoutVideo_thumbnailInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput> | Prisma.TestimonialCreateWithoutVideo_thumbnailInput[] | Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput | Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput[]
+  createMany?: Prisma.TestimonialCreateManyVideo_thumbnailInputEnvelope
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+}
+
+export type TestimonialUncheckedCreateNestedManyWithoutAvatarInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutAvatarInput, Prisma.TestimonialUncheckedCreateWithoutAvatarInput> | Prisma.TestimonialCreateWithoutAvatarInput[] | Prisma.TestimonialUncheckedCreateWithoutAvatarInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutAvatarInput | Prisma.TestimonialCreateOrConnectWithoutAvatarInput[]
+  createMany?: Prisma.TestimonialCreateManyAvatarInputEnvelope
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+}
+
+export type TestimonialUncheckedCreateNestedManyWithoutCompany_logoInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutCompany_logoInput, Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput> | Prisma.TestimonialCreateWithoutCompany_logoInput[] | Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput | Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput[]
+  createMany?: Prisma.TestimonialCreateManyCompany_logoInputEnvelope
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+}
+
+export type TestimonialUncheckedCreateNestedManyWithoutVideo_thumbnailInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput> | Prisma.TestimonialCreateWithoutVideo_thumbnailInput[] | Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput | Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput[]
+  createMany?: Prisma.TestimonialCreateManyVideo_thumbnailInputEnvelope
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+}
+
+export type TestimonialUpdateManyWithoutAvatarNestedInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutAvatarInput, Prisma.TestimonialUncheckedCreateWithoutAvatarInput> | Prisma.TestimonialCreateWithoutAvatarInput[] | Prisma.TestimonialUncheckedCreateWithoutAvatarInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutAvatarInput | Prisma.TestimonialCreateOrConnectWithoutAvatarInput[]
+  upsert?: Prisma.TestimonialUpsertWithWhereUniqueWithoutAvatarInput | Prisma.TestimonialUpsertWithWhereUniqueWithoutAvatarInput[]
+  createMany?: Prisma.TestimonialCreateManyAvatarInputEnvelope
+  set?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  disconnect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  delete?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  update?: Prisma.TestimonialUpdateWithWhereUniqueWithoutAvatarInput | Prisma.TestimonialUpdateWithWhereUniqueWithoutAvatarInput[]
+  updateMany?: Prisma.TestimonialUpdateManyWithWhereWithoutAvatarInput | Prisma.TestimonialUpdateManyWithWhereWithoutAvatarInput[]
+  deleteMany?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+}
+
+export type TestimonialUpdateManyWithoutCompany_logoNestedInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutCompany_logoInput, Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput> | Prisma.TestimonialCreateWithoutCompany_logoInput[] | Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput | Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput[]
+  upsert?: Prisma.TestimonialUpsertWithWhereUniqueWithoutCompany_logoInput | Prisma.TestimonialUpsertWithWhereUniqueWithoutCompany_logoInput[]
+  createMany?: Prisma.TestimonialCreateManyCompany_logoInputEnvelope
+  set?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  disconnect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  delete?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  update?: Prisma.TestimonialUpdateWithWhereUniqueWithoutCompany_logoInput | Prisma.TestimonialUpdateWithWhereUniqueWithoutCompany_logoInput[]
+  updateMany?: Prisma.TestimonialUpdateManyWithWhereWithoutCompany_logoInput | Prisma.TestimonialUpdateManyWithWhereWithoutCompany_logoInput[]
+  deleteMany?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+}
+
+export type TestimonialUpdateManyWithoutVideo_thumbnailNestedInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput> | Prisma.TestimonialCreateWithoutVideo_thumbnailInput[] | Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput | Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput[]
+  upsert?: Prisma.TestimonialUpsertWithWhereUniqueWithoutVideo_thumbnailInput | Prisma.TestimonialUpsertWithWhereUniqueWithoutVideo_thumbnailInput[]
+  createMany?: Prisma.TestimonialCreateManyVideo_thumbnailInputEnvelope
+  set?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  disconnect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  delete?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  update?: Prisma.TestimonialUpdateWithWhereUniqueWithoutVideo_thumbnailInput | Prisma.TestimonialUpdateWithWhereUniqueWithoutVideo_thumbnailInput[]
+  updateMany?: Prisma.TestimonialUpdateManyWithWhereWithoutVideo_thumbnailInput | Prisma.TestimonialUpdateManyWithWhereWithoutVideo_thumbnailInput[]
+  deleteMany?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+}
+
+export type TestimonialUncheckedUpdateManyWithoutAvatarNestedInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutAvatarInput, Prisma.TestimonialUncheckedCreateWithoutAvatarInput> | Prisma.TestimonialCreateWithoutAvatarInput[] | Prisma.TestimonialUncheckedCreateWithoutAvatarInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutAvatarInput | Prisma.TestimonialCreateOrConnectWithoutAvatarInput[]
+  upsert?: Prisma.TestimonialUpsertWithWhereUniqueWithoutAvatarInput | Prisma.TestimonialUpsertWithWhereUniqueWithoutAvatarInput[]
+  createMany?: Prisma.TestimonialCreateManyAvatarInputEnvelope
+  set?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  disconnect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  delete?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  update?: Prisma.TestimonialUpdateWithWhereUniqueWithoutAvatarInput | Prisma.TestimonialUpdateWithWhereUniqueWithoutAvatarInput[]
+  updateMany?: Prisma.TestimonialUpdateManyWithWhereWithoutAvatarInput | Prisma.TestimonialUpdateManyWithWhereWithoutAvatarInput[]
+  deleteMany?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+}
+
+export type TestimonialUncheckedUpdateManyWithoutCompany_logoNestedInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutCompany_logoInput, Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput> | Prisma.TestimonialCreateWithoutCompany_logoInput[] | Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput | Prisma.TestimonialCreateOrConnectWithoutCompany_logoInput[]
+  upsert?: Prisma.TestimonialUpsertWithWhereUniqueWithoutCompany_logoInput | Prisma.TestimonialUpsertWithWhereUniqueWithoutCompany_logoInput[]
+  createMany?: Prisma.TestimonialCreateManyCompany_logoInputEnvelope
+  set?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  disconnect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  delete?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  update?: Prisma.TestimonialUpdateWithWhereUniqueWithoutCompany_logoInput | Prisma.TestimonialUpdateWithWhereUniqueWithoutCompany_logoInput[]
+  updateMany?: Prisma.TestimonialUpdateManyWithWhereWithoutCompany_logoInput | Prisma.TestimonialUpdateManyWithWhereWithoutCompany_logoInput[]
+  deleteMany?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+}
+
+export type TestimonialUncheckedUpdateManyWithoutVideo_thumbnailNestedInput = {
+  create?: Prisma.XOR<Prisma.TestimonialCreateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput> | Prisma.TestimonialCreateWithoutVideo_thumbnailInput[] | Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput[]
+  connectOrCreate?: Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput | Prisma.TestimonialCreateOrConnectWithoutVideo_thumbnailInput[]
+  upsert?: Prisma.TestimonialUpsertWithWhereUniqueWithoutVideo_thumbnailInput | Prisma.TestimonialUpsertWithWhereUniqueWithoutVideo_thumbnailInput[]
+  createMany?: Prisma.TestimonialCreateManyVideo_thumbnailInputEnvelope
+  set?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  disconnect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  delete?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  connect?: Prisma.TestimonialWhereUniqueInput | Prisma.TestimonialWhereUniqueInput[]
+  update?: Prisma.TestimonialUpdateWithWhereUniqueWithoutVideo_thumbnailInput | Prisma.TestimonialUpdateWithWhereUniqueWithoutVideo_thumbnailInput[]
+  updateMany?: Prisma.TestimonialUpdateManyWithWhereWithoutVideo_thumbnailInput | Prisma.TestimonialUpdateManyWithWhereWithoutVideo_thumbnailInput[]
+  deleteMany?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+}
+
+export type TestimonialCreateWithoutAvatarInput = {
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  company_logo?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialCompanyLogosInput
+  video_thumbnail?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialVideoThumbnailsInput
+}
+
+export type TestimonialUncheckedCreateWithoutAvatarInput = {
+  testimonial_id?: number
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_logo_id?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  video_thumbnail_id?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TestimonialCreateOrConnectWithoutAvatarInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  create: Prisma.XOR<Prisma.TestimonialCreateWithoutAvatarInput, Prisma.TestimonialUncheckedCreateWithoutAvatarInput>
+}
+
+export type TestimonialCreateManyAvatarInputEnvelope = {
+  data: Prisma.TestimonialCreateManyAvatarInput | Prisma.TestimonialCreateManyAvatarInput[]
+  skipDuplicates?: boolean
+}
+
+export type TestimonialCreateWithoutCompany_logoInput = {
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  avatar?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialAvatarsInput
+  video_thumbnail?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialVideoThumbnailsInput
+}
+
+export type TestimonialUncheckedCreateWithoutCompany_logoInput = {
+  testimonial_id?: number
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  avatar_id?: string | null
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  video_thumbnail_id?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TestimonialCreateOrConnectWithoutCompany_logoInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  create: Prisma.XOR<Prisma.TestimonialCreateWithoutCompany_logoInput, Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput>
+}
+
+export type TestimonialCreateManyCompany_logoInputEnvelope = {
+  data: Prisma.TestimonialCreateManyCompany_logoInput | Prisma.TestimonialCreateManyCompany_logoInput[]
+  skipDuplicates?: boolean
+}
+
+export type TestimonialCreateWithoutVideo_thumbnailInput = {
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  company_logo?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialCompanyLogosInput
+  avatar?: Prisma.GalleryItemCreateNestedOneWithoutTestimonialAvatarsInput
+}
+
+export type TestimonialUncheckedCreateWithoutVideo_thumbnailInput = {
+  testimonial_id?: number
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_logo_id?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  avatar_id?: string | null
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TestimonialCreateOrConnectWithoutVideo_thumbnailInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  create: Prisma.XOR<Prisma.TestimonialCreateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput>
+}
+
+export type TestimonialCreateManyVideo_thumbnailInputEnvelope = {
+  data: Prisma.TestimonialCreateManyVideo_thumbnailInput | Prisma.TestimonialCreateManyVideo_thumbnailInput[]
+  skipDuplicates?: boolean
+}
+
+export type TestimonialUpsertWithWhereUniqueWithoutAvatarInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  update: Prisma.XOR<Prisma.TestimonialUpdateWithoutAvatarInput, Prisma.TestimonialUncheckedUpdateWithoutAvatarInput>
+  create: Prisma.XOR<Prisma.TestimonialCreateWithoutAvatarInput, Prisma.TestimonialUncheckedCreateWithoutAvatarInput>
+}
+
+export type TestimonialUpdateWithWhereUniqueWithoutAvatarInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  data: Prisma.XOR<Prisma.TestimonialUpdateWithoutAvatarInput, Prisma.TestimonialUncheckedUpdateWithoutAvatarInput>
+}
+
+export type TestimonialUpdateManyWithWhereWithoutAvatarInput = {
+  where: Prisma.TestimonialScalarWhereInput
+  data: Prisma.XOR<Prisma.TestimonialUpdateManyMutationInput, Prisma.TestimonialUncheckedUpdateManyWithoutAvatarInput>
+}
+
+export type TestimonialScalarWhereInput = {
+  AND?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+  OR?: Prisma.TestimonialScalarWhereInput[]
+  NOT?: Prisma.TestimonialScalarWhereInput | Prisma.TestimonialScalarWhereInput[]
+  testimonial_id?: Prisma.IntFilter<"Testimonial"> | number
+  customer_name?: Prisma.StringFilter<"Testimonial"> | string
+  customer_title?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company_logo_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  company_website?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  content?: Prisma.StringFilter<"Testimonial"> | string
+  rating?: Prisma.IntFilter<"Testimonial"> | number
+  avatar_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  location?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  industry?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  project_type?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  is_featured?: Prisma.BoolFilter<"Testimonial"> | boolean
+  is_video?: Prisma.BoolFilter<"Testimonial"> | boolean
+  video_url?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  video_thumbnail_id?: Prisma.StringNullableFilter<"Testimonial"> | string | null
+  status?: Prisma.EnumStatusFilter<"Testimonial"> | $Enums.Status
+  display_order?: Prisma.IntFilter<"Testimonial"> | number
+  approved_at?: Prisma.DateTimeNullableFilter<"Testimonial"> | Date | string | null
+  created_at?: Prisma.DateTimeFilter<"Testimonial"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Testimonial"> | Date | string
+}
+
+export type TestimonialUpsertWithWhereUniqueWithoutCompany_logoInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  update: Prisma.XOR<Prisma.TestimonialUpdateWithoutCompany_logoInput, Prisma.TestimonialUncheckedUpdateWithoutCompany_logoInput>
+  create: Prisma.XOR<Prisma.TestimonialCreateWithoutCompany_logoInput, Prisma.TestimonialUncheckedCreateWithoutCompany_logoInput>
+}
+
+export type TestimonialUpdateWithWhereUniqueWithoutCompany_logoInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  data: Prisma.XOR<Prisma.TestimonialUpdateWithoutCompany_logoInput, Prisma.TestimonialUncheckedUpdateWithoutCompany_logoInput>
+}
+
+export type TestimonialUpdateManyWithWhereWithoutCompany_logoInput = {
+  where: Prisma.TestimonialScalarWhereInput
+  data: Prisma.XOR<Prisma.TestimonialUpdateManyMutationInput, Prisma.TestimonialUncheckedUpdateManyWithoutCompany_logoInput>
+}
+
+export type TestimonialUpsertWithWhereUniqueWithoutVideo_thumbnailInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  update: Prisma.XOR<Prisma.TestimonialUpdateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedUpdateWithoutVideo_thumbnailInput>
+  create: Prisma.XOR<Prisma.TestimonialCreateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedCreateWithoutVideo_thumbnailInput>
+}
+
+export type TestimonialUpdateWithWhereUniqueWithoutVideo_thumbnailInput = {
+  where: Prisma.TestimonialWhereUniqueInput
+  data: Prisma.XOR<Prisma.TestimonialUpdateWithoutVideo_thumbnailInput, Prisma.TestimonialUncheckedUpdateWithoutVideo_thumbnailInput>
+}
+
+export type TestimonialUpdateManyWithWhereWithoutVideo_thumbnailInput = {
+  where: Prisma.TestimonialScalarWhereInput
+  data: Prisma.XOR<Prisma.TestimonialUpdateManyMutationInput, Prisma.TestimonialUncheckedUpdateManyWithoutVideo_thumbnailInput>
+}
+
+export type TestimonialCreateManyAvatarInput = {
+  testimonial_id?: number
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_logo_id?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  video_thumbnail_id?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TestimonialCreateManyCompany_logoInput = {
+  testimonial_id?: number
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  avatar_id?: string | null
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  video_thumbnail_id?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TestimonialCreateManyVideo_thumbnailInput = {
+  testimonial_id?: number
+  customer_name: string
+  customer_title?: string | null
+  company?: string | null
+  company_logo_id?: string | null
+  company_website?: string | null
+  content: string
+  rating: number
+  avatar_id?: string | null
+  location?: string | null
+  industry?: string | null
+  project_type?: string | null
+  is_featured?: boolean
+  is_video?: boolean
+  video_url?: string | null
+  status?: $Enums.Status
+  display_order?: number
+  approved_at?: Date | string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+}
+
+export type TestimonialUpdateWithoutAvatarInput = {
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company_logo?: Prisma.GalleryItemUpdateOneWithoutTestimonialCompanyLogosNestedInput
+  video_thumbnail?: Prisma.GalleryItemUpdateOneWithoutTestimonialVideoThumbnailsNestedInput
+}
+
+export type TestimonialUncheckedUpdateWithoutAvatarInput = {
+  testimonial_id?: Prisma.IntFieldUpdateOperationsInput | number
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_thumbnail_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TestimonialUncheckedUpdateManyWithoutAvatarInput = {
+  testimonial_id?: Prisma.IntFieldUpdateOperationsInput | number
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_thumbnail_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TestimonialUpdateWithoutCompany_logoInput = {
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  avatar?: Prisma.GalleryItemUpdateOneWithoutTestimonialAvatarsNestedInput
+  video_thumbnail?: Prisma.GalleryItemUpdateOneWithoutTestimonialVideoThumbnailsNestedInput
+}
+
+export type TestimonialUncheckedUpdateWithoutCompany_logoInput = {
+  testimonial_id?: Prisma.IntFieldUpdateOperationsInput | number
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_thumbnail_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TestimonialUncheckedUpdateManyWithoutCompany_logoInput = {
+  testimonial_id?: Prisma.IntFieldUpdateOperationsInput | number
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  video_thumbnail_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TestimonialUpdateWithoutVideo_thumbnailInput = {
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company_logo?: Prisma.GalleryItemUpdateOneWithoutTestimonialCompanyLogosNestedInput
+  avatar?: Prisma.GalleryItemUpdateOneWithoutTestimonialAvatarsNestedInput
+}
+
+export type TestimonialUncheckedUpdateWithoutVideo_thumbnailInput = {
+  testimonial_id?: Prisma.IntFieldUpdateOperationsInput | number
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type TestimonialUncheckedUpdateManyWithoutVideo_thumbnailInput = {
+  testimonial_id?: Prisma.IntFieldUpdateOperationsInput | number
+  customer_name?: Prisma.StringFieldUpdateOperationsInput | string
+  customer_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company_website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  avatar_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_video?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  video_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 
 
 export type TestimonialSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -717,23 +1372,26 @@ export type TestimonialSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   customer_name?: boolean
   customer_title?: boolean
   company?: boolean
-  company_logo?: boolean
+  company_logo_id?: boolean
   company_website?: boolean
   content?: boolean
   rating?: boolean
-  avatar?: boolean
+  avatar_id?: boolean
   location?: boolean
   industry?: boolean
   project_type?: boolean
   is_featured?: boolean
   is_video?: boolean
   video_url?: boolean
-  video_thumbnail?: boolean
+  video_thumbnail_id?: boolean
   status?: boolean
   display_order?: boolean
   approved_at?: boolean
   created_at?: boolean
   updated_at?: boolean
+  company_logo?: boolean | Prisma.Testimonial$company_logoArgs<ExtArgs>
+  avatar?: boolean | Prisma.Testimonial$avatarArgs<ExtArgs>
+  video_thumbnail?: boolean | Prisma.Testimonial$video_thumbnailArgs<ExtArgs>
 }, ExtArgs["result"]["testimonial"]>
 
 export type TestimonialSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -741,23 +1399,26 @@ export type TestimonialSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   customer_name?: boolean
   customer_title?: boolean
   company?: boolean
-  company_logo?: boolean
+  company_logo_id?: boolean
   company_website?: boolean
   content?: boolean
   rating?: boolean
-  avatar?: boolean
+  avatar_id?: boolean
   location?: boolean
   industry?: boolean
   project_type?: boolean
   is_featured?: boolean
   is_video?: boolean
   video_url?: boolean
-  video_thumbnail?: boolean
+  video_thumbnail_id?: boolean
   status?: boolean
   display_order?: boolean
   approved_at?: boolean
   created_at?: boolean
   updated_at?: boolean
+  company_logo?: boolean | Prisma.Testimonial$company_logoArgs<ExtArgs>
+  avatar?: boolean | Prisma.Testimonial$avatarArgs<ExtArgs>
+  video_thumbnail?: boolean | Prisma.Testimonial$video_thumbnailArgs<ExtArgs>
 }, ExtArgs["result"]["testimonial"]>
 
 export type TestimonialSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -765,23 +1426,26 @@ export type TestimonialSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   customer_name?: boolean
   customer_title?: boolean
   company?: boolean
-  company_logo?: boolean
+  company_logo_id?: boolean
   company_website?: boolean
   content?: boolean
   rating?: boolean
-  avatar?: boolean
+  avatar_id?: boolean
   location?: boolean
   industry?: boolean
   project_type?: boolean
   is_featured?: boolean
   is_video?: boolean
   video_url?: boolean
-  video_thumbnail?: boolean
+  video_thumbnail_id?: boolean
   status?: boolean
   display_order?: boolean
   approved_at?: boolean
   created_at?: boolean
   updated_at?: boolean
+  company_logo?: boolean | Prisma.Testimonial$company_logoArgs<ExtArgs>
+  avatar?: boolean | Prisma.Testimonial$avatarArgs<ExtArgs>
+  video_thumbnail?: boolean | Prisma.Testimonial$video_thumbnailArgs<ExtArgs>
 }, ExtArgs["result"]["testimonial"]>
 
 export type TestimonialSelectScalar = {
@@ -789,18 +1453,18 @@ export type TestimonialSelectScalar = {
   customer_name?: boolean
   customer_title?: boolean
   company?: boolean
-  company_logo?: boolean
+  company_logo_id?: boolean
   company_website?: boolean
   content?: boolean
   rating?: boolean
-  avatar?: boolean
+  avatar_id?: boolean
   location?: boolean
   industry?: boolean
   project_type?: boolean
   is_featured?: boolean
   is_video?: boolean
   video_url?: boolean
-  video_thumbnail?: boolean
+  video_thumbnail_id?: boolean
   status?: boolean
   display_order?: boolean
   approved_at?: boolean
@@ -808,28 +1472,47 @@ export type TestimonialSelectScalar = {
   updated_at?: boolean
 }
 
-export type TestimonialOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"testimonial_id" | "customer_name" | "customer_title" | "company" | "company_logo" | "company_website" | "content" | "rating" | "avatar" | "location" | "industry" | "project_type" | "is_featured" | "is_video" | "video_url" | "video_thumbnail" | "status" | "display_order" | "approved_at" | "created_at" | "updated_at", ExtArgs["result"]["testimonial"]>
+export type TestimonialOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"testimonial_id" | "customer_name" | "customer_title" | "company" | "company_logo_id" | "company_website" | "content" | "rating" | "avatar_id" | "location" | "industry" | "project_type" | "is_featured" | "is_video" | "video_url" | "video_thumbnail_id" | "status" | "display_order" | "approved_at" | "created_at" | "updated_at", ExtArgs["result"]["testimonial"]>
+export type TestimonialInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  company_logo?: boolean | Prisma.Testimonial$company_logoArgs<ExtArgs>
+  avatar?: boolean | Prisma.Testimonial$avatarArgs<ExtArgs>
+  video_thumbnail?: boolean | Prisma.Testimonial$video_thumbnailArgs<ExtArgs>
+}
+export type TestimonialIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  company_logo?: boolean | Prisma.Testimonial$company_logoArgs<ExtArgs>
+  avatar?: boolean | Prisma.Testimonial$avatarArgs<ExtArgs>
+  video_thumbnail?: boolean | Prisma.Testimonial$video_thumbnailArgs<ExtArgs>
+}
+export type TestimonialIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  company_logo?: boolean | Prisma.Testimonial$company_logoArgs<ExtArgs>
+  avatar?: boolean | Prisma.Testimonial$avatarArgs<ExtArgs>
+  video_thumbnail?: boolean | Prisma.Testimonial$video_thumbnailArgs<ExtArgs>
+}
 
 export type $TestimonialPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Testimonial"
-  objects: {}
+  objects: {
+    company_logo: Prisma.$GalleryItemPayload<ExtArgs> | null
+    avatar: Prisma.$GalleryItemPayload<ExtArgs> | null
+    video_thumbnail: Prisma.$GalleryItemPayload<ExtArgs> | null
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     testimonial_id: number
     customer_name: string
     customer_title: string | null
     company: string | null
-    company_logo: string | null
+    company_logo_id: string | null
     company_website: string | null
     content: string
     rating: number
-    avatar: string | null
+    avatar_id: string | null
     location: string | null
     industry: string | null
     project_type: string | null
     is_featured: boolean
     is_video: boolean
     video_url: string | null
-    video_thumbnail: string | null
+    video_thumbnail_id: string | null
     status: $Enums.Status
     display_order: number
     approved_at: Date | null
@@ -1229,6 +1912,9 @@ readonly fields: TestimonialFieldRefs;
  */
 export interface Prisma__TestimonialClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  company_logo<T extends Prisma.Testimonial$company_logoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Testimonial$company_logoArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  avatar<T extends Prisma.Testimonial$avatarArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Testimonial$avatarArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  video_thumbnail<T extends Prisma.Testimonial$video_thumbnailArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Testimonial$video_thumbnailArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1262,18 +1948,18 @@ export interface TestimonialFieldRefs {
   readonly customer_name: Prisma.FieldRef<"Testimonial", 'String'>
   readonly customer_title: Prisma.FieldRef<"Testimonial", 'String'>
   readonly company: Prisma.FieldRef<"Testimonial", 'String'>
-  readonly company_logo: Prisma.FieldRef<"Testimonial", 'String'>
+  readonly company_logo_id: Prisma.FieldRef<"Testimonial", 'String'>
   readonly company_website: Prisma.FieldRef<"Testimonial", 'String'>
   readonly content: Prisma.FieldRef<"Testimonial", 'String'>
   readonly rating: Prisma.FieldRef<"Testimonial", 'Int'>
-  readonly avatar: Prisma.FieldRef<"Testimonial", 'String'>
+  readonly avatar_id: Prisma.FieldRef<"Testimonial", 'String'>
   readonly location: Prisma.FieldRef<"Testimonial", 'String'>
   readonly industry: Prisma.FieldRef<"Testimonial", 'String'>
   readonly project_type: Prisma.FieldRef<"Testimonial", 'String'>
   readonly is_featured: Prisma.FieldRef<"Testimonial", 'Boolean'>
   readonly is_video: Prisma.FieldRef<"Testimonial", 'Boolean'>
   readonly video_url: Prisma.FieldRef<"Testimonial", 'String'>
-  readonly video_thumbnail: Prisma.FieldRef<"Testimonial", 'String'>
+  readonly video_thumbnail_id: Prisma.FieldRef<"Testimonial", 'String'>
   readonly status: Prisma.FieldRef<"Testimonial", 'Status'>
   readonly display_order: Prisma.FieldRef<"Testimonial", 'Int'>
   readonly approved_at: Prisma.FieldRef<"Testimonial", 'DateTime'>
@@ -1296,6 +1982,10 @@ export type TestimonialFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  /**
    * Filter, which Testimonial to fetch.
    */
   where: Prisma.TestimonialWhereUniqueInput
@@ -1314,6 +2004,10 @@ export type TestimonialFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Exten
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  /**
    * Filter, which Testimonial to fetch.
    */
   where: Prisma.TestimonialWhereUniqueInput
@@ -1331,6 +2025,10 @@ export type TestimonialFindFirstArgs<ExtArgs extends runtime.Types.Extensions.In
    * Omit specific fields from the Testimonial
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
   /**
    * Filter, which Testimonial to fetch.
    */
@@ -1380,6 +2078,10 @@ export type TestimonialFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extens
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  /**
    * Filter, which Testimonial to fetch.
    */
   where?: Prisma.TestimonialWhereInput
@@ -1428,6 +2130,10 @@ export type TestimonialFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  /**
    * Filter, which Testimonials to fetch.
    */
   where?: Prisma.TestimonialWhereInput
@@ -1471,6 +2177,10 @@ export type TestimonialCreateArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  /**
    * The data needed to create a Testimonial.
    */
   data: Prisma.XOR<Prisma.TestimonialCreateInput, Prisma.TestimonialUncheckedCreateInput>
@@ -1504,6 +2214,10 @@ export type TestimonialCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    */
   data: Prisma.TestimonialCreateManyInput | Prisma.TestimonialCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1518,6 +2232,10 @@ export type TestimonialUpdateArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Testimonial
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
   /**
    * The data needed to update a Testimonial.
    */
@@ -1570,6 +2288,10 @@ export type TestimonialUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * Limit how many Testimonials to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1584,6 +2306,10 @@ export type TestimonialUpsertArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Testimonial
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
   /**
    * The filter to search for the Testimonial to update in case it exists.
    */
@@ -1611,6 +2337,10 @@ export type TestimonialDeleteArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  /**
    * Filter which Testimonial to delete.
    */
   where: Prisma.TestimonialWhereUniqueInput
@@ -1631,6 +2361,63 @@ export type TestimonialDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
+ * Testimonial.company_logo
+ */
+export type Testimonial$company_logoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
+ * Testimonial.avatar
+ */
+export type Testimonial$avatarArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
+ * Testimonial.video_thumbnail
+ */
+export type Testimonial$video_thumbnailArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
  * Testimonial without action
  */
 export type TestimonialDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1642,4 +2429,8 @@ export type TestimonialDefaultArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the Testimonial
    */
   omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
 }

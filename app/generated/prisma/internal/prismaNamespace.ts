@@ -390,15 +390,20 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  GalleryItem: 'GalleryItem',
   User: 'User',
   BlogCategory: 'BlogCategory',
+  MyCompanies: 'MyCompanies',
   BlogCategoryRelation: 'BlogCategoryRelation',
   Blog: 'Blog',
   ServiceCategory: 'ServiceCategory',
   ServiceCategoryRelation: 'ServiceCategoryRelation',
+  PortfolioGallery: 'PortfolioGallery',
   Portfolio: 'Portfolio',
+  ProjectGallery: 'ProjectGallery',
   Project: 'Project',
   ContactUs: 'ContactUs',
+  ActivityGallery: 'ActivityGallery',
   Activity: 'Activity',
   Testimonial: 'Testimonial',
   Service: 'Service'
@@ -417,10 +422,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "blogCategory" | "blogCategoryRelation" | "blog" | "serviceCategory" | "serviceCategoryRelation" | "portfolio" | "project" | "contactUs" | "activity" | "testimonial" | "service"
+    modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "serviceCategory" | "serviceCategoryRelation" | "portfolioGallery" | "portfolio" | "projectGallery" | "project" | "contactUs" | "activityGallery" | "activity" | "testimonial" | "service"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    GalleryItem: {
+      payload: Prisma.$GalleryItemPayload<ExtArgs>
+      fields: Prisma.GalleryItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GalleryItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GalleryItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>
+        }
+        findFirst: {
+          args: Prisma.GalleryItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GalleryItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>
+        }
+        findMany: {
+          args: Prisma.GalleryItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>[]
+        }
+        create: {
+          args: Prisma.GalleryItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>
+        }
+        createMany: {
+          args: Prisma.GalleryItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GalleryItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>[]
+        }
+        delete: {
+          args: Prisma.GalleryItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>
+        }
+        update: {
+          args: Prisma.GalleryItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.GalleryItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GalleryItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GalleryItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.GalleryItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryItemPayload>
+        }
+        aggregate: {
+          args: Prisma.GalleryItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGalleryItem>
+        }
+        groupBy: {
+          args: Prisma.GalleryItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GalleryItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GalleryItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GalleryItemCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -566,6 +645,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.BlogCategoryCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.BlogCategoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    MyCompanies: {
+      payload: Prisma.$MyCompaniesPayload<ExtArgs>
+      fields: Prisma.MyCompaniesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MyCompaniesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MyCompaniesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>
+        }
+        findFirst: {
+          args: Prisma.MyCompaniesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MyCompaniesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>
+        }
+        findMany: {
+          args: Prisma.MyCompaniesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>[]
+        }
+        create: {
+          args: Prisma.MyCompaniesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>
+        }
+        createMany: {
+          args: Prisma.MyCompaniesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MyCompaniesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>[]
+        }
+        delete: {
+          args: Prisma.MyCompaniesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>
+        }
+        update: {
+          args: Prisma.MyCompaniesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>
+        }
+        deleteMany: {
+          args: Prisma.MyCompaniesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MyCompaniesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MyCompaniesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>[]
+        }
+        upsert: {
+          args: Prisma.MyCompaniesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MyCompaniesPayload>
+        }
+        aggregate: {
+          args: Prisma.MyCompaniesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMyCompanies>
+        }
+        groupBy: {
+          args: Prisma.MyCompaniesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MyCompaniesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MyCompaniesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MyCompaniesCountAggregateOutputType> | number
         }
       }
     }
@@ -865,6 +1018,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PortfolioGallery: {
+      payload: Prisma.$PortfolioGalleryPayload<ExtArgs>
+      fields: Prisma.PortfolioGalleryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PortfolioGalleryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PortfolioGalleryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
+        }
+        findFirst: {
+          args: Prisma.PortfolioGalleryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PortfolioGalleryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
+        }
+        findMany: {
+          args: Prisma.PortfolioGalleryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>[]
+        }
+        create: {
+          args: Prisma.PortfolioGalleryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
+        }
+        createMany: {
+          args: Prisma.PortfolioGalleryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PortfolioGalleryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>[]
+        }
+        delete: {
+          args: Prisma.PortfolioGalleryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
+        }
+        update: {
+          args: Prisma.PortfolioGalleryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
+        }
+        deleteMany: {
+          args: Prisma.PortfolioGalleryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PortfolioGalleryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PortfolioGalleryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>[]
+        }
+        upsert: {
+          args: Prisma.PortfolioGalleryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PortfolioGalleryPayload>
+        }
+        aggregate: {
+          args: Prisma.PortfolioGalleryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePortfolioGallery>
+        }
+        groupBy: {
+          args: Prisma.PortfolioGalleryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PortfolioGalleryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PortfolioGalleryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PortfolioGalleryCountAggregateOutputType> | number
+        }
+      }
+    }
     Portfolio: {
       payload: Prisma.$PortfolioPayload<ExtArgs>
       fields: Prisma.PortfolioFieldRefs
@@ -936,6 +1163,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.PortfolioCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.PortfolioCountAggregateOutputType> | number
+        }
+      }
+    }
+    ProjectGallery: {
+      payload: Prisma.$ProjectGalleryPayload<ExtArgs>
+      fields: Prisma.ProjectGalleryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProjectGalleryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProjectGalleryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
+        }
+        findFirst: {
+          args: Prisma.ProjectGalleryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProjectGalleryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
+        }
+        findMany: {
+          args: Prisma.ProjectGalleryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>[]
+        }
+        create: {
+          args: Prisma.ProjectGalleryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
+        }
+        createMany: {
+          args: Prisma.ProjectGalleryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProjectGalleryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>[]
+        }
+        delete: {
+          args: Prisma.ProjectGalleryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
+        }
+        update: {
+          args: Prisma.ProjectGalleryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
+        }
+        deleteMany: {
+          args: Prisma.ProjectGalleryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProjectGalleryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProjectGalleryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>[]
+        }
+        upsert: {
+          args: Prisma.ProjectGalleryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectGalleryPayload>
+        }
+        aggregate: {
+          args: Prisma.ProjectGalleryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProjectGallery>
+        }
+        groupBy: {
+          args: Prisma.ProjectGalleryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectGalleryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProjectGalleryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectGalleryCountAggregateOutputType> | number
         }
       }
     }
@@ -1084,6 +1385,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ContactUsCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ContactUsCountAggregateOutputType> | number
+        }
+      }
+    }
+    ActivityGallery: {
+      payload: Prisma.$ActivityGalleryPayload<ExtArgs>
+      fields: Prisma.ActivityGalleryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ActivityGalleryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ActivityGalleryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>
+        }
+        findFirst: {
+          args: Prisma.ActivityGalleryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ActivityGalleryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>
+        }
+        findMany: {
+          args: Prisma.ActivityGalleryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>[]
+        }
+        create: {
+          args: Prisma.ActivityGalleryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>
+        }
+        createMany: {
+          args: Prisma.ActivityGalleryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ActivityGalleryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>[]
+        }
+        delete: {
+          args: Prisma.ActivityGalleryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>
+        }
+        update: {
+          args: Prisma.ActivityGalleryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>
+        }
+        deleteMany: {
+          args: Prisma.ActivityGalleryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ActivityGalleryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ActivityGalleryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>[]
+        }
+        upsert: {
+          args: Prisma.ActivityGalleryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ActivityGalleryPayload>
+        }
+        aggregate: {
+          args: Prisma.ActivityGalleryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateActivityGallery>
+        }
+        groupBy: {
+          args: Prisma.ActivityGalleryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ActivityGalleryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ActivityGalleryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ActivityGalleryCountAggregateOutputType> | number
         }
       }
     }
@@ -1348,6 +1723,19 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const GalleryItemScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  altText: 'altText',
+  description: 'description',
+  publicId: 'publicId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GalleryItemScalarFieldEnum = (typeof GalleryItemScalarFieldEnum)[keyof typeof GalleryItemScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   user_id: 'user_id',
   username: 'username',
@@ -1356,7 +1744,7 @@ export const UserScalarFieldEnum = {
   role: 'role',
   first_name: 'first_name',
   last_name: 'last_name',
-  avatar: 'avatar',
+  avatar_id: 'avatar_id',
   is_active: 'is_active',
   last_login: 'last_login',
   created_at: 'created_at',
@@ -1374,9 +1762,7 @@ export const BlogCategoryScalarFieldEnum = {
   color: 'color',
   icon: 'icon',
   parent_id: 'parent_id',
-  display_order: 'display_order',
   is_active: 'is_active',
-  post_count: 'post_count',
   created_at: 'created_at',
   updated_at: 'updated_at',
   meta_title: 'meta_title',
@@ -1384,6 +1770,14 @@ export const BlogCategoryScalarFieldEnum = {
 } as const
 
 export type BlogCategoryScalarFieldEnum = (typeof BlogCategoryScalarFieldEnum)[keyof typeof BlogCategoryScalarFieldEnum]
+
+
+export const MyCompaniesScalarFieldEnum = {
+  company_id: 'company_id',
+  featured_image_id: 'featured_image_id'
+} as const
+
+export type MyCompaniesScalarFieldEnum = (typeof MyCompaniesScalarFieldEnum)[keyof typeof MyCompaniesScalarFieldEnum]
 
 
 export const BlogCategoryRelationScalarFieldEnum = {
@@ -1401,8 +1795,7 @@ export const BlogScalarFieldEnum = {
   slug: 'slug',
   excerpt: 'excerpt',
   content: 'content',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
+  featured_image_id: 'featured_image_id',
   status: 'status',
   is_featured: 'is_featured',
   view_count: 'view_count',
@@ -1414,7 +1807,7 @@ export const BlogScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   author_id: 'author_id'
 } as const
 
@@ -1450,17 +1843,26 @@ export const ServiceCategoryRelationScalarFieldEnum = {
 export type ServiceCategoryRelationScalarFieldEnum = (typeof ServiceCategoryRelationScalarFieldEnum)[keyof typeof ServiceCategoryRelationScalarFieldEnum]
 
 
+export const PortfolioGalleryScalarFieldEnum = {
+  id: 'id',
+  portfolio_id: 'portfolio_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type PortfolioGalleryScalarFieldEnum = (typeof PortfolioGalleryScalarFieldEnum)[keyof typeof PortfolioGalleryScalarFieldEnum]
+
+
 export const PortfolioScalarFieldEnum = {
   portfolio_id: 'portfolio_id',
   title: 'title',
   slug: 'slug',
   description: 'description',
   short_description: 'short_description',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
-  gallery: 'gallery',
+  featured_image_id: 'featured_image_id',
   client_name: 'client_name',
-  client_logo: 'client_logo',
+  client_logo_id: 'client_logo_id',
   industry: 'industry',
   project_url: 'project_url',
   case_study_url: 'case_study_url',
@@ -1478,11 +1880,22 @@ export const PortfolioScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   serviceId: 'serviceId'
 } as const
 
 export type PortfolioScalarFieldEnum = (typeof PortfolioScalarFieldEnum)[keyof typeof PortfolioScalarFieldEnum]
+
+
+export const ProjectGalleryScalarFieldEnum = {
+  id: 'id',
+  project_id: 'project_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type ProjectGalleryScalarFieldEnum = (typeof ProjectGalleryScalarFieldEnum)[keyof typeof ProjectGalleryScalarFieldEnum]
 
 
 export const ProjectScalarFieldEnum = {
@@ -1491,9 +1904,7 @@ export const ProjectScalarFieldEnum = {
   slug: 'slug',
   description: 'description',
   short_description: 'short_description',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
-  gallery: 'gallery',
+  featured_image_id: 'featured_image_id',
   project_type: 'project_type',
   project_url: 'project_url',
   github_url: 'github_url',
@@ -1516,7 +1927,7 @@ export const ProjectScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   serviceId: 'serviceId'
 } as const
 
@@ -1549,15 +1960,24 @@ export const ContactUsScalarFieldEnum = {
 export type ContactUsScalarFieldEnum = (typeof ContactUsScalarFieldEnum)[keyof typeof ContactUsScalarFieldEnum]
 
 
+export const ActivityGalleryScalarFieldEnum = {
+  id: 'id',
+  activity_id: 'activity_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type ActivityGalleryScalarFieldEnum = (typeof ActivityGalleryScalarFieldEnum)[keyof typeof ActivityGalleryScalarFieldEnum]
+
+
 export const ActivityScalarFieldEnum = {
   activity_id: 'activity_id',
   title: 'title',
   slug: 'slug',
   description: 'description',
   short_description: 'short_description',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
-  gallery: 'gallery',
+  featured_image_id: 'featured_image_id',
   activity_type: 'activity_type',
   location: 'location',
   venue: 'venue',
@@ -1587,7 +2007,7 @@ export const ActivityScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   userId: 'userId'
 } as const
 
@@ -1599,18 +2019,18 @@ export const TestimonialScalarFieldEnum = {
   customer_name: 'customer_name',
   customer_title: 'customer_title',
   company: 'company',
-  company_logo: 'company_logo',
+  company_logo_id: 'company_logo_id',
   company_website: 'company_website',
   content: 'content',
   rating: 'rating',
-  avatar: 'avatar',
+  avatar_id: 'avatar_id',
   location: 'location',
   industry: 'industry',
   project_type: 'project_type',
   is_featured: 'is_featured',
   is_video: 'is_video',
   video_url: 'video_url',
-  video_thumbnail: 'video_thumbnail',
+  video_thumbnail_id: 'video_thumbnail_id',
   status: 'status',
   display_order: 'display_order',
   approved_at: 'approved_at',
@@ -1628,8 +2048,7 @@ export const ServiceScalarFieldEnum = {
   short_description: 'short_description',
   description: 'description',
   icon: 'icon',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
+  featured_image_id: 'featured_image_id',
   price: 'price',
   price_type: 'price_type',
   currency: 'currency',
@@ -1649,7 +2068,7 @@ export const ServiceScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   cta_text: 'cta_text',
   cta_url: 'cta_url'
 } as const
@@ -1688,20 +2107,6 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 /**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-/**
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -1712,6 +2117,34 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -1733,20 +2166,6 @@ export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime'
- */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime[]'
- */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -1878,15 +2297,20 @@ export interface PrismaClientOptions {
   omit?: GlobalOmitConfig
 }
 export type GlobalOmitConfig = {
+  galleryItem?: Prisma.GalleryItemOmit
   user?: Prisma.UserOmit
   blogCategory?: Prisma.BlogCategoryOmit
+  myCompanies?: Prisma.MyCompaniesOmit
   blogCategoryRelation?: Prisma.BlogCategoryRelationOmit
   blog?: Prisma.BlogOmit
   serviceCategory?: Prisma.ServiceCategoryOmit
   serviceCategoryRelation?: Prisma.ServiceCategoryRelationOmit
+  portfolioGallery?: Prisma.PortfolioGalleryOmit
   portfolio?: Prisma.PortfolioOmit
+  projectGallery?: Prisma.ProjectGalleryOmit
   project?: Prisma.ProjectOmit
   contactUs?: Prisma.ContactUsOmit
+  activityGallery?: Prisma.ActivityGalleryOmit
   activity?: Prisma.ActivityOmit
   testimonial?: Prisma.TestimonialOmit
   service?: Prisma.ServiceOmit

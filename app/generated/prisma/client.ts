@@ -29,8 +29,8 @@ export * from "./enums"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more GalleryItems
+ * const galleryItems = await prisma.galleryItem.findMany()
  * ```
  * 
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
@@ -45,6 +45,11 @@ path.join(__dirname, "query_engine-windows.dll.node")
 path.join(process.cwd(), "app/generated/prisma/query_engine-windows.dll.node")
 
 /**
+ * Model GalleryItem
+ * 
+ */
+export type GalleryItem = Prisma.GalleryItemModel
+/**
  * Model User
  * 
  */
@@ -54,6 +59,11 @@ export type User = Prisma.UserModel
  * 
  */
 export type BlogCategory = Prisma.BlogCategoryModel
+/**
+ * Model MyCompanies
+ * 
+ */
+export type MyCompanies = Prisma.MyCompaniesModel
 /**
  * Model BlogCategoryRelation
  * 
@@ -75,10 +85,20 @@ export type ServiceCategory = Prisma.ServiceCategoryModel
  */
 export type ServiceCategoryRelation = Prisma.ServiceCategoryRelationModel
 /**
+ * Model PortfolioGallery
+ * 
+ */
+export type PortfolioGallery = Prisma.PortfolioGalleryModel
+/**
  * Model Portfolio
  * 
  */
 export type Portfolio = Prisma.PortfolioModel
+/**
+ * Model ProjectGallery
+ * 
+ */
+export type ProjectGallery = Prisma.ProjectGalleryModel
 /**
  * Model Project
  * 
@@ -89,6 +109,11 @@ export type Project = Prisma.ProjectModel
  * 
  */
 export type ContactUs = Prisma.ContactUsModel
+/**
+ * Model ActivityGallery
+ * 
+ */
+export type ActivityGallery = Prisma.ActivityGalleryModel
 /**
  * Model Activity
  * 

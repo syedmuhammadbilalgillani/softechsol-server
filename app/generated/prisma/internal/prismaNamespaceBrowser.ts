@@ -49,15 +49,20 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 export const ModelName = {
+  GalleryItem: 'GalleryItem',
   User: 'User',
   BlogCategory: 'BlogCategory',
+  MyCompanies: 'MyCompanies',
   BlogCategoryRelation: 'BlogCategoryRelation',
   Blog: 'Blog',
   ServiceCategory: 'ServiceCategory',
   ServiceCategoryRelation: 'ServiceCategoryRelation',
+  PortfolioGallery: 'PortfolioGallery',
   Portfolio: 'Portfolio',
+  ProjectGallery: 'ProjectGallery',
   Project: 'Project',
   ContactUs: 'ContactUs',
+  ActivityGallery: 'ActivityGallery',
   Activity: 'Activity',
   Testimonial: 'Testimonial',
   Service: 'Service'
@@ -79,6 +84,19 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const GalleryItemScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  altText: 'altText',
+  description: 'description',
+  publicId: 'publicId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GalleryItemScalarFieldEnum = (typeof GalleryItemScalarFieldEnum)[keyof typeof GalleryItemScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   user_id: 'user_id',
   username: 'username',
@@ -87,7 +105,7 @@ export const UserScalarFieldEnum = {
   role: 'role',
   first_name: 'first_name',
   last_name: 'last_name',
-  avatar: 'avatar',
+  avatar_id: 'avatar_id',
   is_active: 'is_active',
   last_login: 'last_login',
   created_at: 'created_at',
@@ -105,9 +123,7 @@ export const BlogCategoryScalarFieldEnum = {
   color: 'color',
   icon: 'icon',
   parent_id: 'parent_id',
-  display_order: 'display_order',
   is_active: 'is_active',
-  post_count: 'post_count',
   created_at: 'created_at',
   updated_at: 'updated_at',
   meta_title: 'meta_title',
@@ -115,6 +131,14 @@ export const BlogCategoryScalarFieldEnum = {
 } as const
 
 export type BlogCategoryScalarFieldEnum = (typeof BlogCategoryScalarFieldEnum)[keyof typeof BlogCategoryScalarFieldEnum]
+
+
+export const MyCompaniesScalarFieldEnum = {
+  company_id: 'company_id',
+  featured_image_id: 'featured_image_id'
+} as const
+
+export type MyCompaniesScalarFieldEnum = (typeof MyCompaniesScalarFieldEnum)[keyof typeof MyCompaniesScalarFieldEnum]
 
 
 export const BlogCategoryRelationScalarFieldEnum = {
@@ -132,8 +156,7 @@ export const BlogScalarFieldEnum = {
   slug: 'slug',
   excerpt: 'excerpt',
   content: 'content',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
+  featured_image_id: 'featured_image_id',
   status: 'status',
   is_featured: 'is_featured',
   view_count: 'view_count',
@@ -145,7 +168,7 @@ export const BlogScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   author_id: 'author_id'
 } as const
 
@@ -181,17 +204,26 @@ export const ServiceCategoryRelationScalarFieldEnum = {
 export type ServiceCategoryRelationScalarFieldEnum = (typeof ServiceCategoryRelationScalarFieldEnum)[keyof typeof ServiceCategoryRelationScalarFieldEnum]
 
 
+export const PortfolioGalleryScalarFieldEnum = {
+  id: 'id',
+  portfolio_id: 'portfolio_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type PortfolioGalleryScalarFieldEnum = (typeof PortfolioGalleryScalarFieldEnum)[keyof typeof PortfolioGalleryScalarFieldEnum]
+
+
 export const PortfolioScalarFieldEnum = {
   portfolio_id: 'portfolio_id',
   title: 'title',
   slug: 'slug',
   description: 'description',
   short_description: 'short_description',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
-  gallery: 'gallery',
+  featured_image_id: 'featured_image_id',
   client_name: 'client_name',
-  client_logo: 'client_logo',
+  client_logo_id: 'client_logo_id',
   industry: 'industry',
   project_url: 'project_url',
   case_study_url: 'case_study_url',
@@ -209,11 +241,22 @@ export const PortfolioScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   serviceId: 'serviceId'
 } as const
 
 export type PortfolioScalarFieldEnum = (typeof PortfolioScalarFieldEnum)[keyof typeof PortfolioScalarFieldEnum]
+
+
+export const ProjectGalleryScalarFieldEnum = {
+  id: 'id',
+  project_id: 'project_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type ProjectGalleryScalarFieldEnum = (typeof ProjectGalleryScalarFieldEnum)[keyof typeof ProjectGalleryScalarFieldEnum]
 
 
 export const ProjectScalarFieldEnum = {
@@ -222,9 +265,7 @@ export const ProjectScalarFieldEnum = {
   slug: 'slug',
   description: 'description',
   short_description: 'short_description',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
-  gallery: 'gallery',
+  featured_image_id: 'featured_image_id',
   project_type: 'project_type',
   project_url: 'project_url',
   github_url: 'github_url',
@@ -247,7 +288,7 @@ export const ProjectScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   serviceId: 'serviceId'
 } as const
 
@@ -280,15 +321,24 @@ export const ContactUsScalarFieldEnum = {
 export type ContactUsScalarFieldEnum = (typeof ContactUsScalarFieldEnum)[keyof typeof ContactUsScalarFieldEnum]
 
 
+export const ActivityGalleryScalarFieldEnum = {
+  id: 'id',
+  activity_id: 'activity_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type ActivityGalleryScalarFieldEnum = (typeof ActivityGalleryScalarFieldEnum)[keyof typeof ActivityGalleryScalarFieldEnum]
+
+
 export const ActivityScalarFieldEnum = {
   activity_id: 'activity_id',
   title: 'title',
   slug: 'slug',
   description: 'description',
   short_description: 'short_description',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
-  gallery: 'gallery',
+  featured_image_id: 'featured_image_id',
   activity_type: 'activity_type',
   location: 'location',
   venue: 'venue',
@@ -318,7 +368,7 @@ export const ActivityScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   userId: 'userId'
 } as const
 
@@ -330,18 +380,18 @@ export const TestimonialScalarFieldEnum = {
   customer_name: 'customer_name',
   customer_title: 'customer_title',
   company: 'company',
-  company_logo: 'company_logo',
+  company_logo_id: 'company_logo_id',
   company_website: 'company_website',
   content: 'content',
   rating: 'rating',
-  avatar: 'avatar',
+  avatar_id: 'avatar_id',
   location: 'location',
   industry: 'industry',
   project_type: 'project_type',
   is_featured: 'is_featured',
   is_video: 'is_video',
   video_url: 'video_url',
-  video_thumbnail: 'video_thumbnail',
+  video_thumbnail_id: 'video_thumbnail_id',
   status: 'status',
   display_order: 'display_order',
   approved_at: 'approved_at',
@@ -359,8 +409,7 @@ export const ServiceScalarFieldEnum = {
   short_description: 'short_description',
   description: 'description',
   icon: 'icon',
-  featured_image: 'featured_image',
-  image_alt: 'image_alt',
+  featured_image_id: 'featured_image_id',
   price: 'price',
   price_type: 'price_type',
   currency: 'currency',
@@ -380,7 +429,7 @@ export const ServiceScalarFieldEnum = {
   meta_title: 'meta_title',
   meta_description: 'meta_description',
   meta_keywords: 'meta_keywords',
-  og_image: 'og_image',
+  og_image_id: 'og_image_id',
   cta_text: 'cta_text',
   cta_url: 'cta_url'
 } as const

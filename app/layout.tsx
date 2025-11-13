@@ -2,6 +2,7 @@ import { Providers } from "@/components/providers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,14 +28,9 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased [&::-webkit-scrollbar]:w-2
-          [&::-webkit-scrollbar]:h-1.5!
-        [&::-webkit-scrollbar-track]:bg-white
-        [&::-webkit-scrollbar-thumb]:bg-dark-blue
-          [&::-webkit-scrollbar-thumb]:cursor-pointer
-        dark:[&::-webkit-scrollbar-track]:bg-neutral-700
-        dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar`}
       >
+        <Toaster  />
         <Providers>{children}</Providers>
       </body>
     </html>

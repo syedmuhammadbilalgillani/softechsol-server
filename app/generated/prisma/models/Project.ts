@@ -50,8 +50,7 @@ export type ProjectMinAggregateOutputType = {
   slug: string | null
   description: string | null
   short_description: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   project_type: string | null
   project_url: string | null
   github_url: string | null
@@ -72,7 +71,7 @@ export type ProjectMinAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   serviceId: number | null
 }
 
@@ -82,8 +81,7 @@ export type ProjectMaxAggregateOutputType = {
   slug: string | null
   description: string | null
   short_description: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   project_type: string | null
   project_url: string | null
   github_url: string | null
@@ -104,7 +102,7 @@ export type ProjectMaxAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   serviceId: number | null
 }
 
@@ -114,9 +112,7 @@ export type ProjectCountAggregateOutputType = {
   slug: number
   description: number
   short_description: number
-  featured_image: number
-  image_alt: number
-  gallery: number
+  featured_image_id: number
   project_type: number
   project_url: number
   github_url: number
@@ -139,7 +135,7 @@ export type ProjectCountAggregateOutputType = {
   meta_title: number
   meta_description: number
   meta_keywords: number
-  og_image: number
+  og_image_id: number
   serviceId: number
   _all: number
 }
@@ -169,8 +165,7 @@ export type ProjectMinAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   project_type?: true
   project_url?: true
   github_url?: true
@@ -191,7 +186,7 @@ export type ProjectMinAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   serviceId?: true
 }
 
@@ -201,8 +196,7 @@ export type ProjectMaxAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   project_type?: true
   project_url?: true
   github_url?: true
@@ -223,7 +217,7 @@ export type ProjectMaxAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   serviceId?: true
 }
 
@@ -233,9 +227,7 @@ export type ProjectCountAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
-  gallery?: true
+  featured_image_id?: true
   project_type?: true
   project_url?: true
   github_url?: true
@@ -258,7 +250,7 @@ export type ProjectCountAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   serviceId?: true
   _all?: true
 }
@@ -355,9 +347,7 @@ export type ProjectGroupByOutputType = {
   slug: string
   description: string
   short_description: string | null
-  featured_image: string
-  image_alt: string | null
-  gallery: string[]
+  featured_image_id: string | null
   project_type: string | null
   project_url: string | null
   github_url: string | null
@@ -380,7 +370,7 @@ export type ProjectGroupByOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   serviceId: number
   _count: ProjectCountAggregateOutputType | null
   _avg: ProjectAvgAggregateOutputType | null
@@ -413,9 +403,7 @@ export type ProjectWhereInput = {
   slug?: Prisma.StringFilter<"Project"> | string
   description?: Prisma.StringFilter<"Project"> | string
   short_description?: Prisma.StringNullableFilter<"Project"> | string | null
-  featured_image?: Prisma.StringFilter<"Project"> | string
-  image_alt?: Prisma.StringNullableFilter<"Project"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Project">
+  featured_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
   project_type?: Prisma.StringNullableFilter<"Project"> | string | null
   project_url?: Prisma.StringNullableFilter<"Project"> | string | null
   github_url?: Prisma.StringNullableFilter<"Project"> | string | null
@@ -438,8 +426,11 @@ export type ProjectWhereInput = {
   meta_title?: Prisma.StringNullableFilter<"Project"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Project"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Project"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Project"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
   serviceId?: Prisma.IntFilter<"Project"> | number
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  gallery?: Prisma.ProjectGalleryListRelationFilter
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
 }
 
@@ -449,9 +440,7 @@ export type ProjectOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   project_type?: Prisma.SortOrderInput | Prisma.SortOrder
   project_url?: Prisma.SortOrderInput | Prisma.SortOrder
   github_url?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -474,8 +463,11 @@ export type ProjectOrderByWithRelationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  featured_image?: Prisma.GalleryItemOrderByWithRelationInput
+  gallery?: Prisma.ProjectGalleryOrderByRelationAggregateInput
+  og_image?: Prisma.GalleryItemOrderByWithRelationInput
   service?: Prisma.ServiceOrderByWithRelationInput
 }
 
@@ -488,9 +480,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Project"> | string
   description?: Prisma.StringFilter<"Project"> | string
   short_description?: Prisma.StringNullableFilter<"Project"> | string | null
-  featured_image?: Prisma.StringFilter<"Project"> | string
-  image_alt?: Prisma.StringNullableFilter<"Project"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Project">
+  featured_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
   project_type?: Prisma.StringNullableFilter<"Project"> | string | null
   project_url?: Prisma.StringNullableFilter<"Project"> | string | null
   github_url?: Prisma.StringNullableFilter<"Project"> | string | null
@@ -513,8 +503,11 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   meta_title?: Prisma.StringNullableFilter<"Project"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Project"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Project"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Project"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
   serviceId?: Prisma.IntFilter<"Project"> | number
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  gallery?: Prisma.ProjectGalleryListRelationFilter
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
 }, "project_id" | "slug">
 
@@ -524,9 +517,7 @@ export type ProjectOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   project_type?: Prisma.SortOrderInput | Prisma.SortOrder
   project_url?: Prisma.SortOrderInput | Prisma.SortOrder
   github_url?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -549,7 +540,7 @@ export type ProjectOrderByWithAggregationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceId?: Prisma.SortOrder
   _count?: Prisma.ProjectCountOrderByAggregateInput
   _avg?: Prisma.ProjectAvgOrderByAggregateInput
@@ -567,9 +558,7 @@ export type ProjectScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"Project"> | string
   description?: Prisma.StringWithAggregatesFilter<"Project"> | string
   short_description?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
-  featured_image?: Prisma.StringWithAggregatesFilter<"Project"> | string
-  image_alt?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Project">
+  featured_image_id?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   project_type?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   project_url?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   github_url?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
@@ -592,7 +581,7 @@ export type ProjectScalarWhereWithAggregatesInput = {
   meta_title?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   meta_description?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   meta_keywords?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
-  og_image?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  og_image_id?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   serviceId?: Prisma.IntWithAggregatesFilter<"Project"> | number
 }
 
@@ -601,9 +590,6 @@ export type ProjectCreateInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.ProjectCreategalleryInput | string[]
   project_type?: string | null
   project_url?: string | null
   github_url?: string | null
@@ -626,7 +612,9 @@ export type ProjectCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectFeaturedImagesInput
+  gallery?: Prisma.ProjectGalleryCreateNestedManyWithoutProjectInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectOgImagesInput
   service: Prisma.ServiceCreateNestedOneWithoutProjectInput
 }
 
@@ -636,9 +624,7 @@ export type ProjectUncheckedCreateInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.ProjectCreategalleryInput | string[]
+  featured_image_id?: string | null
   project_type?: string | null
   project_url?: string | null
   github_url?: string | null
@@ -661,8 +647,9 @@ export type ProjectUncheckedCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   serviceId: number
+  gallery?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
@@ -670,9 +657,6 @@ export type ProjectUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ProjectUpdategalleryInput | string[]
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -695,7 +679,9 @@ export type ProjectUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutProjectFeaturedImagesNestedInput
+  gallery?: Prisma.ProjectGalleryUpdateManyWithoutProjectNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutProjectOgImagesNestedInput
   service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
 }
 
@@ -705,9 +691,7 @@ export type ProjectUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ProjectUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -730,8 +714,9 @@ export type ProjectUncheckedUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
@@ -740,9 +725,7 @@ export type ProjectCreateManyInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.ProjectCreategalleryInput | string[]
+  featured_image_id?: string | null
   project_type?: string | null
   project_url?: string | null
   github_url?: string | null
@@ -765,7 +748,7 @@ export type ProjectCreateManyInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   serviceId: number
 }
 
@@ -774,9 +757,6 @@ export type ProjectUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ProjectUpdategalleryInput | string[]
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -799,7 +779,6 @@ export type ProjectUpdateManyMutationInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ProjectUncheckedUpdateManyInput = {
@@ -808,9 +787,7 @@ export type ProjectUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ProjectUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -833,8 +810,23 @@ export type ProjectUncheckedUpdateManyInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ProjectListRelationFilter = {
+  every?: Prisma.ProjectWhereInput
+  some?: Prisma.ProjectWhereInput
+  none?: Prisma.ProjectWhereInput
+}
+
+export type ProjectOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type ProjectScalarRelationFilter = {
+  is?: Prisma.ProjectWhereInput
+  isNot?: Prisma.ProjectWhereInput
 }
 
 export type ProjectCountOrderByAggregateInput = {
@@ -843,9 +835,7 @@ export type ProjectCountOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   project_type?: Prisma.SortOrder
   project_url?: Prisma.SortOrder
   github_url?: Prisma.SortOrder
@@ -868,7 +858,7 @@ export type ProjectCountOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
 }
 
@@ -887,8 +877,7 @@ export type ProjectMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   project_type?: Prisma.SortOrder
   project_url?: Prisma.SortOrder
   github_url?: Prisma.SortOrder
@@ -909,7 +898,7 @@ export type ProjectMaxOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
 }
 
@@ -919,8 +908,7 @@ export type ProjectMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   project_type?: Prisma.SortOrder
   project_url?: Prisma.SortOrder
   github_url?: Prisma.SortOrder
@@ -941,7 +929,7 @@ export type ProjectMinOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
 }
 
@@ -954,18 +942,102 @@ export type ProjectSumOrderByAggregateInput = {
   serviceId?: Prisma.SortOrder
 }
 
-export type ProjectListRelationFilter = {
-  every?: Prisma.ProjectWhereInput
-  some?: Prisma.ProjectWhereInput
-  none?: Prisma.ProjectWhereInput
+export type ProjectCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
 }
 
-export type ProjectOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type ProjectCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutOg_imageInput, Prisma.ProjectUncheckedCreateWithoutOg_imageInput> | Prisma.ProjectCreateWithoutOg_imageInput[] | Prisma.ProjectUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutOg_imageInput | Prisma.ProjectCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.ProjectCreateManyOg_imageInputEnvelope
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
 }
 
-export type ProjectCreategalleryInput = {
-  set: string[]
+export type ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+}
+
+export type ProjectUncheckedCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutOg_imageInput, Prisma.ProjectUncheckedCreateWithoutOg_imageInput> | Prisma.ProjectCreateWithoutOg_imageInput[] | Prisma.ProjectUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutOg_imageInput | Prisma.ProjectCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.ProjectCreateManyOg_imageInputEnvelope
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+}
+
+export type ProjectUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
+export type ProjectUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutOg_imageInput, Prisma.ProjectUncheckedCreateWithoutOg_imageInput> | Prisma.ProjectCreateWithoutOg_imageInput[] | Prisma.ProjectUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutOg_imageInput | Prisma.ProjectCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.ProjectCreateManyOg_imageInputEnvelope
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutOg_imageInput | Prisma.ProjectUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
+export type ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
+export type ProjectUncheckedUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutOg_imageInput, Prisma.ProjectUncheckedCreateWithoutOg_imageInput> | Prisma.ProjectCreateWithoutOg_imageInput[] | Prisma.ProjectUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutOg_imageInput | Prisma.ProjectCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.ProjectCreateManyOg_imageInputEnvelope
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutOg_imageInput | Prisma.ProjectUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
+export type ProjectCreateNestedOneWithoutGalleryInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutGalleryInput, Prisma.ProjectUncheckedCreateWithoutGalleryInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutGalleryInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutGalleryNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutGalleryInput, Prisma.ProjectUncheckedCreateWithoutGalleryInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutGalleryInput
+  upsert?: Prisma.ProjectUpsertWithoutGalleryInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutGalleryInput, Prisma.ProjectUpdateWithoutGalleryInput>, Prisma.ProjectUncheckedUpdateWithoutGalleryInput>
 }
 
 export type ProjectCreatetechnologiesInput = {
@@ -974,11 +1046,6 @@ export type ProjectCreatetechnologiesInput = {
 
 export type ProjectCreatefeaturesInput = {
   set: string[]
-}
-
-export type ProjectUpdategalleryInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type ProjectUpdatetechnologiesInput = {
@@ -1033,14 +1100,11 @@ export type ProjectUncheckedUpdateManyWithoutServiceNestedInput = {
   deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
 }
 
-export type ProjectCreateWithoutServiceInput = {
+export type ProjectCreateWithoutFeatured_imageInput = {
   title: string
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.ProjectCreategalleryInput | string[]
   project_type?: string | null
   project_url?: string | null
   github_url?: string | null
@@ -1063,7 +1127,373 @@ export type ProjectCreateWithoutServiceInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  gallery?: Prisma.ProjectGalleryCreateNestedManyWithoutProjectInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectOgImagesInput
+  service: Prisma.ServiceCreateNestedOneWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutFeatured_imageInput = {
+  project_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  serviceId: number
+  gallery?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutFeatured_imageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput>
+}
+
+export type ProjectCreateManyFeatured_imageInputEnvelope = {
+  data: Prisma.ProjectCreateManyFeatured_imageInput | Prisma.ProjectCreateManyFeatured_imageInput[]
+  skipDuplicates?: boolean
+}
+
+export type ProjectCreateWithoutOg_imageInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectFeaturedImagesInput
+  gallery?: Prisma.ProjectGalleryCreateNestedManyWithoutProjectInput
+  service: Prisma.ServiceCreateNestedOneWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutOg_imageInput = {
+  project_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  serviceId: number
+  gallery?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutOg_imageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutOg_imageInput, Prisma.ProjectUncheckedCreateWithoutOg_imageInput>
+}
+
+export type ProjectCreateManyOg_imageInputEnvelope = {
+  data: Prisma.ProjectCreateManyOg_imageInput | Prisma.ProjectCreateManyOg_imageInput[]
+  skipDuplicates?: boolean
+}
+
+export type ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutFeatured_imageInput, Prisma.ProjectUncheckedUpdateWithoutFeatured_imageInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput>
+}
+
+export type ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutFeatured_imageInput, Prisma.ProjectUncheckedUpdateWithoutFeatured_imageInput>
+}
+
+export type ProjectUpdateManyWithWhereWithoutFeatured_imageInput = {
+  where: Prisma.ProjectScalarWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageInput>
+}
+
+export type ProjectScalarWhereInput = {
+  AND?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+  OR?: Prisma.ProjectScalarWhereInput[]
+  NOT?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+  project_id?: Prisma.IntFilter<"Project"> | number
+  title?: Prisma.StringFilter<"Project"> | string
+  slug?: Prisma.StringFilter<"Project"> | string
+  description?: Prisma.StringFilter<"Project"> | string
+  short_description?: Prisma.StringNullableFilter<"Project"> | string | null
+  featured_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
+  project_type?: Prisma.StringNullableFilter<"Project"> | string | null
+  project_url?: Prisma.StringNullableFilter<"Project"> | string | null
+  github_url?: Prisma.StringNullableFilter<"Project"> | string | null
+  demo_url?: Prisma.StringNullableFilter<"Project"> | string | null
+  documentation_url?: Prisma.StringNullableFilter<"Project"> | string | null
+  download_url?: Prisma.StringNullableFilter<"Project"> | string | null
+  version?: Prisma.StringNullableFilter<"Project"> | string | null
+  license?: Prisma.StringNullableFilter<"Project"> | string | null
+  technologies?: Prisma.StringNullableListFilter<"Project">
+  features?: Prisma.StringNullableListFilter<"Project">
+  status?: Prisma.EnumStatusFilter<"Project"> | $Enums.Status
+  is_featured?: Prisma.BoolFilter<"Project"> | boolean
+  is_active?: Prisma.BoolFilter<"Project"> | boolean
+  display_order?: Prisma.IntFilter<"Project"> | number
+  view_count?: Prisma.IntFilter<"Project"> | number
+  download_count?: Prisma.IntFilter<"Project"> | number
+  star_count?: Prisma.IntFilter<"Project"> | number
+  created_at?: Prisma.DateTimeFilter<"Project"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Project"> | Date | string
+  meta_title?: Prisma.StringNullableFilter<"Project"> | string | null
+  meta_description?: Prisma.StringNullableFilter<"Project"> | string | null
+  meta_keywords?: Prisma.StringNullableFilter<"Project"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
+  serviceId?: Prisma.IntFilter<"Project"> | number
+}
+
+export type ProjectUpsertWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutOg_imageInput, Prisma.ProjectUncheckedUpdateWithoutOg_imageInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutOg_imageInput, Prisma.ProjectUncheckedCreateWithoutOg_imageInput>
+}
+
+export type ProjectUpdateWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutOg_imageInput, Prisma.ProjectUncheckedUpdateWithoutOg_imageInput>
+}
+
+export type ProjectUpdateManyWithWhereWithoutOg_imageInput = {
+  where: Prisma.ProjectScalarWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutOg_imageInput>
+}
+
+export type ProjectCreateWithoutGalleryInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectFeaturedImagesInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectOgImagesInput
+  service: Prisma.ServiceCreateNestedOneWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutGalleryInput = {
+  project_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  serviceId: number
+}
+
+export type ProjectCreateOrConnectWithoutGalleryInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutGalleryInput, Prisma.ProjectUncheckedCreateWithoutGalleryInput>
+}
+
+export type ProjectUpsertWithoutGalleryInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutGalleryInput, Prisma.ProjectUncheckedUpdateWithoutGalleryInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutGalleryInput, Prisma.ProjectUncheckedCreateWithoutGalleryInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutGalleryInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutGalleryInput, Prisma.ProjectUncheckedUpdateWithoutGalleryInput>
+}
+
+export type ProjectUpdateWithoutGalleryInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutProjectFeaturedImagesNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutProjectOgImagesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutGalleryInput = {
+  project_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ProjectCreateWithoutServiceInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectFeaturedImagesInput
+  gallery?: Prisma.ProjectGalleryCreateNestedManyWithoutProjectInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectOgImagesInput
 }
 
 export type ProjectUncheckedCreateWithoutServiceInput = {
@@ -1072,9 +1502,7 @@ export type ProjectUncheckedCreateWithoutServiceInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.ProjectCreategalleryInput | string[]
+  featured_image_id?: string | null
   project_type?: string | null
   project_url?: string | null
   github_url?: string | null
@@ -1097,7 +1525,8 @@ export type ProjectUncheckedCreateWithoutServiceInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
+  gallery?: Prisma.ProjectGalleryUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutServiceInput = {
@@ -1126,53 +1555,12 @@ export type ProjectUpdateManyWithWhereWithoutServiceInput = {
   data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutServiceInput>
 }
 
-export type ProjectScalarWhereInput = {
-  AND?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-  OR?: Prisma.ProjectScalarWhereInput[]
-  NOT?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-  project_id?: Prisma.IntFilter<"Project"> | number
-  title?: Prisma.StringFilter<"Project"> | string
-  slug?: Prisma.StringFilter<"Project"> | string
-  description?: Prisma.StringFilter<"Project"> | string
-  short_description?: Prisma.StringNullableFilter<"Project"> | string | null
-  featured_image?: Prisma.StringFilter<"Project"> | string
-  image_alt?: Prisma.StringNullableFilter<"Project"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Project">
-  project_type?: Prisma.StringNullableFilter<"Project"> | string | null
-  project_url?: Prisma.StringNullableFilter<"Project"> | string | null
-  github_url?: Prisma.StringNullableFilter<"Project"> | string | null
-  demo_url?: Prisma.StringNullableFilter<"Project"> | string | null
-  documentation_url?: Prisma.StringNullableFilter<"Project"> | string | null
-  download_url?: Prisma.StringNullableFilter<"Project"> | string | null
-  version?: Prisma.StringNullableFilter<"Project"> | string | null
-  license?: Prisma.StringNullableFilter<"Project"> | string | null
-  technologies?: Prisma.StringNullableListFilter<"Project">
-  features?: Prisma.StringNullableListFilter<"Project">
-  status?: Prisma.EnumStatusFilter<"Project"> | $Enums.Status
-  is_featured?: Prisma.BoolFilter<"Project"> | boolean
-  is_active?: Prisma.BoolFilter<"Project"> | boolean
-  display_order?: Prisma.IntFilter<"Project"> | number
-  view_count?: Prisma.IntFilter<"Project"> | number
-  download_count?: Prisma.IntFilter<"Project"> | number
-  star_count?: Prisma.IntFilter<"Project"> | number
-  created_at?: Prisma.DateTimeFilter<"Project"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Project"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"Project"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"Project"> | string | null
-  meta_keywords?: Prisma.StringNullableFilter<"Project"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Project"> | string | null
-  serviceId?: Prisma.IntFilter<"Project"> | number
-}
-
-export type ProjectCreateManyServiceInput = {
+export type ProjectCreateManyFeatured_imageInput = {
   project_id?: number
   title: string
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.ProjectCreategalleryInput | string[]
   project_type?: string | null
   project_url?: string | null
   github_url?: string | null
@@ -1195,17 +1583,47 @@ export type ProjectCreateManyServiceInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
+  serviceId: number
 }
 
-export type ProjectUpdateWithoutServiceInput = {
+export type ProjectCreateManyOg_imageInput = {
+  project_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  serviceId: number
+}
+
+export type ProjectUpdateWithoutFeatured_imageInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ProjectUpdategalleryInput | string[]
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1228,7 +1646,235 @@ export type ProjectUpdateWithoutServiceInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gallery?: Prisma.ProjectGalleryUpdateManyWithoutProjectNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutProjectOgImagesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutFeatured_imageInput = {
+  project_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateManyWithoutFeatured_imageInput = {
+  project_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ProjectUpdateWithoutOg_imageInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutProjectFeaturedImagesNestedInput
+  gallery?: Prisma.ProjectGalleryUpdateManyWithoutProjectNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutOg_imageInput = {
+  project_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateManyWithoutOg_imageInput = {
+  project_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ProjectCreateManyServiceInput = {
+  project_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  project_type?: string | null
+  project_url?: string | null
+  github_url?: string | null
+  demo_url?: string | null
+  documentation_url?: string | null
+  download_url?: string | null
+  version?: string | null
+  license?: string | null
+  technologies?: Prisma.ProjectCreatetechnologiesInput | string[]
+  features?: Prisma.ProjectCreatefeaturesInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_active?: boolean
+  display_order?: number
+  view_count?: number
+  download_count?: number
+  star_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+}
+
+export type ProjectUpdateWithoutServiceInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  demo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentation_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  download_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  license?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.ProjectUpdatetechnologiesInput | string[]
+  features?: Prisma.ProjectUpdatefeaturesInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  download_count?: Prisma.IntFieldUpdateOperationsInput | number
+  star_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutProjectFeaturedImagesNestedInput
+  gallery?: Prisma.ProjectGalleryUpdateManyWithoutProjectNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutProjectOgImagesNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutServiceInput = {
@@ -1237,9 +1883,7 @@ export type ProjectUncheckedUpdateWithoutServiceInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ProjectUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1262,7 +1906,8 @@ export type ProjectUncheckedUpdateWithoutServiceInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gallery?: Prisma.ProjectGalleryUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateManyWithoutServiceInput = {
@@ -1271,9 +1916,7 @@ export type ProjectUncheckedUpdateManyWithoutServiceInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ProjectUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   github_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1296,9 +1939,38 @@ export type ProjectUncheckedUpdateManyWithoutServiceInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
+
+/**
+ * Count Type ProjectCountOutputType
+ */
+
+export type ProjectCountOutputType = {
+  gallery: number
+}
+
+export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  gallery?: boolean | ProjectCountOutputTypeCountGalleryArgs
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectCountOutputType
+   */
+  select?: Prisma.ProjectCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountGalleryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectGalleryWhereInput
+}
 
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1307,9 +1979,7 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   project_type?: boolean
   project_url?: boolean
   github_url?: boolean
@@ -1332,9 +2002,13 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
+  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  gallery?: boolean | Prisma.Project$galleryArgs<ExtArgs>
+  og_image?: boolean | Prisma.Project$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1343,9 +2017,7 @@ export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   project_type?: boolean
   project_url?: boolean
   github_url?: boolean
@@ -1368,8 +2040,10 @@ export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
+  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Project$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
@@ -1379,9 +2053,7 @@ export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   project_type?: boolean
   project_url?: boolean
   github_url?: boolean
@@ -1404,8 +2076,10 @@ export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
+  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Project$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
@@ -1415,9 +2089,7 @@ export type ProjectSelectScalar = {
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   project_type?: boolean
   project_url?: boolean
   github_url?: boolean
@@ -1440,24 +2112,35 @@ export type ProjectSelectScalar = {
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"project_id" | "title" | "slug" | "description" | "short_description" | "featured_image" | "image_alt" | "gallery" | "project_type" | "project_url" | "github_url" | "demo_url" | "documentation_url" | "download_url" | "version" | "license" | "technologies" | "features" | "status" | "is_featured" | "is_active" | "display_order" | "view_count" | "download_count" | "star_count" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image" | "serviceId", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"project_id" | "title" | "slug" | "description" | "short_description" | "featured_image_id" | "project_type" | "project_url" | "github_url" | "demo_url" | "documentation_url" | "download_url" | "version" | "license" | "technologies" | "features" | "status" | "is_featured" | "is_active" | "display_order" | "view_count" | "download_count" | "star_count" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image_id" | "serviceId", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  gallery?: boolean | Prisma.Project$galleryArgs<ExtArgs>
+  og_image?: boolean | Prisma.Project$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Project$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Project$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }
 
 export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Project"
   objects: {
+    featured_image: Prisma.$GalleryItemPayload<ExtArgs> | null
+    gallery: Prisma.$ProjectGalleryPayload<ExtArgs>[]
+    og_image: Prisma.$GalleryItemPayload<ExtArgs> | null
     service: Prisma.$ServicePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1466,9 +2149,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     slug: string
     description: string
     short_description: string | null
-    featured_image: string
-    image_alt: string | null
-    gallery: string[]
+    featured_image_id: string | null
     project_type: string | null
     project_url: string | null
     github_url: string | null
@@ -1491,7 +2172,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     meta_title: string | null
     meta_description: string | null
     meta_keywords: string | null
-    og_image: string | null
+    og_image_id: string | null
     serviceId: number
   }, ExtArgs["result"]["project"]>
   composites: {}
@@ -1887,6 +2568,9 @@ readonly fields: ProjectFieldRefs;
  */
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  featured_image<T extends Prisma.Project$featured_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$featured_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  gallery<T extends Prisma.Project$galleryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$galleryArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectGalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  og_image<T extends Prisma.Project$og_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$og_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   service<T extends Prisma.ServiceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1922,9 +2606,7 @@ export interface ProjectFieldRefs {
   readonly slug: Prisma.FieldRef<"Project", 'String'>
   readonly description: Prisma.FieldRef<"Project", 'String'>
   readonly short_description: Prisma.FieldRef<"Project", 'String'>
-  readonly featured_image: Prisma.FieldRef<"Project", 'String'>
-  readonly image_alt: Prisma.FieldRef<"Project", 'String'>
-  readonly gallery: Prisma.FieldRef<"Project", 'String[]'>
+  readonly featured_image_id: Prisma.FieldRef<"Project", 'String'>
   readonly project_type: Prisma.FieldRef<"Project", 'String'>
   readonly project_url: Prisma.FieldRef<"Project", 'String'>
   readonly github_url: Prisma.FieldRef<"Project", 'String'>
@@ -1947,7 +2629,7 @@ export interface ProjectFieldRefs {
   readonly meta_title: Prisma.FieldRef<"Project", 'String'>
   readonly meta_description: Prisma.FieldRef<"Project", 'String'>
   readonly meta_keywords: Prisma.FieldRef<"Project", 'String'>
-  readonly og_image: Prisma.FieldRef<"Project", 'String'>
+  readonly og_image_id: Prisma.FieldRef<"Project", 'String'>
   readonly serviceId: Prisma.FieldRef<"Project", 'Int'>
 }
     
@@ -2342,6 +3024,68 @@ export type ProjectDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Projects to delete.
    */
   limit?: number
+}
+
+/**
+ * Project.featured_image
+ */
+export type Project$featured_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
+ * Project.gallery
+ */
+export type Project$galleryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectGallery
+   */
+  select?: Prisma.ProjectGallerySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProjectGallery
+   */
+  omit?: Prisma.ProjectGalleryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectGalleryInclude<ExtArgs> | null
+  where?: Prisma.ProjectGalleryWhereInput
+  orderBy?: Prisma.ProjectGalleryOrderByWithRelationInput | Prisma.ProjectGalleryOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectGalleryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectGalleryScalarFieldEnum | Prisma.ProjectGalleryScalarFieldEnum[]
+}
+
+/**
+ * Project.og_image
+ */
+export type Project$og_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
 }
 
 /**

@@ -48,8 +48,7 @@ export type ActivityMinAggregateOutputType = {
   slug: string | null
   description: string | null
   short_description: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   activity_type: string | null
   location: string | null
   venue: string | null
@@ -77,7 +76,7 @@ export type ActivityMinAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   userId: number | null
 }
 
@@ -87,8 +86,7 @@ export type ActivityMaxAggregateOutputType = {
   slug: string | null
   description: string | null
   short_description: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   activity_type: string | null
   location: string | null
   venue: string | null
@@ -116,7 +114,7 @@ export type ActivityMaxAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   userId: number | null
 }
 
@@ -126,9 +124,7 @@ export type ActivityCountAggregateOutputType = {
   slug: number
   description: number
   short_description: number
-  featured_image: number
-  image_alt: number
-  gallery: number
+  featured_image_id: number
   activity_type: number
   location: number
   venue: number
@@ -158,7 +154,7 @@ export type ActivityCountAggregateOutputType = {
   meta_title: number
   meta_description: number
   meta_keywords: number
-  og_image: number
+  og_image_id: number
   userId: number
   _all: number
 }
@@ -186,8 +182,7 @@ export type ActivityMinAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   activity_type?: true
   location?: true
   venue?: true
@@ -215,7 +210,7 @@ export type ActivityMinAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   userId?: true
 }
 
@@ -225,8 +220,7 @@ export type ActivityMaxAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   activity_type?: true
   location?: true
   venue?: true
@@ -254,7 +248,7 @@ export type ActivityMaxAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   userId?: true
 }
 
@@ -264,9 +258,7 @@ export type ActivityCountAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
-  gallery?: true
+  featured_image_id?: true
   activity_type?: true
   location?: true
   venue?: true
@@ -296,7 +288,7 @@ export type ActivityCountAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   userId?: true
   _all?: true
 }
@@ -393,9 +385,7 @@ export type ActivityGroupByOutputType = {
   slug: string
   description: string
   short_description: string | null
-  featured_image: string | null
-  image_alt: string | null
-  gallery: string[]
+  featured_image_id: string | null
   activity_type: string
   location: string | null
   venue: string | null
@@ -425,7 +415,7 @@ export type ActivityGroupByOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   userId: number
   _count: ActivityCountAggregateOutputType | null
   _avg: ActivityAvgAggregateOutputType | null
@@ -458,9 +448,7 @@ export type ActivityWhereInput = {
   slug?: Prisma.StringFilter<"Activity"> | string
   description?: Prisma.StringFilter<"Activity"> | string
   short_description?: Prisma.StringNullableFilter<"Activity"> | string | null
-  featured_image?: Prisma.StringNullableFilter<"Activity"> | string | null
-  image_alt?: Prisma.StringNullableFilter<"Activity"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Activity">
+  featured_image_id?: Prisma.StringNullableFilter<"Activity"> | string | null
   activity_type?: Prisma.StringFilter<"Activity"> | string
   location?: Prisma.StringNullableFilter<"Activity"> | string | null
   venue?: Prisma.StringNullableFilter<"Activity"> | string | null
@@ -490,8 +478,11 @@ export type ActivityWhereInput = {
   meta_title?: Prisma.StringNullableFilter<"Activity"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Activity"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Activity"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Activity"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Activity"> | string | null
   userId?: Prisma.IntFilter<"Activity"> | number
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  gallery?: Prisma.ActivityGalleryListRelationFilter
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -501,9 +492,7 @@ export type ActivityOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrderInput | Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   activity_type?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   venue?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -533,8 +522,11 @@ export type ActivityOrderByWithRelationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  featured_image?: Prisma.GalleryItemOrderByWithRelationInput
+  gallery?: Prisma.ActivityGalleryOrderByRelationAggregateInput
+  og_image?: Prisma.GalleryItemOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -547,9 +539,7 @@ export type ActivityWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Activity"> | string
   description?: Prisma.StringFilter<"Activity"> | string
   short_description?: Prisma.StringNullableFilter<"Activity"> | string | null
-  featured_image?: Prisma.StringNullableFilter<"Activity"> | string | null
-  image_alt?: Prisma.StringNullableFilter<"Activity"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Activity">
+  featured_image_id?: Prisma.StringNullableFilter<"Activity"> | string | null
   activity_type?: Prisma.StringFilter<"Activity"> | string
   location?: Prisma.StringNullableFilter<"Activity"> | string | null
   venue?: Prisma.StringNullableFilter<"Activity"> | string | null
@@ -579,8 +569,11 @@ export type ActivityWhereUniqueInput = Prisma.AtLeast<{
   meta_title?: Prisma.StringNullableFilter<"Activity"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Activity"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Activity"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Activity"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Activity"> | string | null
   userId?: Prisma.IntFilter<"Activity"> | number
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  gallery?: Prisma.ActivityGalleryListRelationFilter
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "activity_id" | "slug">
 
@@ -590,9 +583,7 @@ export type ActivityOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrderInput | Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   activity_type?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   venue?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -622,7 +613,7 @@ export type ActivityOrderByWithAggregationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   _count?: Prisma.ActivityCountOrderByAggregateInput
   _avg?: Prisma.ActivityAvgOrderByAggregateInput
@@ -640,9 +631,7 @@ export type ActivityScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"Activity"> | string
   description?: Prisma.StringWithAggregatesFilter<"Activity"> | string
   short_description?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
-  featured_image?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
-  image_alt?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Activity">
+  featured_image_id?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
   activity_type?: Prisma.StringWithAggregatesFilter<"Activity"> | string
   location?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
   venue?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
@@ -672,7 +661,7 @@ export type ActivityScalarWhereWithAggregatesInput = {
   meta_title?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
   meta_description?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
   meta_keywords?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
-  og_image?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
+  og_image_id?: Prisma.StringNullableWithAggregatesFilter<"Activity"> | string | null
   userId?: Prisma.IntWithAggregatesFilter<"Activity"> | number
 }
 
@@ -681,9 +670,6 @@ export type ActivityCreateInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
-  gallery?: Prisma.ActivityCreategalleryInput | string[]
   activity_type: string
   location?: string | null
   venue?: string | null
@@ -713,7 +699,9 @@ export type ActivityCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityFeaturedImagesInput
+  gallery?: Prisma.ActivityGalleryCreateNestedManyWithoutActivityInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityOgImagesInput
   user: Prisma.UserCreateNestedOneWithoutActivitiesInput
 }
 
@@ -723,9 +711,7 @@ export type ActivityUncheckedCreateInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
-  gallery?: Prisma.ActivityCreategalleryInput | string[]
+  featured_image_id?: string | null
   activity_type: string
   location?: string | null
   venue?: string | null
@@ -755,8 +741,9 @@ export type ActivityUncheckedCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   userId: number
+  gallery?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutActivityInput
 }
 
 export type ActivityUpdateInput = {
@@ -764,9 +751,6 @@ export type ActivityUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ActivityUpdategalleryInput | string[]
   activity_type?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -796,7 +780,9 @@ export type ActivityUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutActivityFeaturedImagesNestedInput
+  gallery?: Prisma.ActivityGalleryUpdateManyWithoutActivityNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutActivityOgImagesNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutActivitiesNestedInput
 }
 
@@ -806,9 +792,7 @@ export type ActivityUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ActivityUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   activity_type?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -838,8 +822,9 @@ export type ActivityUncheckedUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutActivityNestedInput
 }
 
 export type ActivityCreateManyInput = {
@@ -848,9 +833,7 @@ export type ActivityCreateManyInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
-  gallery?: Prisma.ActivityCreategalleryInput | string[]
+  featured_image_id?: string | null
   activity_type: string
   location?: string | null
   venue?: string | null
@@ -880,7 +863,7 @@ export type ActivityCreateManyInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   userId: number
 }
 
@@ -889,9 +872,6 @@ export type ActivityUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ActivityUpdategalleryInput | string[]
   activity_type?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -921,7 +901,6 @@ export type ActivityUpdateManyMutationInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ActivityUncheckedUpdateManyInput = {
@@ -930,9 +909,7 @@ export type ActivityUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ActivityUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   activity_type?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -962,7 +939,7 @@ export type ActivityUncheckedUpdateManyInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -976,15 +953,18 @@ export type ActivityOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type ActivityScalarRelationFilter = {
+  is?: Prisma.ActivityWhereInput
+  isNot?: Prisma.ActivityWhereInput
+}
+
 export type ActivityCountOrderByAggregateInput = {
   activity_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   activity_type?: Prisma.SortOrder
   location?: Prisma.SortOrder
   venue?: Prisma.SortOrder
@@ -1014,7 +994,7 @@ export type ActivityCountOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -1032,8 +1012,7 @@ export type ActivityMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   activity_type?: Prisma.SortOrder
   location?: Prisma.SortOrder
   venue?: Prisma.SortOrder
@@ -1061,7 +1040,7 @@ export type ActivityMaxOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -1071,8 +1050,7 @@ export type ActivityMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   activity_type?: Prisma.SortOrder
   location?: Prisma.SortOrder
   venue?: Prisma.SortOrder
@@ -1100,7 +1078,7 @@ export type ActivityMinOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
 }
 
@@ -1110,6 +1088,90 @@ export type ActivitySumOrderByAggregateInput = {
   current_participants?: Prisma.SortOrder
   price?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+}
+
+export type ActivityCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutFeatured_imageInput, Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput> | Prisma.ActivityCreateWithoutFeatured_imageInput[] | Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput | Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.ActivityCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+}
+
+export type ActivityCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOg_imageInput, Prisma.ActivityUncheckedCreateWithoutOg_imageInput> | Prisma.ActivityCreateWithoutOg_imageInput[] | Prisma.ActivityUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOg_imageInput | Prisma.ActivityCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.ActivityCreateManyOg_imageInputEnvelope
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+}
+
+export type ActivityUncheckedCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutFeatured_imageInput, Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput> | Prisma.ActivityCreateWithoutFeatured_imageInput[] | Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput | Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.ActivityCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+}
+
+export type ActivityUncheckedCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOg_imageInput, Prisma.ActivityUncheckedCreateWithoutOg_imageInput> | Prisma.ActivityCreateWithoutOg_imageInput[] | Prisma.ActivityUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOg_imageInput | Prisma.ActivityCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.ActivityCreateManyOg_imageInputEnvelope
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+}
+
+export type ActivityUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutFeatured_imageInput, Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput> | Prisma.ActivityCreateWithoutFeatured_imageInput[] | Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput | Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ActivityUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.ActivityCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ActivityUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ActivityUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
+}
+
+export type ActivityUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOg_imageInput, Prisma.ActivityUncheckedCreateWithoutOg_imageInput> | Prisma.ActivityCreateWithoutOg_imageInput[] | Prisma.ActivityUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOg_imageInput | Prisma.ActivityCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ActivityUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.ActivityCreateManyOg_imageInputEnvelope
+  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ActivityUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutOg_imageInput | Prisma.ActivityUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
+}
+
+export type ActivityUncheckedUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutFeatured_imageInput, Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput> | Prisma.ActivityCreateWithoutFeatured_imageInput[] | Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput | Prisma.ActivityCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ActivityUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.ActivityCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ActivityUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ActivityUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
+}
+
+export type ActivityUncheckedUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOg_imageInput, Prisma.ActivityUncheckedCreateWithoutOg_imageInput> | Prisma.ActivityCreateWithoutOg_imageInput[] | Prisma.ActivityUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOg_imageInput | Prisma.ActivityCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ActivityUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.ActivityCreateManyOg_imageInputEnvelope
+  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ActivityUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutOg_imageInput | Prisma.ActivityUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
 }
 
 export type ActivityCreateNestedManyWithoutUserInput = {
@@ -1154,8 +1216,18 @@ export type ActivityUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
 }
 
-export type ActivityCreategalleryInput = {
-  set: string[]
+export type ActivityCreateNestedOneWithoutGalleryInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutGalleryInput, Prisma.ActivityUncheckedCreateWithoutGalleryInput>
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutGalleryInput
+  connect?: Prisma.ActivityWhereUniqueInput
+}
+
+export type ActivityUpdateOneRequiredWithoutGalleryNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutGalleryInput, Prisma.ActivityUncheckedCreateWithoutGalleryInput>
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutGalleryInput
+  upsert?: Prisma.ActivityUpsertWithoutGalleryInput
+  connect?: Prisma.ActivityWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ActivityUpdateToOneWithWhereWithoutGalleryInput, Prisma.ActivityUpdateWithoutGalleryInput>, Prisma.ActivityUncheckedUpdateWithoutGalleryInput>
 }
 
 export type ActivityCreatespeakersInput = {
@@ -1164,11 +1236,6 @@ export type ActivityCreatespeakersInput = {
 
 export type ActivityCreatetopicsInput = {
   set: string[]
-}
-
-export type ActivityUpdategalleryInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type NullableDecimalFieldUpdateOperationsInput = {
@@ -1189,14 +1256,11 @@ export type ActivityUpdatetopicsInput = {
   push?: string | string[]
 }
 
-export type ActivityCreateWithoutUserInput = {
+export type ActivityCreateWithoutFeatured_imageInput = {
   title: string
   slug: string
   description: string
   short_description?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
-  gallery?: Prisma.ActivityCreategalleryInput | string[]
   activity_type: string
   location?: string | null
   venue?: string | null
@@ -1226,18 +1290,17 @@ export type ActivityCreateWithoutUserInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  gallery?: Prisma.ActivityGalleryCreateNestedManyWithoutActivityInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityOgImagesInput
+  user: Prisma.UserCreateNestedOneWithoutActivitiesInput
 }
 
-export type ActivityUncheckedCreateWithoutUserInput = {
+export type ActivityUncheckedCreateWithoutFeatured_imageInput = {
   activity_id?: number
   title: string
   slug: string
   description: string
   short_description?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
-  gallery?: Prisma.ActivityCreategalleryInput | string[]
   activity_type: string
   location?: string | null
   venue?: string | null
@@ -1267,33 +1330,124 @@ export type ActivityUncheckedCreateWithoutUserInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
+  userId: number
+  gallery?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutActivityInput
 }
 
-export type ActivityCreateOrConnectWithoutUserInput = {
+export type ActivityCreateOrConnectWithoutFeatured_imageInput = {
   where: Prisma.ActivityWhereUniqueInput
-  create: Prisma.XOR<Prisma.ActivityCreateWithoutUserInput, Prisma.ActivityUncheckedCreateWithoutUserInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutFeatured_imageInput, Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput>
 }
 
-export type ActivityCreateManyUserInputEnvelope = {
-  data: Prisma.ActivityCreateManyUserInput | Prisma.ActivityCreateManyUserInput[]
+export type ActivityCreateManyFeatured_imageInputEnvelope = {
+  data: Prisma.ActivityCreateManyFeatured_imageInput | Prisma.ActivityCreateManyFeatured_imageInput[]
   skipDuplicates?: boolean
 }
 
-export type ActivityUpsertWithWhereUniqueWithoutUserInput = {
-  where: Prisma.ActivityWhereUniqueInput
-  update: Prisma.XOR<Prisma.ActivityUpdateWithoutUserInput, Prisma.ActivityUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.ActivityCreateWithoutUserInput, Prisma.ActivityUncheckedCreateWithoutUserInput>
+export type ActivityCreateWithoutOg_imageInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityFeaturedImagesInput
+  gallery?: Prisma.ActivityGalleryCreateNestedManyWithoutActivityInput
+  user: Prisma.UserCreateNestedOneWithoutActivitiesInput
 }
 
-export type ActivityUpdateWithWhereUniqueWithoutUserInput = {
-  where: Prisma.ActivityWhereUniqueInput
-  data: Prisma.XOR<Prisma.ActivityUpdateWithoutUserInput, Prisma.ActivityUncheckedUpdateWithoutUserInput>
+export type ActivityUncheckedCreateWithoutOg_imageInput = {
+  activity_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  userId: number
+  gallery?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutActivityInput
 }
 
-export type ActivityUpdateManyWithWhereWithoutUserInput = {
+export type ActivityCreateOrConnectWithoutOg_imageInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutOg_imageInput, Prisma.ActivityUncheckedCreateWithoutOg_imageInput>
+}
+
+export type ActivityCreateManyOg_imageInputEnvelope = {
+  data: Prisma.ActivityCreateManyOg_imageInput | Prisma.ActivityCreateManyOg_imageInput[]
+  skipDuplicates?: boolean
+}
+
+export type ActivityUpsertWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  update: Prisma.XOR<Prisma.ActivityUpdateWithoutFeatured_imageInput, Prisma.ActivityUncheckedUpdateWithoutFeatured_imageInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutFeatured_imageInput, Prisma.ActivityUncheckedCreateWithoutFeatured_imageInput>
+}
+
+export type ActivityUpdateWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  data: Prisma.XOR<Prisma.ActivityUpdateWithoutFeatured_imageInput, Prisma.ActivityUncheckedUpdateWithoutFeatured_imageInput>
+}
+
+export type ActivityUpdateManyWithWhereWithoutFeatured_imageInput = {
   where: Prisma.ActivityScalarWhereInput
-  data: Prisma.XOR<Prisma.ActivityUpdateManyMutationInput, Prisma.ActivityUncheckedUpdateManyWithoutUserInput>
+  data: Prisma.XOR<Prisma.ActivityUpdateManyMutationInput, Prisma.ActivityUncheckedUpdateManyWithoutFeatured_imageInput>
 }
 
 export type ActivityScalarWhereInput = {
@@ -1305,9 +1459,7 @@ export type ActivityScalarWhereInput = {
   slug?: Prisma.StringFilter<"Activity"> | string
   description?: Prisma.StringFilter<"Activity"> | string
   short_description?: Prisma.StringNullableFilter<"Activity"> | string | null
-  featured_image?: Prisma.StringNullableFilter<"Activity"> | string | null
-  image_alt?: Prisma.StringNullableFilter<"Activity"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Activity">
+  featured_image_id?: Prisma.StringNullableFilter<"Activity"> | string | null
   activity_type?: Prisma.StringFilter<"Activity"> | string
   location?: Prisma.StringNullableFilter<"Activity"> | string | null
   venue?: Prisma.StringNullableFilter<"Activity"> | string | null
@@ -1337,19 +1489,31 @@ export type ActivityScalarWhereInput = {
   meta_title?: Prisma.StringNullableFilter<"Activity"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Activity"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Activity"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Activity"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Activity"> | string | null
   userId?: Prisma.IntFilter<"Activity"> | number
 }
 
-export type ActivityCreateManyUserInput = {
-  activity_id?: number
+export type ActivityUpsertWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  update: Prisma.XOR<Prisma.ActivityUpdateWithoutOg_imageInput, Prisma.ActivityUncheckedUpdateWithoutOg_imageInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutOg_imageInput, Prisma.ActivityUncheckedCreateWithoutOg_imageInput>
+}
+
+export type ActivityUpdateWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  data: Prisma.XOR<Prisma.ActivityUpdateWithoutOg_imageInput, Prisma.ActivityUncheckedUpdateWithoutOg_imageInput>
+}
+
+export type ActivityUpdateManyWithWhereWithoutOg_imageInput = {
+  where: Prisma.ActivityScalarWhereInput
+  data: Prisma.XOR<Prisma.ActivityUpdateManyMutationInput, Prisma.ActivityUncheckedUpdateManyWithoutOg_imageInput>
+}
+
+export type ActivityCreateWithoutUserInput = {
   title: string
   slug: string
   description: string
   short_description?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
-  gallery?: Prisma.ActivityCreategalleryInput | string[]
   activity_type: string
   location?: string | null
   venue?: string | null
@@ -1379,17 +1543,177 @@ export type ActivityCreateManyUserInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityFeaturedImagesInput
+  gallery?: Prisma.ActivityGalleryCreateNestedManyWithoutActivityInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityOgImagesInput
 }
 
-export type ActivityUpdateWithoutUserInput = {
+export type ActivityUncheckedCreateWithoutUserInput = {
+  activity_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  gallery?: Prisma.ActivityGalleryUncheckedCreateNestedManyWithoutActivityInput
+}
+
+export type ActivityCreateOrConnectWithoutUserInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutUserInput, Prisma.ActivityUncheckedCreateWithoutUserInput>
+}
+
+export type ActivityCreateManyUserInputEnvelope = {
+  data: Prisma.ActivityCreateManyUserInput | Prisma.ActivityCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type ActivityUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  update: Prisma.XOR<Prisma.ActivityUpdateWithoutUserInput, Prisma.ActivityUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutUserInput, Prisma.ActivityUncheckedCreateWithoutUserInput>
+}
+
+export type ActivityUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  data: Prisma.XOR<Prisma.ActivityUpdateWithoutUserInput, Prisma.ActivityUncheckedUpdateWithoutUserInput>
+}
+
+export type ActivityUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.ActivityScalarWhereInput
+  data: Prisma.XOR<Prisma.ActivityUpdateManyMutationInput, Prisma.ActivityUncheckedUpdateManyWithoutUserInput>
+}
+
+export type ActivityCreateWithoutGalleryInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityFeaturedImagesInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutActivityOgImagesInput
+  user: Prisma.UserCreateNestedOneWithoutActivitiesInput
+}
+
+export type ActivityUncheckedCreateWithoutGalleryInput = {
+  activity_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  userId: number
+}
+
+export type ActivityCreateOrConnectWithoutGalleryInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutGalleryInput, Prisma.ActivityUncheckedCreateWithoutGalleryInput>
+}
+
+export type ActivityUpsertWithoutGalleryInput = {
+  update: Prisma.XOR<Prisma.ActivityUpdateWithoutGalleryInput, Prisma.ActivityUncheckedUpdateWithoutGalleryInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutGalleryInput, Prisma.ActivityUncheckedCreateWithoutGalleryInput>
+  where?: Prisma.ActivityWhereInput
+}
+
+export type ActivityUpdateToOneWithWhereWithoutGalleryInput = {
+  where?: Prisma.ActivityWhereInput
+  data: Prisma.XOR<Prisma.ActivityUpdateWithoutGalleryInput, Prisma.ActivityUncheckedUpdateWithoutGalleryInput>
+}
+
+export type ActivityUpdateWithoutGalleryInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ActivityUpdategalleryInput | string[]
   activity_type?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1419,7 +1743,441 @@ export type ActivityUpdateWithoutUserInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutActivityFeaturedImagesNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutActivityOgImagesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutActivitiesNestedInput
+}
+
+export type ActivityUncheckedUpdateWithoutGalleryInput = {
+  activity_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ActivityCreateManyFeatured_imageInput = {
+  activity_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  userId: number
+}
+
+export type ActivityCreateManyOg_imageInput = {
+  activity_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  userId: number
+}
+
+export type ActivityUpdateWithoutFeatured_imageInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gallery?: Prisma.ActivityGalleryUpdateManyWithoutActivityNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutActivityOgImagesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutActivitiesNestedInput
+}
+
+export type ActivityUncheckedUpdateWithoutFeatured_imageInput = {
+  activity_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutActivityNestedInput
+}
+
+export type ActivityUncheckedUpdateManyWithoutFeatured_imageInput = {
+  activity_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ActivityUpdateWithoutOg_imageInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutActivityFeaturedImagesNestedInput
+  gallery?: Prisma.ActivityGalleryUpdateManyWithoutActivityNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutActivitiesNestedInput
+}
+
+export type ActivityUncheckedUpdateWithoutOg_imageInput = {
+  activity_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutActivityNestedInput
+}
+
+export type ActivityUncheckedUpdateManyWithoutOg_imageInput = {
+  activity_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type ActivityCreateManyUserInput = {
+  activity_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  activity_type: string
+  location?: string | null
+  venue?: string | null
+  address?: string | null
+  city?: string | null
+  country?: string | null
+  activity_date: Date | string
+  end_date?: Date | string | null
+  timezone?: string | null
+  duration?: string | null
+  max_participants?: number | null
+  current_participants?: number
+  registration_url?: string | null
+  meeting_link?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: boolean
+  speakers?: Prisma.ActivityCreatespeakersInput | string[]
+  topics?: Prisma.ActivityCreatetopicsInput | string[]
+  target_audience?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_past?: boolean
+  recording_url?: string | null
+  slides_url?: string | null
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+}
+
+export type ActivityUpdateWithoutUserInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_type?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activity_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  end_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  timezone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  max_participants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  current_participants?: Prisma.IntFieldUpdateOperationsInput | number
+  registration_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meeting_link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  is_free?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  speakers?: Prisma.ActivityUpdatespeakersInput | string[]
+  topics?: Prisma.ActivityUpdatetopicsInput | string[]
+  target_audience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_past?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  recording_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slides_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutActivityFeaturedImagesNestedInput
+  gallery?: Prisma.ActivityGalleryUpdateManyWithoutActivityNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutActivityOgImagesNestedInput
 }
 
 export type ActivityUncheckedUpdateWithoutUserInput = {
@@ -1428,9 +2186,7 @@ export type ActivityUncheckedUpdateWithoutUserInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ActivityUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   activity_type?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1460,7 +2216,8 @@ export type ActivityUncheckedUpdateWithoutUserInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gallery?: Prisma.ActivityGalleryUncheckedUpdateManyWithoutActivityNestedInput
 }
 
 export type ActivityUncheckedUpdateManyWithoutUserInput = {
@@ -1469,9 +2226,7 @@ export type ActivityUncheckedUpdateManyWithoutUserInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.ActivityUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   activity_type?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   venue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1501,9 +2256,38 @@ export type ActivityUncheckedUpdateManyWithoutUserInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
+
+/**
+ * Count Type ActivityCountOutputType
+ */
+
+export type ActivityCountOutputType = {
+  gallery: number
+}
+
+export type ActivityCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  gallery?: boolean | ActivityCountOutputTypeCountGalleryArgs
+}
+
+/**
+ * ActivityCountOutputType without action
+ */
+export type ActivityCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ActivityCountOutputType
+   */
+  select?: Prisma.ActivityCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ActivityCountOutputType without action
+ */
+export type ActivityCountOutputTypeCountGalleryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ActivityGalleryWhereInput
+}
 
 
 export type ActivitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1512,9 +2296,7 @@ export type ActivitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   activity_type?: boolean
   location?: boolean
   venue?: boolean
@@ -1544,9 +2326,13 @@ export type ActivitySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   userId?: boolean
+  featured_image?: boolean | Prisma.Activity$featured_imageArgs<ExtArgs>
+  gallery?: boolean | Prisma.Activity$galleryArgs<ExtArgs>
+  og_image?: boolean | Prisma.Activity$og_imageArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.ActivityCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["activity"]>
 
 export type ActivitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1555,9 +2341,7 @@ export type ActivitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   activity_type?: boolean
   location?: boolean
   venue?: boolean
@@ -1587,8 +2371,10 @@ export type ActivitySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   userId?: boolean
+  featured_image?: boolean | Prisma.Activity$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Activity$og_imageArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["activity"]>
 
@@ -1598,9 +2384,7 @@ export type ActivitySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   activity_type?: boolean
   location?: boolean
   venue?: boolean
@@ -1630,8 +2414,10 @@ export type ActivitySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   userId?: boolean
+  featured_image?: boolean | Prisma.Activity$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Activity$og_imageArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["activity"]>
 
@@ -1641,9 +2427,7 @@ export type ActivitySelectScalar = {
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   activity_type?: boolean
   location?: boolean
   venue?: boolean
@@ -1673,24 +2457,35 @@ export type ActivitySelectScalar = {
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   userId?: boolean
 }
 
-export type ActivityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"activity_id" | "title" | "slug" | "description" | "short_description" | "featured_image" | "image_alt" | "gallery" | "activity_type" | "location" | "venue" | "address" | "city" | "country" | "activity_date" | "end_date" | "timezone" | "duration" | "max_participants" | "current_participants" | "registration_url" | "meeting_link" | "price" | "is_free" | "speakers" | "topics" | "target_audience" | "status" | "is_featured" | "is_past" | "recording_url" | "slides_url" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image" | "userId", ExtArgs["result"]["activity"]>
+export type ActivityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"activity_id" | "title" | "slug" | "description" | "short_description" | "featured_image_id" | "activity_type" | "location" | "venue" | "address" | "city" | "country" | "activity_date" | "end_date" | "timezone" | "duration" | "max_participants" | "current_participants" | "registration_url" | "meeting_link" | "price" | "is_free" | "speakers" | "topics" | "target_audience" | "status" | "is_featured" | "is_past" | "recording_url" | "slides_url" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image_id" | "userId", ExtArgs["result"]["activity"]>
 export type ActivityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Activity$featured_imageArgs<ExtArgs>
+  gallery?: boolean | Prisma.Activity$galleryArgs<ExtArgs>
+  og_image?: boolean | Prisma.Activity$og_imageArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.ActivityCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ActivityIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Activity$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Activity$og_imageArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ActivityIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Activity$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Activity$og_imageArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $ActivityPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Activity"
   objects: {
+    featured_image: Prisma.$GalleryItemPayload<ExtArgs> | null
+    gallery: Prisma.$ActivityGalleryPayload<ExtArgs>[]
+    og_image: Prisma.$GalleryItemPayload<ExtArgs> | null
     user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1699,9 +2494,7 @@ export type $ActivityPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     slug: string
     description: string
     short_description: string | null
-    featured_image: string | null
-    image_alt: string | null
-    gallery: string[]
+    featured_image_id: string | null
     activity_type: string
     location: string | null
     venue: string | null
@@ -1731,7 +2524,7 @@ export type $ActivityPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     meta_title: string | null
     meta_description: string | null
     meta_keywords: string | null
-    og_image: string | null
+    og_image_id: string | null
     userId: number
   }, ExtArgs["result"]["activity"]>
   composites: {}
@@ -2127,6 +2920,9 @@ readonly fields: ActivityFieldRefs;
  */
 export interface Prisma__ActivityClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  featured_image<T extends Prisma.Activity$featured_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Activity$featured_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  gallery<T extends Prisma.Activity$galleryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Activity$galleryArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityGalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  og_image<T extends Prisma.Activity$og_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Activity$og_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2162,9 +2958,7 @@ export interface ActivityFieldRefs {
   readonly slug: Prisma.FieldRef<"Activity", 'String'>
   readonly description: Prisma.FieldRef<"Activity", 'String'>
   readonly short_description: Prisma.FieldRef<"Activity", 'String'>
-  readonly featured_image: Prisma.FieldRef<"Activity", 'String'>
-  readonly image_alt: Prisma.FieldRef<"Activity", 'String'>
-  readonly gallery: Prisma.FieldRef<"Activity", 'String[]'>
+  readonly featured_image_id: Prisma.FieldRef<"Activity", 'String'>
   readonly activity_type: Prisma.FieldRef<"Activity", 'String'>
   readonly location: Prisma.FieldRef<"Activity", 'String'>
   readonly venue: Prisma.FieldRef<"Activity", 'String'>
@@ -2194,7 +2988,7 @@ export interface ActivityFieldRefs {
   readonly meta_title: Prisma.FieldRef<"Activity", 'String'>
   readonly meta_description: Prisma.FieldRef<"Activity", 'String'>
   readonly meta_keywords: Prisma.FieldRef<"Activity", 'String'>
-  readonly og_image: Prisma.FieldRef<"Activity", 'String'>
+  readonly og_image_id: Prisma.FieldRef<"Activity", 'String'>
   readonly userId: Prisma.FieldRef<"Activity", 'Int'>
 }
     
@@ -2589,6 +3383,68 @@ export type ActivityDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Limit how many Activities to delete.
    */
   limit?: number
+}
+
+/**
+ * Activity.featured_image
+ */
+export type Activity$featured_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
+ * Activity.gallery
+ */
+export type Activity$galleryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ActivityGallery
+   */
+  select?: Prisma.ActivityGallerySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ActivityGallery
+   */
+  omit?: Prisma.ActivityGalleryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ActivityGalleryInclude<ExtArgs> | null
+  where?: Prisma.ActivityGalleryWhereInput
+  orderBy?: Prisma.ActivityGalleryOrderByWithRelationInput | Prisma.ActivityGalleryOrderByWithRelationInput[]
+  cursor?: Prisma.ActivityGalleryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ActivityGalleryScalarFieldEnum | Prisma.ActivityGalleryScalarFieldEnum[]
+}
+
+/**
+ * Activity.og_image
+ */
+export type Activity$og_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
 }
 
 /**

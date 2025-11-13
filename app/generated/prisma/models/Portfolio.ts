@@ -50,10 +50,9 @@ export type PortfolioMinAggregateOutputType = {
   slug: string | null
   description: string | null
   short_description: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   client_name: string | null
-  client_logo: string | null
+  client_logo_id: string | null
   industry: string | null
   project_url: string | null
   case_study_url: string | null
@@ -70,7 +69,7 @@ export type PortfolioMinAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   serviceId: number | null
 }
 
@@ -80,10 +79,9 @@ export type PortfolioMaxAggregateOutputType = {
   slug: string | null
   description: string | null
   short_description: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   client_name: string | null
-  client_logo: string | null
+  client_logo_id: string | null
   industry: string | null
   project_url: string | null
   case_study_url: string | null
@@ -100,7 +98,7 @@ export type PortfolioMaxAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   serviceId: number | null
 }
 
@@ -110,11 +108,9 @@ export type PortfolioCountAggregateOutputType = {
   slug: number
   description: number
   short_description: number
-  featured_image: number
-  image_alt: number
-  gallery: number
+  featured_image_id: number
   client_name: number
-  client_logo: number
+  client_logo_id: number
   industry: number
   project_url: number
   case_study_url: number
@@ -132,7 +128,7 @@ export type PortfolioCountAggregateOutputType = {
   meta_title: number
   meta_description: number
   meta_keywords: number
-  og_image: number
+  og_image_id: number
   serviceId: number
   _all: number
 }
@@ -162,10 +158,9 @@ export type PortfolioMinAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   client_name?: true
-  client_logo?: true
+  client_logo_id?: true
   industry?: true
   project_url?: true
   case_study_url?: true
@@ -182,7 +177,7 @@ export type PortfolioMinAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   serviceId?: true
 }
 
@@ -192,10 +187,9 @@ export type PortfolioMaxAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   client_name?: true
-  client_logo?: true
+  client_logo_id?: true
   industry?: true
   project_url?: true
   case_study_url?: true
@@ -212,7 +206,7 @@ export type PortfolioMaxAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   serviceId?: true
 }
 
@@ -222,11 +216,9 @@ export type PortfolioCountAggregateInputType = {
   slug?: true
   description?: true
   short_description?: true
-  featured_image?: true
-  image_alt?: true
-  gallery?: true
+  featured_image_id?: true
   client_name?: true
-  client_logo?: true
+  client_logo_id?: true
   industry?: true
   project_url?: true
   case_study_url?: true
@@ -244,7 +236,7 @@ export type PortfolioCountAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   serviceId?: true
   _all?: true
 }
@@ -341,11 +333,9 @@ export type PortfolioGroupByOutputType = {
   slug: string
   description: string
   short_description: string | null
-  featured_image: string
-  image_alt: string | null
-  gallery: string[]
+  featured_image_id: string | null
   client_name: string | null
-  client_logo: string | null
+  client_logo_id: string | null
   industry: string | null
   project_url: string | null
   case_study_url: string | null
@@ -363,7 +353,7 @@ export type PortfolioGroupByOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   serviceId: number
   _count: PortfolioCountAggregateOutputType | null
   _avg: PortfolioAvgAggregateOutputType | null
@@ -396,11 +386,9 @@ export type PortfolioWhereInput = {
   slug?: Prisma.StringFilter<"Portfolio"> | string
   description?: Prisma.StringFilter<"Portfolio"> | string
   short_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  featured_image?: Prisma.StringFilter<"Portfolio"> | string
-  image_alt?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Portfolio">
+  featured_image_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   client_name?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  client_logo?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  client_logo_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   industry?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   project_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   case_study_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
@@ -418,8 +406,12 @@ export type PortfolioWhereInput = {
   meta_title?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   serviceId?: Prisma.IntFilter<"Portfolio"> | number
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  gallery?: Prisma.PortfolioGalleryListRelationFilter
+  client_logo?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
 }
 
@@ -429,11 +421,9 @@ export type PortfolioOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   client_name?: Prisma.SortOrderInput | Prisma.SortOrder
-  client_logo?: Prisma.SortOrderInput | Prisma.SortOrder
+  client_logo_id?: Prisma.SortOrderInput | Prisma.SortOrder
   industry?: Prisma.SortOrderInput | Prisma.SortOrder
   project_url?: Prisma.SortOrderInput | Prisma.SortOrder
   case_study_url?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -451,8 +441,12 @@ export type PortfolioOrderByWithRelationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  featured_image?: Prisma.GalleryItemOrderByWithRelationInput
+  gallery?: Prisma.PortfolioGalleryOrderByRelationAggregateInput
+  client_logo?: Prisma.GalleryItemOrderByWithRelationInput
+  og_image?: Prisma.GalleryItemOrderByWithRelationInput
   service?: Prisma.ServiceOrderByWithRelationInput
 }
 
@@ -465,11 +459,9 @@ export type PortfolioWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Portfolio"> | string
   description?: Prisma.StringFilter<"Portfolio"> | string
   short_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  featured_image?: Prisma.StringFilter<"Portfolio"> | string
-  image_alt?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Portfolio">
+  featured_image_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   client_name?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  client_logo?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  client_logo_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   industry?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   project_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   case_study_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
@@ -487,8 +479,12 @@ export type PortfolioWhereUniqueInput = Prisma.AtLeast<{
   meta_title?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
   serviceId?: Prisma.IntFilter<"Portfolio"> | number
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  gallery?: Prisma.PortfolioGalleryListRelationFilter
+  client_logo?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
 }, "portfolio_id" | "slug">
 
@@ -498,11 +494,9 @@ export type PortfolioOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   client_name?: Prisma.SortOrderInput | Prisma.SortOrder
-  client_logo?: Prisma.SortOrderInput | Prisma.SortOrder
+  client_logo_id?: Prisma.SortOrderInput | Prisma.SortOrder
   industry?: Prisma.SortOrderInput | Prisma.SortOrder
   project_url?: Prisma.SortOrderInput | Prisma.SortOrder
   case_study_url?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -520,7 +514,7 @@ export type PortfolioOrderByWithAggregationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceId?: Prisma.SortOrder
   _count?: Prisma.PortfolioCountOrderByAggregateInput
   _avg?: Prisma.PortfolioAvgOrderByAggregateInput
@@ -538,11 +532,9 @@ export type PortfolioScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"Portfolio"> | string
   description?: Prisma.StringWithAggregatesFilter<"Portfolio"> | string
   short_description?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
-  featured_image?: Prisma.StringWithAggregatesFilter<"Portfolio"> | string
-  image_alt?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Portfolio">
+  featured_image_id?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
   client_name?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
-  client_logo?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
+  client_logo_id?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
   industry?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
   project_url?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
   case_study_url?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
@@ -560,7 +552,7 @@ export type PortfolioScalarWhereWithAggregatesInput = {
   meta_title?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
   meta_description?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
   meta_keywords?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
-  og_image?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
+  og_image_id?: Prisma.StringNullableWithAggregatesFilter<"Portfolio"> | string | null
   serviceId?: Prisma.IntWithAggregatesFilter<"Portfolio"> | number
 }
 
@@ -569,11 +561,7 @@ export type PortfolioCreateInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.PortfolioCreategalleryInput | string[]
   client_name?: string | null
-  client_logo?: string | null
   industry?: string | null
   project_url?: string | null
   case_study_url?: string | null
@@ -591,7 +579,10 @@ export type PortfolioCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioFeaturedImagesInput
+  gallery?: Prisma.PortfolioGalleryCreateNestedManyWithoutPortfolioInput
+  client_logo?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioClientLogosInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioOgImagesInput
   service: Prisma.ServiceCreateNestedOneWithoutPortfolioInput
 }
 
@@ -601,11 +592,9 @@ export type PortfolioUncheckedCreateInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.PortfolioCreategalleryInput | string[]
+  featured_image_id?: string | null
   client_name?: string | null
-  client_logo?: string | null
+  client_logo_id?: string | null
   industry?: string | null
   project_url?: string | null
   case_study_url?: string | null
@@ -623,8 +612,9 @@ export type PortfolioUncheckedCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   serviceId: number
+  gallery?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutPortfolioInput
 }
 
 export type PortfolioUpdateInput = {
@@ -632,11 +622,7 @@ export type PortfolioUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.PortfolioUpdategalleryInput | string[]
   client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  client_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -654,7 +640,10 @@ export type PortfolioUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioFeaturedImagesNestedInput
+  gallery?: Prisma.PortfolioGalleryUpdateManyWithoutPortfolioNestedInput
+  client_logo?: Prisma.GalleryItemUpdateOneWithoutPortfolioClientLogosNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioOgImagesNestedInput
   service?: Prisma.ServiceUpdateOneRequiredWithoutPortfolioNestedInput
 }
 
@@ -664,11 +653,9 @@ export type PortfolioUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.PortfolioUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  client_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -686,8 +673,9 @@ export type PortfolioUncheckedUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutPortfolioNestedInput
 }
 
 export type PortfolioCreateManyInput = {
@@ -696,11 +684,9 @@ export type PortfolioCreateManyInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.PortfolioCreategalleryInput | string[]
+  featured_image_id?: string | null
   client_name?: string | null
-  client_logo?: string | null
+  client_logo_id?: string | null
   industry?: string | null
   project_url?: string | null
   case_study_url?: string | null
@@ -718,7 +704,7 @@ export type PortfolioCreateManyInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   serviceId: number
 }
 
@@ -727,11 +713,7 @@ export type PortfolioUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.PortfolioUpdategalleryInput | string[]
   client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  client_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -749,7 +731,6 @@ export type PortfolioUpdateManyMutationInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type PortfolioUncheckedUpdateManyInput = {
@@ -758,11 +739,9 @@ export type PortfolioUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.PortfolioUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  client_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -780,8 +759,23 @@ export type PortfolioUncheckedUpdateManyInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type PortfolioListRelationFilter = {
+  every?: Prisma.PortfolioWhereInput
+  some?: Prisma.PortfolioWhereInput
+  none?: Prisma.PortfolioWhereInput
+}
+
+export type PortfolioOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type PortfolioScalarRelationFilter = {
+  is?: Prisma.PortfolioWhereInput
+  isNot?: Prisma.PortfolioWhereInput
 }
 
 export type PortfolioCountOrderByAggregateInput = {
@@ -790,11 +784,9 @@ export type PortfolioCountOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
-  gallery?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   client_name?: Prisma.SortOrder
-  client_logo?: Prisma.SortOrder
+  client_logo_id?: Prisma.SortOrder
   industry?: Prisma.SortOrder
   project_url?: Prisma.SortOrder
   case_study_url?: Prisma.SortOrder
@@ -812,7 +804,7 @@ export type PortfolioCountOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
 }
 
@@ -831,10 +823,9 @@ export type PortfolioMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   client_name?: Prisma.SortOrder
-  client_logo?: Prisma.SortOrder
+  client_logo_id?: Prisma.SortOrder
   industry?: Prisma.SortOrder
   project_url?: Prisma.SortOrder
   case_study_url?: Prisma.SortOrder
@@ -851,7 +842,7 @@ export type PortfolioMaxOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
 }
 
@@ -861,10 +852,9 @@ export type PortfolioMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   client_name?: Prisma.SortOrder
-  client_logo?: Prisma.SortOrder
+  client_logo_id?: Prisma.SortOrder
   industry?: Prisma.SortOrder
   project_url?: Prisma.SortOrder
   case_study_url?: Prisma.SortOrder
@@ -881,7 +871,7 @@ export type PortfolioMinOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
 }
 
@@ -894,27 +884,148 @@ export type PortfolioSumOrderByAggregateInput = {
   serviceId?: Prisma.SortOrder
 }
 
-export type PortfolioListRelationFilter = {
-  every?: Prisma.PortfolioWhereInput
-  some?: Prisma.PortfolioWhereInput
-  none?: Prisma.PortfolioWhereInput
+export type PortfolioCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput> | Prisma.PortfolioCreateWithoutFeatured_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput | Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
 }
 
-export type PortfolioOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type PortfolioCreateNestedManyWithoutClient_logoInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutClient_logoInput, Prisma.PortfolioUncheckedCreateWithoutClient_logoInput> | Prisma.PortfolioCreateWithoutClient_logoInput[] | Prisma.PortfolioUncheckedCreateWithoutClient_logoInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutClient_logoInput | Prisma.PortfolioCreateOrConnectWithoutClient_logoInput[]
+  createMany?: Prisma.PortfolioCreateManyClient_logoInputEnvelope
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
 }
 
-export type PortfolioCreategalleryInput = {
-  set: string[]
+export type PortfolioCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutOg_imageInput, Prisma.PortfolioUncheckedCreateWithoutOg_imageInput> | Prisma.PortfolioCreateWithoutOg_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutOg_imageInput | Prisma.PortfolioCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyOg_imageInputEnvelope
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+}
+
+export type PortfolioUncheckedCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput> | Prisma.PortfolioCreateWithoutFeatured_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput | Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+}
+
+export type PortfolioUncheckedCreateNestedManyWithoutClient_logoInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutClient_logoInput, Prisma.PortfolioUncheckedCreateWithoutClient_logoInput> | Prisma.PortfolioCreateWithoutClient_logoInput[] | Prisma.PortfolioUncheckedCreateWithoutClient_logoInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutClient_logoInput | Prisma.PortfolioCreateOrConnectWithoutClient_logoInput[]
+  createMany?: Prisma.PortfolioCreateManyClient_logoInputEnvelope
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+}
+
+export type PortfolioUncheckedCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutOg_imageInput, Prisma.PortfolioUncheckedCreateWithoutOg_imageInput> | Prisma.PortfolioCreateWithoutOg_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutOg_imageInput | Prisma.PortfolioCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyOg_imageInputEnvelope
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+}
+
+export type PortfolioUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput> | Prisma.PortfolioCreateWithoutFeatured_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput | Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.PortfolioUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.PortfolioUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  disconnect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  delete?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  update?: Prisma.PortfolioUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.PortfolioUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.PortfolioUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.PortfolioUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+}
+
+export type PortfolioUpdateManyWithoutClient_logoNestedInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutClient_logoInput, Prisma.PortfolioUncheckedCreateWithoutClient_logoInput> | Prisma.PortfolioCreateWithoutClient_logoInput[] | Prisma.PortfolioUncheckedCreateWithoutClient_logoInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutClient_logoInput | Prisma.PortfolioCreateOrConnectWithoutClient_logoInput[]
+  upsert?: Prisma.PortfolioUpsertWithWhereUniqueWithoutClient_logoInput | Prisma.PortfolioUpsertWithWhereUniqueWithoutClient_logoInput[]
+  createMany?: Prisma.PortfolioCreateManyClient_logoInputEnvelope
+  set?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  disconnect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  delete?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  update?: Prisma.PortfolioUpdateWithWhereUniqueWithoutClient_logoInput | Prisma.PortfolioUpdateWithWhereUniqueWithoutClient_logoInput[]
+  updateMany?: Prisma.PortfolioUpdateManyWithWhereWithoutClient_logoInput | Prisma.PortfolioUpdateManyWithWhereWithoutClient_logoInput[]
+  deleteMany?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+}
+
+export type PortfolioUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutOg_imageInput, Prisma.PortfolioUncheckedCreateWithoutOg_imageInput> | Prisma.PortfolioCreateWithoutOg_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutOg_imageInput | Prisma.PortfolioCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.PortfolioUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.PortfolioUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyOg_imageInputEnvelope
+  set?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  disconnect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  delete?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  update?: Prisma.PortfolioUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.PortfolioUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.PortfolioUpdateManyWithWhereWithoutOg_imageInput | Prisma.PortfolioUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+}
+
+export type PortfolioUncheckedUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput> | Prisma.PortfolioCreateWithoutFeatured_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput | Prisma.PortfolioCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.PortfolioUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.PortfolioUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  disconnect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  delete?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  update?: Prisma.PortfolioUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.PortfolioUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.PortfolioUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.PortfolioUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+}
+
+export type PortfolioUncheckedUpdateManyWithoutClient_logoNestedInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutClient_logoInput, Prisma.PortfolioUncheckedCreateWithoutClient_logoInput> | Prisma.PortfolioCreateWithoutClient_logoInput[] | Prisma.PortfolioUncheckedCreateWithoutClient_logoInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutClient_logoInput | Prisma.PortfolioCreateOrConnectWithoutClient_logoInput[]
+  upsert?: Prisma.PortfolioUpsertWithWhereUniqueWithoutClient_logoInput | Prisma.PortfolioUpsertWithWhereUniqueWithoutClient_logoInput[]
+  createMany?: Prisma.PortfolioCreateManyClient_logoInputEnvelope
+  set?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  disconnect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  delete?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  update?: Prisma.PortfolioUpdateWithWhereUniqueWithoutClient_logoInput | Prisma.PortfolioUpdateWithWhereUniqueWithoutClient_logoInput[]
+  updateMany?: Prisma.PortfolioUpdateManyWithWhereWithoutClient_logoInput | Prisma.PortfolioUpdateManyWithWhereWithoutClient_logoInput[]
+  deleteMany?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+}
+
+export type PortfolioUncheckedUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutOg_imageInput, Prisma.PortfolioUncheckedCreateWithoutOg_imageInput> | Prisma.PortfolioCreateWithoutOg_imageInput[] | Prisma.PortfolioUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutOg_imageInput | Prisma.PortfolioCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.PortfolioUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.PortfolioUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.PortfolioCreateManyOg_imageInputEnvelope
+  set?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  disconnect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  delete?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  connect?: Prisma.PortfolioWhereUniqueInput | Prisma.PortfolioWhereUniqueInput[]
+  update?: Prisma.PortfolioUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.PortfolioUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.PortfolioUpdateManyWithWhereWithoutOg_imageInput | Prisma.PortfolioUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+}
+
+export type PortfolioCreateNestedOneWithoutGalleryInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutGalleryInput, Prisma.PortfolioUncheckedCreateWithoutGalleryInput>
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutGalleryInput
+  connect?: Prisma.PortfolioWhereUniqueInput
+}
+
+export type PortfolioUpdateOneRequiredWithoutGalleryNestedInput = {
+  create?: Prisma.XOR<Prisma.PortfolioCreateWithoutGalleryInput, Prisma.PortfolioUncheckedCreateWithoutGalleryInput>
+  connectOrCreate?: Prisma.PortfolioCreateOrConnectWithoutGalleryInput
+  upsert?: Prisma.PortfolioUpsertWithoutGalleryInput
+  connect?: Prisma.PortfolioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PortfolioUpdateToOneWithWhereWithoutGalleryInput, Prisma.PortfolioUpdateWithoutGalleryInput>, Prisma.PortfolioUncheckedUpdateWithoutGalleryInput>
 }
 
 export type PortfolioCreatetechnologiesInput = {
   set: string[]
-}
-
-export type PortfolioUpdategalleryInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type PortfolioUpdatetechnologiesInput = {
@@ -964,16 +1075,12 @@ export type PortfolioUncheckedUpdateManyWithoutServiceNestedInput = {
   deleteMany?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
 }
 
-export type PortfolioCreateWithoutServiceInput = {
+export type PortfolioCreateWithoutFeatured_imageInput = {
   title: string
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.PortfolioCreategalleryInput | string[]
   client_name?: string | null
-  client_logo?: string | null
   industry?: string | null
   project_url?: string | null
   case_study_url?: string | null
@@ -991,7 +1098,432 @@ export type PortfolioCreateWithoutServiceInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  gallery?: Prisma.PortfolioGalleryCreateNestedManyWithoutPortfolioInput
+  client_logo?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioClientLogosInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioOgImagesInput
+  service: Prisma.ServiceCreateNestedOneWithoutPortfolioInput
+}
+
+export type PortfolioUncheckedCreateWithoutFeatured_imageInput = {
+  portfolio_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  client_name?: string | null
+  client_logo_id?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  serviceId: number
+  gallery?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutPortfolioInput
+}
+
+export type PortfolioCreateOrConnectWithoutFeatured_imageInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput>
+}
+
+export type PortfolioCreateManyFeatured_imageInputEnvelope = {
+  data: Prisma.PortfolioCreateManyFeatured_imageInput | Prisma.PortfolioCreateManyFeatured_imageInput[]
+  skipDuplicates?: boolean
+}
+
+export type PortfolioCreateWithoutClient_logoInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  client_name?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioFeaturedImagesInput
+  gallery?: Prisma.PortfolioGalleryCreateNestedManyWithoutPortfolioInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioOgImagesInput
+  service: Prisma.ServiceCreateNestedOneWithoutPortfolioInput
+}
+
+export type PortfolioUncheckedCreateWithoutClient_logoInput = {
+  portfolio_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  client_name?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  serviceId: number
+  gallery?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutPortfolioInput
+}
+
+export type PortfolioCreateOrConnectWithoutClient_logoInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutClient_logoInput, Prisma.PortfolioUncheckedCreateWithoutClient_logoInput>
+}
+
+export type PortfolioCreateManyClient_logoInputEnvelope = {
+  data: Prisma.PortfolioCreateManyClient_logoInput | Prisma.PortfolioCreateManyClient_logoInput[]
+  skipDuplicates?: boolean
+}
+
+export type PortfolioCreateWithoutOg_imageInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  client_name?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioFeaturedImagesInput
+  gallery?: Prisma.PortfolioGalleryCreateNestedManyWithoutPortfolioInput
+  client_logo?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioClientLogosInput
+  service: Prisma.ServiceCreateNestedOneWithoutPortfolioInput
+}
+
+export type PortfolioUncheckedCreateWithoutOg_imageInput = {
+  portfolio_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  client_name?: string | null
+  client_logo_id?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  serviceId: number
+  gallery?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutPortfolioInput
+}
+
+export type PortfolioCreateOrConnectWithoutOg_imageInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutOg_imageInput, Prisma.PortfolioUncheckedCreateWithoutOg_imageInput>
+}
+
+export type PortfolioCreateManyOg_imageInputEnvelope = {
+  data: Prisma.PortfolioCreateManyOg_imageInput | Prisma.PortfolioCreateManyOg_imageInput[]
+  skipDuplicates?: boolean
+}
+
+export type PortfolioUpsertWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  update: Prisma.XOR<Prisma.PortfolioUpdateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedUpdateWithoutFeatured_imageInput>
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedCreateWithoutFeatured_imageInput>
+}
+
+export type PortfolioUpdateWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  data: Prisma.XOR<Prisma.PortfolioUpdateWithoutFeatured_imageInput, Prisma.PortfolioUncheckedUpdateWithoutFeatured_imageInput>
+}
+
+export type PortfolioUpdateManyWithWhereWithoutFeatured_imageInput = {
+  where: Prisma.PortfolioScalarWhereInput
+  data: Prisma.XOR<Prisma.PortfolioUpdateManyMutationInput, Prisma.PortfolioUncheckedUpdateManyWithoutFeatured_imageInput>
+}
+
+export type PortfolioScalarWhereInput = {
+  AND?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+  OR?: Prisma.PortfolioScalarWhereInput[]
+  NOT?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
+  portfolio_id?: Prisma.IntFilter<"Portfolio"> | number
+  title?: Prisma.StringFilter<"Portfolio"> | string
+  slug?: Prisma.StringFilter<"Portfolio"> | string
+  description?: Prisma.StringFilter<"Portfolio"> | string
+  short_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  featured_image_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  client_name?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  client_logo_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  industry?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  project_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  case_study_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  technologies?: Prisma.StringNullableListFilter<"Portfolio">
+  year_completed?: Prisma.IntNullableFilter<"Portfolio"> | number | null
+  team_size?: Prisma.IntNullableFilter<"Portfolio"> | number | null
+  duration?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  results?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  status?: Prisma.EnumStatusFilter<"Portfolio"> | $Enums.Status
+  is_featured?: Prisma.BoolFilter<"Portfolio"> | boolean
+  display_order?: Prisma.IntFilter<"Portfolio"> | number
+  view_count?: Prisma.IntFilter<"Portfolio"> | number
+  created_at?: Prisma.DateTimeFilter<"Portfolio"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Portfolio"> | Date | string
+  meta_title?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  meta_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  meta_keywords?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Portfolio"> | string | null
+  serviceId?: Prisma.IntFilter<"Portfolio"> | number
+}
+
+export type PortfolioUpsertWithWhereUniqueWithoutClient_logoInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  update: Prisma.XOR<Prisma.PortfolioUpdateWithoutClient_logoInput, Prisma.PortfolioUncheckedUpdateWithoutClient_logoInput>
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutClient_logoInput, Prisma.PortfolioUncheckedCreateWithoutClient_logoInput>
+}
+
+export type PortfolioUpdateWithWhereUniqueWithoutClient_logoInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  data: Prisma.XOR<Prisma.PortfolioUpdateWithoutClient_logoInput, Prisma.PortfolioUncheckedUpdateWithoutClient_logoInput>
+}
+
+export type PortfolioUpdateManyWithWhereWithoutClient_logoInput = {
+  where: Prisma.PortfolioScalarWhereInput
+  data: Prisma.XOR<Prisma.PortfolioUpdateManyMutationInput, Prisma.PortfolioUncheckedUpdateManyWithoutClient_logoInput>
+}
+
+export type PortfolioUpsertWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  update: Prisma.XOR<Prisma.PortfolioUpdateWithoutOg_imageInput, Prisma.PortfolioUncheckedUpdateWithoutOg_imageInput>
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutOg_imageInput, Prisma.PortfolioUncheckedCreateWithoutOg_imageInput>
+}
+
+export type PortfolioUpdateWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  data: Prisma.XOR<Prisma.PortfolioUpdateWithoutOg_imageInput, Prisma.PortfolioUncheckedUpdateWithoutOg_imageInput>
+}
+
+export type PortfolioUpdateManyWithWhereWithoutOg_imageInput = {
+  where: Prisma.PortfolioScalarWhereInput
+  data: Prisma.XOR<Prisma.PortfolioUpdateManyMutationInput, Prisma.PortfolioUncheckedUpdateManyWithoutOg_imageInput>
+}
+
+export type PortfolioCreateWithoutGalleryInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  client_name?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioFeaturedImagesInput
+  client_logo?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioClientLogosInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioOgImagesInput
+  service: Prisma.ServiceCreateNestedOneWithoutPortfolioInput
+}
+
+export type PortfolioUncheckedCreateWithoutGalleryInput = {
+  portfolio_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  client_name?: string | null
+  client_logo_id?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  serviceId: number
+}
+
+export type PortfolioCreateOrConnectWithoutGalleryInput = {
+  where: Prisma.PortfolioWhereUniqueInput
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutGalleryInput, Prisma.PortfolioUncheckedCreateWithoutGalleryInput>
+}
+
+export type PortfolioUpsertWithoutGalleryInput = {
+  update: Prisma.XOR<Prisma.PortfolioUpdateWithoutGalleryInput, Prisma.PortfolioUncheckedUpdateWithoutGalleryInput>
+  create: Prisma.XOR<Prisma.PortfolioCreateWithoutGalleryInput, Prisma.PortfolioUncheckedCreateWithoutGalleryInput>
+  where?: Prisma.PortfolioWhereInput
+}
+
+export type PortfolioUpdateToOneWithWhereWithoutGalleryInput = {
+  where?: Prisma.PortfolioWhereInput
+  data: Prisma.XOR<Prisma.PortfolioUpdateWithoutGalleryInput, Prisma.PortfolioUncheckedUpdateWithoutGalleryInput>
+}
+
+export type PortfolioUpdateWithoutGalleryInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioFeaturedImagesNestedInput
+  client_logo?: Prisma.GalleryItemUpdateOneWithoutPortfolioClientLogosNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioOgImagesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutPortfolioNestedInput
+}
+
+export type PortfolioUncheckedUpdateWithoutGalleryInput = {
+  portfolio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type PortfolioCreateWithoutServiceInput = {
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  client_name?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioFeaturedImagesInput
+  gallery?: Prisma.PortfolioGalleryCreateNestedManyWithoutPortfolioInput
+  client_logo?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioClientLogosInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutPortfolioOgImagesInput
 }
 
 export type PortfolioUncheckedCreateWithoutServiceInput = {
@@ -1000,11 +1532,9 @@ export type PortfolioUncheckedCreateWithoutServiceInput = {
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.PortfolioCreategalleryInput | string[]
+  featured_image_id?: string | null
   client_name?: string | null
-  client_logo?: string | null
+  client_logo_id?: string | null
   industry?: string | null
   project_url?: string | null
   case_study_url?: string | null
@@ -1022,7 +1552,8 @@ export type PortfolioUncheckedCreateWithoutServiceInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
+  gallery?: Prisma.PortfolioGalleryUncheckedCreateNestedManyWithoutPortfolioInput
 }
 
 export type PortfolioCreateOrConnectWithoutServiceInput = {
@@ -1051,52 +1582,14 @@ export type PortfolioUpdateManyWithWhereWithoutServiceInput = {
   data: Prisma.XOR<Prisma.PortfolioUpdateManyMutationInput, Prisma.PortfolioUncheckedUpdateManyWithoutServiceInput>
 }
 
-export type PortfolioScalarWhereInput = {
-  AND?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
-  OR?: Prisma.PortfolioScalarWhereInput[]
-  NOT?: Prisma.PortfolioScalarWhereInput | Prisma.PortfolioScalarWhereInput[]
-  portfolio_id?: Prisma.IntFilter<"Portfolio"> | number
-  title?: Prisma.StringFilter<"Portfolio"> | string
-  slug?: Prisma.StringFilter<"Portfolio"> | string
-  description?: Prisma.StringFilter<"Portfolio"> | string
-  short_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  featured_image?: Prisma.StringFilter<"Portfolio"> | string
-  image_alt?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  gallery?: Prisma.StringNullableListFilter<"Portfolio">
-  client_name?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  client_logo?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  industry?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  project_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  case_study_url?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  technologies?: Prisma.StringNullableListFilter<"Portfolio">
-  year_completed?: Prisma.IntNullableFilter<"Portfolio"> | number | null
-  team_size?: Prisma.IntNullableFilter<"Portfolio"> | number | null
-  duration?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  results?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  status?: Prisma.EnumStatusFilter<"Portfolio"> | $Enums.Status
-  is_featured?: Prisma.BoolFilter<"Portfolio"> | boolean
-  display_order?: Prisma.IntFilter<"Portfolio"> | number
-  view_count?: Prisma.IntFilter<"Portfolio"> | number
-  created_at?: Prisma.DateTimeFilter<"Portfolio"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Portfolio"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  meta_keywords?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Portfolio"> | string | null
-  serviceId?: Prisma.IntFilter<"Portfolio"> | number
-}
-
-export type PortfolioCreateManyServiceInput = {
+export type PortfolioCreateManyFeatured_imageInput = {
   portfolio_id?: number
   title: string
   slug: string
   description: string
   short_description?: string | null
-  featured_image: string
-  image_alt?: string | null
-  gallery?: Prisma.PortfolioCreategalleryInput | string[]
   client_name?: string | null
-  client_logo?: string | null
+  client_logo_id?: string | null
   industry?: string | null
   project_url?: string | null
   case_study_url?: string | null
@@ -1114,19 +1607,74 @@ export type PortfolioCreateManyServiceInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
+  serviceId: number
 }
 
-export type PortfolioUpdateWithoutServiceInput = {
+export type PortfolioCreateManyClient_logoInput = {
+  portfolio_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  client_name?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  serviceId: number
+}
+
+export type PortfolioCreateManyOg_imageInput = {
+  portfolio_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  client_name?: string | null
+  client_logo_id?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  serviceId: number
+}
+
+export type PortfolioUpdateWithoutFeatured_imageInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.PortfolioUpdategalleryInput | string[]
   client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  client_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1144,7 +1692,303 @@ export type PortfolioUpdateWithoutServiceInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gallery?: Prisma.PortfolioGalleryUpdateManyWithoutPortfolioNestedInput
+  client_logo?: Prisma.GalleryItemUpdateOneWithoutPortfolioClientLogosNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioOgImagesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutPortfolioNestedInput
+}
+
+export type PortfolioUncheckedUpdateWithoutFeatured_imageInput = {
+  portfolio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutPortfolioNestedInput
+}
+
+export type PortfolioUncheckedUpdateManyWithoutFeatured_imageInput = {
+  portfolio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type PortfolioUpdateWithoutClient_logoInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioFeaturedImagesNestedInput
+  gallery?: Prisma.PortfolioGalleryUpdateManyWithoutPortfolioNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioOgImagesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutPortfolioNestedInput
+}
+
+export type PortfolioUncheckedUpdateWithoutClient_logoInput = {
+  portfolio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutPortfolioNestedInput
+}
+
+export type PortfolioUncheckedUpdateManyWithoutClient_logoInput = {
+  portfolio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type PortfolioUpdateWithoutOg_imageInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioFeaturedImagesNestedInput
+  gallery?: Prisma.PortfolioGalleryUpdateManyWithoutPortfolioNestedInput
+  client_logo?: Prisma.GalleryItemUpdateOneWithoutPortfolioClientLogosNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutPortfolioNestedInput
+}
+
+export type PortfolioUncheckedUpdateWithoutOg_imageInput = {
+  portfolio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  gallery?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutPortfolioNestedInput
+}
+
+export type PortfolioUncheckedUpdateManyWithoutOg_imageInput = {
+  portfolio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type PortfolioCreateManyServiceInput = {
+  portfolio_id?: number
+  title: string
+  slug: string
+  description: string
+  short_description?: string | null
+  featured_image_id?: string | null
+  client_name?: string | null
+  client_logo_id?: string | null
+  industry?: string | null
+  project_url?: string | null
+  case_study_url?: string | null
+  technologies?: Prisma.PortfolioCreatetechnologiesInput | string[]
+  year_completed?: number | null
+  team_size?: number | null
+  duration?: string | null
+  results?: string | null
+  status?: $Enums.Status
+  is_featured?: boolean
+  display_order?: number
+  view_count?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+}
+
+export type PortfolioUpdateWithoutServiceInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  technologies?: Prisma.PortfolioUpdatetechnologiesInput | string[]
+  year_completed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  team_size?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  results?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  view_count?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioFeaturedImagesNestedInput
+  gallery?: Prisma.PortfolioGalleryUpdateManyWithoutPortfolioNestedInput
+  client_logo?: Prisma.GalleryItemUpdateOneWithoutPortfolioClientLogosNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutPortfolioOgImagesNestedInput
 }
 
 export type PortfolioUncheckedUpdateWithoutServiceInput = {
@@ -1153,11 +1997,9 @@ export type PortfolioUncheckedUpdateWithoutServiceInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.PortfolioUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  client_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1175,7 +2017,8 @@ export type PortfolioUncheckedUpdateWithoutServiceInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gallery?: Prisma.PortfolioGalleryUncheckedUpdateManyWithoutPortfolioNestedInput
 }
 
 export type PortfolioUncheckedUpdateManyWithoutServiceInput = {
@@ -1184,11 +2027,9 @@ export type PortfolioUncheckedUpdateManyWithoutServiceInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.StringFieldUpdateOperationsInput | string
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  gallery?: Prisma.PortfolioUpdategalleryInput | string[]
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  client_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_logo_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   project_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   case_study_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1206,9 +2047,38 @@ export type PortfolioUncheckedUpdateManyWithoutServiceInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
+
+/**
+ * Count Type PortfolioCountOutputType
+ */
+
+export type PortfolioCountOutputType = {
+  gallery: number
+}
+
+export type PortfolioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  gallery?: boolean | PortfolioCountOutputTypeCountGalleryArgs
+}
+
+/**
+ * PortfolioCountOutputType without action
+ */
+export type PortfolioCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PortfolioCountOutputType
+   */
+  select?: Prisma.PortfolioCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PortfolioCountOutputType without action
+ */
+export type PortfolioCountOutputTypeCountGalleryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PortfolioGalleryWhereInput
+}
 
 
 export type PortfolioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1217,11 +2087,9 @@ export type PortfolioSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   client_name?: boolean
-  client_logo?: boolean
+  client_logo_id?: boolean
   industry?: boolean
   project_url?: boolean
   case_study_url?: boolean
@@ -1239,9 +2107,14 @@ export type PortfolioSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
+  featured_image?: boolean | Prisma.Portfolio$featured_imageArgs<ExtArgs>
+  gallery?: boolean | Prisma.Portfolio$galleryArgs<ExtArgs>
+  client_logo?: boolean | Prisma.Portfolio$client_logoArgs<ExtArgs>
+  og_image?: boolean | Prisma.Portfolio$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.PortfolioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["portfolio"]>
 
 export type PortfolioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1250,11 +2123,9 @@ export type PortfolioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   client_name?: boolean
-  client_logo?: boolean
+  client_logo_id?: boolean
   industry?: boolean
   project_url?: boolean
   case_study_url?: boolean
@@ -1272,8 +2143,11 @@ export type PortfolioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
+  featured_image?: boolean | Prisma.Portfolio$featured_imageArgs<ExtArgs>
+  client_logo?: boolean | Prisma.Portfolio$client_logoArgs<ExtArgs>
+  og_image?: boolean | Prisma.Portfolio$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["portfolio"]>
 
@@ -1283,11 +2157,9 @@ export type PortfolioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   client_name?: boolean
-  client_logo?: boolean
+  client_logo_id?: boolean
   industry?: boolean
   project_url?: boolean
   case_study_url?: boolean
@@ -1305,8 +2177,11 @@ export type PortfolioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
+  featured_image?: boolean | Prisma.Portfolio$featured_imageArgs<ExtArgs>
+  client_logo?: boolean | Prisma.Portfolio$client_logoArgs<ExtArgs>
+  og_image?: boolean | Prisma.Portfolio$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["portfolio"]>
 
@@ -1316,11 +2191,9 @@ export type PortfolioSelectScalar = {
   slug?: boolean
   description?: boolean
   short_description?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
-  gallery?: boolean
+  featured_image_id?: boolean
   client_name?: boolean
-  client_logo?: boolean
+  client_logo_id?: boolean
   industry?: boolean
   project_url?: boolean
   case_study_url?: boolean
@@ -1338,24 +2211,39 @@ export type PortfolioSelectScalar = {
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   serviceId?: boolean
 }
 
-export type PortfolioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"portfolio_id" | "title" | "slug" | "description" | "short_description" | "featured_image" | "image_alt" | "gallery" | "client_name" | "client_logo" | "industry" | "project_url" | "case_study_url" | "technologies" | "year_completed" | "team_size" | "duration" | "results" | "status" | "is_featured" | "display_order" | "view_count" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image" | "serviceId", ExtArgs["result"]["portfolio"]>
+export type PortfolioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"portfolio_id" | "title" | "slug" | "description" | "short_description" | "featured_image_id" | "client_name" | "client_logo_id" | "industry" | "project_url" | "case_study_url" | "technologies" | "year_completed" | "team_size" | "duration" | "results" | "status" | "is_featured" | "display_order" | "view_count" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image_id" | "serviceId", ExtArgs["result"]["portfolio"]>
 export type PortfolioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Portfolio$featured_imageArgs<ExtArgs>
+  gallery?: boolean | Prisma.Portfolio$galleryArgs<ExtArgs>
+  client_logo?: boolean | Prisma.Portfolio$client_logoArgs<ExtArgs>
+  og_image?: boolean | Prisma.Portfolio$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.PortfolioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PortfolioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Portfolio$featured_imageArgs<ExtArgs>
+  client_logo?: boolean | Prisma.Portfolio$client_logoArgs<ExtArgs>
+  og_image?: boolean | Prisma.Portfolio$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }
 export type PortfolioIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Portfolio$featured_imageArgs<ExtArgs>
+  client_logo?: boolean | Prisma.Portfolio$client_logoArgs<ExtArgs>
+  og_image?: boolean | Prisma.Portfolio$og_imageArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
 }
 
 export type $PortfolioPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Portfolio"
   objects: {
+    featured_image: Prisma.$GalleryItemPayload<ExtArgs> | null
+    gallery: Prisma.$PortfolioGalleryPayload<ExtArgs>[]
+    client_logo: Prisma.$GalleryItemPayload<ExtArgs> | null
+    og_image: Prisma.$GalleryItemPayload<ExtArgs> | null
     service: Prisma.$ServicePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1364,11 +2252,9 @@ export type $PortfolioPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     slug: string
     description: string
     short_description: string | null
-    featured_image: string
-    image_alt: string | null
-    gallery: string[]
+    featured_image_id: string | null
     client_name: string | null
-    client_logo: string | null
+    client_logo_id: string | null
     industry: string | null
     project_url: string | null
     case_study_url: string | null
@@ -1386,7 +2272,7 @@ export type $PortfolioPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     meta_title: string | null
     meta_description: string | null
     meta_keywords: string | null
-    og_image: string | null
+    og_image_id: string | null
     serviceId: number
   }, ExtArgs["result"]["portfolio"]>
   composites: {}
@@ -1782,6 +2668,10 @@ readonly fields: PortfolioFieldRefs;
  */
 export interface Prisma__PortfolioClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  featured_image<T extends Prisma.Portfolio$featured_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Portfolio$featured_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  gallery<T extends Prisma.Portfolio$galleryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Portfolio$galleryArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioGalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  client_logo<T extends Prisma.Portfolio$client_logoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Portfolio$client_logoArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  og_image<T extends Prisma.Portfolio$og_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Portfolio$og_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   service<T extends Prisma.ServiceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1817,11 +2707,9 @@ export interface PortfolioFieldRefs {
   readonly slug: Prisma.FieldRef<"Portfolio", 'String'>
   readonly description: Prisma.FieldRef<"Portfolio", 'String'>
   readonly short_description: Prisma.FieldRef<"Portfolio", 'String'>
-  readonly featured_image: Prisma.FieldRef<"Portfolio", 'String'>
-  readonly image_alt: Prisma.FieldRef<"Portfolio", 'String'>
-  readonly gallery: Prisma.FieldRef<"Portfolio", 'String[]'>
+  readonly featured_image_id: Prisma.FieldRef<"Portfolio", 'String'>
   readonly client_name: Prisma.FieldRef<"Portfolio", 'String'>
-  readonly client_logo: Prisma.FieldRef<"Portfolio", 'String'>
+  readonly client_logo_id: Prisma.FieldRef<"Portfolio", 'String'>
   readonly industry: Prisma.FieldRef<"Portfolio", 'String'>
   readonly project_url: Prisma.FieldRef<"Portfolio", 'String'>
   readonly case_study_url: Prisma.FieldRef<"Portfolio", 'String'>
@@ -1839,7 +2727,7 @@ export interface PortfolioFieldRefs {
   readonly meta_title: Prisma.FieldRef<"Portfolio", 'String'>
   readonly meta_description: Prisma.FieldRef<"Portfolio", 'String'>
   readonly meta_keywords: Prisma.FieldRef<"Portfolio", 'String'>
-  readonly og_image: Prisma.FieldRef<"Portfolio", 'String'>
+  readonly og_image_id: Prisma.FieldRef<"Portfolio", 'String'>
   readonly serviceId: Prisma.FieldRef<"Portfolio", 'Int'>
 }
     
@@ -2234,6 +3122,87 @@ export type PortfolioDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Limit how many Portfolios to delete.
    */
   limit?: number
+}
+
+/**
+ * Portfolio.featured_image
+ */
+export type Portfolio$featured_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
+ * Portfolio.gallery
+ */
+export type Portfolio$galleryArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PortfolioGallery
+   */
+  select?: Prisma.PortfolioGallerySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PortfolioGallery
+   */
+  omit?: Prisma.PortfolioGalleryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PortfolioGalleryInclude<ExtArgs> | null
+  where?: Prisma.PortfolioGalleryWhereInput
+  orderBy?: Prisma.PortfolioGalleryOrderByWithRelationInput | Prisma.PortfolioGalleryOrderByWithRelationInput[]
+  cursor?: Prisma.PortfolioGalleryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PortfolioGalleryScalarFieldEnum | Prisma.PortfolioGalleryScalarFieldEnum[]
+}
+
+/**
+ * Portfolio.client_logo
+ */
+export type Portfolio$client_logoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
+ * Portfolio.og_image
+ */
+export type Portfolio$og_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
 }
 
 /**

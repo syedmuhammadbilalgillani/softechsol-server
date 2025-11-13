@@ -18,6 +18,11 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
+ * Model GalleryItem
+ * 
+ */
+export type GalleryItem = Prisma.GalleryItemModel
+/**
  * Model User
  * 
  */
@@ -27,6 +32,11 @@ export type User = Prisma.UserModel
  * 
  */
 export type BlogCategory = Prisma.BlogCategoryModel
+/**
+ * Model MyCompanies
+ * 
+ */
+export type MyCompanies = Prisma.MyCompaniesModel
 /**
  * Model BlogCategoryRelation
  * 
@@ -48,10 +58,20 @@ export type ServiceCategory = Prisma.ServiceCategoryModel
  */
 export type ServiceCategoryRelation = Prisma.ServiceCategoryRelationModel
 /**
+ * Model PortfolioGallery
+ * 
+ */
+export type PortfolioGallery = Prisma.PortfolioGalleryModel
+/**
  * Model Portfolio
  * 
  */
 export type Portfolio = Prisma.PortfolioModel
+/**
+ * Model ProjectGallery
+ * 
+ */
+export type ProjectGallery = Prisma.ProjectGalleryModel
 /**
  * Model Project
  * 
@@ -62,6 +82,11 @@ export type Project = Prisma.ProjectModel
  * 
  */
 export type ContactUs = Prisma.ContactUsModel
+/**
+ * Model ActivityGallery
+ * 
+ */
+export type ActivityGallery = Prisma.ActivityGalleryModel
 /**
  * Model Activity
  * 

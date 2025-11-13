@@ -45,8 +45,7 @@ export type ServiceMinAggregateOutputType = {
   short_description: string | null
   description: string | null
   icon: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   price: runtime.Decimal | null
   price_type: string | null
   currency: string | null
@@ -61,7 +60,7 @@ export type ServiceMinAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   cta_text: string | null
   cta_url: string | null
 }
@@ -73,8 +72,7 @@ export type ServiceMaxAggregateOutputType = {
   short_description: string | null
   description: string | null
   icon: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   price: runtime.Decimal | null
   price_type: string | null
   currency: string | null
@@ -89,7 +87,7 @@ export type ServiceMaxAggregateOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   cta_text: string | null
   cta_url: string | null
 }
@@ -101,8 +99,7 @@ export type ServiceCountAggregateOutputType = {
   short_description: number
   description: number
   icon: number
-  featured_image: number
-  image_alt: number
+  featured_image_id: number
   price: number
   price_type: number
   currency: number
@@ -122,7 +119,7 @@ export type ServiceCountAggregateOutputType = {
   meta_title: number
   meta_description: number
   meta_keywords: number
-  og_image: number
+  og_image_id: number
   cta_text: number
   cta_url: number
   _all: number
@@ -148,8 +145,7 @@ export type ServiceMinAggregateInputType = {
   short_description?: true
   description?: true
   icon?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   price?: true
   price_type?: true
   currency?: true
@@ -164,7 +160,7 @@ export type ServiceMinAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   cta_text?: true
   cta_url?: true
 }
@@ -176,8 +172,7 @@ export type ServiceMaxAggregateInputType = {
   short_description?: true
   description?: true
   icon?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   price?: true
   price_type?: true
   currency?: true
@@ -192,7 +187,7 @@ export type ServiceMaxAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   cta_text?: true
   cta_url?: true
 }
@@ -204,8 +199,7 @@ export type ServiceCountAggregateInputType = {
   short_description?: true
   description?: true
   icon?: true
-  featured_image?: true
-  image_alt?: true
+  featured_image_id?: true
   price?: true
   price_type?: true
   currency?: true
@@ -225,7 +219,7 @@ export type ServiceCountAggregateInputType = {
   meta_title?: true
   meta_description?: true
   meta_keywords?: true
-  og_image?: true
+  og_image_id?: true
   cta_text?: true
   cta_url?: true
   _all?: true
@@ -324,8 +318,7 @@ export type ServiceGroupByOutputType = {
   short_description: string | null
   description: string
   icon: string | null
-  featured_image: string | null
-  image_alt: string | null
+  featured_image_id: string | null
   price: runtime.Decimal | null
   price_type: string | null
   currency: string
@@ -345,7 +338,7 @@ export type ServiceGroupByOutputType = {
   meta_title: string | null
   meta_description: string | null
   meta_keywords: string | null
-  og_image: string | null
+  og_image_id: string | null
   cta_text: string | null
   cta_url: string | null
   _count: ServiceCountAggregateOutputType | null
@@ -380,8 +373,7 @@ export type ServiceWhereInput = {
   short_description?: Prisma.StringNullableFilter<"Service"> | string | null
   description?: Prisma.StringFilter<"Service"> | string
   icon?: Prisma.StringNullableFilter<"Service"> | string | null
-  featured_image?: Prisma.StringNullableFilter<"Service"> | string | null
-  image_alt?: Prisma.StringNullableFilter<"Service"> | string | null
+  featured_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
   price?: Prisma.DecimalNullableFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.StringNullableFilter<"Service"> | string | null
   currency?: Prisma.StringFilter<"Service"> | string
@@ -401,9 +393,11 @@ export type ServiceWhereInput = {
   meta_title?: Prisma.StringNullableFilter<"Service"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Service"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Service"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Service"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
   cta_text?: Prisma.StringNullableFilter<"Service"> | string | null
   cta_url?: Prisma.StringNullableFilter<"Service"> | string | null
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   categories?: Prisma.ServiceCategoryRelationListRelationFilter
   portfolio?: Prisma.PortfolioListRelationFilter
   project?: Prisma.ProjectListRelationFilter
@@ -416,8 +410,7 @@ export type ServiceOrderByWithRelationInput = {
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrderInput | Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
   price_type?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -437,9 +430,11 @@ export type ServiceOrderByWithRelationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   cta_text?: Prisma.SortOrderInput | Prisma.SortOrder
   cta_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  featured_image?: Prisma.GalleryItemOrderByWithRelationInput
+  og_image?: Prisma.GalleryItemOrderByWithRelationInput
   categories?: Prisma.ServiceCategoryRelationOrderByRelationAggregateInput
   portfolio?: Prisma.PortfolioOrderByRelationAggregateInput
   project?: Prisma.ProjectOrderByRelationAggregateInput
@@ -455,8 +450,7 @@ export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   short_description?: Prisma.StringNullableFilter<"Service"> | string | null
   description?: Prisma.StringFilter<"Service"> | string
   icon?: Prisma.StringNullableFilter<"Service"> | string | null
-  featured_image?: Prisma.StringNullableFilter<"Service"> | string | null
-  image_alt?: Prisma.StringNullableFilter<"Service"> | string | null
+  featured_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
   price?: Prisma.DecimalNullableFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.StringNullableFilter<"Service"> | string | null
   currency?: Prisma.StringFilter<"Service"> | string
@@ -476,9 +470,11 @@ export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   meta_title?: Prisma.StringNullableFilter<"Service"> | string | null
   meta_description?: Prisma.StringNullableFilter<"Service"> | string | null
   meta_keywords?: Prisma.StringNullableFilter<"Service"> | string | null
-  og_image?: Prisma.StringNullableFilter<"Service"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
   cta_text?: Prisma.StringNullableFilter<"Service"> | string | null
   cta_url?: Prisma.StringNullableFilter<"Service"> | string | null
+  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
   categories?: Prisma.ServiceCategoryRelationListRelationFilter
   portfolio?: Prisma.PortfolioListRelationFilter
   project?: Prisma.ProjectListRelationFilter
@@ -491,8 +487,7 @@ export type ServiceOrderByWithAggregationInput = {
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.SortOrderInput | Prisma.SortOrder
-  image_alt?: Prisma.SortOrderInput | Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
   price_type?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -512,7 +507,7 @@ export type ServiceOrderByWithAggregationInput = {
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
   meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image?: Prisma.SortOrderInput | Prisma.SortOrder
+  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   cta_text?: Prisma.SortOrderInput | Prisma.SortOrder
   cta_url?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ServiceCountOrderByAggregateInput
@@ -532,8 +527,7 @@ export type ServiceScalarWhereWithAggregatesInput = {
   short_description?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   description?: Prisma.StringWithAggregatesFilter<"Service"> | string
   icon?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  featured_image?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  image_alt?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
+  featured_image_id?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   price?: Prisma.DecimalNullableWithAggregatesFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   currency?: Prisma.StringWithAggregatesFilter<"Service"> | string
@@ -553,7 +547,7 @@ export type ServiceScalarWhereWithAggregatesInput = {
   meta_title?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   meta_description?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   meta_keywords?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  og_image?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
+  og_image_id?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   cta_text?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   cta_url?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
 }
@@ -564,8 +558,6 @@ export type ServiceCreateInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -585,9 +577,10 @@ export type ServiceCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
   cta_text?: string | null
   cta_url?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
   categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
   portfolio?: Prisma.PortfolioCreateNestedManyWithoutServiceInput
   project?: Prisma.ProjectCreateNestedManyWithoutServiceInput
@@ -600,8 +593,7 @@ export type ServiceUncheckedCreateInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
+  featured_image_id?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -621,7 +613,7 @@ export type ServiceUncheckedCreateInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   cta_text?: string | null
   cta_url?: string | null
   categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
@@ -635,8 +627,6 @@ export type ServiceUpdateInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -656,9 +646,10 @@ export type ServiceUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
   categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
   portfolio?: Prisma.PortfolioUpdateManyWithoutServiceNestedInput
   project?: Prisma.ProjectUpdateManyWithoutServiceNestedInput
@@ -671,8 +662,7 @@ export type ServiceUncheckedUpdateInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -692,7 +682,7 @@ export type ServiceUncheckedUpdateInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
@@ -707,8 +697,7 @@ export type ServiceCreateManyInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
+  featured_image_id?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -728,7 +717,7 @@ export type ServiceCreateManyInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   cta_text?: string | null
   cta_url?: string | null
 }
@@ -739,8 +728,6 @@ export type ServiceUpdateManyMutationInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -760,7 +747,6 @@ export type ServiceUpdateManyMutationInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -772,8 +758,7 @@ export type ServiceUncheckedUpdateManyInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -793,9 +778,19 @@ export type ServiceUncheckedUpdateManyInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ServiceListRelationFilter = {
+  every?: Prisma.ServiceWhereInput
+  some?: Prisma.ServiceWhereInput
+  none?: Prisma.ServiceWhereInput
+}
+
+export type ServiceOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ServiceScalarRelationFilter = {
@@ -810,8 +805,7 @@ export type ServiceCountOrderByAggregateInput = {
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   price?: Prisma.SortOrder
   price_type?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -831,7 +825,7 @@ export type ServiceCountOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   cta_text?: Prisma.SortOrder
   cta_url?: Prisma.SortOrder
 }
@@ -849,8 +843,7 @@ export type ServiceMaxOrderByAggregateInput = {
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   price?: Prisma.SortOrder
   price_type?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -865,7 +858,7 @@ export type ServiceMaxOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   cta_text?: Prisma.SortOrder
   cta_url?: Prisma.SortOrder
 }
@@ -877,8 +870,7 @@ export type ServiceMinOrderByAggregateInput = {
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
-  featured_image?: Prisma.SortOrder
-  image_alt?: Prisma.SortOrder
+  featured_image_id?: Prisma.SortOrder
   price?: Prisma.SortOrder
   price_type?: Prisma.SortOrder
   currency?: Prisma.SortOrder
@@ -893,7 +885,7 @@ export type ServiceMinOrderByAggregateInput = {
   meta_title?: Prisma.SortOrder
   meta_description?: Prisma.SortOrder
   meta_keywords?: Prisma.SortOrder
-  og_image?: Prisma.SortOrder
+  og_image_id?: Prisma.SortOrder
   cta_text?: Prisma.SortOrder
   cta_url?: Prisma.SortOrder
 }
@@ -902,6 +894,90 @@ export type ServiceSumOrderByAggregateInput = {
   service_id?: Prisma.SortOrder
   price?: Prisma.SortOrder
   display_order?: Prisma.SortOrder
+}
+
+export type ServiceCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+}
+
+export type ServiceCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+}
+
+export type ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
+  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+}
+
+export type ServiceUncheckedCreateNestedManyWithoutOg_imageInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
+  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+}
+
+export type ServiceUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+}
+
+export type ServiceUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
+  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+}
+
+export type ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput[]
+  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
+  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput[]
+  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+}
+
+export type ServiceUncheckedUpdateManyWithoutOg_imageNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput[]
+  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
+  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput[]
+  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
 }
 
 export type ServiceCreateNestedOneWithoutCategoriesInput = {
@@ -991,14 +1067,12 @@ export type ServiceUpdateideal_forInput = {
   push?: string | string[]
 }
 
-export type ServiceCreateWithoutCategoriesInput = {
+export type ServiceCreateWithoutFeatured_imageInput = {
   title: string
   slug: string
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -1018,9 +1092,231 @@ export type ServiceCreateWithoutCategoriesInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
   cta_text?: string | null
   cta_url?: string | null
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
+  categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
+  portfolio?: Prisma.PortfolioCreateNestedManyWithoutServiceInput
+  project?: Prisma.ProjectCreateNestedManyWithoutServiceInput
+}
+
+export type ServiceUncheckedCreateWithoutFeatured_imageInput = {
+  service_id?: number
+  title: string
+  slug: string
+  short_description?: string | null
+  description: string
+  icon?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: string | null
+  currency?: string
+  price_note?: string | null
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
+  duration?: string | null
+  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_popular?: boolean
+  display_order?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  cta_text?: string | null
+  cta_url?: string | null
+  categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
+  portfolio?: Prisma.PortfolioUncheckedCreateNestedManyWithoutServiceInput
+  project?: Prisma.ProjectUncheckedCreateNestedManyWithoutServiceInput
+}
+
+export type ServiceCreateOrConnectWithoutFeatured_imageInput = {
+  where: Prisma.ServiceWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput>
+}
+
+export type ServiceCreateManyFeatured_imageInputEnvelope = {
+  data: Prisma.ServiceCreateManyFeatured_imageInput | Prisma.ServiceCreateManyFeatured_imageInput[]
+  skipDuplicates?: boolean
+}
+
+export type ServiceCreateWithoutOg_imageInput = {
+  title: string
+  slug: string
+  short_description?: string | null
+  description: string
+  icon?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: string | null
+  currency?: string
+  price_note?: string | null
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
+  duration?: string | null
+  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_popular?: boolean
+  display_order?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  cta_text?: string | null
+  cta_url?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
+  categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
+  portfolio?: Prisma.PortfolioCreateNestedManyWithoutServiceInput
+  project?: Prisma.ProjectCreateNestedManyWithoutServiceInput
+}
+
+export type ServiceUncheckedCreateWithoutOg_imageInput = {
+  service_id?: number
+  title: string
+  slug: string
+  short_description?: string | null
+  description: string
+  icon?: string | null
+  featured_image_id?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: string | null
+  currency?: string
+  price_note?: string | null
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
+  duration?: string | null
+  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_popular?: boolean
+  display_order?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  cta_text?: string | null
+  cta_url?: string | null
+  categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
+  portfolio?: Prisma.PortfolioUncheckedCreateNestedManyWithoutServiceInput
+  project?: Prisma.ProjectUncheckedCreateNestedManyWithoutServiceInput
+}
+
+export type ServiceCreateOrConnectWithoutOg_imageInput = {
+  where: Prisma.ServiceWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput>
+}
+
+export type ServiceCreateManyOg_imageInputEnvelope = {
+  data: Prisma.ServiceCreateManyOg_imageInput | Prisma.ServiceCreateManyOg_imageInput[]
+  skipDuplicates?: boolean
+}
+
+export type ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.ServiceWhereUniqueInput
+  update: Prisma.XOR<Prisma.ServiceUpdateWithoutFeatured_imageInput, Prisma.ServiceUncheckedUpdateWithoutFeatured_imageInput>
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput>
+}
+
+export type ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput = {
+  where: Prisma.ServiceWhereUniqueInput
+  data: Prisma.XOR<Prisma.ServiceUpdateWithoutFeatured_imageInput, Prisma.ServiceUncheckedUpdateWithoutFeatured_imageInput>
+}
+
+export type ServiceUpdateManyWithWhereWithoutFeatured_imageInput = {
+  where: Prisma.ServiceScalarWhereInput
+  data: Prisma.XOR<Prisma.ServiceUpdateManyMutationInput, Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageInput>
+}
+
+export type ServiceScalarWhereInput = {
+  AND?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+  OR?: Prisma.ServiceScalarWhereInput[]
+  NOT?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+  service_id?: Prisma.IntFilter<"Service"> | number
+  title?: Prisma.StringFilter<"Service"> | string
+  slug?: Prisma.StringFilter<"Service"> | string
+  short_description?: Prisma.StringNullableFilter<"Service"> | string | null
+  description?: Prisma.StringFilter<"Service"> | string
+  icon?: Prisma.StringNullableFilter<"Service"> | string | null
+  featured_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
+  price?: Prisma.DecimalNullableFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: Prisma.StringNullableFilter<"Service"> | string | null
+  currency?: Prisma.StringFilter<"Service"> | string
+  price_note?: Prisma.StringNullableFilter<"Service"> | string | null
+  features?: Prisma.StringNullableListFilter<"Service">
+  deliverables?: Prisma.StringNullableListFilter<"Service">
+  technologies?: Prisma.StringNullableListFilter<"Service">
+  process_steps?: Prisma.StringNullableListFilter<"Service">
+  duration?: Prisma.StringNullableFilter<"Service"> | string | null
+  ideal_for?: Prisma.StringNullableListFilter<"Service">
+  status?: Prisma.EnumStatusFilter<"Service"> | $Enums.Status
+  is_featured?: Prisma.BoolFilter<"Service"> | boolean
+  is_popular?: Prisma.BoolFilter<"Service"> | boolean
+  display_order?: Prisma.IntFilter<"Service"> | number
+  created_at?: Prisma.DateTimeFilter<"Service"> | Date | string
+  updated_at?: Prisma.DateTimeFilter<"Service"> | Date | string
+  meta_title?: Prisma.StringNullableFilter<"Service"> | string | null
+  meta_description?: Prisma.StringNullableFilter<"Service"> | string | null
+  meta_keywords?: Prisma.StringNullableFilter<"Service"> | string | null
+  og_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
+  cta_text?: Prisma.StringNullableFilter<"Service"> | string | null
+  cta_url?: Prisma.StringNullableFilter<"Service"> | string | null
+}
+
+export type ServiceUpsertWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.ServiceWhereUniqueInput
+  update: Prisma.XOR<Prisma.ServiceUpdateWithoutOg_imageInput, Prisma.ServiceUncheckedUpdateWithoutOg_imageInput>
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput>
+}
+
+export type ServiceUpdateWithWhereUniqueWithoutOg_imageInput = {
+  where: Prisma.ServiceWhereUniqueInput
+  data: Prisma.XOR<Prisma.ServiceUpdateWithoutOg_imageInput, Prisma.ServiceUncheckedUpdateWithoutOg_imageInput>
+}
+
+export type ServiceUpdateManyWithWhereWithoutOg_imageInput = {
+  where: Prisma.ServiceScalarWhereInput
+  data: Prisma.XOR<Prisma.ServiceUpdateManyMutationInput, Prisma.ServiceUncheckedUpdateManyWithoutOg_imageInput>
+}
+
+export type ServiceCreateWithoutCategoriesInput = {
+  title: string
+  slug: string
+  short_description?: string | null
+  description: string
+  icon?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: string | null
+  currency?: string
+  price_note?: string | null
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
+  duration?: string | null
+  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_popular?: boolean
+  display_order?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  cta_text?: string | null
+  cta_url?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
   portfolio?: Prisma.PortfolioCreateNestedManyWithoutServiceInput
   project?: Prisma.ProjectCreateNestedManyWithoutServiceInput
 }
@@ -1032,8 +1328,7 @@ export type ServiceUncheckedCreateWithoutCategoriesInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
+  featured_image_id?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -1053,7 +1348,7 @@ export type ServiceUncheckedCreateWithoutCategoriesInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   cta_text?: string | null
   cta_url?: string | null
   portfolio?: Prisma.PortfolioUncheckedCreateNestedManyWithoutServiceInput
@@ -1082,8 +1377,6 @@ export type ServiceUpdateWithoutCategoriesInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1103,9 +1396,10 @@ export type ServiceUpdateWithoutCategoriesInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
   portfolio?: Prisma.PortfolioUpdateManyWithoutServiceNestedInput
   project?: Prisma.ProjectUpdateManyWithoutServiceNestedInput
 }
@@ -1117,8 +1411,7 @@ export type ServiceUncheckedUpdateWithoutCategoriesInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1138,7 +1431,7 @@ export type ServiceUncheckedUpdateWithoutCategoriesInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   portfolio?: Prisma.PortfolioUncheckedUpdateManyWithoutServiceNestedInput
@@ -1151,8 +1444,6 @@ export type ServiceCreateWithoutPortfolioInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -1172,9 +1463,10 @@ export type ServiceCreateWithoutPortfolioInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
   cta_text?: string | null
   cta_url?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
   categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
   project?: Prisma.ProjectCreateNestedManyWithoutServiceInput
 }
@@ -1186,8 +1478,7 @@ export type ServiceUncheckedCreateWithoutPortfolioInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
+  featured_image_id?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -1207,7 +1498,7 @@ export type ServiceUncheckedCreateWithoutPortfolioInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   cta_text?: string | null
   cta_url?: string | null
   categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
@@ -1236,8 +1527,6 @@ export type ServiceUpdateWithoutPortfolioInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1257,9 +1546,10 @@ export type ServiceUpdateWithoutPortfolioInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
   categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
   project?: Prisma.ProjectUpdateManyWithoutServiceNestedInput
 }
@@ -1271,8 +1561,7 @@ export type ServiceUncheckedUpdateWithoutPortfolioInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1292,7 +1581,7 @@ export type ServiceUncheckedUpdateWithoutPortfolioInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
@@ -1305,8 +1594,6 @@ export type ServiceCreateWithoutProjectInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -1326,9 +1613,10 @@ export type ServiceCreateWithoutProjectInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
   cta_text?: string | null
   cta_url?: string | null
+  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
+  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
   categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
   portfolio?: Prisma.PortfolioCreateNestedManyWithoutServiceInput
 }
@@ -1340,8 +1628,7 @@ export type ServiceUncheckedCreateWithoutProjectInput = {
   short_description?: string | null
   description: string
   icon?: string | null
-  featured_image?: string | null
-  image_alt?: string | null
+  featured_image_id?: string | null
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: string | null
   currency?: string
@@ -1361,7 +1648,7 @@ export type ServiceUncheckedCreateWithoutProjectInput = {
   meta_title?: string | null
   meta_description?: string | null
   meta_keywords?: string | null
-  og_image?: string | null
+  og_image_id?: string | null
   cta_text?: string | null
   cta_url?: string | null
   categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
@@ -1390,8 +1677,6 @@ export type ServiceUpdateWithoutProjectInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1411,9 +1696,10 @@ export type ServiceUpdateWithoutProjectInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
+  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
   categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
   portfolio?: Prisma.PortfolioUpdateManyWithoutServiceNestedInput
 }
@@ -1425,8 +1711,7 @@ export type ServiceUncheckedUpdateWithoutProjectInput = {
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  image_alt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currency?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1446,11 +1731,269 @@ export type ServiceUncheckedUpdateWithoutProjectInput = {
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
   portfolio?: Prisma.PortfolioUncheckedUpdateManyWithoutServiceNestedInput
+}
+
+export type ServiceCreateManyFeatured_imageInput = {
+  service_id?: number
+  title: string
+  slug: string
+  short_description?: string | null
+  description: string
+  icon?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: string | null
+  currency?: string
+  price_note?: string | null
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
+  duration?: string | null
+  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_popular?: boolean
+  display_order?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  og_image_id?: string | null
+  cta_text?: string | null
+  cta_url?: string | null
+}
+
+export type ServiceCreateManyOg_imageInput = {
+  service_id?: number
+  title: string
+  slug: string
+  short_description?: string | null
+  description: string
+  icon?: string | null
+  featured_image_id?: string | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: string | null
+  currency?: string
+  price_note?: string | null
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
+  duration?: string | null
+  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
+  status?: $Enums.Status
+  is_featured?: boolean
+  is_popular?: boolean
+  display_order?: number
+  created_at?: Date | string
+  updated_at?: Date | string
+  meta_title?: string | null
+  meta_description?: string | null
+  meta_keywords?: string | null
+  cta_text?: string | null
+  cta_url?: string | null
+}
+
+export type ServiceUpdateWithoutFeatured_imageInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
+  categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
+  portfolio?: Prisma.PortfolioUpdateManyWithoutServiceNestedInput
+  project?: Prisma.ProjectUpdateManyWithoutServiceNestedInput
+}
+
+export type ServiceUncheckedUpdateWithoutFeatured_imageInput = {
+  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
+  portfolio?: Prisma.PortfolioUncheckedUpdateManyWithoutServiceNestedInput
+  project?: Prisma.ProjectUncheckedUpdateManyWithoutServiceNestedInput
+}
+
+export type ServiceUncheckedUpdateManyWithoutFeatured_imageInput = {
+  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ServiceUpdateWithoutOg_imageInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
+  categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
+  portfolio?: Prisma.PortfolioUpdateManyWithoutServiceNestedInput
+  project?: Prisma.ProjectUpdateManyWithoutServiceNestedInput
+}
+
+export type ServiceUncheckedUpdateWithoutOg_imageInput = {
+  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
+  portfolio?: Prisma.PortfolioUncheckedUpdateManyWithoutServiceNestedInput
+  project?: Prisma.ProjectUncheckedUpdateManyWithoutServiceNestedInput
+}
+
+export type ServiceUncheckedUpdateManyWithoutOg_imageInput = {
+  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
+  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
+  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
+  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
+  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
+  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  display_order?: Prisma.IntFieldUpdateOperationsInput | number
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1509,8 +2052,7 @@ export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   short_description?: boolean
   description?: boolean
   icon?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
+  featured_image_id?: boolean
   price?: boolean
   price_type?: boolean
   currency?: boolean
@@ -1530,9 +2072,11 @@ export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   cta_text?: boolean
   cta_url?: boolean
+  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
   categories?: boolean | Prisma.Service$categoriesArgs<ExtArgs>
   portfolio?: boolean | Prisma.Service$portfolioArgs<ExtArgs>
   project?: boolean | Prisma.Service$projectArgs<ExtArgs>
@@ -1546,8 +2090,7 @@ export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   short_description?: boolean
   description?: boolean
   icon?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
+  featured_image_id?: boolean
   price?: boolean
   price_type?: boolean
   currency?: boolean
@@ -1567,9 +2110,11 @@ export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   cta_text?: boolean
   cta_url?: boolean
+  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1579,8 +2124,7 @@ export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   short_description?: boolean
   description?: boolean
   icon?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
+  featured_image_id?: boolean
   price?: boolean
   price_type?: boolean
   currency?: boolean
@@ -1600,9 +2144,11 @@ export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   cta_text?: boolean
   cta_url?: boolean
+  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectScalar = {
@@ -1612,8 +2158,7 @@ export type ServiceSelectScalar = {
   short_description?: boolean
   description?: boolean
   icon?: boolean
-  featured_image?: boolean
-  image_alt?: boolean
+  featured_image_id?: boolean
   price?: boolean
   price_type?: boolean
   currency?: boolean
@@ -1633,24 +2178,34 @@ export type ServiceSelectScalar = {
   meta_title?: boolean
   meta_description?: boolean
   meta_keywords?: boolean
-  og_image?: boolean
+  og_image_id?: boolean
   cta_text?: boolean
   cta_url?: boolean
 }
 
-export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"service_id" | "title" | "slug" | "short_description" | "description" | "icon" | "featured_image" | "image_alt" | "price" | "price_type" | "currency" | "price_note" | "features" | "deliverables" | "technologies" | "process_steps" | "duration" | "ideal_for" | "status" | "is_featured" | "is_popular" | "display_order" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image" | "cta_text" | "cta_url", ExtArgs["result"]["service"]>
+export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"service_id" | "title" | "slug" | "short_description" | "description" | "icon" | "featured_image_id" | "price" | "price_type" | "currency" | "price_note" | "features" | "deliverables" | "technologies" | "process_steps" | "duration" | "ideal_for" | "status" | "is_featured" | "is_popular" | "display_order" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image_id" | "cta_text" | "cta_url", ExtArgs["result"]["service"]>
 export type ServiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
   categories?: boolean | Prisma.Service$categoriesArgs<ExtArgs>
   portfolio?: boolean | Prisma.Service$portfolioArgs<ExtArgs>
   project?: boolean | Prisma.Service$projectArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type ServiceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type ServiceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type ServiceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
+}
+export type ServiceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
+  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
+}
 
 export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Service"
   objects: {
+    featured_image: Prisma.$GalleryItemPayload<ExtArgs> | null
+    og_image: Prisma.$GalleryItemPayload<ExtArgs> | null
     categories: Prisma.$ServiceCategoryRelationPayload<ExtArgs>[]
     portfolio: Prisma.$PortfolioPayload<ExtArgs>[]
     project: Prisma.$ProjectPayload<ExtArgs>[]
@@ -1662,8 +2217,7 @@ export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     short_description: string | null
     description: string
     icon: string | null
-    featured_image: string | null
-    image_alt: string | null
+    featured_image_id: string | null
     price: runtime.Decimal | null
     price_type: string | null
     currency: string
@@ -1683,7 +2237,7 @@ export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     meta_title: string | null
     meta_description: string | null
     meta_keywords: string | null
-    og_image: string | null
+    og_image_id: string | null
     cta_text: string | null
     cta_url: string | null
   }, ExtArgs["result"]["service"]>
@@ -2080,6 +2634,8 @@ readonly fields: ServiceFieldRefs;
  */
 export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  featured_image<T extends Prisma.Service$featured_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$featured_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  og_image<T extends Prisma.Service$og_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$og_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   categories<T extends Prisma.Service$categoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryRelationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   portfolio<T extends Prisma.Service$portfolioArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$portfolioArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   project<T extends Prisma.Service$projectArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$projectArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2118,8 +2674,7 @@ export interface ServiceFieldRefs {
   readonly short_description: Prisma.FieldRef<"Service", 'String'>
   readonly description: Prisma.FieldRef<"Service", 'String'>
   readonly icon: Prisma.FieldRef<"Service", 'String'>
-  readonly featured_image: Prisma.FieldRef<"Service", 'String'>
-  readonly image_alt: Prisma.FieldRef<"Service", 'String'>
+  readonly featured_image_id: Prisma.FieldRef<"Service", 'String'>
   readonly price: Prisma.FieldRef<"Service", 'Decimal'>
   readonly price_type: Prisma.FieldRef<"Service", 'String'>
   readonly currency: Prisma.FieldRef<"Service", 'String'>
@@ -2139,7 +2694,7 @@ export interface ServiceFieldRefs {
   readonly meta_title: Prisma.FieldRef<"Service", 'String'>
   readonly meta_description: Prisma.FieldRef<"Service", 'String'>
   readonly meta_keywords: Prisma.FieldRef<"Service", 'String'>
-  readonly og_image: Prisma.FieldRef<"Service", 'String'>
+  readonly og_image_id: Prisma.FieldRef<"Service", 'String'>
   readonly cta_text: Prisma.FieldRef<"Service", 'String'>
   readonly cta_url: Prisma.FieldRef<"Service", 'String'>
 }
@@ -2391,6 +2946,10 @@ export type ServiceCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    */
   data: Prisma.ServiceCreateManyInput | Prisma.ServiceCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ServiceIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -2461,6 +3020,10 @@ export type ServiceUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many Services to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ServiceIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -2527,6 +3090,44 @@ export type ServiceDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Services to delete.
    */
   limit?: number
+}
+
+/**
+ * Service.featured_image
+ */
+export type Service$featured_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
+}
+
+/**
+ * Service.og_image
+ */
+export type Service$og_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GalleryItem
+   */
+  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GalleryItem
+   */
+  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryItemInclude<ExtArgs> | null
+  where?: Prisma.GalleryItemWhereInput
 }
 
 /**

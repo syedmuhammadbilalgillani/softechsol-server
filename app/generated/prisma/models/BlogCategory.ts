@@ -29,15 +29,11 @@ export type AggregateBlogCategory = {
 export type BlogCategoryAvgAggregateOutputType = {
   category_id: number | null
   parent_id: number | null
-  display_order: number | null
-  post_count: number | null
 }
 
 export type BlogCategorySumAggregateOutputType = {
   category_id: number | null
   parent_id: number | null
-  display_order: number | null
-  post_count: number | null
 }
 
 export type BlogCategoryMinAggregateOutputType = {
@@ -48,9 +44,7 @@ export type BlogCategoryMinAggregateOutputType = {
   color: string | null
   icon: string | null
   parent_id: number | null
-  display_order: number | null
   is_active: boolean | null
-  post_count: number | null
   created_at: Date | null
   updated_at: Date | null
   meta_title: string | null
@@ -65,9 +59,7 @@ export type BlogCategoryMaxAggregateOutputType = {
   color: string | null
   icon: string | null
   parent_id: number | null
-  display_order: number | null
   is_active: boolean | null
-  post_count: number | null
   created_at: Date | null
   updated_at: Date | null
   meta_title: string | null
@@ -82,9 +74,7 @@ export type BlogCategoryCountAggregateOutputType = {
   color: number
   icon: number
   parent_id: number
-  display_order: number
   is_active: number
-  post_count: number
   created_at: number
   updated_at: number
   meta_title: number
@@ -96,15 +86,11 @@ export type BlogCategoryCountAggregateOutputType = {
 export type BlogCategoryAvgAggregateInputType = {
   category_id?: true
   parent_id?: true
-  display_order?: true
-  post_count?: true
 }
 
 export type BlogCategorySumAggregateInputType = {
   category_id?: true
   parent_id?: true
-  display_order?: true
-  post_count?: true
 }
 
 export type BlogCategoryMinAggregateInputType = {
@@ -115,9 +101,7 @@ export type BlogCategoryMinAggregateInputType = {
   color?: true
   icon?: true
   parent_id?: true
-  display_order?: true
   is_active?: true
-  post_count?: true
   created_at?: true
   updated_at?: true
   meta_title?: true
@@ -132,9 +116,7 @@ export type BlogCategoryMaxAggregateInputType = {
   color?: true
   icon?: true
   parent_id?: true
-  display_order?: true
   is_active?: true
-  post_count?: true
   created_at?: true
   updated_at?: true
   meta_title?: true
@@ -149,9 +131,7 @@ export type BlogCategoryCountAggregateInputType = {
   color?: true
   icon?: true
   parent_id?: true
-  display_order?: true
   is_active?: true
-  post_count?: true
   created_at?: true
   updated_at?: true
   meta_title?: true
@@ -253,9 +233,7 @@ export type BlogCategoryGroupByOutputType = {
   color: string | null
   icon: string | null
   parent_id: number | null
-  display_order: number
   is_active: boolean
-  post_count: number
   created_at: Date
   updated_at: Date
   meta_title: string | null
@@ -293,9 +271,7 @@ export type BlogCategoryWhereInput = {
   color?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
   icon?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
   parent_id?: Prisma.IntNullableFilter<"BlogCategory"> | number | null
-  display_order?: Prisma.IntFilter<"BlogCategory"> | number
   is_active?: Prisma.BoolFilter<"BlogCategory"> | boolean
-  post_count?: Prisma.IntFilter<"BlogCategory"> | number
   created_at?: Prisma.DateTimeFilter<"BlogCategory"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"BlogCategory"> | Date | string
   meta_title?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
@@ -313,9 +289,7 @@ export type BlogCategoryOrderByWithRelationInput = {
   color?: Prisma.SortOrderInput | Prisma.SortOrder
   icon?: Prisma.SortOrderInput | Prisma.SortOrder
   parent_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  display_order?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
-  post_count?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -336,9 +310,7 @@ export type BlogCategoryWhereUniqueInput = Prisma.AtLeast<{
   color?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
   icon?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
   parent_id?: Prisma.IntNullableFilter<"BlogCategory"> | number | null
-  display_order?: Prisma.IntFilter<"BlogCategory"> | number
   is_active?: Prisma.BoolFilter<"BlogCategory"> | boolean
-  post_count?: Prisma.IntFilter<"BlogCategory"> | number
   created_at?: Prisma.DateTimeFilter<"BlogCategory"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"BlogCategory"> | Date | string
   meta_title?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
@@ -356,9 +328,7 @@ export type BlogCategoryOrderByWithAggregationInput = {
   color?: Prisma.SortOrderInput | Prisma.SortOrder
   icon?: Prisma.SortOrderInput | Prisma.SortOrder
   parent_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  display_order?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
-  post_count?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -381,9 +351,7 @@ export type BlogCategoryScalarWhereWithAggregatesInput = {
   color?: Prisma.StringNullableWithAggregatesFilter<"BlogCategory"> | string | null
   icon?: Prisma.StringNullableWithAggregatesFilter<"BlogCategory"> | string | null
   parent_id?: Prisma.IntNullableWithAggregatesFilter<"BlogCategory"> | number | null
-  display_order?: Prisma.IntWithAggregatesFilter<"BlogCategory"> | number
   is_active?: Prisma.BoolWithAggregatesFilter<"BlogCategory"> | boolean
-  post_count?: Prisma.IntWithAggregatesFilter<"BlogCategory"> | number
   created_at?: Prisma.DateTimeWithAggregatesFilter<"BlogCategory"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"BlogCategory"> | Date | string
   meta_title?: Prisma.StringNullableWithAggregatesFilter<"BlogCategory"> | string | null
@@ -396,9 +364,7 @@ export type BlogCategoryCreateInput = {
   description?: string | null
   color?: string | null
   icon?: string | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -416,9 +382,7 @@ export type BlogCategoryUncheckedCreateInput = {
   color?: string | null
   icon?: string | null
   parent_id?: number | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -433,9 +397,7 @@ export type BlogCategoryUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -453,9 +415,7 @@ export type BlogCategoryUncheckedUpdateInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -472,9 +432,7 @@ export type BlogCategoryCreateManyInput = {
   color?: string | null
   icon?: string | null
   parent_id?: number | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -487,9 +445,7 @@ export type BlogCategoryUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -504,9 +460,7 @@ export type BlogCategoryUncheckedUpdateManyInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -536,9 +490,7 @@ export type BlogCategoryCountOrderByAggregateInput = {
   color?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
-  post_count?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   meta_title?: Prisma.SortOrder
@@ -548,8 +500,6 @@ export type BlogCategoryCountOrderByAggregateInput = {
 export type BlogCategoryAvgOrderByAggregateInput = {
   category_id?: Prisma.SortOrder
   parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  post_count?: Prisma.SortOrder
 }
 
 export type BlogCategoryMaxOrderByAggregateInput = {
@@ -560,9 +510,7 @@ export type BlogCategoryMaxOrderByAggregateInput = {
   color?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
-  post_count?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   meta_title?: Prisma.SortOrder
@@ -577,9 +525,7 @@ export type BlogCategoryMinOrderByAggregateInput = {
   color?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
-  post_count?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   meta_title?: Prisma.SortOrder
@@ -589,8 +535,6 @@ export type BlogCategoryMinOrderByAggregateInput = {
 export type BlogCategorySumOrderByAggregateInput = {
   category_id?: Prisma.SortOrder
   parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  post_count?: Prisma.SortOrder
 }
 
 export type BlogCategoryScalarRelationFilter = {
@@ -684,9 +628,7 @@ export type BlogCategoryCreateWithoutChildrenInput = {
   description?: string | null
   color?: string | null
   icon?: string | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -703,9 +645,7 @@ export type BlogCategoryUncheckedCreateWithoutChildrenInput = {
   color?: string | null
   icon?: string | null
   parent_id?: number | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -724,9 +664,7 @@ export type BlogCategoryCreateWithoutParentInput = {
   description?: string | null
   color?: string | null
   icon?: string | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -742,9 +680,7 @@ export type BlogCategoryUncheckedCreateWithoutParentInput = {
   description?: string | null
   color?: string | null
   icon?: string | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -780,9 +716,7 @@ export type BlogCategoryUpdateWithoutChildrenInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -799,9 +733,7 @@ export type BlogCategoryUncheckedUpdateWithoutChildrenInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -836,9 +768,7 @@ export type BlogCategoryScalarWhereInput = {
   color?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
   icon?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
   parent_id?: Prisma.IntNullableFilter<"BlogCategory"> | number | null
-  display_order?: Prisma.IntFilter<"BlogCategory"> | number
   is_active?: Prisma.BoolFilter<"BlogCategory"> | boolean
-  post_count?: Prisma.IntFilter<"BlogCategory"> | number
   created_at?: Prisma.DateTimeFilter<"BlogCategory"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"BlogCategory"> | Date | string
   meta_title?: Prisma.StringNullableFilter<"BlogCategory"> | string | null
@@ -851,9 +781,7 @@ export type BlogCategoryCreateWithoutBlogsInput = {
   description?: string | null
   color?: string | null
   icon?: string | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -870,9 +798,7 @@ export type BlogCategoryUncheckedCreateWithoutBlogsInput = {
   color?: string | null
   icon?: string | null
   parent_id?: number | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -902,9 +828,7 @@ export type BlogCategoryUpdateWithoutBlogsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -921,9 +845,7 @@ export type BlogCategoryUncheckedUpdateWithoutBlogsInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -938,9 +860,7 @@ export type BlogCategoryCreateManyParentInput = {
   description?: string | null
   color?: string | null
   icon?: string | null
-  display_order?: number
   is_active?: boolean
-  post_count?: number
   created_at?: Date | string
   updated_at?: Date | string
   meta_title?: string | null
@@ -953,9 +873,7 @@ export type BlogCategoryUpdateWithoutParentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -971,9 +889,7 @@ export type BlogCategoryUncheckedUpdateWithoutParentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -989,9 +905,7 @@ export type BlogCategoryUncheckedUpdateManyWithoutParentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  post_count?: Prisma.IntFieldUpdateOperationsInput | number
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1046,9 +960,7 @@ export type BlogCategorySelect<ExtArgs extends runtime.Types.Extensions.Internal
   color?: boolean
   icon?: boolean
   parent_id?: boolean
-  display_order?: boolean
   is_active?: boolean
-  post_count?: boolean
   created_at?: boolean
   updated_at?: boolean
   meta_title?: boolean
@@ -1067,9 +979,7 @@ export type BlogCategorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   color?: boolean
   icon?: boolean
   parent_id?: boolean
-  display_order?: boolean
   is_active?: boolean
-  post_count?: boolean
   created_at?: boolean
   updated_at?: boolean
   meta_title?: boolean
@@ -1085,9 +995,7 @@ export type BlogCategorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   color?: boolean
   icon?: boolean
   parent_id?: boolean
-  display_order?: boolean
   is_active?: boolean
-  post_count?: boolean
   created_at?: boolean
   updated_at?: boolean
   meta_title?: boolean
@@ -1103,16 +1011,14 @@ export type BlogCategorySelectScalar = {
   color?: boolean
   icon?: boolean
   parent_id?: boolean
-  display_order?: boolean
   is_active?: boolean
-  post_count?: boolean
   created_at?: boolean
   updated_at?: boolean
   meta_title?: boolean
   meta_description?: boolean
 }
 
-export type BlogCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"category_id" | "name" | "slug" | "description" | "color" | "icon" | "parent_id" | "display_order" | "is_active" | "post_count" | "created_at" | "updated_at" | "meta_title" | "meta_description", ExtArgs["result"]["blogCategory"]>
+export type BlogCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"category_id" | "name" | "slug" | "description" | "color" | "icon" | "parent_id" | "is_active" | "created_at" | "updated_at" | "meta_title" | "meta_description", ExtArgs["result"]["blogCategory"]>
 export type BlogCategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   parent?: boolean | Prisma.BlogCategory$parentArgs<ExtArgs>
   children?: boolean | Prisma.BlogCategory$childrenArgs<ExtArgs>
@@ -1141,9 +1047,7 @@ export type $BlogCategoryPayload<ExtArgs extends runtime.Types.Extensions.Intern
     color: string | null
     icon: string | null
     parent_id: number | null
-    display_order: number
     is_active: boolean
-    post_count: number
     created_at: Date
     updated_at: Date
     meta_title: string | null
@@ -1581,9 +1485,7 @@ export interface BlogCategoryFieldRefs {
   readonly color: Prisma.FieldRef<"BlogCategory", 'String'>
   readonly icon: Prisma.FieldRef<"BlogCategory", 'String'>
   readonly parent_id: Prisma.FieldRef<"BlogCategory", 'Int'>
-  readonly display_order: Prisma.FieldRef<"BlogCategory", 'Int'>
   readonly is_active: Prisma.FieldRef<"BlogCategory", 'Boolean'>
-  readonly post_count: Prisma.FieldRef<"BlogCategory", 'Int'>
   readonly created_at: Prisma.FieldRef<"BlogCategory", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"BlogCategory", 'DateTime'>
   readonly meta_title: Prisma.FieldRef<"BlogCategory", 'String'>
