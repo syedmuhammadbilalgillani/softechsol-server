@@ -1,4 +1,4 @@
-import CategoryForm from "@/components/category-form";
+import CategoryForm from "@/components/forms/category-form";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import { Category } from "@/lib/types";

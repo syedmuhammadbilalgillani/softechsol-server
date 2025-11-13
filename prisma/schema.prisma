@@ -135,9 +135,6 @@ model Blog {
   featured_image_id String?
   status            Status       @default(DRAFT)
   is_featured       Boolean      @default(false)
-  view_count        Int          @default(0)
-  reading_time      Int?
-  tags              String[]
   publish_date      DateTime?
   created_at        DateTime     @default(now())
   updated_at        DateTime     @updatedAt

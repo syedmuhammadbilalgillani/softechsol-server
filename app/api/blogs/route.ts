@@ -11,13 +11,11 @@ export async function POST(request: Request) {
     featured_image,
     status,
     is_featured,
-    tags,
     publish_date,
     meta_title,
     meta_description,
     meta_keywords,
     og_image,
-    author_id,
     category_ids,
   } = await request.json();
   logger.info(category_ids, "category_ids");
@@ -33,7 +31,6 @@ export async function POST(request: Request) {
         content,
         status,
         is_featured,
-        tags,
         publish_date: publish_date ? new Date(publish_date) : null,
         meta_title,
         meta_description,

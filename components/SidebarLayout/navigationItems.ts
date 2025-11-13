@@ -1,4 +1,4 @@
-import { Home, Type, Users2 } from "lucide-react";
+import { Building2, Home, Image, Newspaper, Type } from "lucide-react";
 
 export const navigation = [
   {
@@ -18,37 +18,58 @@ export const navigation = [
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
-    ],
-  },
-  {
-    label: "nav.management",
-    items: [
       {
-        title: "nav.users",
-        url: "/admin/users",
-        icon: Users2,
-        isActive: true,
-        // requiredPermissions: [PERMISSIONS.USERSMANAGEMENT],
+        title: "Blog",
+        url: "/blogs",
+        icon: Newspaper,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
-      // {
-      //   title: "nav.user",
-      //   url: "#",
-      //   icon: Users2,
-      //   requiredPermissions: [PERMISSIONS.GET_ALL_USERS],
-      //   items: [
-      //     {
-      //       title: "nav.users",
-      //       url: "/admin/users",
-      //       requiredPermissions: [PERMISSIONS.GET_ALL_USERS],
-      //     },
-      //     {
-      //       title: "nav.create",
-      //       url: "/admin/users/create",
-      //       requiredPermissions: [PERMISSIONS.CREATE_USER],
-      //     },
-      //     // { title: "id", url: "/admin/users/:id" },
-      //   ],
-      // },
+      {
+        title: "Gallery",
+        url: "/gallery",
+        icon: Image,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
+      {
+        title: "Companies",
+        url: "/companies",
+        icon: Building2,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
     ],
   },
+  // {
+  //   label: "nav.management",
+  //   items: [
+  //     {
+  //       title: "nav.users",
+  //       url: "/admin/users",
+  //       icon: Users2,
+  //       isActive: true,
+  //       // requiredPermissions: [PERMISSIONS.USERSMANAGEMENT],
+  //     },
+  //     // {
+  //     //   title: "nav.user",
+  //     //   url: "#",
+  //     //   icon: Users2,
+  //     //   requiredPermissions: [PERMISSIONS.GET_ALL_USERS],
+  //     //   items: [
+  //     //     {
+  //     //       title: "nav.users",
+  //     //       url: "/admin/users",
+  //     //       requiredPermissions: [PERMISSIONS.GET_ALL_USERS],
+  //     //     },
+  //     //     {
+  //     //       title: "nav.create",
+  //     //       url: "/admin/users/create",
+  //     //       requiredPermissions: [PERMISSIONS.CREATE_USER],
+  //     //     },
+  //     //     // { title: "id", url: "/admin/users/:id" },
+  //     //   ],
+  //     // },
+  //   ],
+  // },
 ];

@@ -7,7 +7,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { DynamicForm, FieldConfig } from "@/components/dynamic-form"; // Adjust import based on your project structure
 import { Category } from "@/lib/types";
 
@@ -15,7 +21,7 @@ const CategoryForm = ({
   category,
   className,
 }: {
-  category: Category;
+  category?: Category;
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -88,10 +94,20 @@ const CategoryForm = ({
     setLoading(true);
 
     try {
-      const response = await axios.post("/api/category", data);
+      const payload = {
+        category_id: category?.category_id,
+        ...data,
+      };
+      const response = category
+        ? await axios.put(`/api/category`, payload)
+        : await axios.post("/api/category", data);
 
       if (response.status === 201) {
-        toast.success("Category created successfully!");
+        toast.success(
+          category
+            ? "Category updated successfully!"
+            : "Category created successfully!"
+        );
         router.refresh();
         setOpen(false);
       }
@@ -106,23 +122,32 @@ const CategoryForm = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className={cn(className, "w-full")}>
-          Add <Plus />
+        <Button variant="outline" className={cn(className, "")}>
+          {category ? "Update" : "Add"} <Plus />
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create Category</DialogTitle>
+          <DialogTitle>
+            {category ? "Update Category" : "Create Category"}
+          </DialogTitle>
         </DialogHeader>
-        <form onSubmit={onSubmit} className="space-y-4">
-          <DynamicForm
-            fields={formFields}
-            onSubmit={onSubmit}
-            defaultValues={category}
-            isUpdateMode={!!category}
-            submitButton={<Button type="submit" disabled={loading}>{loading ? "Submitting..." : "Create Category"}</Button>}
-          />
-        </form>
+        <DynamicForm
+          fields={formFields}
+          onSubmit={onSubmit}
+          defaultValues={category}
+          formId="category"
+          isUpdateMode={!!category}
+          submitButton={
+            <Button type="submit" form="category" disabled={loading}>
+              {loading
+                ? "Submitting..."
+                : category
+                ? "Update Category"
+                : "Create Category"}
+            </Button>
+          }
+        />
       </DialogContent>
     </Dialog>
   );

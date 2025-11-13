@@ -1,4 +1,4 @@
-import BlogForm from "@/components/blog-form";
+import BlogForm from "@/components/forms/blog-form";
 import DataTable from "@/components/data-table";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";

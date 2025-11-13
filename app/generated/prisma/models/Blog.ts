@@ -28,15 +28,11 @@ export type AggregateBlog = {
 
 export type BlogAvgAggregateOutputType = {
   blog_id: number | null
-  view_count: number | null
-  reading_time: number | null
   author_id: number | null
 }
 
 export type BlogSumAggregateOutputType = {
   blog_id: number | null
-  view_count: number | null
-  reading_time: number | null
   author_id: number | null
 }
 
@@ -49,8 +45,6 @@ export type BlogMinAggregateOutputType = {
   featured_image_id: string | null
   status: $Enums.Status | null
   is_featured: boolean | null
-  view_count: number | null
-  reading_time: number | null
   publish_date: Date | null
   created_at: Date | null
   updated_at: Date | null
@@ -70,8 +64,6 @@ export type BlogMaxAggregateOutputType = {
   featured_image_id: string | null
   status: $Enums.Status | null
   is_featured: boolean | null
-  view_count: number | null
-  reading_time: number | null
   publish_date: Date | null
   created_at: Date | null
   updated_at: Date | null
@@ -91,9 +83,6 @@ export type BlogCountAggregateOutputType = {
   featured_image_id: number
   status: number
   is_featured: number
-  view_count: number
-  reading_time: number
-  tags: number
   publish_date: number
   created_at: number
   updated_at: number
@@ -108,15 +97,11 @@ export type BlogCountAggregateOutputType = {
 
 export type BlogAvgAggregateInputType = {
   blog_id?: true
-  view_count?: true
-  reading_time?: true
   author_id?: true
 }
 
 export type BlogSumAggregateInputType = {
   blog_id?: true
-  view_count?: true
-  reading_time?: true
   author_id?: true
 }
 
@@ -129,8 +114,6 @@ export type BlogMinAggregateInputType = {
   featured_image_id?: true
   status?: true
   is_featured?: true
-  view_count?: true
-  reading_time?: true
   publish_date?: true
   created_at?: true
   updated_at?: true
@@ -150,8 +133,6 @@ export type BlogMaxAggregateInputType = {
   featured_image_id?: true
   status?: true
   is_featured?: true
-  view_count?: true
-  reading_time?: true
   publish_date?: true
   created_at?: true
   updated_at?: true
@@ -171,9 +152,6 @@ export type BlogCountAggregateInputType = {
   featured_image_id?: true
   status?: true
   is_featured?: true
-  view_count?: true
-  reading_time?: true
-  tags?: true
   publish_date?: true
   created_at?: true
   updated_at?: true
@@ -280,9 +258,6 @@ export type BlogGroupByOutputType = {
   featured_image_id: string | null
   status: $Enums.Status
   is_featured: boolean
-  view_count: number
-  reading_time: number | null
-  tags: string[]
   publish_date: Date | null
   created_at: Date
   updated_at: Date
@@ -325,9 +300,6 @@ export type BlogWhereInput = {
   featured_image_id?: Prisma.StringNullableFilter<"Blog"> | string | null
   status?: Prisma.EnumStatusFilter<"Blog"> | $Enums.Status
   is_featured?: Prisma.BoolFilter<"Blog"> | boolean
-  view_count?: Prisma.IntFilter<"Blog"> | number
-  reading_time?: Prisma.IntNullableFilter<"Blog"> | number | null
-  tags?: Prisma.StringNullableListFilter<"Blog">
   publish_date?: Prisma.DateTimeNullableFilter<"Blog"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"Blog"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Blog"> | Date | string
@@ -351,9 +323,6 @@ export type BlogOrderByWithRelationInput = {
   featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
-  view_count?: Prisma.SortOrder
-  reading_time?: Prisma.SortOrderInput | Prisma.SortOrder
-  tags?: Prisma.SortOrder
   publish_date?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -380,9 +349,6 @@ export type BlogWhereUniqueInput = Prisma.AtLeast<{
   featured_image_id?: Prisma.StringNullableFilter<"Blog"> | string | null
   status?: Prisma.EnumStatusFilter<"Blog"> | $Enums.Status
   is_featured?: Prisma.BoolFilter<"Blog"> | boolean
-  view_count?: Prisma.IntFilter<"Blog"> | number
-  reading_time?: Prisma.IntNullableFilter<"Blog"> | number | null
-  tags?: Prisma.StringNullableListFilter<"Blog">
   publish_date?: Prisma.DateTimeNullableFilter<"Blog"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"Blog"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Blog"> | Date | string
@@ -406,9 +372,6 @@ export type BlogOrderByWithAggregationInput = {
   featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
-  view_count?: Prisma.SortOrder
-  reading_time?: Prisma.SortOrderInput | Prisma.SortOrder
-  tags?: Prisma.SortOrder
   publish_date?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -436,9 +399,6 @@ export type BlogScalarWhereWithAggregatesInput = {
   featured_image_id?: Prisma.StringNullableWithAggregatesFilter<"Blog"> | string | null
   status?: Prisma.EnumStatusWithAggregatesFilter<"Blog"> | $Enums.Status
   is_featured?: Prisma.BoolWithAggregatesFilter<"Blog"> | boolean
-  view_count?: Prisma.IntWithAggregatesFilter<"Blog"> | number
-  reading_time?: Prisma.IntNullableWithAggregatesFilter<"Blog"> | number | null
-  tags?: Prisma.StringNullableListFilter<"Blog">
   publish_date?: Prisma.DateTimeNullableWithAggregatesFilter<"Blog"> | Date | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Blog"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Blog"> | Date | string
@@ -456,9 +416,6 @@ export type BlogCreateInput = {
   content: string
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -480,9 +437,6 @@ export type BlogUncheckedCreateInput = {
   featured_image_id?: string | null
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -501,9 +455,6 @@ export type BlogUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -525,9 +476,6 @@ export type BlogUncheckedUpdateInput = {
   featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -548,9 +496,6 @@ export type BlogCreateManyInput = {
   featured_image_id?: string | null
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -568,9 +513,6 @@ export type BlogUpdateManyMutationInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -588,9 +530,6 @@ export type BlogUncheckedUpdateManyInput = {
   featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -616,14 +555,6 @@ export type BlogScalarRelationFilter = {
   isNot?: Prisma.BlogWhereInput
 }
 
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
-}
-
 export type BlogCountOrderByAggregateInput = {
   blog_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
@@ -633,9 +564,6 @@ export type BlogCountOrderByAggregateInput = {
   featured_image_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
-  view_count?: Prisma.SortOrder
-  reading_time?: Prisma.SortOrder
-  tags?: Prisma.SortOrder
   publish_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -648,8 +576,6 @@ export type BlogCountOrderByAggregateInput = {
 
 export type BlogAvgOrderByAggregateInput = {
   blog_id?: Prisma.SortOrder
-  view_count?: Prisma.SortOrder
-  reading_time?: Prisma.SortOrder
   author_id?: Prisma.SortOrder
 }
 
@@ -662,8 +588,6 @@ export type BlogMaxOrderByAggregateInput = {
   featured_image_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
-  view_count?: Prisma.SortOrder
-  reading_time?: Prisma.SortOrder
   publish_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -683,8 +607,6 @@ export type BlogMinOrderByAggregateInput = {
   featured_image_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   is_featured?: Prisma.SortOrder
-  view_count?: Prisma.SortOrder
-  reading_time?: Prisma.SortOrder
   publish_date?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
@@ -697,8 +619,6 @@ export type BlogMinOrderByAggregateInput = {
 
 export type BlogSumOrderByAggregateInput = {
   blog_id?: Prisma.SortOrder
-  view_count?: Prisma.SortOrder
-  reading_time?: Prisma.SortOrder
   author_id?: Prisma.SortOrder
 }
 
@@ -842,17 +762,8 @@ export type BlogUpdateOneRequiredWithoutCategoriesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BlogUpdateToOneWithWhereWithoutCategoriesInput, Prisma.BlogUpdateWithoutCategoriesInput>, Prisma.BlogUncheckedUpdateWithoutCategoriesInput>
 }
 
-export type BlogCreatetagsInput = {
-  set: string[]
-}
-
 export type EnumStatusFieldUpdateOperationsInput = {
   set?: $Enums.Status
-}
-
-export type BlogUpdatetagsInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type BlogCreateWithoutFeatured_imageInput = {
@@ -862,9 +773,6 @@ export type BlogCreateWithoutFeatured_imageInput = {
   content: string
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -884,9 +792,6 @@ export type BlogUncheckedCreateWithoutFeatured_imageInput = {
   content: string
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -915,9 +820,6 @@ export type BlogCreateWithoutOg_imageInput = {
   content: string
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -938,9 +840,6 @@ export type BlogUncheckedCreateWithoutOg_imageInput = {
   featured_image_id?: string | null
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -989,9 +888,6 @@ export type BlogScalarWhereInput = {
   featured_image_id?: Prisma.StringNullableFilter<"Blog"> | string | null
   status?: Prisma.EnumStatusFilter<"Blog"> | $Enums.Status
   is_featured?: Prisma.BoolFilter<"Blog"> | boolean
-  view_count?: Prisma.IntFilter<"Blog"> | number
-  reading_time?: Prisma.IntNullableFilter<"Blog"> | number | null
-  tags?: Prisma.StringNullableListFilter<"Blog">
   publish_date?: Prisma.DateTimeNullableFilter<"Blog"> | Date | string | null
   created_at?: Prisma.DateTimeFilter<"Blog"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Blog"> | Date | string
@@ -1025,9 +921,6 @@ export type BlogCreateWithoutAuthorInput = {
   content: string
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -1048,9 +941,6 @@ export type BlogUncheckedCreateWithoutAuthorInput = {
   featured_image_id?: string | null
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -1094,9 +984,6 @@ export type BlogCreateWithoutCategoriesInput = {
   content: string
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -1117,9 +1004,6 @@ export type BlogUncheckedCreateWithoutCategoriesInput = {
   featured_image_id?: string | null
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -1153,9 +1037,6 @@ export type BlogUpdateWithoutCategoriesInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1176,9 +1057,6 @@ export type BlogUncheckedUpdateWithoutCategoriesInput = {
   featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1197,9 +1075,6 @@ export type BlogCreateManyFeatured_imageInput = {
   content: string
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -1219,9 +1094,6 @@ export type BlogCreateManyOg_imageInput = {
   featured_image_id?: string | null
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -1238,9 +1110,6 @@ export type BlogUpdateWithoutFeatured_imageInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1260,9 +1129,6 @@ export type BlogUncheckedUpdateWithoutFeatured_imageInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1282,9 +1148,6 @@ export type BlogUncheckedUpdateManyWithoutFeatured_imageInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1302,9 +1165,6 @@ export type BlogUpdateWithoutOg_imageInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1325,9 +1185,6 @@ export type BlogUncheckedUpdateWithoutOg_imageInput = {
   featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1347,9 +1204,6 @@ export type BlogUncheckedUpdateManyWithoutOg_imageInput = {
   featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1368,9 +1222,6 @@ export type BlogCreateManyAuthorInput = {
   featured_image_id?: string | null
   status?: $Enums.Status
   is_featured?: boolean
-  view_count?: number
-  reading_time?: number | null
-  tags?: Prisma.BlogCreatetagsInput | string[]
   publish_date?: Date | string | null
   created_at?: Date | string
   updated_at?: Date | string
@@ -1387,9 +1238,6 @@ export type BlogUpdateWithoutAuthorInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1410,9 +1258,6 @@ export type BlogUncheckedUpdateWithoutAuthorInput = {
   featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1432,9 +1277,6 @@ export type BlogUncheckedUpdateManyWithoutAuthorInput = {
   featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  view_count?: Prisma.IntFieldUpdateOperationsInput | number
-  reading_time?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tags?: Prisma.BlogUpdatetagsInput | string[]
   publish_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1484,9 +1326,6 @@ export type BlogSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   featured_image_id?: boolean
   status?: boolean
   is_featured?: boolean
-  view_count?: boolean
-  reading_time?: boolean
-  tags?: boolean
   publish_date?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -1511,9 +1350,6 @@ export type BlogSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   featured_image_id?: boolean
   status?: boolean
   is_featured?: boolean
-  view_count?: boolean
-  reading_time?: boolean
-  tags?: boolean
   publish_date?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -1536,9 +1372,6 @@ export type BlogSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   featured_image_id?: boolean
   status?: boolean
   is_featured?: boolean
-  view_count?: boolean
-  reading_time?: boolean
-  tags?: boolean
   publish_date?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -1561,9 +1394,6 @@ export type BlogSelectScalar = {
   featured_image_id?: boolean
   status?: boolean
   is_featured?: boolean
-  view_count?: boolean
-  reading_time?: boolean
-  tags?: boolean
   publish_date?: boolean
   created_at?: boolean
   updated_at?: boolean
@@ -1574,7 +1404,7 @@ export type BlogSelectScalar = {
   author_id?: boolean
 }
 
-export type BlogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"blog_id" | "title" | "slug" | "excerpt" | "content" | "featured_image_id" | "status" | "is_featured" | "view_count" | "reading_time" | "tags" | "publish_date" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image_id" | "author_id", ExtArgs["result"]["blog"]>
+export type BlogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"blog_id" | "title" | "slug" | "excerpt" | "content" | "featured_image_id" | "status" | "is_featured" | "publish_date" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image_id" | "author_id", ExtArgs["result"]["blog"]>
 export type BlogInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   featured_image?: boolean | Prisma.Blog$featured_imageArgs<ExtArgs>
   og_image?: boolean | Prisma.Blog$og_imageArgs<ExtArgs>
@@ -1610,9 +1440,6 @@ export type $BlogPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     featured_image_id: string | null
     status: $Enums.Status
     is_featured: boolean
-    view_count: number
-    reading_time: number | null
-    tags: string[]
     publish_date: Date | null
     created_at: Date
     updated_at: Date
@@ -2056,9 +1883,6 @@ export interface BlogFieldRefs {
   readonly featured_image_id: Prisma.FieldRef<"Blog", 'String'>
   readonly status: Prisma.FieldRef<"Blog", 'Status'>
   readonly is_featured: Prisma.FieldRef<"Blog", 'Boolean'>
-  readonly view_count: Prisma.FieldRef<"Blog", 'Int'>
-  readonly reading_time: Prisma.FieldRef<"Blog", 'Int'>
-  readonly tags: Prisma.FieldRef<"Blog", 'String[]'>
   readonly publish_date: Prisma.FieldRef<"Blog", 'DateTime'>
   readonly created_at: Prisma.FieldRef<"Blog", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Blog", 'DateTime'>
