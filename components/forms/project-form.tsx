@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
 import { DynamicForm, FieldConfig } from "@/components/dynamic-form";
 import { Button } from "@/components/ui/button";
 import logger from "@/utils/logger";
+import { Pencil, Plus, PlusIcon } from "lucide-react";
+import React, { useCallback, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,25 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { PlusIcon } from "lucide-react";
-
-type ProjectImageDto = {
-  image_id: string;
-};
-
-type ProjectDto = {
-  project_id: number;
-  title: string;
-  short_description: string | null;
-  url: string | null;
-  client_name: string | null;
-  year: number | null;
-  timeline: string | null;
-  overview: string | null;
-  challenges: string | null;
-  solution: string | null;
-  images: { image_id: string }[];
-};
+import { useRouter } from "next/navigation";
 
 type Props = {
   project?: any; // if provided -> update mode
@@ -39,6 +22,9 @@ type Props = {
 export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
   const isUpdateMode = Boolean(project);
   const [loading, setloading] = useState(false);
+  const [open, setopen] = useState(false);
+  const router = useRouter();
+
   logger.info(isUpdateMode, "isUpdateMode");
   const fields: FieldConfig[] = [
     {
@@ -148,7 +134,6 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
       try {
         logger.info(data, "data");
         logger.info(data.imageIds, "data.imageIds");
-        debugger;
         const images: string[] = Array.isArray(data.imageIds)
           ? data.imageIds
           : data.imageIds
@@ -195,6 +180,8 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
           return;
         }
         setloading(false);
+        setopen(false);
+        router.refresh();
         if (onSaved) onSaved(result);
       } catch (error) {
         logger.error("Error saving project", error);
@@ -205,11 +192,15 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
   );
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setopen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
-          <PlusIcon className="size-4" />
-          {isUpdateMode ? "Update Project" : "Create Project"}
+          {isUpdateMode ? (
+            <Pencil className="size-4" />
+          ) : (
+            <Plus className="size-4" />
+          )}
+          {isUpdateMode ? `Update` : `Add`}
         </Button>
       </DialogTrigger>
       <DialogContent>

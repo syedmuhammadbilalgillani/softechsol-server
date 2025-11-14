@@ -39,9 +39,7 @@ model GalleryItem {
   activityFeaturedImages     Activity[]         @relation("ActivityFeaturedImage")
   activityGalleries          ActivityGallery[]
   activityOgImages           Activity[]         @relation("ActivityOgImage")
-  testimonialAvatars         Testimonial[]      @relation("TestimonialAvatar")
-  testimonialCompanyLogos    Testimonial[]      @relation("TestimonialCompanyLogo")
-  testimonialVideoThumbnails Testimonial[]      @relation("TestimonialVideoThumbnail")
+ 
   serviceFeaturedImages      Service[]          @relation("ServiceFeaturedImage")
   serviceOgImages            Service[]          @relation("ServiceOgImage")
 
@@ -336,43 +334,6 @@ model Activity {
   @@index([activity_type])
   @@index([featured_image_id])
   @@index([og_image_id])
-}
-
-// Client testimonials
-model Testimonial {
-  testimonial_id     Int          @id @default(autoincrement())
-  customer_name      String
-  customer_title     String?
-  company            String?
-  company_logo       GalleryItem? @relation("TestimonialCompanyLogo", fields: [company_logo_id], references: [id], onDelete: SetNull)
-  company_logo_id    String?
-  company_website    String?
-  content            String       @db.Text
-  rating             Int
-  avatar             GalleryItem? @relation("TestimonialAvatar", fields: [avatar_id], references: [id], onDelete: SetNull)
-  avatar_id          String?
-  location           String?
-  industry           String?
-  project_type       String?
-  is_featured        Boolean      @default(false)
-  is_video           Boolean      @default(false)
-  video_url          String?
-  video_thumbnail    GalleryItem? @relation("TestimonialVideoThumbnail", fields: [video_thumbnail_id], references: [id], onDelete: SetNull)
-  video_thumbnail_id String?
-  status             Status       @default(DRAFT)
-  display_order      Int          @default(0)
-  approved_at        DateTime?
-  created_at         DateTime     @default(now())
-  updated_at         DateTime     @updatedAt
-
-  @@index([status])
-  @@index([is_featured])
-  @@index([display_order])
-  @@index([rating])
-  @@index([industry])
-  @@index([avatar_id])
-  @@index([company_logo_id])
-  @@index([video_thumbnail_id])
 }
 
 // Software services
