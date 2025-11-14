@@ -4,6 +4,10 @@ import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 100;
+
+
 const BlogPage = async () => {
   const categories = await prisma.blogCategory.findMany();
   const blogs = await prisma.blog.findMany();

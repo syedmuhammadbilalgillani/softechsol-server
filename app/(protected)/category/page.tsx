@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import { Category } from "@/lib/types";
 import logger from "@/utils/logger";
 import CategoryPage from "./category-page";
+export const dynamic = "force-dynamic";
+export const revalidate = 100
 
 const CategoryPageComponent = async () => {
   const categories = await prisma.blogCategory.findMany({

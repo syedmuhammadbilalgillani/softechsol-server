@@ -1,11 +1,13 @@
-import DataTable from "@/components/data-table";
 import CompaniesForm from "@/components/forms/companies-form";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
-import Image from "next/image";
 import { Suspense } from "react";
 import CompanyPage from "./company-page";
+
+
+export const dynamic = "force-dynamic";
+export const revalidate = 100
 
 const MyCompanies = async () => {
   const companies = await prisma.myCompanies.findMany({

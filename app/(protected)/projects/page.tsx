@@ -1,9 +1,13 @@
-import DataTable, { Column } from "@/components/data-table";
 import { ProjectForm } from "@/components/forms/project-form";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
 import ProjectPageComponent from "./project-page-component";
+
+
+
+export const dynamic = "force-dynamic";
+export const revalidate = 100
 
 const ProjectsPage = async () => {
   const projects = await prisma.project.findMany({
