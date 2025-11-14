@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma'; // Prisma client instance
+import { NextResponse } from "next/server";
+import prisma from "@/lib/prisma"; // Prisma client instance
 
 // POST - Create a new service
 export async function POST(req: Request) {
   const data = await req.json();
-  
+
   try {
     const service = await prisma.service.create({
       data: {
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
         icon: data.icon,
         price: data.price,
         price_type: data.price_type,
-        currency: data.currency || 'USD',
+        currency: data.currency || "USD",
         price_note: data.price_note,
         features: data.features,
         deliverables: data.deliverables,
@@ -33,27 +33,26 @@ export async function POST(req: Request) {
         cta_text: data.cta_text,
         cta_url: data.cta_url,
         categories: {
-          connect: data.categories?.map((categoryId: string) => ({ id: categoryId }))
+          connect: data.categories?.map((categoryId: string) => ({
+            id: categoryId,
+          })),
         },
-        portfolio: {
-          connect: data.portfolio?.map((portfolioId: string) => ({ id: portfolioId }))
-        },
-        project: {
-          connect: data.project?.map((projectId: string) => ({ id: projectId }))
-        },
-      }
+      },
     });
-    
+
     return NextResponse.json(service, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: 'Error creating service' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error creating service" },
+      { status: 500 }
+    );
   }
 }
 
 // PUT - Update an existing service
 export async function PUT(req: Request) {
   const { service_id, ...data } = await req.json();
-  
+
   try {
     const service = await prisma.service.update({
       where: { service_id },
@@ -65,7 +64,7 @@ export async function PUT(req: Request) {
         icon: data.icon,
         price: data.price,
         price_type: data.price_type,
-        currency: data.currency || 'USD',
+        currency: data.currency || "USD",
         price_note: data.price_note,
         features: data.features,
         deliverables: data.deliverables,
@@ -83,34 +82,39 @@ export async function PUT(req: Request) {
         cta_text: data.cta_text,
         cta_url: data.cta_url,
         categories: {
-          connect: data.categories?.map((categoryId: string) => ({ id: categoryId }))
+          connect: data.categories?.map((categoryId: string) => ({
+            id: categoryId,
+          })),
         },
-        portfolio: {
-          connect: data.portfolio?.map((portfolioId: string) => ({ id: portfolioId }))
-        },
-        project: {
-          connect: data.project?.map((projectId: string) => ({ id: projectId }))
-        },
-      }
+      },
     });
-    
+
     return NextResponse.json(service, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: 'Error updating service' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error updating service" },
+      { status: 500 }
+    );
   }
 }
 
 // DELETE - Delete a service
 export async function DELETE(req: Request) {
   const { service_id } = await req.json();
-  
+
   try {
     const service = await prisma.service.delete({
-      where: { service_id }
+      where: { service_id },
     });
-    
-    return NextResponse.json({ message: 'Service deleted successfully' }, { status: 200 });
+
+    return NextResponse.json(
+      { message: "Service deleted successfully" },
+      { status: 200 }
+    );
   } catch (error) {
-    return NextResponse.json({ error: 'Error deleting service' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error deleting service" },
+      { status: 500 }
+    );
   }
 }

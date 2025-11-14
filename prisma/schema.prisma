@@ -35,7 +35,7 @@ model GalleryItem {
   blogFeaturedImages         Blog[]             @relation("BlogFeaturedImage")
   blogOgImages               Blog[]             @relation("BlogOgImage")
   companyFeaturedImages      MyCompanies[]      @relation("CompanyFeaturedImage")
-  projectFeaturedImages      Project[]          @relation("ProjectFeaturedImage")
+  projectImages ProjectImage[]
   activityFeaturedImages     Activity[]         @relation("ActivityFeaturedImage")
   activityGalleries          ActivityGallery[]
   activityOgImages           Activity[]         @relation("ActivityOgImage")
@@ -153,6 +153,41 @@ model Blog {
   @@index([og_image_id])
 }
 
+
+
+model Project {
+  project_id        Int             @id @default(autoincrement())
+  title             String
+  short_description String?         @db.Text
+  images            ProjectImage[]
+  url               String?
+  client_name       String?
+  year              Int?
+  timeline          String?
+  overview          String?         @db.Text
+  challenges        String?         @db.Text
+  solution          String?         @db.Text
+  created_at        DateTime        @default(now())
+  updated_at        DateTime        @updatedAt
+}
+
+model ProjectImage {
+  id            String      @id @default(cuid())
+  project       Project     @relation(fields: [project_id], references: [project_id], onDelete: Cascade)
+  project_id    Int
+  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
+  image_id      String
+  display_order Int         @default(0)
+  created_at    DateTime    @default(now())
+
+  @@unique([project_id, image_id])
+  @@index([project_id])
+  @@index([image_id])
+  @@index([display_order])
+}
+
+
+
 // Service Categories
 model ServiceCategory {
   category_id   Int               @id @default(autoincrement())
@@ -199,19 +234,6 @@ model ServiceCategoryRelation {
 
 
 
-// Internal projects/products
-model Project {
-  project_id        Int              @id @default(autoincrement())
-  title             String
-  short_description String?          @db.Text
-  featured_image    GalleryItem?     @relation("ProjectFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
-  featured_image_id String?
-  status            Status           @default(PUBLISHED)
-  created_at        DateTime         @default(now())
-  updated_at        DateTime         @updatedAt
-  @@index([status])
- 
-}
 
 // Contact form submissions
 model ContactUs {

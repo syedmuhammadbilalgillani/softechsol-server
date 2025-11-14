@@ -399,6 +399,7 @@ export const ModelName = {
   ServiceCategory: 'ServiceCategory',
   ServiceCategoryRelation: 'ServiceCategoryRelation',
   Project: 'Project',
+  ProjectImage: 'ProjectImage',
   ContactUs: 'ContactUs',
   ActivityGallery: 'ActivityGallery',
   Activity: 'Activity',
@@ -419,7 +420,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "serviceCategory" | "serviceCategoryRelation" | "project" | "contactUs" | "activityGallery" | "activity" | "testimonial" | "service"
+    modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "serviceCategory" | "serviceCategoryRelation" | "project" | "projectImage" | "contactUs" | "activityGallery" | "activity" | "testimonial" | "service"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1089,6 +1090,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ProjectImage: {
+      payload: Prisma.$ProjectImagePayload<ExtArgs>
+      fields: Prisma.ProjectImageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProjectImageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProjectImageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>
+        }
+        findFirst: {
+          args: Prisma.ProjectImageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProjectImageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>
+        }
+        findMany: {
+          args: Prisma.ProjectImageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>[]
+        }
+        create: {
+          args: Prisma.ProjectImageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>
+        }
+        createMany: {
+          args: Prisma.ProjectImageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProjectImageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>[]
+        }
+        delete: {
+          args: Prisma.ProjectImageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>
+        }
+        update: {
+          args: Prisma.ProjectImageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>
+        }
+        deleteMany: {
+          args: Prisma.ProjectImageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProjectImageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProjectImageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>[]
+        }
+        upsert: {
+          args: Prisma.ProjectImageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectImagePayload>
+        }
+        aggregate: {
+          args: Prisma.ProjectImageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProjectImage>
+        }
+        groupBy: {
+          args: Prisma.ProjectImageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectImageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProjectImageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProjectImageCountAggregateOutputType> | number
+        }
+      }
+    }
     ContactUs: {
       payload: Prisma.$ContactUsPayload<ExtArgs>
       fields: Prisma.ContactUsFieldRefs
@@ -1619,13 +1694,29 @@ export const ProjectScalarFieldEnum = {
   project_id: 'project_id',
   title: 'title',
   short_description: 'short_description',
-  featured_image_id: 'featured_image_id',
-  status: 'status',
+  url: 'url',
+  client_name: 'client_name',
+  year: 'year',
+  timeline: 'timeline',
+  overview: 'overview',
+  challenges: 'challenges',
+  solution: 'solution',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const ProjectImageScalarFieldEnum = {
+  id: 'id',
+  project_id: 'project_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type ProjectImageScalarFieldEnum = (typeof ProjectImageScalarFieldEnum)[keyof typeof ProjectImageScalarFieldEnum]
 
 
 export const ContactUsScalarFieldEnum = {
@@ -2000,6 +2091,7 @@ export type GlobalOmitConfig = {
   serviceCategory?: Prisma.ServiceCategoryOmit
   serviceCategoryRelation?: Prisma.ServiceCategoryRelationOmit
   project?: Prisma.ProjectOmit
+  projectImage?: Prisma.ProjectImageOmit
   contactUs?: Prisma.ContactUsOmit
   activityGallery?: Prisma.ActivityGalleryOmit
   activity?: Prisma.ActivityOmit

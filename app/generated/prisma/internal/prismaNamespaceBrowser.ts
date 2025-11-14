@@ -58,6 +58,7 @@ export const ModelName = {
   ServiceCategory: 'ServiceCategory',
   ServiceCategoryRelation: 'ServiceCategoryRelation',
   Project: 'Project',
+  ProjectImage: 'ProjectImage',
   ContactUs: 'ContactUs',
   ActivityGallery: 'ActivityGallery',
   Activity: 'Activity',
@@ -202,13 +203,29 @@ export const ProjectScalarFieldEnum = {
   project_id: 'project_id',
   title: 'title',
   short_description: 'short_description',
-  featured_image_id: 'featured_image_id',
-  status: 'status',
+  url: 'url',
+  client_name: 'client_name',
+  year: 'year',
+  timeline: 'timeline',
+  overview: 'overview',
+  challenges: 'challenges',
+  solution: 'solution',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const ProjectImageScalarFieldEnum = {
+  id: 'id',
+  project_id: 'project_id',
+  image_id: 'image_id',
+  display_order: 'display_order',
+  created_at: 'created_at'
+} as const
+
+export type ProjectImageScalarFieldEnum = (typeof ProjectImageScalarFieldEnum)[keyof typeof ProjectImageScalarFieldEnum]
 
 
 export const ContactUsScalarFieldEnum = {

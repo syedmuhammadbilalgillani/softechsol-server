@@ -1,4 +1,4 @@
-import { Building2, Home, Image, Newspaper, Type } from "lucide-react";
+import { Building2, Folder, Home, Image, Newspaper, Type } from "lucide-react";
 
 export const navigation = [
   {
@@ -36,6 +36,13 @@ export const navigation = [
         title: "Companies",
         url: "/companies",
         icon: Building2,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
+      {
+        title: "Projects",
+        url: "/projects",
+        icon: Folder,
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },

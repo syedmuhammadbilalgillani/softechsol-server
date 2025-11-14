@@ -28,18 +28,25 @@ export type AggregateProject = {
 
 export type ProjectAvgAggregateOutputType = {
   project_id: number | null
+  year: number | null
 }
 
 export type ProjectSumAggregateOutputType = {
   project_id: number | null
+  year: number | null
 }
 
 export type ProjectMinAggregateOutputType = {
   project_id: number | null
   title: string | null
   short_description: string | null
-  featured_image_id: string | null
-  status: $Enums.Status | null
+  url: string | null
+  client_name: string | null
+  year: number | null
+  timeline: string | null
+  overview: string | null
+  challenges: string | null
+  solution: string | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -48,8 +55,13 @@ export type ProjectMaxAggregateOutputType = {
   project_id: number | null
   title: string | null
   short_description: string | null
-  featured_image_id: string | null
-  status: $Enums.Status | null
+  url: string | null
+  client_name: string | null
+  year: number | null
+  timeline: string | null
+  overview: string | null
+  challenges: string | null
+  solution: string | null
   created_at: Date | null
   updated_at: Date | null
 }
@@ -58,8 +70,13 @@ export type ProjectCountAggregateOutputType = {
   project_id: number
   title: number
   short_description: number
-  featured_image_id: number
-  status: number
+  url: number
+  client_name: number
+  year: number
+  timeline: number
+  overview: number
+  challenges: number
+  solution: number
   created_at: number
   updated_at: number
   _all: number
@@ -68,18 +85,25 @@ export type ProjectCountAggregateOutputType = {
 
 export type ProjectAvgAggregateInputType = {
   project_id?: true
+  year?: true
 }
 
 export type ProjectSumAggregateInputType = {
   project_id?: true
+  year?: true
 }
 
 export type ProjectMinAggregateInputType = {
   project_id?: true
   title?: true
   short_description?: true
-  featured_image_id?: true
-  status?: true
+  url?: true
+  client_name?: true
+  year?: true
+  timeline?: true
+  overview?: true
+  challenges?: true
+  solution?: true
   created_at?: true
   updated_at?: true
 }
@@ -88,8 +112,13 @@ export type ProjectMaxAggregateInputType = {
   project_id?: true
   title?: true
   short_description?: true
-  featured_image_id?: true
-  status?: true
+  url?: true
+  client_name?: true
+  year?: true
+  timeline?: true
+  overview?: true
+  challenges?: true
+  solution?: true
   created_at?: true
   updated_at?: true
 }
@@ -98,8 +127,13 @@ export type ProjectCountAggregateInputType = {
   project_id?: true
   title?: true
   short_description?: true
-  featured_image_id?: true
-  status?: true
+  url?: true
+  client_name?: true
+  year?: true
+  timeline?: true
+  overview?: true
+  challenges?: true
+  solution?: true
   created_at?: true
   updated_at?: true
   _all?: true
@@ -195,8 +229,13 @@ export type ProjectGroupByOutputType = {
   project_id: number
   title: string
   short_description: string | null
-  featured_image_id: string | null
-  status: $Enums.Status
+  url: string | null
+  client_name: string | null
+  year: number | null
+  timeline: string | null
+  overview: string | null
+  challenges: string | null
+  solution: string | null
   created_at: Date
   updated_at: Date
   _count: ProjectCountAggregateOutputType | null
@@ -228,22 +267,32 @@ export type ProjectWhereInput = {
   project_id?: Prisma.IntFilter<"Project"> | number
   title?: Prisma.StringFilter<"Project"> | string
   short_description?: Prisma.StringNullableFilter<"Project"> | string | null
-  featured_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
-  status?: Prisma.EnumStatusFilter<"Project"> | $Enums.Status
+  url?: Prisma.StringNullableFilter<"Project"> | string | null
+  client_name?: Prisma.StringNullableFilter<"Project"> | string | null
+  year?: Prisma.IntNullableFilter<"Project"> | number | null
+  timeline?: Prisma.StringNullableFilter<"Project"> | string | null
+  overview?: Prisma.StringNullableFilter<"Project"> | string | null
+  challenges?: Prisma.StringNullableFilter<"Project"> | string | null
+  solution?: Prisma.StringNullableFilter<"Project"> | string | null
   created_at?: Prisma.DateTimeFilter<"Project"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Project"> | Date | string
-  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  images?: Prisma.ProjectImageListRelationFilter
 }
 
 export type ProjectOrderByWithRelationInput = {
   project_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
+  client_name?: Prisma.SortOrderInput | Prisma.SortOrder
+  year?: Prisma.SortOrderInput | Prisma.SortOrder
+  timeline?: Prisma.SortOrderInput | Prisma.SortOrder
+  overview?: Prisma.SortOrderInput | Prisma.SortOrder
+  challenges?: Prisma.SortOrderInput | Prisma.SortOrder
+  solution?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
-  featured_image?: Prisma.GalleryItemOrderByWithRelationInput
+  images?: Prisma.ProjectImageOrderByRelationAggregateInput
 }
 
 export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -253,19 +302,29 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ProjectWhereInput | Prisma.ProjectWhereInput[]
   title?: Prisma.StringFilter<"Project"> | string
   short_description?: Prisma.StringNullableFilter<"Project"> | string | null
-  featured_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
-  status?: Prisma.EnumStatusFilter<"Project"> | $Enums.Status
+  url?: Prisma.StringNullableFilter<"Project"> | string | null
+  client_name?: Prisma.StringNullableFilter<"Project"> | string | null
+  year?: Prisma.IntNullableFilter<"Project"> | number | null
+  timeline?: Prisma.StringNullableFilter<"Project"> | string | null
+  overview?: Prisma.StringNullableFilter<"Project"> | string | null
+  challenges?: Prisma.StringNullableFilter<"Project"> | string | null
+  solution?: Prisma.StringNullableFilter<"Project"> | string | null
   created_at?: Prisma.DateTimeFilter<"Project"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"Project"> | Date | string
-  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
+  images?: Prisma.ProjectImageListRelationFilter
 }, "project_id">
 
 export type ProjectOrderByWithAggregationInput = {
   project_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  status?: Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
+  client_name?: Prisma.SortOrderInput | Prisma.SortOrder
+  year?: Prisma.SortOrderInput | Prisma.SortOrder
+  timeline?: Prisma.SortOrderInput | Prisma.SortOrder
+  overview?: Prisma.SortOrderInput | Prisma.SortOrder
+  challenges?: Prisma.SortOrderInput | Prisma.SortOrder
+  solution?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   _count?: Prisma.ProjectCountOrderByAggregateInput
@@ -282,8 +341,13 @@ export type ProjectScalarWhereWithAggregatesInput = {
   project_id?: Prisma.IntWithAggregatesFilter<"Project"> | number
   title?: Prisma.StringWithAggregatesFilter<"Project"> | string
   short_description?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
-  featured_image_id?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
-  status?: Prisma.EnumStatusWithAggregatesFilter<"Project"> | $Enums.Status
+  url?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  client_name?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  year?: Prisma.IntNullableWithAggregatesFilter<"Project"> | number | null
+  timeline?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  overview?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  challenges?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
+  solution?: Prisma.StringNullableWithAggregatesFilter<"Project"> | string | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
 }
@@ -291,47 +355,76 @@ export type ProjectScalarWhereWithAggregatesInput = {
 export type ProjectCreateInput = {
   title: string
   short_description?: string | null
-  status?: $Enums.Status
+  url?: string | null
+  client_name?: string | null
+  year?: number | null
+  timeline?: string | null
+  overview?: string | null
+  challenges?: string | null
+  solution?: string | null
   created_at?: Date | string
   updated_at?: Date | string
-  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutProjectFeaturedImagesInput
+  images?: Prisma.ProjectImageCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateInput = {
   project_id?: number
   title: string
   short_description?: string | null
-  featured_image_id?: string | null
-  status?: $Enums.Status
+  url?: string | null
+  client_name?: string | null
+  year?: number | null
+  timeline?: string | null
+  overview?: string | null
+  challenges?: string | null
+  solution?: string | null
   created_at?: Date | string
   updated_at?: Date | string
+  images?: Prisma.ProjectImageUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  timeline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  overview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  challenges?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  solution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  featured_image?: Prisma.GalleryItemUpdateOneWithoutProjectFeaturedImagesNestedInput
+  images?: Prisma.ProjectImageUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateInput = {
   project_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  timeline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  overview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  challenges?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  solution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  images?: Prisma.ProjectImageUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
   project_id?: number
   title: string
   short_description?: string | null
-  featured_image_id?: string | null
-  status?: $Enums.Status
+  url?: string | null
+  client_name?: string | null
+  year?: number | null
+  timeline?: string | null
+  overview?: string | null
+  challenges?: string | null
+  solution?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
@@ -339,7 +432,13 @@ export type ProjectCreateManyInput = {
 export type ProjectUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  timeline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  overview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  challenges?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  solution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -348,42 +447,48 @@ export type ProjectUncheckedUpdateManyInput = {
   project_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  timeline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  overview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  challenges?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  solution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type ProjectListRelationFilter = {
-  every?: Prisma.ProjectWhereInput
-  some?: Prisma.ProjectWhereInput
-  none?: Prisma.ProjectWhereInput
-}
-
-export type ProjectOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
 }
 
 export type ProjectCountOrderByAggregateInput = {
   project_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  client_name?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  timeline?: Prisma.SortOrder
+  overview?: Prisma.SortOrder
+  challenges?: Prisma.SortOrder
+  solution?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
 
 export type ProjectAvgOrderByAggregateInput = {
   project_id?: Prisma.SortOrder
+  year?: Prisma.SortOrder
 }
 
 export type ProjectMaxOrderByAggregateInput = {
   project_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  client_name?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  timeline?: Prisma.SortOrder
+  overview?: Prisma.SortOrder
+  challenges?: Prisma.SortOrder
+  solution?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
@@ -392,216 +497,232 @@ export type ProjectMinOrderByAggregateInput = {
   project_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  url?: Prisma.SortOrder
+  client_name?: Prisma.SortOrder
+  year?: Prisma.SortOrder
+  timeline?: Prisma.SortOrder
+  overview?: Prisma.SortOrder
+  challenges?: Prisma.SortOrder
+  solution?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
 }
 
 export type ProjectSumOrderByAggregateInput = {
   project_id?: Prisma.SortOrder
+  year?: Prisma.SortOrder
 }
 
-export type ProjectCreateNestedManyWithoutFeatured_imageInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
-  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+export type ProjectScalarRelationFilter = {
+  is?: Prisma.ProjectWhereInput
+  isNot?: Prisma.ProjectWhereInput
 }
 
-export type ProjectUncheckedCreateNestedManyWithoutFeatured_imageInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
-  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+export type ProjectCreateNestedOneWithoutImagesInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutImagesInput, Prisma.ProjectUncheckedCreateWithoutImagesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutImagesInput
+  connect?: Prisma.ProjectWhereUniqueInput
 }
 
-export type ProjectUpdateManyWithoutFeatured_imageNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput[]
-  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+export type ProjectUpdateOneRequiredWithoutImagesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutImagesInput, Prisma.ProjectUncheckedCreateWithoutImagesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutImagesInput
+  upsert?: Prisma.ProjectUpsertWithoutImagesInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutImagesInput, Prisma.ProjectUpdateWithoutImagesInput>, Prisma.ProjectUncheckedUpdateWithoutImagesInput>
 }
 
-export type ProjectUncheckedUpdateManyWithoutFeatured_imageNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput> | Prisma.ProjectCreateWithoutFeatured_imageInput[] | Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput | Prisma.ProjectCreateOrConnectWithoutFeatured_imageInput[]
-  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput[]
-  createMany?: Prisma.ProjectCreateManyFeatured_imageInputEnvelope
-  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
-  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput[]
-  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ProjectUpdateManyWithWhereWithoutFeatured_imageInput[]
-  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-}
-
-export type ProjectCreateWithoutFeatured_imageInput = {
+export type ProjectCreateWithoutImagesInput = {
   title: string
   short_description?: string | null
-  status?: $Enums.Status
+  url?: string | null
+  client_name?: string | null
+  year?: number | null
+  timeline?: string | null
+  overview?: string | null
+  challenges?: string | null
+  solution?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
 
-export type ProjectUncheckedCreateWithoutFeatured_imageInput = {
+export type ProjectUncheckedCreateWithoutImagesInput = {
   project_id?: number
   title: string
   short_description?: string | null
-  status?: $Enums.Status
+  url?: string | null
+  client_name?: string | null
+  year?: number | null
+  timeline?: string | null
+  overview?: string | null
+  challenges?: string | null
+  solution?: string | null
   created_at?: Date | string
   updated_at?: Date | string
 }
 
-export type ProjectCreateOrConnectWithoutFeatured_imageInput = {
+export type ProjectCreateOrConnectWithoutImagesInput = {
   where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutImagesInput, Prisma.ProjectUncheckedCreateWithoutImagesInput>
 }
 
-export type ProjectCreateManyFeatured_imageInputEnvelope = {
-  data: Prisma.ProjectCreateManyFeatured_imageInput | Prisma.ProjectCreateManyFeatured_imageInput[]
-  skipDuplicates?: boolean
+export type ProjectUpsertWithoutImagesInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutImagesInput, Prisma.ProjectUncheckedUpdateWithoutImagesInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutImagesInput, Prisma.ProjectUncheckedCreateWithoutImagesInput>
+  where?: Prisma.ProjectWhereInput
 }
 
-export type ProjectUpsertWithWhereUniqueWithoutFeatured_imageInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutFeatured_imageInput, Prisma.ProjectUncheckedUpdateWithoutFeatured_imageInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutFeatured_imageInput, Prisma.ProjectUncheckedCreateWithoutFeatured_imageInput>
+export type ProjectUpdateToOneWithWhereWithoutImagesInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutImagesInput, Prisma.ProjectUncheckedUpdateWithoutImagesInput>
 }
 
-export type ProjectUpdateWithWhereUniqueWithoutFeatured_imageInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutFeatured_imageInput, Prisma.ProjectUncheckedUpdateWithoutFeatured_imageInput>
-}
-
-export type ProjectUpdateManyWithWhereWithoutFeatured_imageInput = {
-  where: Prisma.ProjectScalarWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutFeatured_imageInput>
-}
-
-export type ProjectScalarWhereInput = {
-  AND?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-  OR?: Prisma.ProjectScalarWhereInput[]
-  NOT?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
-  project_id?: Prisma.IntFilter<"Project"> | number
-  title?: Prisma.StringFilter<"Project"> | string
-  short_description?: Prisma.StringNullableFilter<"Project"> | string | null
-  featured_image_id?: Prisma.StringNullableFilter<"Project"> | string | null
-  status?: Prisma.EnumStatusFilter<"Project"> | $Enums.Status
-  created_at?: Prisma.DateTimeFilter<"Project"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Project"> | Date | string
-}
-
-export type ProjectCreateManyFeatured_imageInput = {
-  project_id?: number
-  title: string
-  short_description?: string | null
-  status?: $Enums.Status
-  created_at?: Date | string
-  updated_at?: Date | string
-}
-
-export type ProjectUpdateWithoutFeatured_imageInput = {
+export type ProjectUpdateWithoutImagesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  timeline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  overview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  challenges?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  solution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ProjectUncheckedUpdateWithoutFeatured_imageInput = {
+export type ProjectUncheckedUpdateWithoutImagesInput = {
   project_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  client_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  year?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  timeline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  overview?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  challenges?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  solution?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ProjectUncheckedUpdateManyWithoutFeatured_imageInput = {
-  project_id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+
+/**
+ * Count Type ProjectCountOutputType
+ */
+
+export type ProjectCountOutputType = {
+  images: number
 }
 
+export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  images?: boolean | ProjectCountOutputTypeCountImagesArgs
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectCountOutputType
+   */
+  select?: Prisma.ProjectCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectImageWhereInput
+}
 
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   project_id?: boolean
   title?: boolean
   short_description?: boolean
-  featured_image_id?: boolean
-  status?: boolean
+  url?: boolean
+  client_name?: boolean
+  year?: boolean
+  timeline?: boolean
+  overview?: boolean
+  challenges?: boolean
+  solution?: boolean
   created_at?: boolean
   updated_at?: boolean
-  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  images?: boolean | Prisma.Project$imagesArgs<ExtArgs>
+  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   project_id?: boolean
   title?: boolean
   short_description?: boolean
-  featured_image_id?: boolean
-  status?: boolean
+  url?: boolean
+  client_name?: boolean
+  year?: boolean
+  timeline?: boolean
+  overview?: boolean
+  challenges?: boolean
+  solution?: boolean
   created_at?: boolean
   updated_at?: boolean
-  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   project_id?: boolean
   title?: boolean
   short_description?: boolean
-  featured_image_id?: boolean
-  status?: boolean
+  url?: boolean
+  client_name?: boolean
+  year?: boolean
+  timeline?: boolean
+  overview?: boolean
+  challenges?: boolean
+  solution?: boolean
   created_at?: boolean
   updated_at?: boolean
-  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
 export type ProjectSelectScalar = {
   project_id?: boolean
   title?: boolean
   short_description?: boolean
-  featured_image_id?: boolean
-  status?: boolean
+  url?: boolean
+  client_name?: boolean
+  year?: boolean
+  timeline?: boolean
+  overview?: boolean
+  challenges?: boolean
+  solution?: boolean
   created_at?: boolean
   updated_at?: boolean
 }
 
-export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"project_id" | "title" | "short_description" | "featured_image_id" | "status" | "created_at" | "updated_at", ExtArgs["result"]["project"]>
+export type ProjectOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"project_id" | "title" | "short_description" | "url" | "client_name" | "year" | "timeline" | "overview" | "challenges" | "solution" | "created_at" | "updated_at", ExtArgs["result"]["project"]>
 export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
+  images?: boolean | Prisma.Project$imagesArgs<ExtArgs>
+  _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
-}
-export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  featured_image?: boolean | Prisma.Project$featured_imageArgs<ExtArgs>
-}
+export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Project"
   objects: {
-    featured_image: Prisma.$GalleryItemPayload<ExtArgs> | null
+    images: Prisma.$ProjectImagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     project_id: number
     title: string
     short_description: string | null
-    featured_image_id: string | null
-    status: $Enums.Status
+    url: string | null
+    client_name: string | null
+    year: number | null
+    timeline: string | null
+    overview: string | null
+    challenges: string | null
+    solution: string | null
     created_at: Date
     updated_at: Date
   }, ExtArgs["result"]["project"]>
@@ -998,7 +1119,7 @@ readonly fields: ProjectFieldRefs;
  */
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  featured_image<T extends Prisma.Project$featured_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$featured_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  images<T extends Prisma.Project$imagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1031,8 +1152,13 @@ export interface ProjectFieldRefs {
   readonly project_id: Prisma.FieldRef<"Project", 'Int'>
   readonly title: Prisma.FieldRef<"Project", 'String'>
   readonly short_description: Prisma.FieldRef<"Project", 'String'>
-  readonly featured_image_id: Prisma.FieldRef<"Project", 'String'>
-  readonly status: Prisma.FieldRef<"Project", 'Status'>
+  readonly url: Prisma.FieldRef<"Project", 'String'>
+  readonly client_name: Prisma.FieldRef<"Project", 'String'>
+  readonly year: Prisma.FieldRef<"Project", 'Int'>
+  readonly timeline: Prisma.FieldRef<"Project", 'String'>
+  readonly overview: Prisma.FieldRef<"Project", 'String'>
+  readonly challenges: Prisma.FieldRef<"Project", 'String'>
+  readonly solution: Prisma.FieldRef<"Project", 'String'>
   readonly created_at: Prisma.FieldRef<"Project", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"Project", 'DateTime'>
 }
@@ -1284,10 +1410,6 @@ export type ProjectCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    */
   data: Prisma.ProjectCreateManyInput | Prisma.ProjectCreateManyInput[]
   skipDuplicates?: boolean
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjectIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1358,10 +1480,6 @@ export type ProjectUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many Projects to update.
    */
   limit?: number
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ProjectIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1431,22 +1549,27 @@ export type ProjectDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Project.featured_image
+ * Project.images
  */
-export type Project$featured_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Project$imagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the GalleryItem
+   * Select specific fields to fetch from the ProjectImage
    */
-  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  select?: Prisma.ProjectImageSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the GalleryItem
+   * Omit specific fields from the ProjectImage
    */
-  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  omit?: Prisma.ProjectImageOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.GalleryItemInclude<ExtArgs> | null
-  where?: Prisma.GalleryItemWhereInput
+  include?: Prisma.ProjectImageInclude<ExtArgs> | null
+  where?: Prisma.ProjectImageWhereInput
+  orderBy?: Prisma.ProjectImageOrderByWithRelationInput | Prisma.ProjectImageOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectImageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectImageScalarFieldEnum | Prisma.ProjectImageScalarFieldEnum[]
 }
 
 /**

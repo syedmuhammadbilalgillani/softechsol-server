@@ -58,8 +58,9 @@ export interface FieldConfig {
   defaultCurrency?: string;
   onCurrencyChange?: (value: string) => void;
   onImageSelect?: (file: File) => void;
-  maxCount?: number; // Add this for multi-select
-  animation?: number; // Add this for multi-select
+  maxCount?: number;
+  animation?: number;
+  multiple?: boolean;
 }
 
 interface StepConfig {
@@ -398,7 +399,7 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
               </Label>
               <ImageSelector
                 name={field.name}
-                // placeholder={field.placeholder || "Select an image..."}
+                multiple={field.multiple} // <---- pass through
               />
               {showError && (
                 <p className="text-red-500 text-sm mt-1">{error}</p>
