@@ -10,7 +10,7 @@ const publicPaths = ["/auth/signin", "/auth/signup"];
 
 export async function middleware(req: NextRequest) {
   // Get the user's session token (JWT)
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+  const token = await getToken({ req, secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET });
   logger.debug(token, "token");
   const url = req.url;
   logger.debug(req, "url");
