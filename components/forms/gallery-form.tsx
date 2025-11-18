@@ -5,7 +5,17 @@ import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { DynamicForm, FieldConfig } from "@/components/dynamic-form";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogTitle, DialogHeader, DialogContent, DialogTrigger, DialogFooter, DialogClose } from "../ui/dialog";
+import {
+  Dialog,
+  DialogTitle,
+  DialogHeader,
+  DialogContent,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+  DialogDescription,
+} from "../ui/dialog";
+import { PencilIcon, PlusIcon } from "lucide-react";
 
 type GalleryFormProps =
   | { mode: "create" }
@@ -43,7 +53,7 @@ const galleryFields: FieldConfig[] = [
 ];
 
 export function GalleryForm(props: GalleryFormProps) {
-  const [open, setOpen] = useState(false);      
+  const [open, setOpen] = useState(false);
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
@@ -111,11 +121,25 @@ export function GalleryForm(props: GalleryFormProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">{props.mode === "create" ? "Add Image" : "Edit"}</Button>
+        <Button variant="outline">
+          {props.mode === "create" ? (
+            <PlusIcon className="w-4 h-4" />
+          ) : (
+            <PencilIcon className="w-4 h-4" />
+          )}
+          {props.mode === "create" ? "Add" : ""}
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Gallery Item</DialogTitle>
+          <DialogTitle>
+            {props.mode === "create" ? "Add Image" : "Edit Image"}
+          </DialogTitle>
+          <DialogDescription>
+            {props.mode === "create"
+              ? "Add a new image to the gallery"
+              : "Edit the image details"}
+          </DialogDescription>
         </DialogHeader>
         <DynamicForm
           fields={galleryFields}

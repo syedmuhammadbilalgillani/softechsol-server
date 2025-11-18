@@ -3,7 +3,7 @@
 import { DynamicForm, FieldConfig } from "@/components/dynamic-form";
 import { Button } from "@/components/ui/button";
 import logger from "@/utils/logger";
-import { Pencil, Plus, PlusIcon } from "lucide-react";
+import { Pencil, PencilIcon, Plus, PlusIcon } from "lucide-react";
 import React, { useCallback, useState } from "react";
 import {
   Dialog,
@@ -196,11 +196,11 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           {isUpdateMode ? (
-            <Pencil className="size-4" />
+            <PencilIcon className="w-4 h-4" />
           ) : (
-            <Plus className="size-4" />
+            <PlusIcon className="w-4 h-4" />
           )}
-          {isUpdateMode ? `Update` : `Add`}
+          {isUpdateMode ? "" : "Add"}
         </Button>
       </DialogTrigger>
       <DialogContent>

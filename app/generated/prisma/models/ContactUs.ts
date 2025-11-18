@@ -28,10 +28,12 @@ export type AggregateContactUs = {
 
 export type ContactUsAvgAggregateOutputType = {
   contact_id: number | null
+  service_id: number | null
 }
 
 export type ContactUsSumAggregateOutputType = {
   contact_id: number | null
+  service_id: number | null
 }
 
 export type ContactUsMinAggregateOutputType = {
@@ -39,21 +41,10 @@ export type ContactUsMinAggregateOutputType = {
   name: string | null
   email: string | null
   phone: string | null
-  company: string | null
-  company_size: string | null
-  budget: string | null
-  subject: string | null
-  message: string | null
-  inquiry_type: string | null
+  service_id: number | null
   status: string | null
-  priority: string | null
   submitted_at: Date | null
   responded_at: Date | null
-  ip_address: string | null
-  utm_source: string | null
-  utm_medium: string | null
-  utm_campaign: string | null
-  referrer: string | null
   notes: string | null
 }
 
@@ -62,21 +53,10 @@ export type ContactUsMaxAggregateOutputType = {
   name: string | null
   email: string | null
   phone: string | null
-  company: string | null
-  company_size: string | null
-  budget: string | null
-  subject: string | null
-  message: string | null
-  inquiry_type: string | null
+  service_id: number | null
   status: string | null
-  priority: string | null
   submitted_at: Date | null
   responded_at: Date | null
-  ip_address: string | null
-  utm_source: string | null
-  utm_medium: string | null
-  utm_campaign: string | null
-  referrer: string | null
   notes: string | null
 }
 
@@ -85,21 +65,10 @@ export type ContactUsCountAggregateOutputType = {
   name: number
   email: number
   phone: number
-  company: number
-  company_size: number
-  budget: number
-  subject: number
-  message: number
-  inquiry_type: number
+  service_id: number
   status: number
-  priority: number
   submitted_at: number
   responded_at: number
-  ip_address: number
-  utm_source: number
-  utm_medium: number
-  utm_campaign: number
-  referrer: number
   notes: number
   _all: number
 }
@@ -107,10 +76,12 @@ export type ContactUsCountAggregateOutputType = {
 
 export type ContactUsAvgAggregateInputType = {
   contact_id?: true
+  service_id?: true
 }
 
 export type ContactUsSumAggregateInputType = {
   contact_id?: true
+  service_id?: true
 }
 
 export type ContactUsMinAggregateInputType = {
@@ -118,21 +89,10 @@ export type ContactUsMinAggregateInputType = {
   name?: true
   email?: true
   phone?: true
-  company?: true
-  company_size?: true
-  budget?: true
-  subject?: true
-  message?: true
-  inquiry_type?: true
+  service_id?: true
   status?: true
-  priority?: true
   submitted_at?: true
   responded_at?: true
-  ip_address?: true
-  utm_source?: true
-  utm_medium?: true
-  utm_campaign?: true
-  referrer?: true
   notes?: true
 }
 
@@ -141,21 +101,10 @@ export type ContactUsMaxAggregateInputType = {
   name?: true
   email?: true
   phone?: true
-  company?: true
-  company_size?: true
-  budget?: true
-  subject?: true
-  message?: true
-  inquiry_type?: true
+  service_id?: true
   status?: true
-  priority?: true
   submitted_at?: true
   responded_at?: true
-  ip_address?: true
-  utm_source?: true
-  utm_medium?: true
-  utm_campaign?: true
-  referrer?: true
   notes?: true
 }
 
@@ -164,21 +113,10 @@ export type ContactUsCountAggregateInputType = {
   name?: true
   email?: true
   phone?: true
-  company?: true
-  company_size?: true
-  budget?: true
-  subject?: true
-  message?: true
-  inquiry_type?: true
+  service_id?: true
   status?: true
-  priority?: true
   submitted_at?: true
   responded_at?: true
-  ip_address?: true
-  utm_source?: true
-  utm_medium?: true
-  utm_campaign?: true
-  referrer?: true
   notes?: true
   _all?: true
 }
@@ -274,21 +212,10 @@ export type ContactUsGroupByOutputType = {
   name: string
   email: string
   phone: string | null
-  company: string | null
-  company_size: string | null
-  budget: string | null
-  subject: string | null
-  message: string
-  inquiry_type: string | null
+  service_id: number | null
   status: string
-  priority: string
   submitted_at: Date
   responded_at: Date | null
-  ip_address: string | null
-  utm_source: string | null
-  utm_medium: string | null
-  utm_campaign: string | null
-  referrer: string | null
   notes: string | null
   _count: ContactUsCountAggregateOutputType | null
   _avg: ContactUsAvgAggregateOutputType | null
@@ -320,22 +247,12 @@ export type ContactUsWhereInput = {
   name?: Prisma.StringFilter<"ContactUs"> | string
   email?: Prisma.StringFilter<"ContactUs"> | string
   phone?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  company?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  company_size?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  budget?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  subject?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  message?: Prisma.StringFilter<"ContactUs"> | string
-  inquiry_type?: Prisma.StringNullableFilter<"ContactUs"> | string | null
+  service_id?: Prisma.IntNullableFilter<"ContactUs"> | number | null
   status?: Prisma.StringFilter<"ContactUs"> | string
-  priority?: Prisma.StringFilter<"ContactUs"> | string
   submitted_at?: Prisma.DateTimeFilter<"ContactUs"> | Date | string
   responded_at?: Prisma.DateTimeNullableFilter<"ContactUs"> | Date | string | null
-  ip_address?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  utm_source?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  utm_medium?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  utm_campaign?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  referrer?: Prisma.StringNullableFilter<"ContactUs"> | string | null
   notes?: Prisma.StringNullableFilter<"ContactUs"> | string | null
+  service?: Prisma.XOR<Prisma.ServiceNullableScalarRelationFilter, Prisma.ServiceWhereInput> | null
 }
 
 export type ContactUsOrderByWithRelationInput = {
@@ -343,22 +260,12 @@ export type ContactUsOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
-  company?: Prisma.SortOrderInput | Prisma.SortOrder
-  company_size?: Prisma.SortOrderInput | Prisma.SortOrder
-  budget?: Prisma.SortOrderInput | Prisma.SortOrder
-  subject?: Prisma.SortOrderInput | Prisma.SortOrder
-  message?: Prisma.SortOrder
-  inquiry_type?: Prisma.SortOrderInput | Prisma.SortOrder
+  service_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
-  priority?: Prisma.SortOrder
   submitted_at?: Prisma.SortOrder
   responded_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  ip_address?: Prisma.SortOrderInput | Prisma.SortOrder
-  utm_source?: Prisma.SortOrderInput | Prisma.SortOrder
-  utm_medium?: Prisma.SortOrderInput | Prisma.SortOrder
-  utm_campaign?: Prisma.SortOrderInput | Prisma.SortOrder
-  referrer?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  service?: Prisma.ServiceOrderByWithRelationInput
 }
 
 export type ContactUsWhereUniqueInput = Prisma.AtLeast<{
@@ -369,22 +276,12 @@ export type ContactUsWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"ContactUs"> | string
   email?: Prisma.StringFilter<"ContactUs"> | string
   phone?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  company?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  company_size?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  budget?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  subject?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  message?: Prisma.StringFilter<"ContactUs"> | string
-  inquiry_type?: Prisma.StringNullableFilter<"ContactUs"> | string | null
+  service_id?: Prisma.IntNullableFilter<"ContactUs"> | number | null
   status?: Prisma.StringFilter<"ContactUs"> | string
-  priority?: Prisma.StringFilter<"ContactUs"> | string
   submitted_at?: Prisma.DateTimeFilter<"ContactUs"> | Date | string
   responded_at?: Prisma.DateTimeNullableFilter<"ContactUs"> | Date | string | null
-  ip_address?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  utm_source?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  utm_medium?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  utm_campaign?: Prisma.StringNullableFilter<"ContactUs"> | string | null
-  referrer?: Prisma.StringNullableFilter<"ContactUs"> | string | null
   notes?: Prisma.StringNullableFilter<"ContactUs"> | string | null
+  service?: Prisma.XOR<Prisma.ServiceNullableScalarRelationFilter, Prisma.ServiceWhereInput> | null
 }, "contact_id">
 
 export type ContactUsOrderByWithAggregationInput = {
@@ -392,21 +289,10 @@ export type ContactUsOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
-  company?: Prisma.SortOrderInput | Prisma.SortOrder
-  company_size?: Prisma.SortOrderInput | Prisma.SortOrder
-  budget?: Prisma.SortOrderInput | Prisma.SortOrder
-  subject?: Prisma.SortOrderInput | Prisma.SortOrder
-  message?: Prisma.SortOrder
-  inquiry_type?: Prisma.SortOrderInput | Prisma.SortOrder
+  service_id?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
-  priority?: Prisma.SortOrder
   submitted_at?: Prisma.SortOrder
   responded_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  ip_address?: Prisma.SortOrderInput | Prisma.SortOrder
-  utm_source?: Prisma.SortOrderInput | Prisma.SortOrder
-  utm_medium?: Prisma.SortOrderInput | Prisma.SortOrder
-  utm_campaign?: Prisma.SortOrderInput | Prisma.SortOrder
-  referrer?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ContactUsCountOrderByAggregateInput
   _avg?: Prisma.ContactUsAvgOrderByAggregateInput
@@ -423,21 +309,10 @@ export type ContactUsScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"ContactUs"> | string
   email?: Prisma.StringWithAggregatesFilter<"ContactUs"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  company?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  company_size?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  budget?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  subject?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  message?: Prisma.StringWithAggregatesFilter<"ContactUs"> | string
-  inquiry_type?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
+  service_id?: Prisma.IntNullableWithAggregatesFilter<"ContactUs"> | number | null
   status?: Prisma.StringWithAggregatesFilter<"ContactUs"> | string
-  priority?: Prisma.StringWithAggregatesFilter<"ContactUs"> | string
   submitted_at?: Prisma.DateTimeWithAggregatesFilter<"ContactUs"> | Date | string
   responded_at?: Prisma.DateTimeNullableWithAggregatesFilter<"ContactUs"> | Date | string | null
-  ip_address?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  utm_source?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  utm_medium?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  utm_campaign?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
-  referrer?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"ContactUs"> | string | null
 }
 
@@ -445,22 +320,11 @@ export type ContactUsCreateInput = {
   name: string
   email: string
   phone?: string | null
-  company?: string | null
-  company_size?: string | null
-  budget?: string | null
-  subject?: string | null
-  message: string
-  inquiry_type?: string | null
   status?: string
-  priority?: string
   submitted_at?: Date | string
   responded_at?: Date | string | null
-  ip_address?: string | null
-  utm_source?: string | null
-  utm_medium?: string | null
-  utm_campaign?: string | null
-  referrer?: string | null
   notes?: string | null
+  service?: Prisma.ServiceCreateNestedOneWithoutContactSubmissionsInput
 }
 
 export type ContactUsUncheckedCreateInput = {
@@ -468,21 +332,10 @@ export type ContactUsUncheckedCreateInput = {
   name: string
   email: string
   phone?: string | null
-  company?: string | null
-  company_size?: string | null
-  budget?: string | null
-  subject?: string | null
-  message: string
-  inquiry_type?: string | null
+  service_id?: number | null
   status?: string
-  priority?: string
   submitted_at?: Date | string
   responded_at?: Date | string | null
-  ip_address?: string | null
-  utm_source?: string | null
-  utm_medium?: string | null
-  utm_campaign?: string | null
-  referrer?: string | null
   notes?: string | null
 }
 
@@ -490,22 +343,11 @@ export type ContactUsUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  budget?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  message?: Prisma.StringFieldUpdateOperationsInput | string
-  inquiry_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  priority?: Prisma.StringFieldUpdateOperationsInput | string
   submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   responded_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  ip_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_medium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_campaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  referrer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  service?: Prisma.ServiceUpdateOneWithoutContactSubmissionsNestedInput
 }
 
 export type ContactUsUncheckedUpdateInput = {
@@ -513,21 +355,10 @@ export type ContactUsUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  budget?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  message?: Prisma.StringFieldUpdateOperationsInput | string
-  inquiry_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  service_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  priority?: Prisma.StringFieldUpdateOperationsInput | string
   submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   responded_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  ip_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_medium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_campaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  referrer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -536,21 +367,10 @@ export type ContactUsCreateManyInput = {
   name: string
   email: string
   phone?: string | null
-  company?: string | null
-  company_size?: string | null
-  budget?: string | null
-  subject?: string | null
-  message: string
-  inquiry_type?: string | null
+  service_id?: number | null
   status?: string
-  priority?: string
   submitted_at?: Date | string
   responded_at?: Date | string | null
-  ip_address?: string | null
-  utm_source?: string | null
-  utm_medium?: string | null
-  utm_campaign?: string | null
-  referrer?: string | null
   notes?: string | null
 }
 
@@ -558,21 +378,9 @@ export type ContactUsUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  budget?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  message?: Prisma.StringFieldUpdateOperationsInput | string
-  inquiry_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  priority?: Prisma.StringFieldUpdateOperationsInput | string
   submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   responded_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  ip_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_medium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_campaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  referrer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -581,22 +389,21 @@ export type ContactUsUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  company_size?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  budget?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  message?: Prisma.StringFieldUpdateOperationsInput | string
-  inquiry_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  service_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  priority?: Prisma.StringFieldUpdateOperationsInput | string
   submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   responded_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  ip_address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_medium?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  utm_campaign?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  referrer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ContactUsListRelationFilter = {
+  every?: Prisma.ContactUsWhereInput
+  some?: Prisma.ContactUsWhereInput
+  none?: Prisma.ContactUsWhereInput
+}
+
+export type ContactUsOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ContactUsCountOrderByAggregateInput = {
@@ -604,26 +411,16 @@ export type ContactUsCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  company?: Prisma.SortOrder
-  company_size?: Prisma.SortOrder
-  budget?: Prisma.SortOrder
-  subject?: Prisma.SortOrder
-  message?: Prisma.SortOrder
-  inquiry_type?: Prisma.SortOrder
+  service_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  priority?: Prisma.SortOrder
   submitted_at?: Prisma.SortOrder
   responded_at?: Prisma.SortOrder
-  ip_address?: Prisma.SortOrder
-  utm_source?: Prisma.SortOrder
-  utm_medium?: Prisma.SortOrder
-  utm_campaign?: Prisma.SortOrder
-  referrer?: Prisma.SortOrder
   notes?: Prisma.SortOrder
 }
 
 export type ContactUsAvgOrderByAggregateInput = {
   contact_id?: Prisma.SortOrder
+  service_id?: Prisma.SortOrder
 }
 
 export type ContactUsMaxOrderByAggregateInput = {
@@ -631,21 +428,10 @@ export type ContactUsMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  company?: Prisma.SortOrder
-  company_size?: Prisma.SortOrder
-  budget?: Prisma.SortOrder
-  subject?: Prisma.SortOrder
-  message?: Prisma.SortOrder
-  inquiry_type?: Prisma.SortOrder
+  service_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  priority?: Prisma.SortOrder
   submitted_at?: Prisma.SortOrder
   responded_at?: Prisma.SortOrder
-  ip_address?: Prisma.SortOrder
-  utm_source?: Prisma.SortOrder
-  utm_medium?: Prisma.SortOrder
-  utm_campaign?: Prisma.SortOrder
-  referrer?: Prisma.SortOrder
   notes?: Prisma.SortOrder
 }
 
@@ -654,26 +440,163 @@ export type ContactUsMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  company?: Prisma.SortOrder
-  company_size?: Prisma.SortOrder
-  budget?: Prisma.SortOrder
-  subject?: Prisma.SortOrder
-  message?: Prisma.SortOrder
-  inquiry_type?: Prisma.SortOrder
+  service_id?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  priority?: Prisma.SortOrder
   submitted_at?: Prisma.SortOrder
   responded_at?: Prisma.SortOrder
-  ip_address?: Prisma.SortOrder
-  utm_source?: Prisma.SortOrder
-  utm_medium?: Prisma.SortOrder
-  utm_campaign?: Prisma.SortOrder
-  referrer?: Prisma.SortOrder
   notes?: Prisma.SortOrder
 }
 
 export type ContactUsSumOrderByAggregateInput = {
   contact_id?: Prisma.SortOrder
+  service_id?: Prisma.SortOrder
+}
+
+export type ContactUsCreateNestedManyWithoutServiceInput = {
+  create?: Prisma.XOR<Prisma.ContactUsCreateWithoutServiceInput, Prisma.ContactUsUncheckedCreateWithoutServiceInput> | Prisma.ContactUsCreateWithoutServiceInput[] | Prisma.ContactUsUncheckedCreateWithoutServiceInput[]
+  connectOrCreate?: Prisma.ContactUsCreateOrConnectWithoutServiceInput | Prisma.ContactUsCreateOrConnectWithoutServiceInput[]
+  createMany?: Prisma.ContactUsCreateManyServiceInputEnvelope
+  connect?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+}
+
+export type ContactUsUncheckedCreateNestedManyWithoutServiceInput = {
+  create?: Prisma.XOR<Prisma.ContactUsCreateWithoutServiceInput, Prisma.ContactUsUncheckedCreateWithoutServiceInput> | Prisma.ContactUsCreateWithoutServiceInput[] | Prisma.ContactUsUncheckedCreateWithoutServiceInput[]
+  connectOrCreate?: Prisma.ContactUsCreateOrConnectWithoutServiceInput | Prisma.ContactUsCreateOrConnectWithoutServiceInput[]
+  createMany?: Prisma.ContactUsCreateManyServiceInputEnvelope
+  connect?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+}
+
+export type ContactUsUpdateManyWithoutServiceNestedInput = {
+  create?: Prisma.XOR<Prisma.ContactUsCreateWithoutServiceInput, Prisma.ContactUsUncheckedCreateWithoutServiceInput> | Prisma.ContactUsCreateWithoutServiceInput[] | Prisma.ContactUsUncheckedCreateWithoutServiceInput[]
+  connectOrCreate?: Prisma.ContactUsCreateOrConnectWithoutServiceInput | Prisma.ContactUsCreateOrConnectWithoutServiceInput[]
+  upsert?: Prisma.ContactUsUpsertWithWhereUniqueWithoutServiceInput | Prisma.ContactUsUpsertWithWhereUniqueWithoutServiceInput[]
+  createMany?: Prisma.ContactUsCreateManyServiceInputEnvelope
+  set?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  disconnect?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  delete?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  connect?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  update?: Prisma.ContactUsUpdateWithWhereUniqueWithoutServiceInput | Prisma.ContactUsUpdateWithWhereUniqueWithoutServiceInput[]
+  updateMany?: Prisma.ContactUsUpdateManyWithWhereWithoutServiceInput | Prisma.ContactUsUpdateManyWithWhereWithoutServiceInput[]
+  deleteMany?: Prisma.ContactUsScalarWhereInput | Prisma.ContactUsScalarWhereInput[]
+}
+
+export type ContactUsUncheckedUpdateManyWithoutServiceNestedInput = {
+  create?: Prisma.XOR<Prisma.ContactUsCreateWithoutServiceInput, Prisma.ContactUsUncheckedCreateWithoutServiceInput> | Prisma.ContactUsCreateWithoutServiceInput[] | Prisma.ContactUsUncheckedCreateWithoutServiceInput[]
+  connectOrCreate?: Prisma.ContactUsCreateOrConnectWithoutServiceInput | Prisma.ContactUsCreateOrConnectWithoutServiceInput[]
+  upsert?: Prisma.ContactUsUpsertWithWhereUniqueWithoutServiceInput | Prisma.ContactUsUpsertWithWhereUniqueWithoutServiceInput[]
+  createMany?: Prisma.ContactUsCreateManyServiceInputEnvelope
+  set?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  disconnect?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  delete?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  connect?: Prisma.ContactUsWhereUniqueInput | Prisma.ContactUsWhereUniqueInput[]
+  update?: Prisma.ContactUsUpdateWithWhereUniqueWithoutServiceInput | Prisma.ContactUsUpdateWithWhereUniqueWithoutServiceInput[]
+  updateMany?: Prisma.ContactUsUpdateManyWithWhereWithoutServiceInput | Prisma.ContactUsUpdateManyWithWhereWithoutServiceInput[]
+  deleteMany?: Prisma.ContactUsScalarWhereInput | Prisma.ContactUsScalarWhereInput[]
+}
+
+export type ContactUsCreateWithoutServiceInput = {
+  name: string
+  email: string
+  phone?: string | null
+  status?: string
+  submitted_at?: Date | string
+  responded_at?: Date | string | null
+  notes?: string | null
+}
+
+export type ContactUsUncheckedCreateWithoutServiceInput = {
+  contact_id?: number
+  name: string
+  email: string
+  phone?: string | null
+  status?: string
+  submitted_at?: Date | string
+  responded_at?: Date | string | null
+  notes?: string | null
+}
+
+export type ContactUsCreateOrConnectWithoutServiceInput = {
+  where: Prisma.ContactUsWhereUniqueInput
+  create: Prisma.XOR<Prisma.ContactUsCreateWithoutServiceInput, Prisma.ContactUsUncheckedCreateWithoutServiceInput>
+}
+
+export type ContactUsCreateManyServiceInputEnvelope = {
+  data: Prisma.ContactUsCreateManyServiceInput | Prisma.ContactUsCreateManyServiceInput[]
+  skipDuplicates?: boolean
+}
+
+export type ContactUsUpsertWithWhereUniqueWithoutServiceInput = {
+  where: Prisma.ContactUsWhereUniqueInput
+  update: Prisma.XOR<Prisma.ContactUsUpdateWithoutServiceInput, Prisma.ContactUsUncheckedUpdateWithoutServiceInput>
+  create: Prisma.XOR<Prisma.ContactUsCreateWithoutServiceInput, Prisma.ContactUsUncheckedCreateWithoutServiceInput>
+}
+
+export type ContactUsUpdateWithWhereUniqueWithoutServiceInput = {
+  where: Prisma.ContactUsWhereUniqueInput
+  data: Prisma.XOR<Prisma.ContactUsUpdateWithoutServiceInput, Prisma.ContactUsUncheckedUpdateWithoutServiceInput>
+}
+
+export type ContactUsUpdateManyWithWhereWithoutServiceInput = {
+  where: Prisma.ContactUsScalarWhereInput
+  data: Prisma.XOR<Prisma.ContactUsUpdateManyMutationInput, Prisma.ContactUsUncheckedUpdateManyWithoutServiceInput>
+}
+
+export type ContactUsScalarWhereInput = {
+  AND?: Prisma.ContactUsScalarWhereInput | Prisma.ContactUsScalarWhereInput[]
+  OR?: Prisma.ContactUsScalarWhereInput[]
+  NOT?: Prisma.ContactUsScalarWhereInput | Prisma.ContactUsScalarWhereInput[]
+  contact_id?: Prisma.IntFilter<"ContactUs"> | number
+  name?: Prisma.StringFilter<"ContactUs"> | string
+  email?: Prisma.StringFilter<"ContactUs"> | string
+  phone?: Prisma.StringNullableFilter<"ContactUs"> | string | null
+  service_id?: Prisma.IntNullableFilter<"ContactUs"> | number | null
+  status?: Prisma.StringFilter<"ContactUs"> | string
+  submitted_at?: Prisma.DateTimeFilter<"ContactUs"> | Date | string
+  responded_at?: Prisma.DateTimeNullableFilter<"ContactUs"> | Date | string | null
+  notes?: Prisma.StringNullableFilter<"ContactUs"> | string | null
+}
+
+export type ContactUsCreateManyServiceInput = {
+  contact_id?: number
+  name: string
+  email: string
+  phone?: string | null
+  status?: string
+  submitted_at?: Date | string
+  responded_at?: Date | string | null
+  notes?: string | null
+}
+
+export type ContactUsUpdateWithoutServiceInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  responded_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ContactUsUncheckedUpdateWithoutServiceInput = {
+  contact_id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  responded_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type ContactUsUncheckedUpdateManyWithoutServiceInput = {
+  contact_id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  responded_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -683,22 +606,12 @@ export type ContactUsSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   name?: boolean
   email?: boolean
   phone?: boolean
-  company?: boolean
-  company_size?: boolean
-  budget?: boolean
-  subject?: boolean
-  message?: boolean
-  inquiry_type?: boolean
+  service_id?: boolean
   status?: boolean
-  priority?: boolean
   submitted_at?: boolean
   responded_at?: boolean
-  ip_address?: boolean
-  utm_source?: boolean
-  utm_medium?: boolean
-  utm_campaign?: boolean
-  referrer?: boolean
   notes?: boolean
+  service?: boolean | Prisma.ContactUs$serviceArgs<ExtArgs>
 }, ExtArgs["result"]["contactUs"]>
 
 export type ContactUsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -706,22 +619,12 @@ export type ContactUsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   name?: boolean
   email?: boolean
   phone?: boolean
-  company?: boolean
-  company_size?: boolean
-  budget?: boolean
-  subject?: boolean
-  message?: boolean
-  inquiry_type?: boolean
+  service_id?: boolean
   status?: boolean
-  priority?: boolean
   submitted_at?: boolean
   responded_at?: boolean
-  ip_address?: boolean
-  utm_source?: boolean
-  utm_medium?: boolean
-  utm_campaign?: boolean
-  referrer?: boolean
   notes?: boolean
+  service?: boolean | Prisma.ContactUs$serviceArgs<ExtArgs>
 }, ExtArgs["result"]["contactUs"]>
 
 export type ContactUsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -729,22 +632,12 @@ export type ContactUsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   name?: boolean
   email?: boolean
   phone?: boolean
-  company?: boolean
-  company_size?: boolean
-  budget?: boolean
-  subject?: boolean
-  message?: boolean
-  inquiry_type?: boolean
+  service_id?: boolean
   status?: boolean
-  priority?: boolean
   submitted_at?: boolean
   responded_at?: boolean
-  ip_address?: boolean
-  utm_source?: boolean
-  utm_medium?: boolean
-  utm_campaign?: boolean
-  referrer?: boolean
   notes?: boolean
+  service?: boolean | Prisma.ContactUs$serviceArgs<ExtArgs>
 }, ExtArgs["result"]["contactUs"]>
 
 export type ContactUsSelectScalar = {
@@ -752,49 +645,38 @@ export type ContactUsSelectScalar = {
   name?: boolean
   email?: boolean
   phone?: boolean
-  company?: boolean
-  company_size?: boolean
-  budget?: boolean
-  subject?: boolean
-  message?: boolean
-  inquiry_type?: boolean
+  service_id?: boolean
   status?: boolean
-  priority?: boolean
   submitted_at?: boolean
   responded_at?: boolean
-  ip_address?: boolean
-  utm_source?: boolean
-  utm_medium?: boolean
-  utm_campaign?: boolean
-  referrer?: boolean
   notes?: boolean
 }
 
-export type ContactUsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"contact_id" | "name" | "email" | "phone" | "company" | "company_size" | "budget" | "subject" | "message" | "inquiry_type" | "status" | "priority" | "submitted_at" | "responded_at" | "ip_address" | "utm_source" | "utm_medium" | "utm_campaign" | "referrer" | "notes", ExtArgs["result"]["contactUs"]>
+export type ContactUsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"contact_id" | "name" | "email" | "phone" | "service_id" | "status" | "submitted_at" | "responded_at" | "notes", ExtArgs["result"]["contactUs"]>
+export type ContactUsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  service?: boolean | Prisma.ContactUs$serviceArgs<ExtArgs>
+}
+export type ContactUsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  service?: boolean | Prisma.ContactUs$serviceArgs<ExtArgs>
+}
+export type ContactUsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  service?: boolean | Prisma.ContactUs$serviceArgs<ExtArgs>
+}
 
 export type $ContactUsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ContactUs"
-  objects: {}
+  objects: {
+    service: Prisma.$ServicePayload<ExtArgs> | null
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     contact_id: number
     name: string
     email: string
     phone: string | null
-    company: string | null
-    company_size: string | null
-    budget: string | null
-    subject: string | null
-    message: string
-    inquiry_type: string | null
+    service_id: number | null
     status: string
-    priority: string
     submitted_at: Date
     responded_at: Date | null
-    ip_address: string | null
-    utm_source: string | null
-    utm_medium: string | null
-    utm_campaign: string | null
-    referrer: string | null
     notes: string | null
   }, ExtArgs["result"]["contactUs"]>
   composites: {}
@@ -1190,6 +1072,7 @@ readonly fields: ContactUsFieldRefs;
  */
 export interface Prisma__ContactUsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  service<T extends Prisma.ContactUs$serviceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ContactUs$serviceArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1223,21 +1106,10 @@ export interface ContactUsFieldRefs {
   readonly name: Prisma.FieldRef<"ContactUs", 'String'>
   readonly email: Prisma.FieldRef<"ContactUs", 'String'>
   readonly phone: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly company: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly company_size: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly budget: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly subject: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly message: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly inquiry_type: Prisma.FieldRef<"ContactUs", 'String'>
+  readonly service_id: Prisma.FieldRef<"ContactUs", 'Int'>
   readonly status: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly priority: Prisma.FieldRef<"ContactUs", 'String'>
   readonly submitted_at: Prisma.FieldRef<"ContactUs", 'DateTime'>
   readonly responded_at: Prisma.FieldRef<"ContactUs", 'DateTime'>
-  readonly ip_address: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly utm_source: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly utm_medium: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly utm_campaign: Prisma.FieldRef<"ContactUs", 'String'>
-  readonly referrer: Prisma.FieldRef<"ContactUs", 'String'>
   readonly notes: Prisma.FieldRef<"ContactUs", 'String'>
 }
     
@@ -1255,6 +1127,10 @@ export type ContactUsFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the ContactUs
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
   /**
    * Filter, which ContactUs to fetch.
    */
@@ -1274,6 +1150,10 @@ export type ContactUsFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensi
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
+  /**
    * Filter, which ContactUs to fetch.
    */
   where: Prisma.ContactUsWhereUniqueInput
@@ -1291,6 +1171,10 @@ export type ContactUsFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the ContactUs
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
   /**
    * Filter, which ContactUs to fetch.
    */
@@ -1340,6 +1224,10 @@ export type ContactUsFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
+  /**
    * Filter, which ContactUs to fetch.
    */
   where?: Prisma.ContactUsWhereInput
@@ -1388,6 +1276,10 @@ export type ContactUsFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
+  /**
    * Filter, which Contactuses to fetch.
    */
   where?: Prisma.ContactUsWhereInput
@@ -1431,6 +1323,10 @@ export type ContactUsCreateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
+  /**
    * The data needed to create a ContactUs.
    */
   data: Prisma.XOR<Prisma.ContactUsCreateInput, Prisma.ContactUsUncheckedCreateInput>
@@ -1464,6 +1360,10 @@ export type ContactUsCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Exten
    */
   data: Prisma.ContactUsCreateManyInput | Prisma.ContactUsCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1478,6 +1378,10 @@ export type ContactUsUpdateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the ContactUs
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
   /**
    * The data needed to update a ContactUs.
    */
@@ -1530,6 +1434,10 @@ export type ContactUsUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Exten
    * Limit how many Contactuses to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1544,6 +1452,10 @@ export type ContactUsUpsertArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the ContactUs
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
   /**
    * The filter to search for the ContactUs to update in case it exists.
    */
@@ -1571,6 +1483,10 @@ export type ContactUsDeleteArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
+  /**
    * Filter which ContactUs to delete.
    */
   where: Prisma.ContactUsWhereUniqueInput
@@ -1591,6 +1507,25 @@ export type ContactUsDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
+ * ContactUs.service
+ */
+export type ContactUs$serviceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Service
+   */
+  select?: Prisma.ServiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Service
+   */
+  omit?: Prisma.ServiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ServiceInclude<ExtArgs> | null
+  where?: Prisma.ServiceWhereInput
+}
+
+/**
  * ContactUs without action
  */
 export type ContactUsDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1602,4 +1537,8 @@ export type ContactUsDefaultArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the ContactUs
    */
   omit?: Prisma.ContactUsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
 }

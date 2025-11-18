@@ -36,12 +36,7 @@ model GalleryItem {
   blogOgImages               Blog[]             @relation("BlogOgImage")
   companyFeaturedImages      MyCompanies[]      @relation("CompanyFeaturedImage")
   projectImages ProjectImage[]
-  activityFeaturedImages     Activity[]         @relation("ActivityFeaturedImage")
-  activityGalleries          ActivityGallery[]
-  activityOgImages           Activity[]         @relation("ActivityOgImage")
- 
-  serviceFeaturedImages      Service[]          @relation("ServiceFeaturedImage")
-  serviceOgImages            Service[]          @relation("ServiceOgImage")
+  teamFeaturedImages         Team[]             @relation("TeamFeaturedImage")
 
   @@index([publicId])
   @@index([url])
@@ -65,7 +60,6 @@ model User {
   updated_at DateTime     @updatedAt
 
   blogs      Blog[]
-  activities Activity[]
 
   @@index([email])
   @@index([username])
@@ -184,209 +178,56 @@ model ProjectImage {
   @@index([display_order])
 }
 
-
-
-// Service Categories
 model ServiceCategory {
-  category_id   Int               @id @default(autoincrement())
-  name          String            @unique
-  slug          String            @unique
-  description   String?           @db.Text
-  color         String?
-  icon          String?
-  parent_id     Int?
-  parent        ServiceCategory?  @relation("ServiceCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
-  children      ServiceCategory[] @relation("ServiceCategoryHierarchy")
-  display_order Int               @default(0)
-  is_active     Boolean           @default(true)
-  service_count Int               @default(0)
-  created_at    DateTime          @default(now())
-  updated_at    DateTime          @updatedAt
+  id        Int       @id @default(autoincrement())
+  name      String
+  slug      String    @unique
+  services  Service[]
 
-  // SEO Fields
-  meta_title       String?
-  meta_description String?
-
-  services ServiceCategoryRelation[]
-
-  @@index([slug])
-  @@index([parent_id])
-  @@index([display_order])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
-// Many-to-many relation for Service and Categories
-model ServiceCategoryRelation {
-  service     Service         @relation(fields: [service_id], references: [service_id], onDelete: Cascade)
-  service_id  Int
-  category    ServiceCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
-  category_id Int
-  assigned_at DateTime        @default(now())
+model Service {
+  id          Int              @id @default(autoincrement())
+  title       String
+  description String?
+  categoryId  Int
+  category    ServiceCategory  @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  contactSubmissions ContactUs[]
+}
 
-  @@id([service_id, category_id])
-  @@index([service_id])
-  @@index([category_id])
+model Team {
+  id          Int      @id @default(autoincrement())
+  title       String
+  position    String
+  linkedinUrl String?
+  featured_image    GalleryItem? @relation("TeamFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
+  featured_image_id String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 
 
 
 
-
-
-// Contact form submissions
 model ContactUs {
   contact_id   Int       @id @default(autoincrement())
   name         String
   email        String
   phone        String?
-  company      String?
-  company_size String?
-  budget       String?
-  subject      String?
-  message      String    @db.Text
-  inquiry_type String?
+  service      Service?  @relation(fields: [service_id], references: [id], onDelete: SetNull)
+  service_id   Int?
   status       String    @default("NEW")
-  priority     String    @default("NORMAL")
   submitted_at DateTime  @default(now())
   responded_at DateTime?
-  ip_address   String?
-  utm_source   String?
-  utm_medium   String?
-  utm_campaign String?
-  referrer     String?
   notes        String?   @db.Text
 
   @@index([status])
-  @@index([priority])
   @@index([submitted_at])
   @@index([email])
-  @@index([inquiry_type])
-}
-
-// Activity Gallery Junction Table
-model ActivityGallery {
-  id            String      @id @default(cuid())
-  activity      Activity    @relation(fields: [activity_id], references: [activity_id], onDelete: Cascade)
-  activity_id   Int
-  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
-  image_id      String
-  display_order Int         @default(0)
-  created_at    DateTime    @default(now())
-
-  @@unique([activity_id, image_id])
-  @@index([activity_id])
-  @@index([image_id])
-  @@index([display_order])
-}
-
-// Company events
-model Activity {
-  activity_id          Int               @id @default(autoincrement())
-  title                String
-  slug                 String            @unique
-  description          String            @db.Text
-  short_description    String?           @db.Text
-  featured_image       GalleryItem?      @relation("ActivityFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
-  featured_image_id    String?
-  gallery              ActivityGallery[]
-  activity_type        String
-  location             String?
-  venue                String?
-  address              String?
-  city                 String?
-  country              String?
-  activity_date        DateTime
-  end_date             DateTime?
-  timezone             String?
-  duration             String?
-  max_participants     Int?
-  current_participants Int               @default(0)
-  registration_url     String?
-  meeting_link         String?
-  price                Decimal?          @db.Decimal(10, 2)
-  is_free              Boolean           @default(true)
-  speakers             String[]
-  topics               String[]
-  target_audience      String?
-  status               Status            @default(PUBLISHED)
-  is_featured          Boolean           @default(false)
-  is_past              Boolean           @default(false)
-  recording_url        String?
-  slides_url           String?
-  created_at           DateTime          @default(now())
-  updated_at           DateTime          @updatedAt
-
-  // SEO Fields
-  meta_title       String?
-  meta_description String?      @db.Text
-  meta_keywords    String?
-  og_image         GalleryItem? @relation("ActivityOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
-  og_image_id      String?
-
-  userId Int
-  user   User @relation(fields: [userId], references: [user_id], onDelete: Cascade)
-
-  @@index([slug])
-  @@index([status])
-  @@index([activity_date])
-  @@index([is_featured])
-  @@index([is_past])
-  @@index([activity_type])
-  @@index([featured_image_id])
-  @@index([og_image_id])
-}
-
-// Software services
-model Service {
-  service_id        Int          @id @default(autoincrement())
-  title             String
-  slug              String       @unique
-  short_description String?      @db.Text
-  description       String       @db.Text
-  icon              String? // Icon name or emoji (keeping as string)
-  featured_image    GalleryItem? @relation("ServiceFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
-  featured_image_id String?
-
-  // Pricing
-  price      Decimal? @db.Decimal(10, 2)
-  price_type String?
-  currency   String   @default("USD")
-  price_note String?
-
-  // Service details
-  features      String[]
-  deliverables  String[]
-  technologies  String[]
-  process_steps String[]
-  duration      String?
-  ideal_for     String[]
-
-  // Status
-  status        Status   @default(PUBLISHED)
-  is_featured   Boolean  @default(false)
-  is_popular    Boolean  @default(false)
-  display_order Int      @default(0)
-  created_at    DateTime @default(now())
-  updated_at    DateTime @updatedAt
-
-  // SEO Fields
-  meta_title       String?
-  meta_description String?      @db.Text
-  meta_keywords    String?
-  og_image         GalleryItem? @relation("ServiceOgImage", fields: [og_image_id], references: [id], onDelete: SetNull)
-  og_image_id      String?
-
-  // CTA
-  cta_text String?
-  cta_url  String?
-
-  categories ServiceCategoryRelation[]
-
-  @@index([slug])
-  @@index([status])
-  @@index([display_order])
-  @@index([is_featured])
-  @@index([is_popular])
-  @@index([featured_image_id])
-  @@index([og_image_id])
+  @@index([service_id])
 }

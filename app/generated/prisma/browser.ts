@@ -48,16 +48,6 @@ export type BlogCategoryRelation = Prisma.BlogCategoryRelationModel
  */
 export type Blog = Prisma.BlogModel
 /**
- * Model ServiceCategory
- * 
- */
-export type ServiceCategory = Prisma.ServiceCategoryModel
-/**
- * Model ServiceCategoryRelation
- * 
- */
-export type ServiceCategoryRelation = Prisma.ServiceCategoryRelationModel
-/**
  * Model Project
  * 
  */
@@ -68,27 +58,22 @@ export type Project = Prisma.ProjectModel
  */
 export type ProjectImage = Prisma.ProjectImageModel
 /**
- * Model ContactUs
+ * Model ServiceCategory
  * 
  */
-export type ContactUs = Prisma.ContactUsModel
-/**
- * Model ActivityGallery
- * 
- */
-export type ActivityGallery = Prisma.ActivityGalleryModel
-/**
- * Model Activity
- * 
- */
-export type Activity = Prisma.ActivityModel
-/**
- * Model Testimonial
- * 
- */
-export type Testimonial = Prisma.TestimonialModel
+export type ServiceCategory = Prisma.ServiceCategoryModel
 /**
  * Model Service
  * 
  */
 export type Service = Prisma.ServiceModel
+/**
+ * Model Team
+ * 
+ */
+export type Team = Prisma.TeamModel
+/**
+ * Model ContactUs
+ * 
+ */
+export type ContactUs = Prisma.ContactUsModel

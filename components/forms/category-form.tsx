@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import logger from "@/utils/logger";
 import axios from "axios";
-import { Plus } from "lucide-react";
+import { PencilIcon, Plus, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -123,7 +123,12 @@ const CategoryForm = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" className={cn(className, "")}>
-          {category ? "Update" : "Add"} <Plus />
+          {category ? (
+            <PencilIcon className="w-4 h-4" />
+          ) : (
+            <PlusIcon className="w-4 h-4" />
+          )}
+          {category ? "" : "Add"}
         </Button>
       </DialogTrigger>
       <DialogContent>

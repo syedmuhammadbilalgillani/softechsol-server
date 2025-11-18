@@ -184,9 +184,9 @@ export function ImageSelector({ name, multiple = false }: Props) {
 
   return (
     <div>
-      <label className="block text-sm font-medium mb-2">
+      {/* <label className="block text-sm font-medium mb-2">
         {multiple ? "Images" : "Image"}
-      </label>
+      </label> */}
 
       <Dialog
         open={open}

@@ -11,6 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import logger from "@/utils/logger";
 import axios from "axios";
+import { PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -163,7 +164,7 @@ const BlogForm = ({
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className={cn(className, "w-full")}>
-          Create Blog
+          <PlusIcon className="w-4 h-4" /> Add
         </Button>
       </DialogTrigger>
       <DialogContent>

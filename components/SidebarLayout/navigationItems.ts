@@ -1,4 +1,12 @@
-import { Building2, Folder, Home, Image, Newspaper, Type } from "lucide-react";
+import {
+  Building2,
+  Folder,
+  Home,
+  Image,
+  Newspaper,
+  Type,
+  Users2,
+} from "lucide-react";
 
 export const navigation = [
   {
@@ -43,6 +51,27 @@ export const navigation = [
         title: "Projects",
         url: "/projects",
         icon: Folder,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
+      {
+        title: "Service Categories",
+        url: "/services/category",
+        icon: Type,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
+      {
+        title: "Services",
+        url: "/services",
+        icon: Type,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
+      {
+        title: "Teams",
+        url: "/teams",
+        icon: Users2,
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },

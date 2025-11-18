@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { DynamicForm, FieldConfig } from "../dynamic-form";
 import axios from "axios";
 import { toast } from "sonner";
-import { Loader2, Plus } from "lucide-react";
+import { Loader2, Plus, PlusIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const CompaniesForm = ({ className }: { className?: string }) => {
@@ -39,7 +39,7 @@ const CompaniesForm = ({ className }: { className?: string }) => {
     <Dialog open={open} onOpenChange={setopen}>
       <DialogTrigger asChild>
         <Button variant="outline" className={cn(className, "")}>
-          Add <Plus />{" "}
+          <PlusIcon className="w-4 h-4" /> Add
         </Button>
       </DialogTrigger>
       <DialogContent>

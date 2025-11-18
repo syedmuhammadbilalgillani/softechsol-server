@@ -27,201 +27,79 @@ export type AggregateService = {
 }
 
 export type ServiceAvgAggregateOutputType = {
-  service_id: number | null
-  price: runtime.Decimal | null
-  display_order: number | null
+  id: number | null
+  categoryId: number | null
 }
 
 export type ServiceSumAggregateOutputType = {
-  service_id: number | null
-  price: runtime.Decimal | null
-  display_order: number | null
+  id: number | null
+  categoryId: number | null
 }
 
 export type ServiceMinAggregateOutputType = {
-  service_id: number | null
+  id: number | null
   title: string | null
-  slug: string | null
-  short_description: string | null
   description: string | null
-  icon: string | null
-  featured_image_id: string | null
-  price: runtime.Decimal | null
-  price_type: string | null
-  currency: string | null
-  price_note: string | null
-  duration: string | null
-  status: $Enums.Status | null
-  is_featured: boolean | null
-  is_popular: boolean | null
-  display_order: number | null
-  created_at: Date | null
-  updated_at: Date | null
-  meta_title: string | null
-  meta_description: string | null
-  meta_keywords: string | null
-  og_image_id: string | null
-  cta_text: string | null
-  cta_url: string | null
+  categoryId: number | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ServiceMaxAggregateOutputType = {
-  service_id: number | null
+  id: number | null
   title: string | null
-  slug: string | null
-  short_description: string | null
   description: string | null
-  icon: string | null
-  featured_image_id: string | null
-  price: runtime.Decimal | null
-  price_type: string | null
-  currency: string | null
-  price_note: string | null
-  duration: string | null
-  status: $Enums.Status | null
-  is_featured: boolean | null
-  is_popular: boolean | null
-  display_order: number | null
-  created_at: Date | null
-  updated_at: Date | null
-  meta_title: string | null
-  meta_description: string | null
-  meta_keywords: string | null
-  og_image_id: string | null
-  cta_text: string | null
-  cta_url: string | null
+  categoryId: number | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ServiceCountAggregateOutputType = {
-  service_id: number
+  id: number
   title: number
-  slug: number
-  short_description: number
   description: number
-  icon: number
-  featured_image_id: number
-  price: number
-  price_type: number
-  currency: number
-  price_note: number
-  features: number
-  deliverables: number
-  technologies: number
-  process_steps: number
-  duration: number
-  ideal_for: number
-  status: number
-  is_featured: number
-  is_popular: number
-  display_order: number
-  created_at: number
-  updated_at: number
-  meta_title: number
-  meta_description: number
-  meta_keywords: number
-  og_image_id: number
-  cta_text: number
-  cta_url: number
+  categoryId: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
 
 export type ServiceAvgAggregateInputType = {
-  service_id?: true
-  price?: true
-  display_order?: true
+  id?: true
+  categoryId?: true
 }
 
 export type ServiceSumAggregateInputType = {
-  service_id?: true
-  price?: true
-  display_order?: true
+  id?: true
+  categoryId?: true
 }
 
 export type ServiceMinAggregateInputType = {
-  service_id?: true
+  id?: true
   title?: true
-  slug?: true
-  short_description?: true
   description?: true
-  icon?: true
-  featured_image_id?: true
-  price?: true
-  price_type?: true
-  currency?: true
-  price_note?: true
-  duration?: true
-  status?: true
-  is_featured?: true
-  is_popular?: true
-  display_order?: true
-  created_at?: true
-  updated_at?: true
-  meta_title?: true
-  meta_description?: true
-  meta_keywords?: true
-  og_image_id?: true
-  cta_text?: true
-  cta_url?: true
+  categoryId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ServiceMaxAggregateInputType = {
-  service_id?: true
+  id?: true
   title?: true
-  slug?: true
-  short_description?: true
   description?: true
-  icon?: true
-  featured_image_id?: true
-  price?: true
-  price_type?: true
-  currency?: true
-  price_note?: true
-  duration?: true
-  status?: true
-  is_featured?: true
-  is_popular?: true
-  display_order?: true
-  created_at?: true
-  updated_at?: true
-  meta_title?: true
-  meta_description?: true
-  meta_keywords?: true
-  og_image_id?: true
-  cta_text?: true
-  cta_url?: true
+  categoryId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ServiceCountAggregateInputType = {
-  service_id?: true
+  id?: true
   title?: true
-  slug?: true
-  short_description?: true
   description?: true
-  icon?: true
-  featured_image_id?: true
-  price?: true
-  price_type?: true
-  currency?: true
-  price_note?: true
-  features?: true
-  deliverables?: true
-  technologies?: true
-  process_steps?: true
-  duration?: true
-  ideal_for?: true
-  status?: true
-  is_featured?: true
-  is_popular?: true
-  display_order?: true
-  created_at?: true
-  updated_at?: true
-  meta_title?: true
-  meta_description?: true
-  meta_keywords?: true
-  og_image_id?: true
-  cta_text?: true
-  cta_url?: true
+  categoryId?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -312,35 +190,12 @@ export type ServiceGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 export type ServiceGroupByOutputType = {
-  service_id: number
+  id: number
   title: string
-  slug: string
-  short_description: string | null
-  description: string
-  icon: string | null
-  featured_image_id: string | null
-  price: runtime.Decimal | null
-  price_type: string | null
-  currency: string
-  price_note: string | null
-  features: string[]
-  deliverables: string[]
-  technologies: string[]
-  process_steps: string[]
-  duration: string | null
-  ideal_for: string[]
-  status: $Enums.Status
-  is_featured: boolean
-  is_popular: boolean
-  display_order: number
-  created_at: Date
-  updated_at: Date
-  meta_title: string | null
-  meta_description: string | null
-  meta_keywords: string | null
-  og_image_id: string | null
-  cta_text: string | null
-  cta_url: string | null
+  description: string | null
+  categoryId: number
+  createdAt: Date
+  updatedAt: Date
   _count: ServiceCountAggregateOutputType | null
   _avg: ServiceAvgAggregateOutputType | null
   _sum: ServiceSumAggregateOutputType | null
@@ -367,143 +222,48 @@ export type ServiceWhereInput = {
   AND?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
   OR?: Prisma.ServiceWhereInput[]
   NOT?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
-  service_id?: Prisma.IntFilter<"Service"> | number
+  id?: Prisma.IntFilter<"Service"> | number
   title?: Prisma.StringFilter<"Service"> | string
-  slug?: Prisma.StringFilter<"Service"> | string
-  short_description?: Prisma.StringNullableFilter<"Service"> | string | null
-  description?: Prisma.StringFilter<"Service"> | string
-  icon?: Prisma.StringNullableFilter<"Service"> | string | null
-  featured_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
-  price?: Prisma.DecimalNullableFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.StringNullableFilter<"Service"> | string | null
-  currency?: Prisma.StringFilter<"Service"> | string
-  price_note?: Prisma.StringNullableFilter<"Service"> | string | null
-  features?: Prisma.StringNullableListFilter<"Service">
-  deliverables?: Prisma.StringNullableListFilter<"Service">
-  technologies?: Prisma.StringNullableListFilter<"Service">
-  process_steps?: Prisma.StringNullableListFilter<"Service">
-  duration?: Prisma.StringNullableFilter<"Service"> | string | null
-  ideal_for?: Prisma.StringNullableListFilter<"Service">
-  status?: Prisma.EnumStatusFilter<"Service"> | $Enums.Status
-  is_featured?: Prisma.BoolFilter<"Service"> | boolean
-  is_popular?: Prisma.BoolFilter<"Service"> | boolean
-  display_order?: Prisma.IntFilter<"Service"> | number
-  created_at?: Prisma.DateTimeFilter<"Service"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Service"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"Service"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"Service"> | string | null
-  meta_keywords?: Prisma.StringNullableFilter<"Service"> | string | null
-  og_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
-  cta_text?: Prisma.StringNullableFilter<"Service"> | string | null
-  cta_url?: Prisma.StringNullableFilter<"Service"> | string | null
-  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
-  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
-  categories?: Prisma.ServiceCategoryRelationListRelationFilter
+  description?: Prisma.StringNullableFilter<"Service"> | string | null
+  categoryId?: Prisma.IntFilter<"Service"> | number
+  createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
+  category?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
+  contactSubmissions?: Prisma.ContactUsListRelationFilter
 }
 
 export type ServiceOrderByWithRelationInput = {
-  service_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
-  short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  description?: Prisma.SortOrder
-  icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  price?: Prisma.SortOrderInput | Prisma.SortOrder
-  price_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  price_note?: Prisma.SortOrderInput | Prisma.SortOrder
-  features?: Prisma.SortOrder
-  deliverables?: Prisma.SortOrder
-  technologies?: Prisma.SortOrder
-  process_steps?: Prisma.SortOrder
-  duration?: Prisma.SortOrderInput | Prisma.SortOrder
-  ideal_for?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  is_featured?: Prisma.SortOrder
-  is_popular?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
-  meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  cta_text?: Prisma.SortOrderInput | Prisma.SortOrder
-  cta_url?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image?: Prisma.GalleryItemOrderByWithRelationInput
-  og_image?: Prisma.GalleryItemOrderByWithRelationInput
-  categories?: Prisma.ServiceCategoryRelationOrderByRelationAggregateInput
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  category?: Prisma.ServiceCategoryOrderByWithRelationInput
+  contactSubmissions?: Prisma.ContactUsOrderByRelationAggregateInput
 }
 
 export type ServiceWhereUniqueInput = Prisma.AtLeast<{
-  service_id?: number
-  slug?: string
+  id?: number
   AND?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
   OR?: Prisma.ServiceWhereInput[]
   NOT?: Prisma.ServiceWhereInput | Prisma.ServiceWhereInput[]
   title?: Prisma.StringFilter<"Service"> | string
-  short_description?: Prisma.StringNullableFilter<"Service"> | string | null
-  description?: Prisma.StringFilter<"Service"> | string
-  icon?: Prisma.StringNullableFilter<"Service"> | string | null
-  featured_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
-  price?: Prisma.DecimalNullableFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.StringNullableFilter<"Service"> | string | null
-  currency?: Prisma.StringFilter<"Service"> | string
-  price_note?: Prisma.StringNullableFilter<"Service"> | string | null
-  features?: Prisma.StringNullableListFilter<"Service">
-  deliverables?: Prisma.StringNullableListFilter<"Service">
-  technologies?: Prisma.StringNullableListFilter<"Service">
-  process_steps?: Prisma.StringNullableListFilter<"Service">
-  duration?: Prisma.StringNullableFilter<"Service"> | string | null
-  ideal_for?: Prisma.StringNullableListFilter<"Service">
-  status?: Prisma.EnumStatusFilter<"Service"> | $Enums.Status
-  is_featured?: Prisma.BoolFilter<"Service"> | boolean
-  is_popular?: Prisma.BoolFilter<"Service"> | boolean
-  display_order?: Prisma.IntFilter<"Service"> | number
-  created_at?: Prisma.DateTimeFilter<"Service"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Service"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"Service"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"Service"> | string | null
-  meta_keywords?: Prisma.StringNullableFilter<"Service"> | string | null
-  og_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
-  cta_text?: Prisma.StringNullableFilter<"Service"> | string | null
-  cta_url?: Prisma.StringNullableFilter<"Service"> | string | null
-  featured_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
-  og_image?: Prisma.XOR<Prisma.GalleryItemNullableScalarRelationFilter, Prisma.GalleryItemWhereInput> | null
-  categories?: Prisma.ServiceCategoryRelationListRelationFilter
-}, "service_id" | "slug">
+  description?: Prisma.StringNullableFilter<"Service"> | string | null
+  categoryId?: Prisma.IntFilter<"Service"> | number
+  createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
+  category?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
+  contactSubmissions?: Prisma.ContactUsListRelationFilter
+}, "id">
 
 export type ServiceOrderByWithAggregationInput = {
-  service_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
-  short_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  description?: Prisma.SortOrder
-  icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  price?: Prisma.SortOrderInput | Prisma.SortOrder
-  price_type?: Prisma.SortOrderInput | Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  price_note?: Prisma.SortOrderInput | Prisma.SortOrder
-  features?: Prisma.SortOrder
-  deliverables?: Prisma.SortOrder
-  technologies?: Prisma.SortOrder
-  process_steps?: Prisma.SortOrder
-  duration?: Prisma.SortOrderInput | Prisma.SortOrder
-  ideal_for?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  is_featured?: Prisma.SortOrder
-  is_popular?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
-  meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  meta_keywords?: Prisma.SortOrderInput | Prisma.SortOrder
-  og_image_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  cta_text?: Prisma.SortOrderInput | Prisma.SortOrder
-  cta_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ServiceCountOrderByAggregateInput
   _avg?: Prisma.ServiceAvgOrderByAggregateInput
   _max?: Prisma.ServiceMaxOrderByAggregateInput
@@ -515,258 +275,75 @@ export type ServiceScalarWhereWithAggregatesInput = {
   AND?: Prisma.ServiceScalarWhereWithAggregatesInput | Prisma.ServiceScalarWhereWithAggregatesInput[]
   OR?: Prisma.ServiceScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServiceScalarWhereWithAggregatesInput | Prisma.ServiceScalarWhereWithAggregatesInput[]
-  service_id?: Prisma.IntWithAggregatesFilter<"Service"> | number
+  id?: Prisma.IntWithAggregatesFilter<"Service"> | number
   title?: Prisma.StringWithAggregatesFilter<"Service"> | string
-  slug?: Prisma.StringWithAggregatesFilter<"Service"> | string
-  short_description?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  description?: Prisma.StringWithAggregatesFilter<"Service"> | string
-  icon?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  featured_image_id?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  price?: Prisma.DecimalNullableWithAggregatesFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  currency?: Prisma.StringWithAggregatesFilter<"Service"> | string
-  price_note?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  features?: Prisma.StringNullableListFilter<"Service">
-  deliverables?: Prisma.StringNullableListFilter<"Service">
-  technologies?: Prisma.StringNullableListFilter<"Service">
-  process_steps?: Prisma.StringNullableListFilter<"Service">
-  duration?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  ideal_for?: Prisma.StringNullableListFilter<"Service">
-  status?: Prisma.EnumStatusWithAggregatesFilter<"Service"> | $Enums.Status
-  is_featured?: Prisma.BoolWithAggregatesFilter<"Service"> | boolean
-  is_popular?: Prisma.BoolWithAggregatesFilter<"Service"> | boolean
-  display_order?: Prisma.IntWithAggregatesFilter<"Service"> | number
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"Service"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"Service"> | Date | string
-  meta_title?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  meta_description?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  meta_keywords?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  og_image_id?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  cta_text?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
-  cta_url?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
+  categoryId?: Prisma.IntWithAggregatesFilter<"Service"> | number
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Service"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Service"> | Date | string
 }
 
 export type ServiceCreateInput = {
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
-  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
-  categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  category: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
+  contactSubmissions?: Prisma.ContactUsCreateNestedManyWithoutServiceInput
 }
 
 export type ServiceUncheckedCreateInput = {
-  service_id?: number
+  id?: number
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  featured_image_id?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  og_image_id?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-  categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
+  description?: string | null
+  categoryId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contactSubmissions?: Prisma.ContactUsUncheckedCreateNestedManyWithoutServiceInput
 }
 
 export type ServiceUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
-  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
-  categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
+  contactSubmissions?: Prisma.ContactUsUpdateManyWithoutServiceNestedInput
 }
 
 export type ServiceUncheckedUpdateInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contactSubmissions?: Prisma.ContactUsUncheckedUpdateManyWithoutServiceNestedInput
 }
 
 export type ServiceCreateManyInput = {
-  service_id?: number
+  id?: number
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  featured_image_id?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  og_image_id?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
+  description?: string | null
+  categoryId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServiceUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceUncheckedUpdateManyInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceListRelationFilter = {
@@ -779,855 +356,242 @@ export type ServiceOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type ServiceScalarRelationFilter = {
-  is?: Prisma.ServiceWhereInput
-  isNot?: Prisma.ServiceWhereInput
-}
-
 export type ServiceCountOrderByAggregateInput = {
-  service_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
-  short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  icon?: Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrder
-  price?: Prisma.SortOrder
-  price_type?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  price_note?: Prisma.SortOrder
-  features?: Prisma.SortOrder
-  deliverables?: Prisma.SortOrder
-  technologies?: Prisma.SortOrder
-  process_steps?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  ideal_for?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  is_featured?: Prisma.SortOrder
-  is_popular?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrder
-  meta_description?: Prisma.SortOrder
-  meta_keywords?: Prisma.SortOrder
-  og_image_id?: Prisma.SortOrder
-  cta_text?: Prisma.SortOrder
-  cta_url?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServiceAvgOrderByAggregateInput = {
-  service_id?: Prisma.SortOrder
-  price?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
 }
 
 export type ServiceMaxOrderByAggregateInput = {
-  service_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
-  short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  icon?: Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrder
-  price?: Prisma.SortOrder
-  price_type?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  price_note?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  is_featured?: Prisma.SortOrder
-  is_popular?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrder
-  meta_description?: Prisma.SortOrder
-  meta_keywords?: Prisma.SortOrder
-  og_image_id?: Prisma.SortOrder
-  cta_text?: Prisma.SortOrder
-  cta_url?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServiceMinOrderByAggregateInput = {
-  service_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
-  short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  icon?: Prisma.SortOrder
-  featured_image_id?: Prisma.SortOrder
-  price?: Prisma.SortOrder
-  price_type?: Prisma.SortOrder
-  currency?: Prisma.SortOrder
-  price_note?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  is_featured?: Prisma.SortOrder
-  is_popular?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrder
-  meta_description?: Prisma.SortOrder
-  meta_keywords?: Prisma.SortOrder
-  og_image_id?: Prisma.SortOrder
-  cta_text?: Prisma.SortOrder
-  cta_url?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServiceSumOrderByAggregateInput = {
-  service_id?: Prisma.SortOrder
-  price?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
+  id?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
 }
 
-export type ServiceCreateNestedManyWithoutFeatured_imageInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
-  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
+export type ServiceNullableScalarRelationFilter = {
+  is?: Prisma.ServiceWhereInput | null
+  isNot?: Prisma.ServiceWhereInput | null
+}
+
+export type ServiceCreateNestedManyWithoutCategoryInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutCategoryInput, Prisma.ServiceUncheckedCreateWithoutCategoryInput> | Prisma.ServiceCreateWithoutCategoryInput[] | Prisma.ServiceUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutCategoryInput | Prisma.ServiceCreateOrConnectWithoutCategoryInput[]
+  createMany?: Prisma.ServiceCreateManyCategoryInputEnvelope
   connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
 }
 
-export type ServiceCreateNestedManyWithoutOg_imageInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
-  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
+export type ServiceUncheckedCreateNestedManyWithoutCategoryInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutCategoryInput, Prisma.ServiceUncheckedCreateWithoutCategoryInput> | Prisma.ServiceCreateWithoutCategoryInput[] | Prisma.ServiceUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutCategoryInput | Prisma.ServiceCreateOrConnectWithoutCategoryInput[]
+  createMany?: Prisma.ServiceCreateManyCategoryInputEnvelope
   connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
 }
 
-export type ServiceUncheckedCreateNestedManyWithoutFeatured_imageInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
-  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
-  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-}
-
-export type ServiceUncheckedCreateNestedManyWithoutOg_imageInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
-  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
-  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-}
-
-export type ServiceUpdateManyWithoutFeatured_imageNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
-  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput[]
-  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
+export type ServiceUpdateManyWithoutCategoryNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutCategoryInput, Prisma.ServiceUncheckedCreateWithoutCategoryInput> | Prisma.ServiceCreateWithoutCategoryInput[] | Prisma.ServiceUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutCategoryInput | Prisma.ServiceCreateOrConnectWithoutCategoryInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutCategoryInput | Prisma.ServiceUpsertWithWhereUniqueWithoutCategoryInput[]
+  createMany?: Prisma.ServiceCreateManyCategoryInputEnvelope
   set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
   disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
   delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
   connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput[]
-  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutCategoryInput | Prisma.ServiceUpdateWithWhereUniqueWithoutCategoryInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutCategoryInput | Prisma.ServiceUpdateManyWithWhereWithoutCategoryInput[]
   deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
 }
 
-export type ServiceUpdateManyWithoutOg_imageNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
-  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput[]
-  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
+export type ServiceUncheckedUpdateManyWithoutCategoryNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutCategoryInput, Prisma.ServiceUncheckedCreateWithoutCategoryInput> | Prisma.ServiceCreateWithoutCategoryInput[] | Prisma.ServiceUncheckedCreateWithoutCategoryInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutCategoryInput | Prisma.ServiceCreateOrConnectWithoutCategoryInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutCategoryInput | Prisma.ServiceUpsertWithWhereUniqueWithoutCategoryInput[]
+  createMany?: Prisma.ServiceCreateManyCategoryInputEnvelope
   set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
   disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
   delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
   connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput[]
-  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutCategoryInput | Prisma.ServiceUpdateWithWhereUniqueWithoutCategoryInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutCategoryInput | Prisma.ServiceUpdateManyWithWhereWithoutCategoryInput[]
   deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
 }
 
-export type ServiceUncheckedUpdateManyWithoutFeatured_imageNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput> | Prisma.ServiceCreateWithoutFeatured_imageInput[] | Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput | Prisma.ServiceCreateOrConnectWithoutFeatured_imageInput[]
-  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput[]
-  createMany?: Prisma.ServiceCreateManyFeatured_imageInputEnvelope
-  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput[]
-  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutFeatured_imageInput[]
-  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
-}
-
-export type ServiceUncheckedUpdateManyWithoutOg_imageNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput> | Prisma.ServiceCreateWithoutOg_imageInput[] | Prisma.ServiceUncheckedCreateWithoutOg_imageInput[]
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutOg_imageInput | Prisma.ServiceCreateOrConnectWithoutOg_imageInput[]
-  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpsertWithWhereUniqueWithoutOg_imageInput[]
-  createMany?: Prisma.ServiceCreateManyOg_imageInputEnvelope
-  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
-  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput | Prisma.ServiceUpdateWithWhereUniqueWithoutOg_imageInput[]
-  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput | Prisma.ServiceUpdateManyWithWhereWithoutOg_imageInput[]
-  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
-}
-
-export type ServiceCreateNestedOneWithoutCategoriesInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutCategoriesInput, Prisma.ServiceUncheckedCreateWithoutCategoriesInput>
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutCategoriesInput
+export type ServiceCreateNestedOneWithoutContactSubmissionsInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutContactSubmissionsInput, Prisma.ServiceUncheckedCreateWithoutContactSubmissionsInput>
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutContactSubmissionsInput
   connect?: Prisma.ServiceWhereUniqueInput
 }
 
-export type ServiceUpdateOneRequiredWithoutCategoriesNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutCategoriesInput, Prisma.ServiceUncheckedCreateWithoutCategoriesInput>
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutCategoriesInput
-  upsert?: Prisma.ServiceUpsertWithoutCategoriesInput
+export type ServiceUpdateOneWithoutContactSubmissionsNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutContactSubmissionsInput, Prisma.ServiceUncheckedCreateWithoutContactSubmissionsInput>
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutContactSubmissionsInput
+  upsert?: Prisma.ServiceUpsertWithoutContactSubmissionsInput
+  disconnect?: Prisma.ServiceWhereInput | boolean
+  delete?: Prisma.ServiceWhereInput | boolean
   connect?: Prisma.ServiceWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceUpdateToOneWithWhereWithoutCategoriesInput, Prisma.ServiceUpdateWithoutCategoriesInput>, Prisma.ServiceUncheckedUpdateWithoutCategoriesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceUpdateToOneWithWhereWithoutContactSubmissionsInput, Prisma.ServiceUpdateWithoutContactSubmissionsInput>, Prisma.ServiceUncheckedUpdateWithoutContactSubmissionsInput>
 }
 
-export type ServiceCreatefeaturesInput = {
-  set: string[]
-}
-
-export type ServiceCreatedeliverablesInput = {
-  set: string[]
-}
-
-export type ServiceCreatetechnologiesInput = {
-  set: string[]
-}
-
-export type ServiceCreateprocess_stepsInput = {
-  set: string[]
-}
-
-export type ServiceCreateideal_forInput = {
-  set: string[]
-}
-
-export type ServiceUpdatefeaturesInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type ServiceUpdatedeliverablesInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type ServiceUpdatetechnologiesInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type ServiceUpdateprocess_stepsInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type ServiceUpdateideal_forInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type ServiceCreateWithoutFeatured_imageInput = {
+export type ServiceCreateWithoutCategoryInput = {
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
-  categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contactSubmissions?: Prisma.ContactUsCreateNestedManyWithoutServiceInput
 }
 
-export type ServiceUncheckedCreateWithoutFeatured_imageInput = {
-  service_id?: number
+export type ServiceUncheckedCreateWithoutCategoryInput = {
+  id?: number
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  og_image_id?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-  categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  contactSubmissions?: Prisma.ContactUsUncheckedCreateNestedManyWithoutServiceInput
 }
 
-export type ServiceCreateOrConnectWithoutFeatured_imageInput = {
+export type ServiceCreateOrConnectWithoutCategoryInput = {
   where: Prisma.ServiceWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput>
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutCategoryInput, Prisma.ServiceUncheckedCreateWithoutCategoryInput>
 }
 
-export type ServiceCreateManyFeatured_imageInputEnvelope = {
-  data: Prisma.ServiceCreateManyFeatured_imageInput | Prisma.ServiceCreateManyFeatured_imageInput[]
+export type ServiceCreateManyCategoryInputEnvelope = {
+  data: Prisma.ServiceCreateManyCategoryInput | Prisma.ServiceCreateManyCategoryInput[]
   skipDuplicates?: boolean
 }
 
-export type ServiceCreateWithoutOg_imageInput = {
-  title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
-  categories?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutServiceInput
-}
-
-export type ServiceUncheckedCreateWithoutOg_imageInput = {
-  service_id?: number
-  title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  featured_image_id?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-  categories?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutServiceInput
-}
-
-export type ServiceCreateOrConnectWithoutOg_imageInput = {
+export type ServiceUpsertWithWhereUniqueWithoutCategoryInput = {
   where: Prisma.ServiceWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput>
+  update: Prisma.XOR<Prisma.ServiceUpdateWithoutCategoryInput, Prisma.ServiceUncheckedUpdateWithoutCategoryInput>
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutCategoryInput, Prisma.ServiceUncheckedCreateWithoutCategoryInput>
 }
 
-export type ServiceCreateManyOg_imageInputEnvelope = {
-  data: Prisma.ServiceCreateManyOg_imageInput | Prisma.ServiceCreateManyOg_imageInput[]
-  skipDuplicates?: boolean
-}
-
-export type ServiceUpsertWithWhereUniqueWithoutFeatured_imageInput = {
+export type ServiceUpdateWithWhereUniqueWithoutCategoryInput = {
   where: Prisma.ServiceWhereUniqueInput
-  update: Prisma.XOR<Prisma.ServiceUpdateWithoutFeatured_imageInput, Prisma.ServiceUncheckedUpdateWithoutFeatured_imageInput>
-  create: Prisma.XOR<Prisma.ServiceCreateWithoutFeatured_imageInput, Prisma.ServiceUncheckedCreateWithoutFeatured_imageInput>
+  data: Prisma.XOR<Prisma.ServiceUpdateWithoutCategoryInput, Prisma.ServiceUncheckedUpdateWithoutCategoryInput>
 }
 
-export type ServiceUpdateWithWhereUniqueWithoutFeatured_imageInput = {
-  where: Prisma.ServiceWhereUniqueInput
-  data: Prisma.XOR<Prisma.ServiceUpdateWithoutFeatured_imageInput, Prisma.ServiceUncheckedUpdateWithoutFeatured_imageInput>
-}
-
-export type ServiceUpdateManyWithWhereWithoutFeatured_imageInput = {
+export type ServiceUpdateManyWithWhereWithoutCategoryInput = {
   where: Prisma.ServiceScalarWhereInput
-  data: Prisma.XOR<Prisma.ServiceUpdateManyMutationInput, Prisma.ServiceUncheckedUpdateManyWithoutFeatured_imageInput>
+  data: Prisma.XOR<Prisma.ServiceUpdateManyMutationInput, Prisma.ServiceUncheckedUpdateManyWithoutCategoryInput>
 }
 
 export type ServiceScalarWhereInput = {
   AND?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
   OR?: Prisma.ServiceScalarWhereInput[]
   NOT?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
-  service_id?: Prisma.IntFilter<"Service"> | number
+  id?: Prisma.IntFilter<"Service"> | number
   title?: Prisma.StringFilter<"Service"> | string
-  slug?: Prisma.StringFilter<"Service"> | string
-  short_description?: Prisma.StringNullableFilter<"Service"> | string | null
-  description?: Prisma.StringFilter<"Service"> | string
-  icon?: Prisma.StringNullableFilter<"Service"> | string | null
-  featured_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
-  price?: Prisma.DecimalNullableFilter<"Service"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.StringNullableFilter<"Service"> | string | null
-  currency?: Prisma.StringFilter<"Service"> | string
-  price_note?: Prisma.StringNullableFilter<"Service"> | string | null
-  features?: Prisma.StringNullableListFilter<"Service">
-  deliverables?: Prisma.StringNullableListFilter<"Service">
-  technologies?: Prisma.StringNullableListFilter<"Service">
-  process_steps?: Prisma.StringNullableListFilter<"Service">
-  duration?: Prisma.StringNullableFilter<"Service"> | string | null
-  ideal_for?: Prisma.StringNullableListFilter<"Service">
-  status?: Prisma.EnumStatusFilter<"Service"> | $Enums.Status
-  is_featured?: Prisma.BoolFilter<"Service"> | boolean
-  is_popular?: Prisma.BoolFilter<"Service"> | boolean
-  display_order?: Prisma.IntFilter<"Service"> | number
-  created_at?: Prisma.DateTimeFilter<"Service"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"Service"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"Service"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"Service"> | string | null
-  meta_keywords?: Prisma.StringNullableFilter<"Service"> | string | null
-  og_image_id?: Prisma.StringNullableFilter<"Service"> | string | null
-  cta_text?: Prisma.StringNullableFilter<"Service"> | string | null
-  cta_url?: Prisma.StringNullableFilter<"Service"> | string | null
+  description?: Prisma.StringNullableFilter<"Service"> | string | null
+  categoryId?: Prisma.IntFilter<"Service"> | number
+  createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
 }
 
-export type ServiceUpsertWithWhereUniqueWithoutOg_imageInput = {
-  where: Prisma.ServiceWhereUniqueInput
-  update: Prisma.XOR<Prisma.ServiceUpdateWithoutOg_imageInput, Prisma.ServiceUncheckedUpdateWithoutOg_imageInput>
-  create: Prisma.XOR<Prisma.ServiceCreateWithoutOg_imageInput, Prisma.ServiceUncheckedCreateWithoutOg_imageInput>
-}
-
-export type ServiceUpdateWithWhereUniqueWithoutOg_imageInput = {
-  where: Prisma.ServiceWhereUniqueInput
-  data: Prisma.XOR<Prisma.ServiceUpdateWithoutOg_imageInput, Prisma.ServiceUncheckedUpdateWithoutOg_imageInput>
-}
-
-export type ServiceUpdateManyWithWhereWithoutOg_imageInput = {
-  where: Prisma.ServiceScalarWhereInput
-  data: Prisma.XOR<Prisma.ServiceUpdateManyMutationInput, Prisma.ServiceUncheckedUpdateManyWithoutOg_imageInput>
-}
-
-export type ServiceCreateWithoutCategoriesInput = {
+export type ServiceCreateWithoutContactSubmissionsInput = {
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-  featured_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceFeaturedImagesInput
-  og_image?: Prisma.GalleryItemCreateNestedOneWithoutServiceOgImagesInput
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  category: Prisma.ServiceCategoryCreateNestedOneWithoutServicesInput
 }
 
-export type ServiceUncheckedCreateWithoutCategoriesInput = {
-  service_id?: number
+export type ServiceUncheckedCreateWithoutContactSubmissionsInput = {
+  id?: number
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  featured_image_id?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  og_image_id?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
+  description?: string | null
+  categoryId: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
-export type ServiceCreateOrConnectWithoutCategoriesInput = {
+export type ServiceCreateOrConnectWithoutContactSubmissionsInput = {
   where: Prisma.ServiceWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceCreateWithoutCategoriesInput, Prisma.ServiceUncheckedCreateWithoutCategoriesInput>
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutContactSubmissionsInput, Prisma.ServiceUncheckedCreateWithoutContactSubmissionsInput>
 }
 
-export type ServiceUpsertWithoutCategoriesInput = {
-  update: Prisma.XOR<Prisma.ServiceUpdateWithoutCategoriesInput, Prisma.ServiceUncheckedUpdateWithoutCategoriesInput>
-  create: Prisma.XOR<Prisma.ServiceCreateWithoutCategoriesInput, Prisma.ServiceUncheckedCreateWithoutCategoriesInput>
+export type ServiceUpsertWithoutContactSubmissionsInput = {
+  update: Prisma.XOR<Prisma.ServiceUpdateWithoutContactSubmissionsInput, Prisma.ServiceUncheckedUpdateWithoutContactSubmissionsInput>
+  create: Prisma.XOR<Prisma.ServiceCreateWithoutContactSubmissionsInput, Prisma.ServiceUncheckedCreateWithoutContactSubmissionsInput>
   where?: Prisma.ServiceWhereInput
 }
 
-export type ServiceUpdateToOneWithWhereWithoutCategoriesInput = {
+export type ServiceUpdateToOneWithWhereWithoutContactSubmissionsInput = {
   where?: Prisma.ServiceWhereInput
-  data: Prisma.XOR<Prisma.ServiceUpdateWithoutCategoriesInput, Prisma.ServiceUncheckedUpdateWithoutCategoriesInput>
+  data: Prisma.XOR<Prisma.ServiceUpdateWithoutContactSubmissionsInput, Prisma.ServiceUncheckedUpdateWithoutContactSubmissionsInput>
 }
 
-export type ServiceUpdateWithoutCategoriesInput = {
+export type ServiceUpdateWithoutContactSubmissionsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
-  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
 }
 
-export type ServiceUncheckedUpdateWithoutCategoriesInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+export type ServiceUncheckedUpdateWithoutContactSubmissionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type ServiceCreateManyFeatured_imageInput = {
-  service_id?: number
+export type ServiceCreateManyCategoryInput = {
+  id?: number
   title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  og_image_id?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
-export type ServiceCreateManyOg_imageInput = {
-  service_id?: number
-  title: string
-  slug: string
-  short_description?: string | null
-  description: string
-  icon?: string | null
-  featured_image_id?: string | null
-  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: string | null
-  currency?: string
-  price_note?: string | null
-  features?: Prisma.ServiceCreatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceCreatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceCreatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceCreateprocess_stepsInput | string[]
-  duration?: string | null
-  ideal_for?: Prisma.ServiceCreateideal_forInput | string[]
-  status?: $Enums.Status
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  meta_keywords?: string | null
-  cta_text?: string | null
-  cta_url?: string | null
-}
-
-export type ServiceUpdateWithoutFeatured_imageInput = {
+export type ServiceUpdateWithoutCategoryInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image?: Prisma.GalleryItemUpdateOneWithoutServiceOgImagesNestedInput
-  categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contactSubmissions?: Prisma.ContactUsUpdateManyWithoutServiceNestedInput
 }
 
-export type ServiceUncheckedUpdateWithoutFeatured_imageInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+export type ServiceUncheckedUpdateWithoutCategoryInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  contactSubmissions?: Prisma.ContactUsUncheckedUpdateManyWithoutServiceNestedInput
 }
 
-export type ServiceUncheckedUpdateManyWithoutFeatured_imageInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
+export type ServiceUncheckedUpdateManyWithoutCategoryInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  og_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
-export type ServiceUpdateWithoutOg_imageInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image?: Prisma.GalleryItemUpdateOneWithoutServiceFeaturedImagesNestedInput
-  categories?: Prisma.ServiceCategoryRelationUpdateManyWithoutServiceNestedInput
-}
-
-export type ServiceUncheckedUpdateWithoutOg_imageInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  categories?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutServiceNestedInput
-}
-
-export type ServiceUncheckedUpdateManyWithoutOg_imageInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  short_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  featured_image_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  price_type?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  currency?: Prisma.StringFieldUpdateOperationsInput | string
-  price_note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  features?: Prisma.ServiceUpdatefeaturesInput | string[]
-  deliverables?: Prisma.ServiceUpdatedeliverablesInput | string[]
-  technologies?: Prisma.ServiceUpdatetechnologiesInput | string[]
-  process_steps?: Prisma.ServiceUpdateprocess_stepsInput | string[]
-  duration?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ideal_for?: Prisma.ServiceUpdateideal_forInput | string[]
-  status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
-  is_featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  is_popular?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_keywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_text?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  cta_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -1636,11 +600,11 @@ export type ServiceUncheckedUpdateManyWithoutOg_imageInput = {
  */
 
 export type ServiceCountOutputType = {
-  categories: number
+  contactSubmissions: number
 }
 
 export type ServiceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  categories?: boolean | ServiceCountOutputTypeCountCategoriesArgs
+  contactSubmissions?: boolean | ServiceCountOutputTypeCountContactSubmissionsArgs
 }
 
 /**
@@ -1656,200 +620,78 @@ export type ServiceCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
 /**
  * ServiceCountOutputType without action
  */
-export type ServiceCountOutputTypeCountCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ServiceCategoryRelationWhereInput
+export type ServiceCountOutputTypeCountContactSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContactUsWhereInput
 }
 
 
 export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  service_id?: boolean
+  id?: boolean
   title?: boolean
-  slug?: boolean
-  short_description?: boolean
   description?: boolean
-  icon?: boolean
-  featured_image_id?: boolean
-  price?: boolean
-  price_type?: boolean
-  currency?: boolean
-  price_note?: boolean
-  features?: boolean
-  deliverables?: boolean
-  technologies?: boolean
-  process_steps?: boolean
-  duration?: boolean
-  ideal_for?: boolean
-  status?: boolean
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
-  meta_keywords?: boolean
-  og_image_id?: boolean
-  cta_text?: boolean
-  cta_url?: boolean
-  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
-  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
-  categories?: boolean | Prisma.Service$categoriesArgs<ExtArgs>
+  categoryId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  category?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
+  contactSubmissions?: boolean | Prisma.Service$contactSubmissionsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  service_id?: boolean
+  id?: boolean
   title?: boolean
-  slug?: boolean
-  short_description?: boolean
   description?: boolean
-  icon?: boolean
-  featured_image_id?: boolean
-  price?: boolean
-  price_type?: boolean
-  currency?: boolean
-  price_note?: boolean
-  features?: boolean
-  deliverables?: boolean
-  technologies?: boolean
-  process_steps?: boolean
-  duration?: boolean
-  ideal_for?: boolean
-  status?: boolean
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
-  meta_keywords?: boolean
-  og_image_id?: boolean
-  cta_text?: boolean
-  cta_url?: boolean
-  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
-  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
+  categoryId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  category?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  service_id?: boolean
+  id?: boolean
   title?: boolean
-  slug?: boolean
-  short_description?: boolean
   description?: boolean
-  icon?: boolean
-  featured_image_id?: boolean
-  price?: boolean
-  price_type?: boolean
-  currency?: boolean
-  price_note?: boolean
-  features?: boolean
-  deliverables?: boolean
-  technologies?: boolean
-  process_steps?: boolean
-  duration?: boolean
-  ideal_for?: boolean
-  status?: boolean
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
-  meta_keywords?: boolean
-  og_image_id?: boolean
-  cta_text?: boolean
-  cta_url?: boolean
-  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
-  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
+  categoryId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  category?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["service"]>
 
 export type ServiceSelectScalar = {
-  service_id?: boolean
+  id?: boolean
   title?: boolean
-  slug?: boolean
-  short_description?: boolean
   description?: boolean
-  icon?: boolean
-  featured_image_id?: boolean
-  price?: boolean
-  price_type?: boolean
-  currency?: boolean
-  price_note?: boolean
-  features?: boolean
-  deliverables?: boolean
-  technologies?: boolean
-  process_steps?: boolean
-  duration?: boolean
-  ideal_for?: boolean
-  status?: boolean
-  is_featured?: boolean
-  is_popular?: boolean
-  display_order?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
-  meta_keywords?: boolean
-  og_image_id?: boolean
-  cta_text?: boolean
-  cta_url?: boolean
+  categoryId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"service_id" | "title" | "slug" | "short_description" | "description" | "icon" | "featured_image_id" | "price" | "price_type" | "currency" | "price_note" | "features" | "deliverables" | "technologies" | "process_steps" | "duration" | "ideal_for" | "status" | "is_featured" | "is_popular" | "display_order" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords" | "og_image_id" | "cta_text" | "cta_url", ExtArgs["result"]["service"]>
+export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
 export type ServiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
-  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
-  categories?: boolean | Prisma.Service$categoriesArgs<ExtArgs>
+  category?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
+  contactSubmissions?: boolean | Prisma.Service$contactSubmissionsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ServiceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
-  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
+  category?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
 }
 export type ServiceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  featured_image?: boolean | Prisma.Service$featured_imageArgs<ExtArgs>
-  og_image?: boolean | Prisma.Service$og_imageArgs<ExtArgs>
+  category?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
 }
 
 export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Service"
   objects: {
-    featured_image: Prisma.$GalleryItemPayload<ExtArgs> | null
-    og_image: Prisma.$GalleryItemPayload<ExtArgs> | null
-    categories: Prisma.$ServiceCategoryRelationPayload<ExtArgs>[]
+    category: Prisma.$ServiceCategoryPayload<ExtArgs>
+    contactSubmissions: Prisma.$ContactUsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    service_id: number
+    id: number
     title: string
-    slug: string
-    short_description: string | null
-    description: string
-    icon: string | null
-    featured_image_id: string | null
-    price: runtime.Decimal | null
-    price_type: string | null
-    currency: string
-    price_note: string | null
-    features: string[]
-    deliverables: string[]
-    technologies: string[]
-    process_steps: string[]
-    duration: string | null
-    ideal_for: string[]
-    status: $Enums.Status
-    is_featured: boolean
-    is_popular: boolean
-    display_order: number
-    created_at: Date
-    updated_at: Date
-    meta_title: string | null
-    meta_description: string | null
-    meta_keywords: string | null
-    og_image_id: string | null
-    cta_text: string | null
-    cta_url: string | null
+    description: string | null
+    categoryId: number
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["service"]>
   composites: {}
 }
@@ -1933,8 +775,8 @@ export interface ServiceDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * // Get first 10 Services
    * const services = await prisma.service.findMany({ take: 10 })
    * 
-   * // Only select the `service_id`
-   * const serviceWithService_idOnly = await prisma.service.findMany({ select: { service_id: true } })
+   * // Only select the `id`
+   * const serviceWithIdOnly = await prisma.service.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends ServiceFindManyArgs>(args?: Prisma.SelectSubset<T, ServiceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1978,9 +820,9 @@ export interface ServiceDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   ]
    * })
    * 
-   * // Create many Services and only return the `service_id`
-   * const serviceWithService_idOnly = await prisma.service.createManyAndReturn({
-   *   select: { service_id: true },
+   * // Create many Services and only return the `id`
+   * const serviceWithIdOnly = await prisma.service.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -2069,9 +911,9 @@ export interface ServiceDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   ]
    * })
    * 
-   * // Update zero or more Services and only return the `service_id`
-   * const serviceWithService_idOnly = await prisma.service.updateManyAndReturn({
-   *   select: { service_id: true },
+   * // Update zero or more Services and only return the `id`
+   * const serviceWithIdOnly = await prisma.service.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -2244,9 +1086,8 @@ readonly fields: ServiceFieldRefs;
  */
 export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  featured_image<T extends Prisma.Service$featured_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$featured_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  og_image<T extends Prisma.Service$og_imageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$og_imageArgs<ExtArgs>>): Prisma.Prisma__GalleryItemClient<runtime.Types.Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  categories<T extends Prisma.Service$categoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryRelationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  category<T extends Prisma.ServiceCategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceCategoryClient<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  contactSubmissions<T extends Prisma.Service$contactSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$contactSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactUsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2276,35 +1117,12 @@ export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends runtime.
  * Fields of the Service model
  */
 export interface ServiceFieldRefs {
-  readonly service_id: Prisma.FieldRef<"Service", 'Int'>
+  readonly id: Prisma.FieldRef<"Service", 'Int'>
   readonly title: Prisma.FieldRef<"Service", 'String'>
-  readonly slug: Prisma.FieldRef<"Service", 'String'>
-  readonly short_description: Prisma.FieldRef<"Service", 'String'>
   readonly description: Prisma.FieldRef<"Service", 'String'>
-  readonly icon: Prisma.FieldRef<"Service", 'String'>
-  readonly featured_image_id: Prisma.FieldRef<"Service", 'String'>
-  readonly price: Prisma.FieldRef<"Service", 'Decimal'>
-  readonly price_type: Prisma.FieldRef<"Service", 'String'>
-  readonly currency: Prisma.FieldRef<"Service", 'String'>
-  readonly price_note: Prisma.FieldRef<"Service", 'String'>
-  readonly features: Prisma.FieldRef<"Service", 'String[]'>
-  readonly deliverables: Prisma.FieldRef<"Service", 'String[]'>
-  readonly technologies: Prisma.FieldRef<"Service", 'String[]'>
-  readonly process_steps: Prisma.FieldRef<"Service", 'String[]'>
-  readonly duration: Prisma.FieldRef<"Service", 'String'>
-  readonly ideal_for: Prisma.FieldRef<"Service", 'String[]'>
-  readonly status: Prisma.FieldRef<"Service", 'Status'>
-  readonly is_featured: Prisma.FieldRef<"Service", 'Boolean'>
-  readonly is_popular: Prisma.FieldRef<"Service", 'Boolean'>
-  readonly display_order: Prisma.FieldRef<"Service", 'Int'>
-  readonly created_at: Prisma.FieldRef<"Service", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"Service", 'DateTime'>
-  readonly meta_title: Prisma.FieldRef<"Service", 'String'>
-  readonly meta_description: Prisma.FieldRef<"Service", 'String'>
-  readonly meta_keywords: Prisma.FieldRef<"Service", 'String'>
-  readonly og_image_id: Prisma.FieldRef<"Service", 'String'>
-  readonly cta_text: Prisma.FieldRef<"Service", 'String'>
-  readonly cta_url: Prisma.FieldRef<"Service", 'String'>
+  readonly categoryId: Prisma.FieldRef<"Service", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"Service", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Service", 'DateTime'>
 }
     
 
@@ -2701,65 +1519,27 @@ export type ServiceDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * Service.featured_image
+ * Service.contactSubmissions
  */
-export type Service$featured_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Service$contactSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the GalleryItem
+   * Select specific fields to fetch from the ContactUs
    */
-  select?: Prisma.GalleryItemSelect<ExtArgs> | null
+  select?: Prisma.ContactUsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the GalleryItem
+   * Omit specific fields from the ContactUs
    */
-  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
+  omit?: Prisma.ContactUsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.GalleryItemInclude<ExtArgs> | null
-  where?: Prisma.GalleryItemWhereInput
-}
-
-/**
- * Service.og_image
- */
-export type Service$og_imageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the GalleryItem
-   */
-  select?: Prisma.GalleryItemSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the GalleryItem
-   */
-  omit?: Prisma.GalleryItemOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.GalleryItemInclude<ExtArgs> | null
-  where?: Prisma.GalleryItemWhereInput
-}
-
-/**
- * Service.categories
- */
-export type Service$categoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ServiceCategoryRelation
-   */
-  select?: Prisma.ServiceCategoryRelationSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ServiceCategoryRelation
-   */
-  omit?: Prisma.ServiceCategoryRelationOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ServiceCategoryRelationInclude<ExtArgs> | null
-  where?: Prisma.ServiceCategoryRelationWhereInput
-  orderBy?: Prisma.ServiceCategoryRelationOrderByWithRelationInput | Prisma.ServiceCategoryRelationOrderByWithRelationInput[]
-  cursor?: Prisma.ServiceCategoryRelationWhereUniqueInput
+  include?: Prisma.ContactUsInclude<ExtArgs> | null
+  where?: Prisma.ContactUsWhereInput
+  orderBy?: Prisma.ContactUsOrderByWithRelationInput | Prisma.ContactUsOrderByWithRelationInput[]
+  cursor?: Prisma.ContactUsWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ServiceCategoryRelationScalarFieldEnum | Prisma.ServiceCategoryRelationScalarFieldEnum[]
+  distinct?: Prisma.ContactUsScalarFieldEnum | Prisma.ContactUsScalarFieldEnum[]
 }
 
 /**

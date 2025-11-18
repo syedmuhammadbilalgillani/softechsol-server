@@ -27,135 +27,69 @@ export type AggregateServiceCategory = {
 }
 
 export type ServiceCategoryAvgAggregateOutputType = {
-  category_id: number | null
-  parent_id: number | null
-  display_order: number | null
-  service_count: number | null
+  id: number | null
 }
 
 export type ServiceCategorySumAggregateOutputType = {
-  category_id: number | null
-  parent_id: number | null
-  display_order: number | null
-  service_count: number | null
+  id: number | null
 }
 
 export type ServiceCategoryMinAggregateOutputType = {
-  category_id: number | null
+  id: number | null
   name: string | null
   slug: string | null
-  description: string | null
-  color: string | null
-  icon: string | null
-  parent_id: number | null
-  display_order: number | null
-  is_active: boolean | null
-  service_count: number | null
-  created_at: Date | null
-  updated_at: Date | null
-  meta_title: string | null
-  meta_description: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ServiceCategoryMaxAggregateOutputType = {
-  category_id: number | null
+  id: number | null
   name: string | null
   slug: string | null
-  description: string | null
-  color: string | null
-  icon: string | null
-  parent_id: number | null
-  display_order: number | null
-  is_active: boolean | null
-  service_count: number | null
-  created_at: Date | null
-  updated_at: Date | null
-  meta_title: string | null
-  meta_description: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ServiceCategoryCountAggregateOutputType = {
-  category_id: number
+  id: number
   name: number
   slug: number
-  description: number
-  color: number
-  icon: number
-  parent_id: number
-  display_order: number
-  is_active: number
-  service_count: number
-  created_at: number
-  updated_at: number
-  meta_title: number
-  meta_description: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
 
 export type ServiceCategoryAvgAggregateInputType = {
-  category_id?: true
-  parent_id?: true
-  display_order?: true
-  service_count?: true
+  id?: true
 }
 
 export type ServiceCategorySumAggregateInputType = {
-  category_id?: true
-  parent_id?: true
-  display_order?: true
-  service_count?: true
+  id?: true
 }
 
 export type ServiceCategoryMinAggregateInputType = {
-  category_id?: true
+  id?: true
   name?: true
   slug?: true
-  description?: true
-  color?: true
-  icon?: true
-  parent_id?: true
-  display_order?: true
-  is_active?: true
-  service_count?: true
-  created_at?: true
-  updated_at?: true
-  meta_title?: true
-  meta_description?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ServiceCategoryMaxAggregateInputType = {
-  category_id?: true
+  id?: true
   name?: true
   slug?: true
-  description?: true
-  color?: true
-  icon?: true
-  parent_id?: true
-  display_order?: true
-  is_active?: true
-  service_count?: true
-  created_at?: true
-  updated_at?: true
-  meta_title?: true
-  meta_description?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ServiceCategoryCountAggregateInputType = {
-  category_id?: true
+  id?: true
   name?: true
   slug?: true
-  description?: true
-  color?: true
-  icon?: true
-  parent_id?: true
-  display_order?: true
-  is_active?: true
-  service_count?: true
-  created_at?: true
-  updated_at?: true
-  meta_title?: true
-  meta_description?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -246,20 +180,11 @@ export type ServiceCategoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 }
 
 export type ServiceCategoryGroupByOutputType = {
-  category_id: number
+  id: number
   name: string
   slug: string
-  description: string | null
-  color: string | null
-  icon: string | null
-  parent_id: number | null
-  display_order: number
-  is_active: boolean
-  service_count: number
-  created_at: Date
-  updated_at: Date
-  meta_title: string | null
-  meta_description: string | null
+  createdAt: Date
+  updatedAt: Date
   _count: ServiceCategoryCountAggregateOutputType | null
   _avg: ServiceCategoryAvgAggregateOutputType | null
   _sum: ServiceCategorySumAggregateOutputType | null
@@ -286,83 +211,41 @@ export type ServiceCategoryWhereInput = {
   AND?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
   OR?: Prisma.ServiceCategoryWhereInput[]
   NOT?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
-  category_id?: Prisma.IntFilter<"ServiceCategory"> | number
+  id?: Prisma.IntFilter<"ServiceCategory"> | number
   name?: Prisma.StringFilter<"ServiceCategory"> | string
   slug?: Prisma.StringFilter<"ServiceCategory"> | string
-  description?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  color?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  icon?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  parent_id?: Prisma.IntNullableFilter<"ServiceCategory"> | number | null
-  display_order?: Prisma.IntFilter<"ServiceCategory"> | number
-  is_active?: Prisma.BoolFilter<"ServiceCategory"> | boolean
-  service_count?: Prisma.IntFilter<"ServiceCategory"> | number
-  created_at?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  parent?: Prisma.XOR<Prisma.ServiceCategoryNullableScalarRelationFilter, Prisma.ServiceCategoryWhereInput> | null
-  children?: Prisma.ServiceCategoryListRelationFilter
-  services?: Prisma.ServiceCategoryRelationListRelationFilter
+  createdAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
+  services?: Prisma.ServiceListRelationFilter
 }
 
 export type ServiceCategoryOrderByWithRelationInput = {
-  category_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
-  color?: Prisma.SortOrderInput | Prisma.SortOrder
-  icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  parent_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  is_active?: Prisma.SortOrder
-  service_count?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
-  meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
-  parent?: Prisma.ServiceCategoryOrderByWithRelationInput
-  children?: Prisma.ServiceCategoryOrderByRelationAggregateInput
-  services?: Prisma.ServiceCategoryRelationOrderByRelationAggregateInput
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  services?: Prisma.ServiceOrderByRelationAggregateInput
 }
 
 export type ServiceCategoryWhereUniqueInput = Prisma.AtLeast<{
-  category_id?: number
-  name?: string
+  id?: number
   slug?: string
   AND?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
   OR?: Prisma.ServiceCategoryWhereInput[]
   NOT?: Prisma.ServiceCategoryWhereInput | Prisma.ServiceCategoryWhereInput[]
-  description?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  color?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  icon?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  parent_id?: Prisma.IntNullableFilter<"ServiceCategory"> | number | null
-  display_order?: Prisma.IntFilter<"ServiceCategory"> | number
-  is_active?: Prisma.BoolFilter<"ServiceCategory"> | boolean
-  service_count?: Prisma.IntFilter<"ServiceCategory"> | number
-  created_at?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  parent?: Prisma.XOR<Prisma.ServiceCategoryNullableScalarRelationFilter, Prisma.ServiceCategoryWhereInput> | null
-  children?: Prisma.ServiceCategoryListRelationFilter
-  services?: Prisma.ServiceCategoryRelationListRelationFilter
-}, "category_id" | "name" | "slug">
+  name?: Prisma.StringFilter<"ServiceCategory"> | string
+  createdAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
+  services?: Prisma.ServiceListRelationFilter
+}, "id" | "slug">
 
 export type ServiceCategoryOrderByWithAggregationInput = {
-  category_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
-  color?: Prisma.SortOrderInput | Prisma.SortOrder
-  icon?: Prisma.SortOrderInput | Prisma.SortOrder
-  parent_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  is_active?: Prisma.SortOrder
-  service_count?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrderInput | Prisma.SortOrder
-  meta_description?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ServiceCategoryCountOrderByAggregateInput
   _avg?: Prisma.ServiceCategoryAvgOrderByAggregateInput
   _max?: Prisma.ServiceCategoryMaxOrderByAggregateInput
@@ -374,286 +257,105 @@ export type ServiceCategoryScalarWhereWithAggregatesInput = {
   AND?: Prisma.ServiceCategoryScalarWhereWithAggregatesInput | Prisma.ServiceCategoryScalarWhereWithAggregatesInput[]
   OR?: Prisma.ServiceCategoryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServiceCategoryScalarWhereWithAggregatesInput | Prisma.ServiceCategoryScalarWhereWithAggregatesInput[]
-  category_id?: Prisma.IntWithAggregatesFilter<"ServiceCategory"> | number
+  id?: Prisma.IntWithAggregatesFilter<"ServiceCategory"> | number
   name?: Prisma.StringWithAggregatesFilter<"ServiceCategory"> | string
   slug?: Prisma.StringWithAggregatesFilter<"ServiceCategory"> | string
-  description?: Prisma.StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
-  color?: Prisma.StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
-  icon?: Prisma.StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
-  parent_id?: Prisma.IntNullableWithAggregatesFilter<"ServiceCategory"> | number | null
-  display_order?: Prisma.IntWithAggregatesFilter<"ServiceCategory"> | number
-  is_active?: Prisma.BoolWithAggregatesFilter<"ServiceCategory"> | boolean
-  service_count?: Prisma.IntWithAggregatesFilter<"ServiceCategory"> | number
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
-  meta_title?: Prisma.StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
-  meta_description?: Prisma.StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
 }
 
 export type ServiceCategoryCreateInput = {
   name: string
   slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  parent?: Prisma.ServiceCategoryCreateNestedOneWithoutChildrenInput
-  children?: Prisma.ServiceCategoryCreateNestedManyWithoutParentInput
-  services?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutCategoryInput
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  services?: Prisma.ServiceCreateNestedManyWithoutCategoryInput
 }
 
 export type ServiceCategoryUncheckedCreateInput = {
-  category_id?: number
+  id?: number
   name: string
   slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  parent_id?: number | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  children?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutParentInput
-  services?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutCategoryInput
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type ServiceCategoryUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parent?: Prisma.ServiceCategoryUpdateOneWithoutChildrenNestedInput
-  children?: Prisma.ServiceCategoryUpdateManyWithoutParentNestedInput
-  services?: Prisma.ServiceCategoryRelationUpdateManyWithoutCategoryNestedInput
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUpdateManyWithoutCategoryNestedInput
 }
 
 export type ServiceCategoryUncheckedUpdateInput = {
-  category_id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  children?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutParentNestedInput
-  services?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutCategoryNestedInput
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 export type ServiceCategoryCreateManyInput = {
-  category_id?: number
+  id?: number
   name: string
   slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  parent_id?: number | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServiceCategoryUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceCategoryUncheckedUpdateManyInput = {
-  category_id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
-export type ServiceCategoryNullableScalarRelationFilter = {
-  is?: Prisma.ServiceCategoryWhereInput | null
-  isNot?: Prisma.ServiceCategoryWhereInput | null
-}
-
-export type ServiceCategoryListRelationFilter = {
-  every?: Prisma.ServiceCategoryWhereInput
-  some?: Prisma.ServiceCategoryWhereInput
-  none?: Prisma.ServiceCategoryWhereInput
-}
-
-export type ServiceCategoryOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceCategoryCountOrderByAggregateInput = {
-  category_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  description?: Prisma.SortOrder
-  color?: Prisma.SortOrder
-  icon?: Prisma.SortOrder
-  parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  is_active?: Prisma.SortOrder
-  service_count?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrder
-  meta_description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServiceCategoryAvgOrderByAggregateInput = {
-  category_id?: Prisma.SortOrder
-  parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  service_count?: Prisma.SortOrder
+  id?: Prisma.SortOrder
 }
 
 export type ServiceCategoryMaxOrderByAggregateInput = {
-  category_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  description?: Prisma.SortOrder
-  color?: Prisma.SortOrder
-  icon?: Prisma.SortOrder
-  parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  is_active?: Prisma.SortOrder
-  service_count?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrder
-  meta_description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServiceCategoryMinOrderByAggregateInput = {
-  category_id?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   slug?: Prisma.SortOrder
-  description?: Prisma.SortOrder
-  color?: Prisma.SortOrder
-  icon?: Prisma.SortOrder
-  parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  is_active?: Prisma.SortOrder
-  service_count?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  meta_title?: Prisma.SortOrder
-  meta_description?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ServiceCategorySumOrderByAggregateInput = {
-  category_id?: Prisma.SortOrder
-  parent_id?: Prisma.SortOrder
-  display_order?: Prisma.SortOrder
-  service_count?: Prisma.SortOrder
+  id?: Prisma.SortOrder
 }
 
 export type ServiceCategoryScalarRelationFilter = {
   is?: Prisma.ServiceCategoryWhereInput
   isNot?: Prisma.ServiceCategoryWhereInput
-}
-
-export type ServiceCategoryCreateNestedOneWithoutChildrenInput = {
-  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutChildrenInput, Prisma.ServiceCategoryUncheckedCreateWithoutChildrenInput>
-  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutChildrenInput
-  connect?: Prisma.ServiceCategoryWhereUniqueInput
-}
-
-export type ServiceCategoryCreateNestedManyWithoutParentInput = {
-  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutParentInput, Prisma.ServiceCategoryUncheckedCreateWithoutParentInput> | Prisma.ServiceCategoryCreateWithoutParentInput[] | Prisma.ServiceCategoryUncheckedCreateWithoutParentInput[]
-  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutParentInput | Prisma.ServiceCategoryCreateOrConnectWithoutParentInput[]
-  createMany?: Prisma.ServiceCategoryCreateManyParentInputEnvelope
-  connect?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-}
-
-export type ServiceCategoryUncheckedCreateNestedManyWithoutParentInput = {
-  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutParentInput, Prisma.ServiceCategoryUncheckedCreateWithoutParentInput> | Prisma.ServiceCategoryCreateWithoutParentInput[] | Prisma.ServiceCategoryUncheckedCreateWithoutParentInput[]
-  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutParentInput | Prisma.ServiceCategoryCreateOrConnectWithoutParentInput[]
-  createMany?: Prisma.ServiceCategoryCreateManyParentInputEnvelope
-  connect?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-}
-
-export type ServiceCategoryUpdateOneWithoutChildrenNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutChildrenInput, Prisma.ServiceCategoryUncheckedCreateWithoutChildrenInput>
-  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutChildrenInput
-  upsert?: Prisma.ServiceCategoryUpsertWithoutChildrenInput
-  disconnect?: Prisma.ServiceCategoryWhereInput | boolean
-  delete?: Prisma.ServiceCategoryWhereInput | boolean
-  connect?: Prisma.ServiceCategoryWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceCategoryUpdateToOneWithWhereWithoutChildrenInput, Prisma.ServiceCategoryUpdateWithoutChildrenInput>, Prisma.ServiceCategoryUncheckedUpdateWithoutChildrenInput>
-}
-
-export type ServiceCategoryUpdateManyWithoutParentNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutParentInput, Prisma.ServiceCategoryUncheckedCreateWithoutParentInput> | Prisma.ServiceCategoryCreateWithoutParentInput[] | Prisma.ServiceCategoryUncheckedCreateWithoutParentInput[]
-  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutParentInput | Prisma.ServiceCategoryCreateOrConnectWithoutParentInput[]
-  upsert?: Prisma.ServiceCategoryUpsertWithWhereUniqueWithoutParentInput | Prisma.ServiceCategoryUpsertWithWhereUniqueWithoutParentInput[]
-  createMany?: Prisma.ServiceCategoryCreateManyParentInputEnvelope
-  set?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  disconnect?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  delete?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  connect?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  update?: Prisma.ServiceCategoryUpdateWithWhereUniqueWithoutParentInput | Prisma.ServiceCategoryUpdateWithWhereUniqueWithoutParentInput[]
-  updateMany?: Prisma.ServiceCategoryUpdateManyWithWhereWithoutParentInput | Prisma.ServiceCategoryUpdateManyWithWhereWithoutParentInput[]
-  deleteMany?: Prisma.ServiceCategoryScalarWhereInput | Prisma.ServiceCategoryScalarWhereInput[]
-}
-
-export type ServiceCategoryUncheckedUpdateManyWithoutParentNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutParentInput, Prisma.ServiceCategoryUncheckedCreateWithoutParentInput> | Prisma.ServiceCategoryCreateWithoutParentInput[] | Prisma.ServiceCategoryUncheckedCreateWithoutParentInput[]
-  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutParentInput | Prisma.ServiceCategoryCreateOrConnectWithoutParentInput[]
-  upsert?: Prisma.ServiceCategoryUpsertWithWhereUniqueWithoutParentInput | Prisma.ServiceCategoryUpsertWithWhereUniqueWithoutParentInput[]
-  createMany?: Prisma.ServiceCategoryCreateManyParentInputEnvelope
-  set?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  disconnect?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  delete?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  connect?: Prisma.ServiceCategoryWhereUniqueInput | Prisma.ServiceCategoryWhereUniqueInput[]
-  update?: Prisma.ServiceCategoryUpdateWithWhereUniqueWithoutParentInput | Prisma.ServiceCategoryUpdateWithWhereUniqueWithoutParentInput[]
-  updateMany?: Prisma.ServiceCategoryUpdateManyWithWhereWithoutParentInput | Prisma.ServiceCategoryUpdateManyWithWhereWithoutParentInput[]
-  deleteMany?: Prisma.ServiceCategoryScalarWhereInput | Prisma.ServiceCategoryScalarWhereInput[]
 }
 
 export type ServiceCategoryCreateNestedOneWithoutServicesInput = {
@@ -670,206 +372,19 @@ export type ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceCategoryUpdateToOneWithWhereWithoutServicesInput, Prisma.ServiceCategoryUpdateWithoutServicesInput>, Prisma.ServiceCategoryUncheckedUpdateWithoutServicesInput>
 }
 
-export type ServiceCategoryCreateWithoutChildrenInput = {
-  name: string
-  slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  parent?: Prisma.ServiceCategoryCreateNestedOneWithoutChildrenInput
-  services?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutCategoryInput
-}
-
-export type ServiceCategoryUncheckedCreateWithoutChildrenInput = {
-  category_id?: number
-  name: string
-  slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  parent_id?: number | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  services?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutCategoryInput
-}
-
-export type ServiceCategoryCreateOrConnectWithoutChildrenInput = {
-  where: Prisma.ServiceCategoryWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutChildrenInput, Prisma.ServiceCategoryUncheckedCreateWithoutChildrenInput>
-}
-
-export type ServiceCategoryCreateWithoutParentInput = {
-  name: string
-  slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  children?: Prisma.ServiceCategoryCreateNestedManyWithoutParentInput
-  services?: Prisma.ServiceCategoryRelationCreateNestedManyWithoutCategoryInput
-}
-
-export type ServiceCategoryUncheckedCreateWithoutParentInput = {
-  category_id?: number
-  name: string
-  slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  children?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutParentInput
-  services?: Prisma.ServiceCategoryRelationUncheckedCreateNestedManyWithoutCategoryInput
-}
-
-export type ServiceCategoryCreateOrConnectWithoutParentInput = {
-  where: Prisma.ServiceCategoryWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutParentInput, Prisma.ServiceCategoryUncheckedCreateWithoutParentInput>
-}
-
-export type ServiceCategoryCreateManyParentInputEnvelope = {
-  data: Prisma.ServiceCategoryCreateManyParentInput | Prisma.ServiceCategoryCreateManyParentInput[]
-  skipDuplicates?: boolean
-}
-
-export type ServiceCategoryUpsertWithoutChildrenInput = {
-  update: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutChildrenInput, Prisma.ServiceCategoryUncheckedUpdateWithoutChildrenInput>
-  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutChildrenInput, Prisma.ServiceCategoryUncheckedCreateWithoutChildrenInput>
-  where?: Prisma.ServiceCategoryWhereInput
-}
-
-export type ServiceCategoryUpdateToOneWithWhereWithoutChildrenInput = {
-  where?: Prisma.ServiceCategoryWhereInput
-  data: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutChildrenInput, Prisma.ServiceCategoryUncheckedUpdateWithoutChildrenInput>
-}
-
-export type ServiceCategoryUpdateWithoutChildrenInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parent?: Prisma.ServiceCategoryUpdateOneWithoutChildrenNestedInput
-  services?: Prisma.ServiceCategoryRelationUpdateManyWithoutCategoryNestedInput
-}
-
-export type ServiceCategoryUncheckedUpdateWithoutChildrenInput = {
-  category_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  services?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutCategoryNestedInput
-}
-
-export type ServiceCategoryUpsertWithWhereUniqueWithoutParentInput = {
-  where: Prisma.ServiceCategoryWhereUniqueInput
-  update: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutParentInput, Prisma.ServiceCategoryUncheckedUpdateWithoutParentInput>
-  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutParentInput, Prisma.ServiceCategoryUncheckedCreateWithoutParentInput>
-}
-
-export type ServiceCategoryUpdateWithWhereUniqueWithoutParentInput = {
-  where: Prisma.ServiceCategoryWhereUniqueInput
-  data: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutParentInput, Prisma.ServiceCategoryUncheckedUpdateWithoutParentInput>
-}
-
-export type ServiceCategoryUpdateManyWithWhereWithoutParentInput = {
-  where: Prisma.ServiceCategoryScalarWhereInput
-  data: Prisma.XOR<Prisma.ServiceCategoryUpdateManyMutationInput, Prisma.ServiceCategoryUncheckedUpdateManyWithoutParentInput>
-}
-
-export type ServiceCategoryScalarWhereInput = {
-  AND?: Prisma.ServiceCategoryScalarWhereInput | Prisma.ServiceCategoryScalarWhereInput[]
-  OR?: Prisma.ServiceCategoryScalarWhereInput[]
-  NOT?: Prisma.ServiceCategoryScalarWhereInput | Prisma.ServiceCategoryScalarWhereInput[]
-  category_id?: Prisma.IntFilter<"ServiceCategory"> | number
-  name?: Prisma.StringFilter<"ServiceCategory"> | string
-  slug?: Prisma.StringFilter<"ServiceCategory"> | string
-  description?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  color?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  icon?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  parent_id?: Prisma.IntNullableFilter<"ServiceCategory"> | number | null
-  display_order?: Prisma.IntFilter<"ServiceCategory"> | number
-  is_active?: Prisma.BoolFilter<"ServiceCategory"> | boolean
-  service_count?: Prisma.IntFilter<"ServiceCategory"> | number
-  created_at?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
-  meta_title?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-  meta_description?: Prisma.StringNullableFilter<"ServiceCategory"> | string | null
-}
-
 export type ServiceCategoryCreateWithoutServicesInput = {
   name: string
   slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  parent?: Prisma.ServiceCategoryCreateNestedOneWithoutChildrenInput
-  children?: Prisma.ServiceCategoryCreateNestedManyWithoutParentInput
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServiceCategoryUncheckedCreateWithoutServicesInput = {
-  category_id?: number
+  id?: number
   name: string
   slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  parent_id?: number | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-  children?: Prisma.ServiceCategoryUncheckedCreateNestedManyWithoutParentInput
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ServiceCategoryCreateOrConnectWithoutServicesInput = {
@@ -891,103 +406,16 @@ export type ServiceCategoryUpdateToOneWithWhereWithoutServicesInput = {
 export type ServiceCategoryUpdateWithoutServicesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parent?: Prisma.ServiceCategoryUpdateOneWithoutChildrenNestedInput
-  children?: Prisma.ServiceCategoryUpdateManyWithoutParentNestedInput
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServiceCategoryUncheckedUpdateWithoutServicesInput = {
-  category_id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  parent_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  children?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutParentNestedInput
-}
-
-export type ServiceCategoryCreateManyParentInput = {
-  category_id?: number
-  name: string
-  slug: string
-  description?: string | null
-  color?: string | null
-  icon?: string | null
-  display_order?: number
-  is_active?: boolean
-  service_count?: number
-  created_at?: Date | string
-  updated_at?: Date | string
-  meta_title?: string | null
-  meta_description?: string | null
-}
-
-export type ServiceCategoryUpdateWithoutParentInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  children?: Prisma.ServiceCategoryUpdateManyWithoutParentNestedInput
-  services?: Prisma.ServiceCategoryRelationUpdateManyWithoutCategoryNestedInput
-}
-
-export type ServiceCategoryUncheckedUpdateWithoutParentInput = {
-  category_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  children?: Prisma.ServiceCategoryUncheckedUpdateManyWithoutParentNestedInput
-  services?: Prisma.ServiceCategoryRelationUncheckedUpdateManyWithoutCategoryNestedInput
-}
-
-export type ServiceCategoryUncheckedUpdateManyWithoutParentInput = {
-  category_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  icon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  display_order?: Prisma.IntFieldUpdateOperationsInput | number
-  is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  service_count?: Prisma.IntFieldUpdateOperationsInput | number
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  meta_title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  meta_description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -996,12 +424,10 @@ export type ServiceCategoryUncheckedUpdateManyWithoutParentInput = {
  */
 
 export type ServiceCategoryCountOutputType = {
-  children: number
   services: number
 }
 
 export type ServiceCategoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  children?: boolean | ServiceCategoryCountOutputTypeCountChildrenArgs
   services?: boolean | ServiceCategoryCountOutputTypeCountServicesArgs
 }
 
@@ -1018,128 +444,64 @@ export type ServiceCategoryCountOutputTypeDefaultArgs<ExtArgs extends runtime.Ty
 /**
  * ServiceCategoryCountOutputType without action
  */
-export type ServiceCategoryCountOutputTypeCountChildrenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ServiceCategoryWhereInput
-}
-
-/**
- * ServiceCategoryCountOutputType without action
- */
 export type ServiceCategoryCountOutputTypeCountServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ServiceCategoryRelationWhereInput
+  where?: Prisma.ServiceWhereInput
 }
 
 
 export type ServiceCategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  category_id?: boolean
+  id?: boolean
   name?: boolean
   slug?: boolean
-  description?: boolean
-  color?: boolean
-  icon?: boolean
-  parent_id?: boolean
-  display_order?: boolean
-  is_active?: boolean
-  service_count?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
-  parent?: boolean | Prisma.ServiceCategory$parentArgs<ExtArgs>
-  children?: boolean | Prisma.ServiceCategory$childrenArgs<ExtArgs>
+  createdAt?: boolean
+  updatedAt?: boolean
   services?: boolean | Prisma.ServiceCategory$servicesArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceCategory"]>
 
 export type ServiceCategorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  category_id?: boolean
+  id?: boolean
   name?: boolean
   slug?: boolean
-  description?: boolean
-  color?: boolean
-  icon?: boolean
-  parent_id?: boolean
-  display_order?: boolean
-  is_active?: boolean
-  service_count?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
-  parent?: boolean | Prisma.ServiceCategory$parentArgs<ExtArgs>
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["serviceCategory"]>
 
 export type ServiceCategorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  category_id?: boolean
+  id?: boolean
   name?: boolean
   slug?: boolean
-  description?: boolean
-  color?: boolean
-  icon?: boolean
-  parent_id?: boolean
-  display_order?: boolean
-  is_active?: boolean
-  service_count?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
-  parent?: boolean | Prisma.ServiceCategory$parentArgs<ExtArgs>
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["serviceCategory"]>
 
 export type ServiceCategorySelectScalar = {
-  category_id?: boolean
+  id?: boolean
   name?: boolean
   slug?: boolean
-  description?: boolean
-  color?: boolean
-  icon?: boolean
-  parent_id?: boolean
-  display_order?: boolean
-  is_active?: boolean
-  service_count?: boolean
-  created_at?: boolean
-  updated_at?: boolean
-  meta_title?: boolean
-  meta_description?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ServiceCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"category_id" | "name" | "slug" | "description" | "color" | "icon" | "parent_id" | "display_order" | "is_active" | "service_count" | "created_at" | "updated_at" | "meta_title" | "meta_description", ExtArgs["result"]["serviceCategory"]>
+export type ServiceCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
 export type ServiceCategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  parent?: boolean | Prisma.ServiceCategory$parentArgs<ExtArgs>
-  children?: boolean | Prisma.ServiceCategory$childrenArgs<ExtArgs>
   services?: boolean | Prisma.ServiceCategory$servicesArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCategoryCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type ServiceCategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  parent?: boolean | Prisma.ServiceCategory$parentArgs<ExtArgs>
-}
-export type ServiceCategoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  parent?: boolean | Prisma.ServiceCategory$parentArgs<ExtArgs>
-}
+export type ServiceCategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type ServiceCategoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $ServiceCategoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ServiceCategory"
   objects: {
-    parent: Prisma.$ServiceCategoryPayload<ExtArgs> | null
-    children: Prisma.$ServiceCategoryPayload<ExtArgs>[]
-    services: Prisma.$ServiceCategoryRelationPayload<ExtArgs>[]
+    services: Prisma.$ServicePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    category_id: number
+    id: number
     name: string
     slug: string
-    description: string | null
-    color: string | null
-    icon: string | null
-    parent_id: number | null
-    display_order: number
-    is_active: boolean
-    service_count: number
-    created_at: Date
-    updated_at: Date
-    meta_title: string | null
-    meta_description: string | null
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["serviceCategory"]>
   composites: {}
 }
@@ -1223,8 +585,8 @@ export interface ServiceCategoryDelegate<ExtArgs extends runtime.Types.Extension
    * // Get first 10 ServiceCategories
    * const serviceCategories = await prisma.serviceCategory.findMany({ take: 10 })
    * 
-   * // Only select the `category_id`
-   * const serviceCategoryWithCategory_idOnly = await prisma.serviceCategory.findMany({ select: { category_id: true } })
+   * // Only select the `id`
+   * const serviceCategoryWithIdOnly = await prisma.serviceCategory.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends ServiceCategoryFindManyArgs>(args?: Prisma.SelectSubset<T, ServiceCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1268,9 +630,9 @@ export interface ServiceCategoryDelegate<ExtArgs extends runtime.Types.Extension
    *   ]
    * })
    * 
-   * // Create many ServiceCategories and only return the `category_id`
-   * const serviceCategoryWithCategory_idOnly = await prisma.serviceCategory.createManyAndReturn({
-   *   select: { category_id: true },
+   * // Create many ServiceCategories and only return the `id`
+   * const serviceCategoryWithIdOnly = await prisma.serviceCategory.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -1359,9 +721,9 @@ export interface ServiceCategoryDelegate<ExtArgs extends runtime.Types.Extension
    *   ]
    * })
    * 
-   * // Update zero or more ServiceCategories and only return the `category_id`
-   * const serviceCategoryWithCategory_idOnly = await prisma.serviceCategory.updateManyAndReturn({
-   *   select: { category_id: true },
+   * // Update zero or more ServiceCategories and only return the `id`
+   * const serviceCategoryWithIdOnly = await prisma.serviceCategory.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1534,9 +896,7 @@ readonly fields: ServiceCategoryFieldRefs;
  */
 export interface Prisma__ServiceCategoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  parent<T extends Prisma.ServiceCategory$parentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategory$parentArgs<ExtArgs>>): Prisma.Prisma__ServiceCategoryClient<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  children<T extends Prisma.ServiceCategory$childrenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategory$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  services<T extends Prisma.ServiceCategory$servicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategory$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryRelationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  services<T extends Prisma.ServiceCategory$servicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategory$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1566,20 +926,11 @@ export interface Prisma__ServiceCategoryClient<T, Null = never, ExtArgs extends 
  * Fields of the ServiceCategory model
  */
 export interface ServiceCategoryFieldRefs {
-  readonly category_id: Prisma.FieldRef<"ServiceCategory", 'Int'>
+  readonly id: Prisma.FieldRef<"ServiceCategory", 'Int'>
   readonly name: Prisma.FieldRef<"ServiceCategory", 'String'>
   readonly slug: Prisma.FieldRef<"ServiceCategory", 'String'>
-  readonly description: Prisma.FieldRef<"ServiceCategory", 'String'>
-  readonly color: Prisma.FieldRef<"ServiceCategory", 'String'>
-  readonly icon: Prisma.FieldRef<"ServiceCategory", 'String'>
-  readonly parent_id: Prisma.FieldRef<"ServiceCategory", 'Int'>
-  readonly display_order: Prisma.FieldRef<"ServiceCategory", 'Int'>
-  readonly is_active: Prisma.FieldRef<"ServiceCategory", 'Boolean'>
-  readonly service_count: Prisma.FieldRef<"ServiceCategory", 'Int'>
-  readonly created_at: Prisma.FieldRef<"ServiceCategory", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"ServiceCategory", 'DateTime'>
-  readonly meta_title: Prisma.FieldRef<"ServiceCategory", 'String'>
-  readonly meta_description: Prisma.FieldRef<"ServiceCategory", 'String'>
+  readonly createdAt: Prisma.FieldRef<"ServiceCategory", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"ServiceCategory", 'DateTime'>
 }
     
 
@@ -1829,10 +1180,6 @@ export type ServiceCategoryCreateManyAndReturnArgs<ExtArgs extends runtime.Types
    */
   data: Prisma.ServiceCategoryCreateManyInput | Prisma.ServiceCategoryCreateManyInput[]
   skipDuplicates?: boolean
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ServiceCategoryIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1903,10 +1250,6 @@ export type ServiceCategoryUpdateManyAndReturnArgs<ExtArgs extends runtime.Types
    * Limit how many ServiceCategories to update.
    */
   limit?: number
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ServiceCategoryIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1976,70 +1319,27 @@ export type ServiceCategoryDeleteManyArgs<ExtArgs extends runtime.Types.Extensio
 }
 
 /**
- * ServiceCategory.parent
- */
-export type ServiceCategory$parentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ServiceCategory
-   */
-  select?: Prisma.ServiceCategorySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ServiceCategory
-   */
-  omit?: Prisma.ServiceCategoryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ServiceCategoryInclude<ExtArgs> | null
-  where?: Prisma.ServiceCategoryWhereInput
-}
-
-/**
- * ServiceCategory.children
- */
-export type ServiceCategory$childrenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ServiceCategory
-   */
-  select?: Prisma.ServiceCategorySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ServiceCategory
-   */
-  omit?: Prisma.ServiceCategoryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ServiceCategoryInclude<ExtArgs> | null
-  where?: Prisma.ServiceCategoryWhereInput
-  orderBy?: Prisma.ServiceCategoryOrderByWithRelationInput | Prisma.ServiceCategoryOrderByWithRelationInput[]
-  cursor?: Prisma.ServiceCategoryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ServiceCategoryScalarFieldEnum | Prisma.ServiceCategoryScalarFieldEnum[]
-}
-
-/**
  * ServiceCategory.services
  */
 export type ServiceCategory$servicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the ServiceCategoryRelation
+   * Select specific fields to fetch from the Service
    */
-  select?: Prisma.ServiceCategoryRelationSelect<ExtArgs> | null
+  select?: Prisma.ServiceSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the ServiceCategoryRelation
+   * Omit specific fields from the Service
    */
-  omit?: Prisma.ServiceCategoryRelationOmit<ExtArgs> | null
+  omit?: Prisma.ServiceOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ServiceCategoryRelationInclude<ExtArgs> | null
-  where?: Prisma.ServiceCategoryRelationWhereInput
-  orderBy?: Prisma.ServiceCategoryRelationOrderByWithRelationInput | Prisma.ServiceCategoryRelationOrderByWithRelationInput[]
-  cursor?: Prisma.ServiceCategoryRelationWhereUniqueInput
+  include?: Prisma.ServiceInclude<ExtArgs> | null
+  where?: Prisma.ServiceWhereInput
+  orderBy?: Prisma.ServiceOrderByWithRelationInput | Prisma.ServiceOrderByWithRelationInput[]
+  cursor?: Prisma.ServiceWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ServiceCategoryRelationScalarFieldEnum | Prisma.ServiceCategoryRelationScalarFieldEnum[]
+  distinct?: Prisma.ServiceScalarFieldEnum | Prisma.ServiceScalarFieldEnum[]
 }
 
 /**

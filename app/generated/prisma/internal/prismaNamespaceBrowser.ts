@@ -55,15 +55,12 @@ export const ModelName = {
   MyCompanies: 'MyCompanies',
   BlogCategoryRelation: 'BlogCategoryRelation',
   Blog: 'Blog',
-  ServiceCategory: 'ServiceCategory',
-  ServiceCategoryRelation: 'ServiceCategoryRelation',
   Project: 'Project',
   ProjectImage: 'ProjectImage',
-  ContactUs: 'ContactUs',
-  ActivityGallery: 'ActivityGallery',
-  Activity: 'Activity',
-  Testimonial: 'Testimonial',
-  Service: 'Service'
+  ServiceCategory: 'ServiceCategory',
+  Service: 'Service',
+  Team: 'Team',
+  ContactUs: 'ContactUs'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -170,35 +167,6 @@ export const BlogScalarFieldEnum = {
 export type BlogScalarFieldEnum = (typeof BlogScalarFieldEnum)[keyof typeof BlogScalarFieldEnum]
 
 
-export const ServiceCategoryScalarFieldEnum = {
-  category_id: 'category_id',
-  name: 'name',
-  slug: 'slug',
-  description: 'description',
-  color: 'color',
-  icon: 'icon',
-  parent_id: 'parent_id',
-  display_order: 'display_order',
-  is_active: 'is_active',
-  service_count: 'service_count',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description'
-} as const
-
-export type ServiceCategoryScalarFieldEnum = (typeof ServiceCategoryScalarFieldEnum)[keyof typeof ServiceCategoryScalarFieldEnum]
-
-
-export const ServiceCategoryRelationScalarFieldEnum = {
-  service_id: 'service_id',
-  category_id: 'category_id',
-  assigned_at: 'assigned_at'
-} as const
-
-export type ServiceCategoryRelationScalarFieldEnum = (typeof ServiceCategoryRelationScalarFieldEnum)[keyof typeof ServiceCategoryRelationScalarFieldEnum]
-
-
 export const ProjectScalarFieldEnum = {
   project_id: 'project_id',
   title: 'title',
@@ -228,146 +196,55 @@ export const ProjectImageScalarFieldEnum = {
 export type ProjectImageScalarFieldEnum = (typeof ProjectImageScalarFieldEnum)[keyof typeof ProjectImageScalarFieldEnum]
 
 
+export const ServiceCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ServiceCategoryScalarFieldEnum = (typeof ServiceCategoryScalarFieldEnum)[keyof typeof ServiceCategoryScalarFieldEnum]
+
+
+export const ServiceScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+
+
+export const TeamScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  position: 'position',
+  linkedinUrl: 'linkedinUrl',
+  featured_image_id: 'featured_image_id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TeamScalarFieldEnum = (typeof TeamScalarFieldEnum)[keyof typeof TeamScalarFieldEnum]
+
+
 export const ContactUsScalarFieldEnum = {
   contact_id: 'contact_id',
   name: 'name',
   email: 'email',
   phone: 'phone',
-  company: 'company',
-  company_size: 'company_size',
-  budget: 'budget',
-  subject: 'subject',
-  message: 'message',
-  inquiry_type: 'inquiry_type',
+  service_id: 'service_id',
   status: 'status',
-  priority: 'priority',
   submitted_at: 'submitted_at',
   responded_at: 'responded_at',
-  ip_address: 'ip_address',
-  utm_source: 'utm_source',
-  utm_medium: 'utm_medium',
-  utm_campaign: 'utm_campaign',
-  referrer: 'referrer',
   notes: 'notes'
 } as const
 
 export type ContactUsScalarFieldEnum = (typeof ContactUsScalarFieldEnum)[keyof typeof ContactUsScalarFieldEnum]
-
-
-export const ActivityGalleryScalarFieldEnum = {
-  id: 'id',
-  activity_id: 'activity_id',
-  image_id: 'image_id',
-  display_order: 'display_order',
-  created_at: 'created_at'
-} as const
-
-export type ActivityGalleryScalarFieldEnum = (typeof ActivityGalleryScalarFieldEnum)[keyof typeof ActivityGalleryScalarFieldEnum]
-
-
-export const ActivityScalarFieldEnum = {
-  activity_id: 'activity_id',
-  title: 'title',
-  slug: 'slug',
-  description: 'description',
-  short_description: 'short_description',
-  featured_image_id: 'featured_image_id',
-  activity_type: 'activity_type',
-  location: 'location',
-  venue: 'venue',
-  address: 'address',
-  city: 'city',
-  country: 'country',
-  activity_date: 'activity_date',
-  end_date: 'end_date',
-  timezone: 'timezone',
-  duration: 'duration',
-  max_participants: 'max_participants',
-  current_participants: 'current_participants',
-  registration_url: 'registration_url',
-  meeting_link: 'meeting_link',
-  price: 'price',
-  is_free: 'is_free',
-  speakers: 'speakers',
-  topics: 'topics',
-  target_audience: 'target_audience',
-  status: 'status',
-  is_featured: 'is_featured',
-  is_past: 'is_past',
-  recording_url: 'recording_url',
-  slides_url: 'slides_url',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description',
-  meta_keywords: 'meta_keywords',
-  og_image_id: 'og_image_id',
-  userId: 'userId'
-} as const
-
-export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
-
-
-export const TestimonialScalarFieldEnum = {
-  testimonial_id: 'testimonial_id',
-  customer_name: 'customer_name',
-  customer_title: 'customer_title',
-  company: 'company',
-  company_logo_id: 'company_logo_id',
-  company_website: 'company_website',
-  content: 'content',
-  rating: 'rating',
-  avatar_id: 'avatar_id',
-  location: 'location',
-  industry: 'industry',
-  project_type: 'project_type',
-  is_featured: 'is_featured',
-  is_video: 'is_video',
-  video_url: 'video_url',
-  video_thumbnail_id: 'video_thumbnail_id',
-  status: 'status',
-  display_order: 'display_order',
-  approved_at: 'approved_at',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type TestimonialScalarFieldEnum = (typeof TestimonialScalarFieldEnum)[keyof typeof TestimonialScalarFieldEnum]
-
-
-export const ServiceScalarFieldEnum = {
-  service_id: 'service_id',
-  title: 'title',
-  slug: 'slug',
-  short_description: 'short_description',
-  description: 'description',
-  icon: 'icon',
-  featured_image_id: 'featured_image_id',
-  price: 'price',
-  price_type: 'price_type',
-  currency: 'currency',
-  price_note: 'price_note',
-  features: 'features',
-  deliverables: 'deliverables',
-  technologies: 'technologies',
-  process_steps: 'process_steps',
-  duration: 'duration',
-  ideal_for: 'ideal_for',
-  status: 'status',
-  is_featured: 'is_featured',
-  is_popular: 'is_popular',
-  display_order: 'display_order',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description',
-  meta_keywords: 'meta_keywords',
-  og_image_id: 'og_image_id',
-  cta_text: 'cta_text',
-  cta_url: 'cta_url'
-} as const
-
-export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
 
 
 export const SortOrder = {
