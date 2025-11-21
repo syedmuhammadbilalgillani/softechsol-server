@@ -60,7 +60,10 @@ export const ModelName = {
   ServiceCategory: 'ServiceCategory',
   Service: 'Service',
   Team: 'Team',
-  ContactUs: 'ContactUs'
+  ContactUs: 'ContactUs',
+  JobCategory: 'JobCategory',
+  JobCategoryRelation: 'JobCategoryRelation',
+  Job: 'Job'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -245,6 +248,54 @@ export const ContactUsScalarFieldEnum = {
 } as const
 
 export type ContactUsScalarFieldEnum = (typeof ContactUsScalarFieldEnum)[keyof typeof ContactUsScalarFieldEnum]
+
+
+export const JobCategoryScalarFieldEnum = {
+  category_id: 'category_id',
+  name: 'name',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type JobCategoryScalarFieldEnum = (typeof JobCategoryScalarFieldEnum)[keyof typeof JobCategoryScalarFieldEnum]
+
+
+export const JobCategoryRelationScalarFieldEnum = {
+  job_id: 'job_id',
+  category_id: 'category_id',
+  assigned_at: 'assigned_at'
+} as const
+
+export type JobCategoryRelationScalarFieldEnum = (typeof JobCategoryRelationScalarFieldEnum)[keyof typeof JobCategoryRelationScalarFieldEnum]
+
+
+export const JobScalarFieldEnum = {
+  job_id: 'job_id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  requirements: 'requirements',
+  responsibilities: 'responsibilities',
+  location: 'location',
+  job_type: 'job_type',
+  salary_min: 'salary_min',
+  salary_max: 'salary_max',
+  salary_currency: 'salary_currency',
+  experience_level: 'experience_level',
+  status: 'status',
+  is_featured: 'is_featured',
+  application_url: 'application_url',
+  application_email: 'application_email',
+  publish_date: 'publish_date',
+  expiry_date: 'expiry_date',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  meta_title: 'meta_title',
+  meta_description: 'meta_description',
+  meta_keywords: 'meta_keywords'
+} as const
+
+export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
 
 
 export const SortOrder = {

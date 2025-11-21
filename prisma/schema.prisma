@@ -232,3 +232,65 @@ model ContactUs {
   @@index([email])
   @@index([service_id])
 }
+
+
+// Job Categories (used as tags)
+model JobCategory {
+  category_id   Int       @id @default(autoincrement())
+  name          String   @unique
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  jobs JobCategoryRelation[]
+}
+
+// Many-to-many relation for Job and Categories (tags)
+model JobCategoryRelation {
+  job        Job         @relation(fields: [job_id], references: [job_id], onDelete: Cascade)
+  job_id     Int
+  category   JobCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+  category_id Int
+  assigned_at DateTime   @default(now())
+
+  @@id([job_id, category_id])
+  @@index([job_id])
+  @@index([category_id])
+}
+
+// Job Postings
+model Job {
+  job_id          Int          @id @default(autoincrement())
+  title           String
+  slug            String       @unique
+  description     String       @db.Text
+  requirements    String?      @db.Text
+  responsibilities String?     @db.Text
+  location        String?      // e.g., "Remote", "New York, NY", "Hybrid"
+  job_type        String?      // e.g., "Full-time", "Part-time", "Contract", "Internship"
+  salary_min      Int?         // Minimum salary (optional)
+  salary_max      Int?         // Maximum salary (optional)
+  salary_currency String?      @default("USD")
+  experience_level String?     // e.g., "Entry", "Mid", "Senior", "Executive"
+  status          Status       @default(DRAFT)
+  is_featured     Boolean      @default(false)
+  application_url String?      // External application URL
+  application_email String?    // Email for applications
+  publish_date    DateTime?
+  expiry_date     DateTime?    // Job posting expiry date
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @updatedAt
+
+  // SEO Fields
+  meta_title       String?
+  meta_description String?      @db.Text
+  meta_keywords    String?
+
+  // Relations - many-to-many with categories (tags)
+  categories JobCategoryRelation[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([publish_date])
+  @@index([is_featured])
+  @@index([job_type])
+  @@index([location])
+}

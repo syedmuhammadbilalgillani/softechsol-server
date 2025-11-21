@@ -32,6 +32,7 @@ export async function PUT(req: Request) {
 
     return NextResponse.json(category);
   } catch (error) {
+    logger.error(error);
     return NextResponse.json(
       { error: "Failed to update category" },
       { status: 500 }
@@ -43,16 +44,76 @@ export async function PUT(req: Request) {
 export async function DELETE(req: Request) {
   try {
     const { id } = await req.json();
-    logger.info(id);
-    await prisma.serviceCategory.delete({
-      where: { id: Number(id) },
+
+    // Validate ID is provided
+    if (!id) {
+      return NextResponse.json(
+        { error: "Category ID is required" },
+        { status: 400 }
+      );
+    }
+
+    const categoryId = Number(id);
+
+    // Check if category exists
+    const category = await prisma.serviceCategory.findUnique({
+      where: { id: categoryId },
     });
 
-    return NextResponse.json({ message: "Category deleted" });
-  } catch (error) {
+    if (!category) {
+      return NextResponse.json(
+        { error: "Category not found" },
+        { status: 404 }
+      );
+    }
+
+    // Check if category has linked services
+    const linkedServices = await prisma.service.count({
+      where: { categoryId: categoryId },
+    });
+
+    if (linkedServices > 0) {
+      return NextResponse.json(
+        { 
+          error: "Cannot delete category",
+          message: `This category is linked to ${linkedServices} service(s). Please remove or reassign the services before deleting the category.`
+        },
+        { status: 409 } // Conflict status code
+      );
+    }
+
+    // Delete the category
+    await prisma.serviceCategory.delete({
+      where: { id: categoryId },
+    });
+
+    logger.info(`Category deleted: ${categoryId}`);
+    return NextResponse.json({ message: "Category deleted successfully" });
+  } catch (error: any) {
     logger.error(error);
+
+    // Handle Prisma foreign key constraint error
+    if (error.code === "P2003") {
+      return NextResponse.json(
+        { 
+          error: "Cannot delete category",
+          message: "This category is linked to one or more services. Please remove or reassign the services first."
+        },
+        { status: 409 }
+      );
+    }
+
+    // Handle Prisma record not found error
+    if (error.code === "P2025") {
+      return NextResponse.json(
+        { error: "Category not found" },
+        { status: 404 }
+      );
+    }
+
+    // Handle other errors
     return NextResponse.json(
-      { error: "Failed to delete category" },
+      { error: "Failed to delete category", message: error.message || "An unexpected error occurred" },
       { status: 500 }
     );
   }

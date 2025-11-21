@@ -3,6 +3,7 @@ import DataTable from "@/components/data-table";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
+import BlogPageComponent from "./blog-page-component";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 100;
@@ -16,29 +17,7 @@ const BlogPage = async () => {
     <div className="p-5">
       <PageHeader heading="Blogs" paragraph="Create and manage your blogs" />
       <BlogForm categories={categories} />
-      <div>
-        <DataTable
-          columns={[
-            { label: "Title", key: "title" },
-            { label: "Slug", key: "slug" },
-            { label: "Status", key: "status" },
-            {
-              label: "Created At",
-              key: "created_at",
-              render: (row: any) =>
-                row.created_at ? formatDate(row.created_at) : "",
-            },
-            {
-              label: "Updated At",
-              key: "updated_at",
-              render: (row: any) =>
-                row.updated_at ? formatDate(row.updated_at) : "",
-            },
-          ]}
-          data={blogs}
-          loading={false}
-        />
-      </div>
+      <BlogPageComponent blogs={blogs} />
     </div>
   );
 };

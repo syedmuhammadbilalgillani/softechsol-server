@@ -108,3 +108,18 @@ export type Team = Prisma.TeamModel
  * 
  */
 export type ContactUs = Prisma.ContactUsModel
+/**
+ * Model JobCategory
+ * 
+ */
+export type JobCategory = Prisma.JobCategoryModel
+/**
+ * Model JobCategoryRelation
+ * 
+ */
+export type JobCategoryRelation = Prisma.JobCategoryRelationModel
+/**
+ * Model Job
+ * 
+ */
+export type Job = Prisma.JobModel

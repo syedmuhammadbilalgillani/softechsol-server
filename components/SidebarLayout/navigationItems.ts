@@ -1,11 +1,12 @@
 import {
+  Briefcase,
   Building2,
   Folder,
   Home,
   Image,
   Newspaper,
+  Tag,
   Type,
-  Users2,
 } from "lucide-react";
 
 export const navigation = [
@@ -69,9 +70,16 @@ export const navigation = [
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
-        title: "Teams",
-        url: "/teams",
-        icon: Users2,
+        title: "Job Categories",
+        url: "/job-categories",
+        icon: Tag,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
+      {
+        title: "Jobs",
+        url: "/jobs",
+        icon: Briefcase,
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },

@@ -65,9 +65,27 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return NextResponse.json(
       { error: "Failed to create blog" },
+      { status: 500 }
+    );
+  }
+}
+export async function DELETE(request: Request) {
+  const { id } = await request.json();
+  try {
+    await prisma.blog.delete({
+      where: { blog_id: Number(id) },
+    });
+    return NextResponse.json(
+      { message: "Blog deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    logger.error(error);
+    return NextResponse.json(
+      { error: "Failed to delete blog" },
       { status: 500 }
     );
   }
