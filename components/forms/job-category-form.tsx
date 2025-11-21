@@ -19,6 +19,7 @@ import { DynamicForm, FieldConfig } from "@/components/dynamic-form";
 interface JobCategory {
   category_id: number;
   name: string;
+  slug: string;
   created_at: string;
   updated_at: string;
 }
@@ -42,6 +43,14 @@ const JobCategoryForm = ({
       type: "input",
       required: true,
       placeholder: "Enter job category name",
+    },
+    {
+      name: "slug",
+      label: "Category Slug",
+      type: "input",
+      InputType: "slug",
+      required: true,
+      placeholder: "Enter job category slug",
     },
   ];
 

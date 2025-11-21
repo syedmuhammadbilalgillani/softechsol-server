@@ -238,6 +238,7 @@ model ContactUs {
 model JobCategory {
   category_id   Int       @id @default(autoincrement())
   name          String   @unique
+  slug          String   @unique
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
   jobs JobCategoryRelation[]

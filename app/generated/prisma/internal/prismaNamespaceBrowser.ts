@@ -253,6 +253,7 @@ export type ContactUsScalarFieldEnum = (typeof ContactUsScalarFieldEnum)[keyof t
 export const JobCategoryScalarFieldEnum = {
   category_id: 'category_id',
   name: 'name',
+  slug: 'slug',
   created_at: 'created_at',
   updated_at: 'updated_at'
 } as const

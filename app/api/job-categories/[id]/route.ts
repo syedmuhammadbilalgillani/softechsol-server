@@ -9,7 +9,7 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    const { name } = await req.json();
+    const { name, slug } = await req.json();
 
     const categoryId = parseInt(id);
 
@@ -47,6 +47,7 @@ export async function PUT(
     const duplicateCategory = await prisma.jobCategory.findFirst({
       where: {
         name: name.trim(),
+        slug: slug.trim(),
         category_id: {
           not: categoryId,
         },
@@ -71,7 +72,10 @@ export async function PUT(
     });
 
     return NextResponse.json(
-      { message: "Job category updated successfully", category: updatedCategory },
+      {
+        message: "Job category updated successfully",
+        category: updatedCategory,
+      },
       { status: 200 }
     );
   } catch (error: any) {

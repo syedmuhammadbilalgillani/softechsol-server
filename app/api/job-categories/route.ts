@@ -24,7 +24,7 @@ export async function GET() {
 // POST - Create a new job category
 export async function POST(request: Request) {
   try {
-    const { name } = await request.json();
+    const { name, slug } = await request.json();
 
     // Validate input
     if (!name || typeof name !== "string" || name.trim().length === 0) {
@@ -52,6 +52,7 @@ export async function POST(request: Request) {
     const category = await prisma.jobCategory.create({
       data: {
         name: name.trim(),
+        slug: slug.trim(),
       },
     });
 
