@@ -4,6 +4,19 @@ import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
 import React from "react";
 import ServiceComponent from "./service-component";
+import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 100;
+
+export const metadata: Metadata = {
+  title: "Services Management - Softech Solutions",
+  description: "Manage services and service categories offered by Softech Solutions",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const ServicePage = async () => {
   const categories = await prisma.serviceCategory.findMany();

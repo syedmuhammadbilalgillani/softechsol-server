@@ -17,6 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Softech Solutions",
   description: "Your Challenges Our Solutions",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 

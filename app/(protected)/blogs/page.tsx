@@ -4,9 +4,19 @@ import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
 import BlogPageComponent from "./blog-page-component";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 100;
+
+export const metadata: Metadata = {
+  title: "Blogs Management - Softech Solutions",
+  description: "Create and manage blog posts and articles for Softech Solutions",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 
 const BlogPage = async () => {

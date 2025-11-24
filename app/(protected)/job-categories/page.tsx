@@ -4,9 +4,19 @@ import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
 import JobCategoriesPage from "./job-categories-page";
 import { JobCategory } from "@/app/generated/prisma/client";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 100;
+
+export const metadata: Metadata = {
+  title: "Job Categories Management - Softech Solutions",
+  description: "Manage job categories for organizing job listings",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const JobCategoriesPageComponent = async () => {
   const categories = await prisma.jobCategory.findMany({
