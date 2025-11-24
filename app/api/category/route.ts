@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "../../../lib/prisma"; // Ensure Prisma is set up correctly
 import logger from "@/utils/logger";
+import { revalidateTag } from "@/lib/revalidate";
 
 export async function POST(request: Request) {
   const {
@@ -49,6 +50,9 @@ export async function POST(request: Request) {
       },
     });
 
+    // Revalidate categories cache
+    await revalidateTag("categories");
+
     return NextResponse.json(
       { message: "Category created successfully", category },
       { status: 201 }
@@ -61,6 +65,7 @@ export async function POST(request: Request) {
     );
   }
 }
+
 export async function PUT(request: Request) {
   const {
     category_id,
@@ -108,6 +113,9 @@ export async function PUT(request: Request) {
         meta_description: meta_description || existingCategory.meta_description,
       },
     });
+
+    // Revalidate categories cache
+    await revalidateTag("categories");
 
     return NextResponse.json(
       { message: "Category updated successfully", category },

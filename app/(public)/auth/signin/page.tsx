@@ -38,6 +38,7 @@ export default function SignIn() {
     });
 
     logger.debug(res, "res");
+    debugger
     setLoading(false);
 
     if (res?.error) {

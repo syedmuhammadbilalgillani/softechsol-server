@@ -1,6 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "../app/generated/prisma"
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
@@ -32,12 +32,12 @@ model GalleryItem {
   updatedAt   DateTime @updatedAt
 
   // Relations to all models using images
-  userAvatars                User[]             @relation("UserAvatar")
-  blogFeaturedImages         Blog[]             @relation("BlogFeaturedImage")
-  blogOgImages               Blog[]             @relation("BlogOgImage")
-  companyFeaturedImages      MyCompanies[]      @relation("CompanyFeaturedImage")
-  projectImages ProjectImage[]
-  teamFeaturedImages         Team[]             @relation("TeamFeaturedImage")
+  userAvatars           User[]         @relation("UserAvatar")
+  blogFeaturedImages    Blog[]         @relation("BlogFeaturedImage")
+  blogOgImages          Blog[]         @relation("BlogOgImage")
+  companyFeaturedImages MyCompanies[]  @relation("CompanyFeaturedImage")
+  projectImages         ProjectImage[]
+  teamFeaturedImages    Team[]         @relation("TeamFeaturedImage")
 
   @@index([publicId])
   @@index([url])
@@ -60,7 +60,7 @@ model User {
   created_at DateTime     @default(now())
   updated_at DateTime     @updatedAt
 
-  blogs      Blog[]
+  blogs Blog[]
 
   @@index([email])
   @@index([username])
@@ -69,18 +69,18 @@ model User {
 
 // Blog Categories
 model BlogCategory {
-  category_id   Int            @id @default(autoincrement())
-  name          String         @unique
-  slug          String         @unique
-  description   String?        @db.Text
-  color         String?
-  icon          String? // Icon name or emoji (keeping as string for icon names)
-  parent_id     Int?
-  parent        BlogCategory?  @relation("BlogCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
-  children      BlogCategory[] @relation("BlogCategoryHierarchy")
-  is_active     Boolean        @default(true)
-  created_at    DateTime       @default(now())
-  updated_at    DateTime       @updatedAt
+  category_id Int            @id @default(autoincrement())
+  name        String         @unique
+  slug        String         @unique
+  description String?        @db.Text
+  color       String?
+  icon        String? // Icon name or emoji (keeping as string for icon names)
+  parent_id   Int?
+  parent      BlogCategory?  @relation("BlogCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
+  children    BlogCategory[] @relation("BlogCategoryHierarchy")
+  is_active   Boolean        @default(true)
+  created_at  DateTime       @default(now())
+  updated_at  DateTime       @updatedAt
 
   // SEO Fields
   meta_title       String?
@@ -91,9 +91,10 @@ model BlogCategory {
   @@index([slug])
   @@index([parent_id])
 }
+
 // Companies 
 model MyCompanies {
-  company_id   Int            @id @default(autoincrement())
+  company_id        Int          @id @default(autoincrement())
   featured_image    GalleryItem? @relation("CompanyFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
   featured_image_id String?
 }
@@ -146,25 +147,23 @@ model Blog {
   @@index([og_image_id])
 }
 
-
-
 model Project {
-  project_id        Int             @id @default(autoincrement())
+  project_id        Int            @id @default(autoincrement())
   title             String
-  slug              String          @unique
-  short_description String?         @db.Text
+  slug              String         @unique
+  short_description String?        @db.Text
   images            ProjectImage[]
   url               String?
   client_name       String?
   year              Int?
   timeline          String?
-  overview          String?         @db.Text
-  challenges        String?         @db.Text
-  solution          String?         @db.Text
-  created_at        DateTime        @default(now())
-  updated_at        DateTime        @updatedAt
+  overview          String?        @db.Text
+  challenges        String?        @db.Text
+  solution          String?        @db.Text
+  created_at        DateTime       @default(now())
+  updated_at        DateTime       @updatedAt
   meta_title        String?
-  meta_description  String?         @db.Text
+  meta_description  String?        @db.Text
   meta_keywords     String?
 }
 
@@ -184,40 +183,36 @@ model ProjectImage {
 }
 
 model ServiceCategory {
-  id        Int       @id @default(autoincrement())
-  name      String
-  slug      String    @unique
-  services  Service[]
+  id       Int       @id @default(autoincrement())
+  name     String
+  slug     String    @unique
+  services Service[]
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Service {
-  id          Int              @id @default(autoincrement())
-  title       String
-  description String?
-  categoryId  Int
-  category    ServiceCategory  @relation(fields: [categoryId], references: [id])
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
+  id                 Int             @id @default(autoincrement())
+  title              String
+  description        String?
+  categoryId         Int
+  category           ServiceCategory @relation(fields: [categoryId], references: [id])
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
   contactSubmissions ContactUs[]
 }
 
 model Team {
-  id          Int      @id @default(autoincrement())
-  title       String
-  position    String
-  linkedinUrl String?
+  id                Int          @id @default(autoincrement())
+  title             String
+  position          String
+  linkedinUrl       String?
   featured_image    GalleryItem? @relation("TeamFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
   featured_image_id String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
 }
-
-
-
-
 
 model ContactUs {
   contact_id   Int       @id @default(autoincrement())
@@ -239,21 +234,21 @@ model ContactUs {
 
 // Job Categories (used as tags)
 model JobCategory {
-  category_id   Int       @id @default(autoincrement())
-  slug          String   @unique
-  name          String   @unique
-  created_at    DateTime @default(now())
-  updated_at    DateTime @updatedAt
-  jobs JobCategoryRelation[]
+  category_id Int                   @id @default(autoincrement())
+  slug        String                @unique
+  name        String                @unique
+  created_at  DateTime              @default(now())
+  updated_at  DateTime              @updatedAt
+  jobs        JobCategoryRelation[]
 }
 
 // Many-to-many relation for Job and Categories (tags)
 model JobCategoryRelation {
-  job        Job         @relation(fields: [job_id], references: [job_id], onDelete: Cascade)
-  job_id     Int
-  category   JobCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+  job         Job         @relation(fields: [job_id], references: [job_id], onDelete: Cascade)
+  job_id      Int
+  category    JobCategory @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
   category_id Int
-  assigned_at DateTime   @default(now())
+  assigned_at DateTime    @default(now())
 
   @@id([job_id, category_id])
   @@index([job_id])
@@ -262,30 +257,30 @@ model JobCategoryRelation {
 
 // Job Postings
 model Job {
-  job_id          Int          @id @default(autoincrement())
-  title           String
-  slug            String       @unique
-  description     String       @db.Text
-  requirements    String?      @db.Text
-  responsibilities String?     @db.Text
-  location        String?      // e.g., "Remote", "New York, NY", "Hybrid"
-  job_type        String?      // e.g., "Full-time", "Part-time", "Contract", "Internship"
-  salary_min      Int?         // Minimum salary (optional)
-  salary_max      Int?         // Maximum salary (optional)
-  salary_currency String?      @default("USD")
-  experience_level String?     // e.g., "Entry", "Mid", "Senior", "Executive"
-  status          Status       @default(DRAFT)
-  is_featured     Boolean      @default(false)
-  application_url String?      // External application URL
-  application_email String?    // Email for applications
-  publish_date    DateTime?
-  expiry_date     DateTime?    // Job posting expiry date
-  created_at      DateTime     @default(now())
-  updated_at      DateTime     @updatedAt
+  job_id            Int       @id @default(autoincrement())
+  title             String
+  slug              String    @unique
+  description       String    @db.Text
+  requirements      String?   @db.Text
+  responsibilities  String?   @db.Text
+  location          String? // e.g., "Remote", "New York, NY", "Hybrid"
+  job_type          String? // e.g., "Full-time", "Part-time", "Contract", "Internship"
+  salary_min        Int? // Minimum salary (optional)
+  salary_max        Int? // Maximum salary (optional)
+  salary_currency   String?   @default("USD")
+  experience_level  String? // e.g., "Entry", "Mid", "Senior", "Executive"
+  status            Status    @default(DRAFT)
+  is_featured       Boolean   @default(false)
+  application_url   String? // External application URL
+  application_email String? // Email for applications
+  publish_date      DateTime?
+  expiry_date       DateTime? // Job posting expiry date
+  created_at        DateTime  @default(now())
+  updated_at        DateTime  @updatedAt
 
   // SEO Fields
   meta_title       String?
-  meta_description String?      @db.Text
+  meta_description String? @db.Text
   meta_keywords    String?
 
   // Relations - many-to-many with categories (tags)

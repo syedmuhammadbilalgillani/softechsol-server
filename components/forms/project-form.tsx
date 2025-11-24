@@ -43,6 +43,20 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
       className: "col-span-2",
     },
     {
+      name: "meta_title",
+      label: "Meta Title",
+      type: "input",
+      placeholder: "Meta title",
+      className: "col-span-2",
+    },
+    {
+      name: "meta_description",
+      label: "Meta Description",
+      type: "textarea",
+      placeholder: "Meta description",
+      className: "col-span-2",
+    },
+    {
       name: "url",
       label: "Project URL",
       type: "input",
@@ -74,7 +88,7 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
     {
       name: "overview",
       label: "Overview",
-      type: "textarea",
+      type: "joditEditor",
       placeholder: "Project overview",
       className: "col-span-2",
     },

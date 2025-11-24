@@ -55,7 +55,7 @@ const JobCategoriesPage = ({ categories }: { categories: JobCategory[] }) => {
           {
             label: "Actions",
             key: "actions",
-            render: (row: JobCategory) => (
+            render: (row: any) => (
               <div className="flex items-center gap-2">
                 <JobCategoryForm category={row} />
                 <Button

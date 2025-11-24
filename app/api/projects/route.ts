@@ -1,9 +1,14 @@
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
 import { NextRequest, NextResponse } from "next/server";
+import slugify from "slugify";
 
 type CreateProjectBody = {
   title: string;
+  slug: string;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
   short_description?: string;
   url?: string;
   client_name?: string;
@@ -35,6 +40,9 @@ export async function POST(req: NextRequest) {
       year,
       timeline,
       overview,
+      meta_title,
+      meta_description,
+      meta_keywords,
       challenges,
       solution,
     } = body;
@@ -42,11 +50,15 @@ export async function POST(req: NextRequest) {
     const project = await prisma.project.create({
       data: {
         title,
+        slug: slugify(title, { lower: true, strict: true, locale: "en" }),
         short_description,
         url,
         client_name,
         year: year ?? null,
         timeline,
+        meta_title,
+        meta_description,
+        meta_keywords,
         overview,
         challenges,
         solution,

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { DynamicForm, FieldConfig } from "@/components/dynamic-form"; // Adjust import based on your project structure
 import { Category } from "@/lib/types";
+import { useSession } from "next-auth/react";
 
 const CategoryForm = ({
   category,
@@ -27,7 +28,8 @@ const CategoryForm = ({
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-
+  const { data: session } = useSession();
+  logger.debug(session, "session");
   // Form field configuration
   const formFields: FieldConfig[] = [
     {
@@ -95,6 +97,7 @@ const CategoryForm = ({
 
     try {
       const payload = {
+        // user_id: session?.user?.id,
         category_id: category?.category_id,
         ...data,
       };
