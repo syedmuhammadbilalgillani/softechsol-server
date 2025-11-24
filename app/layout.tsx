@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description: "Your Challenges Our Solutions",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
