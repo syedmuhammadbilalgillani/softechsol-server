@@ -105,21 +105,21 @@ export default function SignUpForm() {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, username, password }),
-      });
+      // const res = await fetch("/api/auth/signup", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ email, username, password }),
+      // });
 
-      const data = await res.json();
-      logger.debug("Signup response", data);
+      // const data = await res.json();
+      // logger.debug("Signup response", data);
 
-      if (res.ok) {
-        logger.info("Account created successfully");
-        router.push("/auth/signin?message=Account created successfully. Please sign in.");
-      } else {
-        setError(data.error || "An error occurred while creating the account. Please try again.");
-      }
+      // if (res.ok) {
+      //   logger.info("Account created successfully");
+      //   router.push("/auth/signin?message=Account created successfully. Please sign in.");
+      // } else {
+      //   setError(data.error || "An error occurred while creating the account. Please try again.");
+      // }
     } catch (err) {
       logger.error("Signup exception", err);
       setError("An error occurred while creating the account. Please try again.");
