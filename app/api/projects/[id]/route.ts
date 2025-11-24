@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { revalidateTag } from "@/lib/revalidate";
 import logger from "@/utils/logger";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -96,6 +97,7 @@ export async function PUT(
 
       return updated;
     });
+    await revalidateTag("projects-list");
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
@@ -117,6 +119,8 @@ export async function DELETE(
     const result = await prisma.project.delete({
       where: { project_id: Number(id) },
     });
+    await revalidateTag("projects-list");
+
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
     logger.error("Error deleting project", error);

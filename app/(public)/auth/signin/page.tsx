@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { signIn, getSession, useSession } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 import logger from "@/utils/logger";
 
 import {
@@ -25,6 +25,33 @@ export default function SignIn() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const { data: session, status } = useSession();
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (status === "authenticated" && session) {
+      logger.info("User already authenticated, redirecting to dashboard");
+      router.push(callbackUrl);
+    }
+  }, [status, session, router, callbackUrl]);
+
+  // Show loading while checking session
+  if (status === "loading") {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render form if authenticated (will redirect)
+  if (status === "authenticated") {
+    return null;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,18 +59,20 @@ export default function SignIn() {
     setLoading(true);
 
     const res = await signIn("credentials", {
-      redirect: false,
+      redirect: true,
       email,
       password,
     });
 
     logger.debug(res, "res");
-    debugger
+    debugger;
     setLoading(false);
 
     if (res?.error) {
+      debugger;
       setError(res.error);
     } else if (res?.ok) {
+      debugger;
       router.push("/");
     }
   };
@@ -92,11 +121,7 @@ export default function SignIn() {
               </Alert>
             )}
 
-            <Button
-              type="submit"
-              className="w-full mt-4"
-              disabled={loading}
-            >
+            <Button type="submit" className="w-full mt-4" disabled={loading}>
               {loading ? "Signing in..." : "Sign In"}
             </Button>
           </form>

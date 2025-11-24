@@ -1,11 +1,12 @@
 import logger from "@/utils/logger";
 import { NextResponse } from "next/server";
 import prisma from "../../../lib/prisma"; // Ensure Prisma is set up correctly
+import slugify from "slugify";
+import { revalidateTag } from "@/lib/revalidate";
 
 export async function POST(request: Request) {
   const {
     title,
-    slug,
     excerpt,
     content,
     featured_image,
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
     const blog = await prisma.blog.create({
       data: {
         title,
-        slug,
+        slug: slugify(title, { lower: true, strict: true, locale: "en" }),
         excerpt,
         content,
         status,
@@ -59,7 +60,7 @@ export async function POST(request: Request) {
         },
       },
     });
-
+    await revalidateTag("blogs");
     return NextResponse.json(
       { message: "Blog created successfully", blog },
       { status: 201 }
@@ -78,6 +79,8 @@ export async function DELETE(request: Request) {
     await prisma.blog.delete({
       where: { blog_id: Number(id) },
     });
+    await revalidateTag("blogs");
+
     return NextResponse.json(
       { message: "Blog deleted successfully" },
       { status: 200 }

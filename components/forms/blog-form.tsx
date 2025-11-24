@@ -52,13 +52,6 @@ const BlogForm = ({
       placeholder: "Enter blog title",
     },
     {
-      name: "slug",
-      label: "Slug",
-      type: "input",
-      required: true,
-      placeholder: "Enter blog slug",
-    },
-    {
       name: "excerpt",
       label: "Excerpt",
       type: "textarea",
@@ -67,7 +60,7 @@ const BlogForm = ({
     {
       name: "content",
       label: "Content",
-      type: "textarea",
+      type: "joditEditor",
       required: true,
       placeholder: "Enter blog content",
     },
@@ -77,12 +70,7 @@ const BlogForm = ({
       type: "media", // Custom media type for ImageSelector
       required: true,
     },
-    {
-      name: "image_alt",
-      label: "Image Alt Text",
-      type: "input",
-      placeholder: "Enter alt text for featured image",
-    },
+
     {
       name: "status",
       label: "Status",

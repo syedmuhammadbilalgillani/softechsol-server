@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { revalidateTag } from "@/lib/revalidate";
 import logger from "@/utils/logger";
 import { NextRequest, NextResponse } from "next/server";
 import slugify from "slugify";
@@ -79,7 +80,7 @@ export async function POST(req: NextRequest) {
         },
       },
     });
-
+    await revalidateTag("projects-list");
     return NextResponse.json(project, { status: 201 });
   } catch (error) {
     logger.error("Error creating project", error);

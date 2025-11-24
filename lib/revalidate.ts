@@ -9,14 +9,9 @@ import logger from "@/utils/logger";
 export async function revalidateTag(tag: string): Promise<boolean> {
   try {
     // Get the base URL - use environment variable or default to localhost in development
-    const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL ||
-      process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : "http://localhost:3000";
-
-    const revalidateUrl = `${baseUrl}/revalidate`;
-
+  
+    const revalidateUrl = `https://softechsol.com/revalidate`;
+    logger.info(revalidateUrl, "revalidateUrl");
     const revalidateRes = await axios.post(revalidateUrl, {
       tag,
     });
@@ -36,8 +31,6 @@ export async function revalidateTag(tag: string): Promise<boolean> {
  * @returns Promise<boolean[]> - Returns array of success status for each tag
  */
 export async function revalidateTags(tags: string[]): Promise<boolean[]> {
-  const results = await Promise.all(
-    tags.map((tag) => revalidateTag(tag))
-  );
+  const results = await Promise.all(tags.map((tag) => revalidateTag(tag)));
   return results;
 }

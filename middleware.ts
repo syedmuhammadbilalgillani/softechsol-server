@@ -5,34 +5,125 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest } from "next/server";
 import logger from "./utils/logger";
 
-// Define paths that should remain public
-const publicPaths = ["/auth/signin", "/auth/signup"];
+// Define paths that should remain public (but check if user is already authenticated)
+const publicPaths = ["/auth/signin", "/auth/signup", "/api/auth"];
 
 export async function middleware(req: NextRequest) {
-  // Get the user's session token (JWT)
-  const token = await getToken({ req, secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET });
-  logger.debug(token, "token");
-  const url = req.url;
-  logger.debug(req, "url");
-
-  // If the requested URL is NOT a public path and the user is not authenticated, redirect to sign-in page
-  if (!publicPaths.some((path) => url.includes(path)) && !token) {
-    return NextResponse.redirect(new URL("/auth/signin", req.url));
+  const pathname = req.nextUrl.pathname;
+  const method = req.method;
+  
+  logger.info(`[Middleware] ${method} ${pathname}`, {
+    pathname,
+    method,
+    origin: req.nextUrl.origin,
+  });
+  
+  // Skip middleware for static files and API routes (except auth)
+  if (
+    pathname.startsWith("/_next") ||
+    (pathname.startsWith("/api") && !pathname.startsWith("/api/auth")) ||
+    pathname.includes(".")
+  ) {
+    logger.debug(`[Middleware] Skipping static/API route: ${pathname}`);
+    return NextResponse.next();
   }
-  if (req.nextUrl.pathname === "/" && token) {
+
+  // Get the user's session token (JWT) - we need this for all routes
+  let token;
+  try {
+    // Use the same secret as auth config
+    const secret = process.env.NEXTAUTH_SECRET || process.env.NEXT_PUBLIC_NEXTAUTH_SECRET;
+    
+    if (!secret) {
+      logger.error("[Middleware] NEXTAUTH_SECRET is not set!");
+      return NextResponse.next(); // Allow request if secret is missing (should not happen in production)
+    }
+
+    token = await getToken({ 
+      req, 
+      secret,
+    });
+    
+    logger.debug(`[Middleware] Token check`, {
+      pathname,
+      hasToken: !!token,
+      tokenRole: token?.role,
+      tokenId: token?.id,
+      secretExists: !!secret,
+    });
+  } catch (error) {
+    logger.error(`[Middleware] Error getting token for ${pathname}`, error);
+    // Continue without token
+  }
+
+  // Check if user is trying to access auth pages (signin/signup)
+  const isAuthPage = pathname.startsWith("/auth/signin") || pathname.startsWith("/auth/signup");
+  
+  // If authenticated user tries to access auth pages, redirect to dashboard
+  if (isAuthPage && token) {
+    logger.info(`[Middleware] Authenticated user trying to access auth page, redirecting to dashboard`, {
+      pathname,
+      userId: token.id,
+      role: token.role,
+    });
+    return NextResponse.redirect(new URL("/dashboard", req.url));
+  }
+
+  // If user is not authenticated and trying to access protected route, redirect to sign-in
+  if (!isAuthPage && !token) {
+    logger.warn(`[Middleware] Unauthenticated access attempt to protected route: ${pathname}`);
+    const signInUrl = new URL("/auth/signin", req.url);
+    signInUrl.searchParams.set("callbackUrl", pathname);
+    logger.info(`[Middleware] Redirecting to sign-in with callback: ${pathname}`);
+    return NextResponse.redirect(signInUrl);
+  }
+
+  // Allow unauthenticated users to access auth pages
+  if (isAuthPage && !token) {
+    logger.debug(`[Middleware] Unauthenticated user accessing auth page: ${pathname}`);
+    return NextResponse.next();
+  }
+
+  // Redirect authenticated users from root to dashboard
+  if (pathname === "/" && token) {
+    logger.info(`[Middleware] Authenticated user at root, redirecting to dashboard`, {
+      userId: token.id,
+      role: token.role,
+    });
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   // Optionally, check for specific roles if you want role-based access (e.g., Admin routes)
-  // Example: If accessing an admin route, the user must have 'ADMIN' role
-  if (url.includes("/admin") && token?.role !== "ADMIN") {
-    return NextResponse.redirect(new URL("/auth/signin", req.url)); // Redirect if user is not Admin
+  if (pathname.startsWith("/admin") && token?.role !== "ADMIN") {
+    logger.warn(`[Middleware] Unauthorized access attempt to admin route`, {
+      pathname,
+      userId: token?.id,
+      userRole: token?.role,
+      requiredRole: "ADMIN",
+    });
+    return NextResponse.redirect(new URL("/auth/signin", req.url));
   }
+
+  logger.info(`[Middleware] Access granted`, {
+    pathname,
+    userId: token?.id,
+    role: token?.role,
+  });
 
   return NextResponse.next();
 }
 
 // Specify paths where the middleware should apply
 export const config = {
-  matcher: ["/admin/:path*", "//:path*", "/user/settings/:path*"], // Apply to all paths
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public files (public folder)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+  ],
 };
