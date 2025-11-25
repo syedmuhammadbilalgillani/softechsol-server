@@ -119,6 +119,7 @@ export async function DELETE(
     const result = await prisma.project.delete({
       where: { project_id: Number(id) },
     });
+    logger.info("Project deleted", result);
     await revalidateTag("projects-list");
 
     return NextResponse.json(result, { status: 200 });
