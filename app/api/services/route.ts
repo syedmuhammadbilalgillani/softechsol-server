@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
+import { revalidateTag } from "@/lib/revalidate";
 
 // CREATE Service
 export async function POST(req: Request) {
@@ -10,7 +11,7 @@ export async function POST(req: Request) {
     const service = await prisma.service.create({
       data: { title, description, categoryId: Number(categoryId) },
     });
-
+    await revalidateTag("categories-with-services");
     return NextResponse.json(service);
   } catch (error) {
     logger.debug(error);
@@ -34,6 +35,7 @@ export async function PUT(req: Request) {
         categoryId,
       },
     });
+    await revalidateTag("categories-with-services");
 
     return NextResponse.json(service);
   } catch (error) {
@@ -52,7 +54,7 @@ export async function DELETE(req: Request) {
     await prisma.service.delete({
       where: { id: Number(id) },
     });
-
+    await revalidateTag("categories-with-services");
     return NextResponse.json({ message: "Service deleted" });
   } catch (error) {
     return NextResponse.json(
