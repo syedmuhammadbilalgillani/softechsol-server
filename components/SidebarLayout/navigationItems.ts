@@ -83,6 +83,13 @@ export const navigation = [
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
+      {
+        title: "Teams",
+        url: "/teams",
+        icon: Briefcase,
+        isActive: false,
+        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
     ],
   },
   // {

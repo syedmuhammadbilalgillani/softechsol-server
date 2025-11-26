@@ -2172,6 +2172,8 @@ export namespace Prisma {
     companyFeaturedImages: number
     projectImages: number
     teamFeaturedImages: number
+    serviceCategoryImages: number
+    serviceImages: number
   }
 
   export type GalleryItemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2181,6 +2183,8 @@ export namespace Prisma {
     companyFeaturedImages?: boolean | GalleryItemCountOutputTypeCountCompanyFeaturedImagesArgs
     projectImages?: boolean | GalleryItemCountOutputTypeCountProjectImagesArgs
     teamFeaturedImages?: boolean | GalleryItemCountOutputTypeCountTeamFeaturedImagesArgs
+    serviceCategoryImages?: boolean | GalleryItemCountOutputTypeCountServiceCategoryImagesArgs
+    serviceImages?: boolean | GalleryItemCountOutputTypeCountServiceImagesArgs
   }
 
   // Custom InputTypes
@@ -2234,6 +2238,20 @@ export namespace Prisma {
    */
   export type GalleryItemCountOutputTypeCountTeamFeaturedImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TeamWhereInput
+  }
+
+  /**
+   * GalleryItemCountOutputType without action
+   */
+  export type GalleryItemCountOutputTypeCountServiceCategoryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceCategoryWhereInput
+  }
+
+  /**
+   * GalleryItemCountOutputType without action
+   */
+  export type GalleryItemCountOutputTypeCountServiceImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceWhereInput
   }
 
 
@@ -2684,6 +2702,8 @@ export namespace Prisma {
     companyFeaturedImages?: boolean | GalleryItem$companyFeaturedImagesArgs<ExtArgs>
     projectImages?: boolean | GalleryItem$projectImagesArgs<ExtArgs>
     teamFeaturedImages?: boolean | GalleryItem$teamFeaturedImagesArgs<ExtArgs>
+    serviceCategoryImages?: boolean | GalleryItem$serviceCategoryImagesArgs<ExtArgs>
+    serviceImages?: boolean | GalleryItem$serviceImagesArgs<ExtArgs>
     _count?: boolean | GalleryItemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["galleryItem"]>
 
@@ -2725,6 +2745,8 @@ export namespace Prisma {
     companyFeaturedImages?: boolean | GalleryItem$companyFeaturedImagesArgs<ExtArgs>
     projectImages?: boolean | GalleryItem$projectImagesArgs<ExtArgs>
     teamFeaturedImages?: boolean | GalleryItem$teamFeaturedImagesArgs<ExtArgs>
+    serviceCategoryImages?: boolean | GalleryItem$serviceCategoryImagesArgs<ExtArgs>
+    serviceImages?: boolean | GalleryItem$serviceImagesArgs<ExtArgs>
     _count?: boolean | GalleryItemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GalleryItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2739,6 +2761,8 @@ export namespace Prisma {
       companyFeaturedImages: Prisma.$MyCompaniesPayload<ExtArgs>[]
       projectImages: Prisma.$ProjectImagePayload<ExtArgs>[]
       teamFeaturedImages: Prisma.$TeamPayload<ExtArgs>[]
+      serviceCategoryImages: Prisma.$ServiceCategoryPayload<ExtArgs>[]
+      serviceImages: Prisma.$ServicePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3148,6 +3172,8 @@ export namespace Prisma {
     companyFeaturedImages<T extends GalleryItem$companyFeaturedImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$companyFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MyCompaniesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     projectImages<T extends GalleryItem$projectImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$projectImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     teamFeaturedImages<T extends GalleryItem$teamFeaturedImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$teamFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    serviceCategoryImages<T extends GalleryItem$serviceCategoryImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$serviceCategoryImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    serviceImages<T extends GalleryItem$serviceImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$serviceImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3713,6 +3739,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TeamScalarFieldEnum | TeamScalarFieldEnum[]
+  }
+
+  /**
+   * GalleryItem.serviceCategoryImages
+   */
+  export type GalleryItem$serviceCategoryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceCategory
+     */
+    select?: ServiceCategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceCategory
+     */
+    omit?: ServiceCategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceCategoryInclude<ExtArgs> | null
+    where?: ServiceCategoryWhereInput
+    orderBy?: ServiceCategoryOrderByWithRelationInput | ServiceCategoryOrderByWithRelationInput[]
+    cursor?: ServiceCategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ServiceCategoryScalarFieldEnum | ServiceCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * GalleryItem.serviceImages
+   */
+  export type GalleryItem$serviceImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    where?: ServiceWhereInput
+    orderBy?: ServiceOrderByWithRelationInput | ServiceOrderByWithRelationInput[]
+    cursor?: ServiceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
   }
 
   /**
@@ -12082,6 +12156,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     slug: string | null
+    image_id: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -12090,6 +12165,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     slug: string | null
+    image_id: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -12098,6 +12174,7 @@ export namespace Prisma {
     id: number
     name: number
     slug: number
+    image_id: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -12116,6 +12193,7 @@ export namespace Prisma {
     id?: true
     name?: true
     slug?: true
+    image_id?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -12124,6 +12202,7 @@ export namespace Prisma {
     id?: true
     name?: true
     slug?: true
+    image_id?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -12132,6 +12211,7 @@ export namespace Prisma {
     id?: true
     name?: true
     slug?: true
+    image_id?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -12227,6 +12307,7 @@ export namespace Prisma {
     id: number
     name: string
     slug: string
+    image_id: string | null
     createdAt: Date
     updatedAt: Date
     _count: ServiceCategoryCountAggregateOutputType | null
@@ -12254,8 +12335,10 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
+    image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    image?: boolean | ServiceCategory$imageArgs<ExtArgs>
     services?: boolean | ServiceCategory$servicesArgs<ExtArgs>
     _count?: boolean | ServiceCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["serviceCategory"]>
@@ -12264,43 +12347,55 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
+    image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    image?: boolean | ServiceCategory$imageArgs<ExtArgs>
   }, ExtArgs["result"]["serviceCategory"]>
 
   export type ServiceCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     slug?: boolean
+    image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    image?: boolean | ServiceCategory$imageArgs<ExtArgs>
   }, ExtArgs["result"]["serviceCategory"]>
 
   export type ServiceCategorySelectScalar = {
     id?: boolean
     name?: boolean
     slug?: boolean
+    image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ServiceCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
+  export type ServiceCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "image_id" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
   export type ServiceCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | ServiceCategory$imageArgs<ExtArgs>
     services?: boolean | ServiceCategory$servicesArgs<ExtArgs>
     _count?: boolean | ServiceCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type ServiceCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type ServiceCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ServiceCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | ServiceCategory$imageArgs<ExtArgs>
+  }
+  export type ServiceCategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | ServiceCategory$imageArgs<ExtArgs>
+  }
 
   export type $ServiceCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ServiceCategory"
     objects: {
+      image: Prisma.$GalleryItemPayload<ExtArgs> | null
       services: Prisma.$ServicePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       slug: string
+      image_id: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["serviceCategory"]>
@@ -12697,6 +12792,7 @@ export namespace Prisma {
    */
   export interface Prisma__ServiceCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    image<T extends ServiceCategory$imageArgs<ExtArgs> = {}>(args?: Subset<T, ServiceCategory$imageArgs<ExtArgs>>): Prisma__GalleryItemClient<$Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     services<T extends ServiceCategory$servicesArgs<ExtArgs> = {}>(args?: Subset<T, ServiceCategory$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -12730,6 +12826,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ServiceCategory", 'Int'>
     readonly name: FieldRef<"ServiceCategory", 'String'>
     readonly slug: FieldRef<"ServiceCategory", 'String'>
+    readonly image_id: FieldRef<"ServiceCategory", 'String'>
     readonly createdAt: FieldRef<"ServiceCategory", 'DateTime'>
     readonly updatedAt: FieldRef<"ServiceCategory", 'DateTime'>
   }
@@ -12981,6 +13078,10 @@ export namespace Prisma {
      */
     data: ServiceCategoryCreateManyInput | ServiceCategoryCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceCategoryIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -13051,6 +13152,10 @@ export namespace Prisma {
      * Limit how many ServiceCategories to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceCategoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -13117,6 +13222,25 @@ export namespace Prisma {
      * Limit how many ServiceCategories to delete.
      */
     limit?: number
+  }
+
+  /**
+   * ServiceCategory.image
+   */
+  export type ServiceCategory$imageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GalleryItem
+     */
+    select?: GalleryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GalleryItem
+     */
+    omit?: GalleryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GalleryItemInclude<ExtArgs> | null
+    where?: GalleryItemWhereInput
   }
 
   /**
@@ -13188,6 +13312,7 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
+    image_id: string | null
     categoryId: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -13197,6 +13322,7 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
+    image_id: string | null
     categoryId: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -13206,6 +13332,7 @@ export namespace Prisma {
     id: number
     title: number
     description: number
+    image_id: number
     categoryId: number
     createdAt: number
     updatedAt: number
@@ -13227,6 +13354,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    image_id?: true
     categoryId?: true
     createdAt?: true
     updatedAt?: true
@@ -13236,6 +13364,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    image_id?: true
     categoryId?: true
     createdAt?: true
     updatedAt?: true
@@ -13245,6 +13374,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    image_id?: true
     categoryId?: true
     createdAt?: true
     updatedAt?: true
@@ -13341,6 +13471,7 @@ export namespace Prisma {
     id: number
     title: string
     description: string | null
+    image_id: string | null
     categoryId: number
     createdAt: Date
     updatedAt: Date
@@ -13369,9 +13500,11 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    image_id?: boolean
     categoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    image?: boolean | Service$imageArgs<ExtArgs>
     category?: boolean | ServiceCategoryDefaultArgs<ExtArgs>
     contactSubmissions?: boolean | Service$contactSubmissionsArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
@@ -13381,9 +13514,11 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    image_id?: boolean
     categoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    image?: boolean | Service$imageArgs<ExtArgs>
     category?: boolean | ServiceCategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["service"]>
 
@@ -13391,9 +13526,11 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    image_id?: boolean
     categoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    image?: boolean | Service$imageArgs<ExtArgs>
     category?: boolean | ServiceCategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["service"]>
 
@@ -13401,27 +13538,32 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    image_id?: boolean
     categoryId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
+  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "image_id" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
   export type ServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Service$imageArgs<ExtArgs>
     category?: boolean | ServiceCategoryDefaultArgs<ExtArgs>
     contactSubmissions?: boolean | Service$contactSubmissionsArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ServiceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Service$imageArgs<ExtArgs>
     category?: boolean | ServiceCategoryDefaultArgs<ExtArgs>
   }
   export type ServiceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Service$imageArgs<ExtArgs>
     category?: boolean | ServiceCategoryDefaultArgs<ExtArgs>
   }
 
   export type $ServicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Service"
     objects: {
+      image: Prisma.$GalleryItemPayload<ExtArgs> | null
       category: Prisma.$ServiceCategoryPayload<ExtArgs>
       contactSubmissions: Prisma.$ContactUsPayload<ExtArgs>[]
     }
@@ -13429,6 +13571,7 @@ export namespace Prisma {
       id: number
       title: string
       description: string | null
+      image_id: string | null
       categoryId: number
       createdAt: Date
       updatedAt: Date
@@ -13826,6 +13969,7 @@ export namespace Prisma {
    */
   export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    image<T extends Service$imageArgs<ExtArgs> = {}>(args?: Subset<T, Service$imageArgs<ExtArgs>>): Prisma__GalleryItemClient<$Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     category<T extends ServiceCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceCategoryDefaultArgs<ExtArgs>>): Prisma__ServiceCategoryClient<$Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     contactSubmissions<T extends Service$contactSubmissionsArgs<ExtArgs> = {}>(args?: Subset<T, Service$contactSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactUsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -13860,6 +14004,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Service", 'Int'>
     readonly title: FieldRef<"Service", 'String'>
     readonly description: FieldRef<"Service", 'String'>
+    readonly image_id: FieldRef<"Service", 'String'>
     readonly categoryId: FieldRef<"Service", 'Int'>
     readonly createdAt: FieldRef<"Service", 'DateTime'>
     readonly updatedAt: FieldRef<"Service", 'DateTime'>
@@ -14256,6 +14401,25 @@ export namespace Prisma {
      * Limit how many Services to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Service.image
+   */
+  export type Service$imageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GalleryItem
+     */
+    select?: GalleryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GalleryItem
+     */
+    omit?: GalleryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GalleryItemInclude<ExtArgs> | null
+    where?: GalleryItemWhereInput
   }
 
   /**
@@ -20272,6 +20436,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     slug: 'slug',
+    image_id: 'image_id',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -20283,6 +20448,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     description: 'description',
+    image_id: 'image_id',
     categoryId: 'categoryId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -20508,6 +20674,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesListRelationFilter
     projectImages?: ProjectImageListRelationFilter
     teamFeaturedImages?: TeamListRelationFilter
+    serviceCategoryImages?: ServiceCategoryListRelationFilter
+    serviceImages?: ServiceListRelationFilter
   }
 
   export type GalleryItemOrderByWithRelationInput = {
@@ -20524,6 +20692,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesOrderByRelationAggregateInput
     projectImages?: ProjectImageOrderByRelationAggregateInput
     teamFeaturedImages?: TeamOrderByRelationAggregateInput
+    serviceCategoryImages?: ServiceCategoryOrderByRelationAggregateInput
+    serviceImages?: ServiceOrderByRelationAggregateInput
   }
 
   export type GalleryItemWhereUniqueInput = Prisma.AtLeast<{
@@ -20543,6 +20713,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesListRelationFilter
     projectImages?: ProjectImageListRelationFilter
     teamFeaturedImages?: TeamListRelationFilter
+    serviceCategoryImages?: ServiceCategoryListRelationFilter
+    serviceImages?: ServiceListRelationFilter
   }, "id" | "publicId">
 
   export type GalleryItemOrderByWithAggregationInput = {
@@ -21158,8 +21330,10 @@ export namespace Prisma {
     id?: IntFilter<"ServiceCategory"> | number
     name?: StringFilter<"ServiceCategory"> | string
     slug?: StringFilter<"ServiceCategory"> | string
+    image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
     updatedAt?: DateTimeFilter<"ServiceCategory"> | Date | string
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
     services?: ServiceListRelationFilter
   }
 
@@ -21167,8 +21341,10 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    image?: GalleryItemOrderByWithRelationInput
     services?: ServiceOrderByRelationAggregateInput
   }
 
@@ -21179,8 +21355,10 @@ export namespace Prisma {
     OR?: ServiceCategoryWhereInput[]
     NOT?: ServiceCategoryWhereInput | ServiceCategoryWhereInput[]
     name?: StringFilter<"ServiceCategory"> | string
+    image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
     updatedAt?: DateTimeFilter<"ServiceCategory"> | Date | string
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
     services?: ServiceListRelationFilter
   }, "id" | "slug">
 
@@ -21188,6 +21366,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ServiceCategoryCountOrderByAggregateInput
@@ -21204,6 +21383,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ServiceCategory"> | number
     name?: StringWithAggregatesFilter<"ServiceCategory"> | string
     slug?: StringWithAggregatesFilter<"ServiceCategory"> | string
+    image_id?: StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
   }
@@ -21215,9 +21395,11 @@ export namespace Prisma {
     id?: IntFilter<"Service"> | number
     title?: StringFilter<"Service"> | string
     description?: StringNullableFilter<"Service"> | string | null
+    image_id?: StringNullableFilter<"Service"> | string | null
     categoryId?: IntFilter<"Service"> | number
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
     category?: XOR<ServiceCategoryScalarRelationFilter, ServiceCategoryWhereInput>
     contactSubmissions?: ContactUsListRelationFilter
   }
@@ -21226,9 +21408,11 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    image_id?: SortOrderInput | SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    image?: GalleryItemOrderByWithRelationInput
     category?: ServiceCategoryOrderByWithRelationInput
     contactSubmissions?: ContactUsOrderByRelationAggregateInput
   }
@@ -21240,9 +21424,11 @@ export namespace Prisma {
     NOT?: ServiceWhereInput | ServiceWhereInput[]
     title?: StringFilter<"Service"> | string
     description?: StringNullableFilter<"Service"> | string | null
+    image_id?: StringNullableFilter<"Service"> | string | null
     categoryId?: IntFilter<"Service"> | number
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
     category?: XOR<ServiceCategoryScalarRelationFilter, ServiceCategoryWhereInput>
     contactSubmissions?: ContactUsListRelationFilter
   }, "id">
@@ -21251,6 +21437,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
+    image_id?: SortOrderInput | SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -21268,6 +21455,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Service"> | number
     title?: StringWithAggregatesFilter<"Service"> | string
     description?: StringNullableWithAggregatesFilter<"Service"> | string | null
+    image_id?: StringNullableWithAggregatesFilter<"Service"> | string | null
     categoryId?: IntWithAggregatesFilter<"Service"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
@@ -21686,6 +21874,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateInput = {
@@ -21702,6 +21892,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUpdateInput = {
@@ -21718,6 +21910,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateInput = {
@@ -21734,6 +21928,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemCreateManyInput = {
@@ -22376,6 +22572,7 @@ export namespace Prisma {
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    image?: GalleryItemCreateNestedOneWithoutServiceCategoryImagesInput
     services?: ServiceCreateNestedManyWithoutCategoryInput
   }
 
@@ -22383,6 +22580,7 @@ export namespace Prisma {
     id?: number
     name: string
     slug: string
+    image_id?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     services?: ServiceUncheckedCreateNestedManyWithoutCategoryInput
@@ -22393,6 +22591,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: GalleryItemUpdateOneWithoutServiceCategoryImagesNestedInput
     services?: ServiceUpdateManyWithoutCategoryNestedInput
   }
 
@@ -22400,6 +22599,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     services?: ServiceUncheckedUpdateManyWithoutCategoryNestedInput
@@ -22409,6 +22609,7 @@ export namespace Prisma {
     id?: number
     name: string
     slug: string
+    image_id?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -22424,6 +22625,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -22433,6 +22635,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    image?: GalleryItemCreateNestedOneWithoutServiceImagesInput
     category: ServiceCategoryCreateNestedOneWithoutServicesInput
     contactSubmissions?: ContactUsCreateNestedManyWithoutServiceInput
   }
@@ -22441,6 +22644,7 @@ export namespace Prisma {
     id?: number
     title: string
     description?: string | null
+    image_id?: string | null
     categoryId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22452,6 +22656,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: GalleryItemUpdateOneWithoutServiceImagesNestedInput
     category?: ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
     contactSubmissions?: ContactUsUpdateManyWithoutServiceNestedInput
   }
@@ -22460,6 +22665,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22470,6 +22676,7 @@ export namespace Prisma {
     id?: number
     title: string
     description?: string | null
+    image_id?: string | null
     categoryId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22486,6 +22693,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22988,6 +23196,18 @@ export namespace Prisma {
     none?: TeamWhereInput
   }
 
+  export type ServiceCategoryListRelationFilter = {
+    every?: ServiceCategoryWhereInput
+    some?: ServiceCategoryWhereInput
+    none?: ServiceCategoryWhereInput
+  }
+
+  export type ServiceListRelationFilter = {
+    every?: ServiceWhereInput
+    some?: ServiceWhereInput
+    none?: ServiceWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -23010,6 +23230,14 @@ export namespace Prisma {
   }
 
   export type TeamOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ServiceCategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ServiceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23611,20 +23839,11 @@ export namespace Prisma {
     display_order?: SortOrder
   }
 
-  export type ServiceListRelationFilter = {
-    every?: ServiceWhereInput
-    some?: ServiceWhereInput
-    none?: ServiceWhereInput
-  }
-
-  export type ServiceOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type ServiceCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    image_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23637,6 +23856,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    image_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23645,6 +23865,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    image_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -23672,6 +23893,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    image_id?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23686,6 +23908,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    image_id?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23695,6 +23918,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    image_id?: SortOrder
     categoryId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -24011,6 +24235,20 @@ export namespace Prisma {
     connect?: TeamWhereUniqueInput | TeamWhereUniqueInput[]
   }
 
+  export type ServiceCategoryCreateNestedManyWithoutImageInput = {
+    create?: XOR<ServiceCategoryCreateWithoutImageInput, ServiceCategoryUncheckedCreateWithoutImageInput> | ServiceCategoryCreateWithoutImageInput[] | ServiceCategoryUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCategoryCreateOrConnectWithoutImageInput | ServiceCategoryCreateOrConnectWithoutImageInput[]
+    createMany?: ServiceCategoryCreateManyImageInputEnvelope
+    connect?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+  }
+
+  export type ServiceCreateNestedManyWithoutImageInput = {
+    create?: XOR<ServiceCreateWithoutImageInput, ServiceUncheckedCreateWithoutImageInput> | ServiceCreateWithoutImageInput[] | ServiceUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutImageInput | ServiceCreateOrConnectWithoutImageInput[]
+    createMany?: ServiceCreateManyImageInputEnvelope
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutAvatarInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput> | UserCreateWithoutAvatarInput[] | UserUncheckedCreateWithoutAvatarInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput | UserCreateOrConnectWithoutAvatarInput[]
@@ -24051,6 +24289,20 @@ export namespace Prisma {
     connectOrCreate?: TeamCreateOrConnectWithoutFeatured_imageInput | TeamCreateOrConnectWithoutFeatured_imageInput[]
     createMany?: TeamCreateManyFeatured_imageInputEnvelope
     connect?: TeamWhereUniqueInput | TeamWhereUniqueInput[]
+  }
+
+  export type ServiceCategoryUncheckedCreateNestedManyWithoutImageInput = {
+    create?: XOR<ServiceCategoryCreateWithoutImageInput, ServiceCategoryUncheckedCreateWithoutImageInput> | ServiceCategoryCreateWithoutImageInput[] | ServiceCategoryUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCategoryCreateOrConnectWithoutImageInput | ServiceCategoryCreateOrConnectWithoutImageInput[]
+    createMany?: ServiceCategoryCreateManyImageInputEnvelope
+    connect?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+  }
+
+  export type ServiceUncheckedCreateNestedManyWithoutImageInput = {
+    create?: XOR<ServiceCreateWithoutImageInput, ServiceUncheckedCreateWithoutImageInput> | ServiceCreateWithoutImageInput[] | ServiceUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutImageInput | ServiceCreateOrConnectWithoutImageInput[]
+    createMany?: ServiceCreateManyImageInputEnvelope
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -24149,6 +24401,34 @@ export namespace Prisma {
     deleteMany?: TeamScalarWhereInput | TeamScalarWhereInput[]
   }
 
+  export type ServiceCategoryUpdateManyWithoutImageNestedInput = {
+    create?: XOR<ServiceCategoryCreateWithoutImageInput, ServiceCategoryUncheckedCreateWithoutImageInput> | ServiceCategoryCreateWithoutImageInput[] | ServiceCategoryUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCategoryCreateOrConnectWithoutImageInput | ServiceCategoryCreateOrConnectWithoutImageInput[]
+    upsert?: ServiceCategoryUpsertWithWhereUniqueWithoutImageInput | ServiceCategoryUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: ServiceCategoryCreateManyImageInputEnvelope
+    set?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    disconnect?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    delete?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    connect?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    update?: ServiceCategoryUpdateWithWhereUniqueWithoutImageInput | ServiceCategoryUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: ServiceCategoryUpdateManyWithWhereWithoutImageInput | ServiceCategoryUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: ServiceCategoryScalarWhereInput | ServiceCategoryScalarWhereInput[]
+  }
+
+  export type ServiceUpdateManyWithoutImageNestedInput = {
+    create?: XOR<ServiceCreateWithoutImageInput, ServiceUncheckedCreateWithoutImageInput> | ServiceCreateWithoutImageInput[] | ServiceUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutImageInput | ServiceCreateOrConnectWithoutImageInput[]
+    upsert?: ServiceUpsertWithWhereUniqueWithoutImageInput | ServiceUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: ServiceCreateManyImageInputEnvelope
+    set?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    disconnect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    delete?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    update?: ServiceUpdateWithWhereUniqueWithoutImageInput | ServiceUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: ServiceUpdateManyWithWhereWithoutImageInput | ServiceUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutAvatarNestedInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput> | UserCreateWithoutAvatarInput[] | UserUncheckedCreateWithoutAvatarInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput | UserCreateOrConnectWithoutAvatarInput[]
@@ -24231,6 +24511,34 @@ export namespace Prisma {
     update?: TeamUpdateWithWhereUniqueWithoutFeatured_imageInput | TeamUpdateWithWhereUniqueWithoutFeatured_imageInput[]
     updateMany?: TeamUpdateManyWithWhereWithoutFeatured_imageInput | TeamUpdateManyWithWhereWithoutFeatured_imageInput[]
     deleteMany?: TeamScalarWhereInput | TeamScalarWhereInput[]
+  }
+
+  export type ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput = {
+    create?: XOR<ServiceCategoryCreateWithoutImageInput, ServiceCategoryUncheckedCreateWithoutImageInput> | ServiceCategoryCreateWithoutImageInput[] | ServiceCategoryUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCategoryCreateOrConnectWithoutImageInput | ServiceCategoryCreateOrConnectWithoutImageInput[]
+    upsert?: ServiceCategoryUpsertWithWhereUniqueWithoutImageInput | ServiceCategoryUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: ServiceCategoryCreateManyImageInputEnvelope
+    set?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    disconnect?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    delete?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    connect?: ServiceCategoryWhereUniqueInput | ServiceCategoryWhereUniqueInput[]
+    update?: ServiceCategoryUpdateWithWhereUniqueWithoutImageInput | ServiceCategoryUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: ServiceCategoryUpdateManyWithWhereWithoutImageInput | ServiceCategoryUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: ServiceCategoryScalarWhereInput | ServiceCategoryScalarWhereInput[]
+  }
+
+  export type ServiceUncheckedUpdateManyWithoutImageNestedInput = {
+    create?: XOR<ServiceCreateWithoutImageInput, ServiceUncheckedCreateWithoutImageInput> | ServiceCreateWithoutImageInput[] | ServiceUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutImageInput | ServiceCreateOrConnectWithoutImageInput[]
+    upsert?: ServiceUpsertWithWhereUniqueWithoutImageInput | ServiceUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: ServiceCreateManyImageInputEnvelope
+    set?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    disconnect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    delete?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    update?: ServiceUpdateWithWhereUniqueWithoutImageInput | ServiceUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: ServiceUpdateManyWithWhereWithoutImageInput | ServiceUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
   }
 
   export type GalleryItemCreateNestedOneWithoutUserAvatarsInput = {
@@ -24625,6 +24933,12 @@ export namespace Prisma {
     update?: XOR<XOR<GalleryItemUpdateToOneWithWhereWithoutProjectImagesInput, GalleryItemUpdateWithoutProjectImagesInput>, GalleryItemUncheckedUpdateWithoutProjectImagesInput>
   }
 
+  export type GalleryItemCreateNestedOneWithoutServiceCategoryImagesInput = {
+    create?: XOR<GalleryItemCreateWithoutServiceCategoryImagesInput, GalleryItemUncheckedCreateWithoutServiceCategoryImagesInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutServiceCategoryImagesInput
+    connect?: GalleryItemWhereUniqueInput
+  }
+
   export type ServiceCreateNestedManyWithoutCategoryInput = {
     create?: XOR<ServiceCreateWithoutCategoryInput, ServiceUncheckedCreateWithoutCategoryInput> | ServiceCreateWithoutCategoryInput[] | ServiceUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ServiceCreateOrConnectWithoutCategoryInput | ServiceCreateOrConnectWithoutCategoryInput[]
@@ -24637,6 +24951,16 @@ export namespace Prisma {
     connectOrCreate?: ServiceCreateOrConnectWithoutCategoryInput | ServiceCreateOrConnectWithoutCategoryInput[]
     createMany?: ServiceCreateManyCategoryInputEnvelope
     connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+  }
+
+  export type GalleryItemUpdateOneWithoutServiceCategoryImagesNestedInput = {
+    create?: XOR<GalleryItemCreateWithoutServiceCategoryImagesInput, GalleryItemUncheckedCreateWithoutServiceCategoryImagesInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutServiceCategoryImagesInput
+    upsert?: GalleryItemUpsertWithoutServiceCategoryImagesInput
+    disconnect?: GalleryItemWhereInput | boolean
+    delete?: GalleryItemWhereInput | boolean
+    connect?: GalleryItemWhereUniqueInput
+    update?: XOR<XOR<GalleryItemUpdateToOneWithWhereWithoutServiceCategoryImagesInput, GalleryItemUpdateWithoutServiceCategoryImagesInput>, GalleryItemUncheckedUpdateWithoutServiceCategoryImagesInput>
   }
 
   export type ServiceUpdateManyWithoutCategoryNestedInput = {
@@ -24667,6 +24991,12 @@ export namespace Prisma {
     deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
   }
 
+  export type GalleryItemCreateNestedOneWithoutServiceImagesInput = {
+    create?: XOR<GalleryItemCreateWithoutServiceImagesInput, GalleryItemUncheckedCreateWithoutServiceImagesInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutServiceImagesInput
+    connect?: GalleryItemWhereUniqueInput
+  }
+
   export type ServiceCategoryCreateNestedOneWithoutServicesInput = {
     create?: XOR<ServiceCategoryCreateWithoutServicesInput, ServiceCategoryUncheckedCreateWithoutServicesInput>
     connectOrCreate?: ServiceCategoryCreateOrConnectWithoutServicesInput
@@ -24685,6 +25015,16 @@ export namespace Prisma {
     connectOrCreate?: ContactUsCreateOrConnectWithoutServiceInput | ContactUsCreateOrConnectWithoutServiceInput[]
     createMany?: ContactUsCreateManyServiceInputEnvelope
     connect?: ContactUsWhereUniqueInput | ContactUsWhereUniqueInput[]
+  }
+
+  export type GalleryItemUpdateOneWithoutServiceImagesNestedInput = {
+    create?: XOR<GalleryItemCreateWithoutServiceImagesInput, GalleryItemUncheckedCreateWithoutServiceImagesInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutServiceImagesInput
+    upsert?: GalleryItemUpsertWithoutServiceImagesInput
+    disconnect?: GalleryItemWhereInput | boolean
+    delete?: GalleryItemWhereInput | boolean
+    connect?: GalleryItemWhereUniqueInput
+    update?: XOR<XOR<GalleryItemUpdateToOneWithWhereWithoutServiceImagesInput, GalleryItemUpdateWithoutServiceImagesInput>, GalleryItemUncheckedUpdateWithoutServiceImagesInput>
   }
 
   export type ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput = {
@@ -25304,6 +25644,62 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ServiceCategoryCreateWithoutImageInput = {
+    name: string
+    slug: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    services?: ServiceCreateNestedManyWithoutCategoryInput
+  }
+
+  export type ServiceCategoryUncheckedCreateWithoutImageInput = {
+    id?: number
+    name: string
+    slug: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    services?: ServiceUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type ServiceCategoryCreateOrConnectWithoutImageInput = {
+    where: ServiceCategoryWhereUniqueInput
+    create: XOR<ServiceCategoryCreateWithoutImageInput, ServiceCategoryUncheckedCreateWithoutImageInput>
+  }
+
+  export type ServiceCategoryCreateManyImageInputEnvelope = {
+    data: ServiceCategoryCreateManyImageInput | ServiceCategoryCreateManyImageInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ServiceCreateWithoutImageInput = {
+    title: string
+    description?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    category: ServiceCategoryCreateNestedOneWithoutServicesInput
+    contactSubmissions?: ContactUsCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceUncheckedCreateWithoutImageInput = {
+    id?: number
+    title: string
+    description?: string | null
+    categoryId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    contactSubmissions?: ContactUsUncheckedCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceCreateOrConnectWithoutImageInput = {
+    where: ServiceWhereUniqueInput
+    create: XOR<ServiceCreateWithoutImageInput, ServiceUncheckedCreateWithoutImageInput>
+  }
+
+  export type ServiceCreateManyImageInputEnvelope = {
+    data: ServiceCreateManyImageInput | ServiceCreateManyImageInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithWhereUniqueWithoutAvatarInput = {
     where: UserWhereUniqueInput
     update: XOR<UserUpdateWithoutAvatarInput, UserUncheckedUpdateWithoutAvatarInput>
@@ -25472,6 +25868,63 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Team"> | Date | string
   }
 
+  export type ServiceCategoryUpsertWithWhereUniqueWithoutImageInput = {
+    where: ServiceCategoryWhereUniqueInput
+    update: XOR<ServiceCategoryUpdateWithoutImageInput, ServiceCategoryUncheckedUpdateWithoutImageInput>
+    create: XOR<ServiceCategoryCreateWithoutImageInput, ServiceCategoryUncheckedCreateWithoutImageInput>
+  }
+
+  export type ServiceCategoryUpdateWithWhereUniqueWithoutImageInput = {
+    where: ServiceCategoryWhereUniqueInput
+    data: XOR<ServiceCategoryUpdateWithoutImageInput, ServiceCategoryUncheckedUpdateWithoutImageInput>
+  }
+
+  export type ServiceCategoryUpdateManyWithWhereWithoutImageInput = {
+    where: ServiceCategoryScalarWhereInput
+    data: XOR<ServiceCategoryUpdateManyMutationInput, ServiceCategoryUncheckedUpdateManyWithoutImageInput>
+  }
+
+  export type ServiceCategoryScalarWhereInput = {
+    AND?: ServiceCategoryScalarWhereInput | ServiceCategoryScalarWhereInput[]
+    OR?: ServiceCategoryScalarWhereInput[]
+    NOT?: ServiceCategoryScalarWhereInput | ServiceCategoryScalarWhereInput[]
+    id?: IntFilter<"ServiceCategory"> | number
+    name?: StringFilter<"ServiceCategory"> | string
+    slug?: StringFilter<"ServiceCategory"> | string
+    image_id?: StringNullableFilter<"ServiceCategory"> | string | null
+    createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"ServiceCategory"> | Date | string
+  }
+
+  export type ServiceUpsertWithWhereUniqueWithoutImageInput = {
+    where: ServiceWhereUniqueInput
+    update: XOR<ServiceUpdateWithoutImageInput, ServiceUncheckedUpdateWithoutImageInput>
+    create: XOR<ServiceCreateWithoutImageInput, ServiceUncheckedCreateWithoutImageInput>
+  }
+
+  export type ServiceUpdateWithWhereUniqueWithoutImageInput = {
+    where: ServiceWhereUniqueInput
+    data: XOR<ServiceUpdateWithoutImageInput, ServiceUncheckedUpdateWithoutImageInput>
+  }
+
+  export type ServiceUpdateManyWithWhereWithoutImageInput = {
+    where: ServiceScalarWhereInput
+    data: XOR<ServiceUpdateManyMutationInput, ServiceUncheckedUpdateManyWithoutImageInput>
+  }
+
+  export type ServiceScalarWhereInput = {
+    AND?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+    OR?: ServiceScalarWhereInput[]
+    NOT?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+    id?: IntFilter<"Service"> | number
+    title?: StringFilter<"Service"> | string
+    description?: StringNullableFilter<"Service"> | string | null
+    image_id?: StringNullableFilter<"Service"> | string | null
+    categoryId?: IntFilter<"Service"> | number
+    createdAt?: DateTimeFilter<"Service"> | Date | string
+    updatedAt?: DateTimeFilter<"Service"> | Date | string
+  }
+
   export type GalleryItemCreateWithoutUserAvatarsInput = {
     id?: string
     url: string
@@ -25485,6 +25938,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutUserAvatarsInput = {
@@ -25500,6 +25955,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutUserAvatarsInput = {
@@ -25578,6 +26035,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutUserAvatarsInput = {
@@ -25593,6 +26052,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type BlogUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -25822,6 +26283,8 @@ export namespace Prisma {
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutCompanyFeaturedImagesInput = {
@@ -25837,6 +26300,8 @@ export namespace Prisma {
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutCompanyFeaturedImagesInput = {
@@ -25868,6 +26333,8 @@ export namespace Prisma {
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutCompanyFeaturedImagesInput = {
@@ -25883,6 +26350,8 @@ export namespace Prisma {
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type BlogCreateWithoutCategoriesInput = {
@@ -26066,6 +26535,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutBlogFeaturedImagesInput = {
@@ -26081,6 +26552,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutBlogFeaturedImagesInput = {
@@ -26101,6 +26574,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutBlogOgImagesInput = {
@@ -26116,6 +26591,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutBlogOgImagesInput = {
@@ -26201,6 +26678,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutBlogFeaturedImagesInput = {
@@ -26216,6 +26695,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUpsertWithoutBlogOgImagesInput = {
@@ -26242,6 +26723,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutBlogOgImagesInput = {
@@ -26257,6 +26740,8 @@ export namespace Prisma {
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type UserUpsertWithoutBlogsInput = {
@@ -26410,6 +26895,8 @@ export namespace Prisma {
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutProjectImagesInput = {
@@ -26425,6 +26912,8 @@ export namespace Prisma {
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutProjectImagesInput = {
@@ -26504,6 +26993,8 @@ export namespace Prisma {
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutProjectImagesInput = {
@@ -26519,6 +27010,47 @@ export namespace Prisma {
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+  }
+
+  export type GalleryItemCreateWithoutServiceCategoryImagesInput = {
+    id?: string
+    url: string
+    altText: string
+    description?: string | null
+    publicId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAvatars?: UserCreateNestedManyWithoutAvatarInput
+    blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
+    blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
+    companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
+    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
+  }
+
+  export type GalleryItemUncheckedCreateWithoutServiceCategoryImagesInput = {
+    id?: string
+    url: string
+    altText: string
+    description?: string | null
+    publicId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAvatars?: UserUncheckedCreateNestedManyWithoutAvatarInput
+    blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
+    blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
+    companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
+    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+  }
+
+  export type GalleryItemCreateOrConnectWithoutServiceCategoryImagesInput = {
+    where: GalleryItemWhereUniqueInput
+    create: XOR<GalleryItemCreateWithoutServiceCategoryImagesInput, GalleryItemUncheckedCreateWithoutServiceCategoryImagesInput>
   }
 
   export type ServiceCreateWithoutCategoryInput = {
@@ -26526,6 +27058,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    image?: GalleryItemCreateNestedOneWithoutServiceImagesInput
     contactSubmissions?: ContactUsCreateNestedManyWithoutServiceInput
   }
 
@@ -26533,6 +27066,7 @@ export namespace Prisma {
     id?: number
     title: string
     description?: string | null
+    image_id?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     contactSubmissions?: ContactUsUncheckedCreateNestedManyWithoutServiceInput
@@ -26546,6 +27080,51 @@ export namespace Prisma {
   export type ServiceCreateManyCategoryInputEnvelope = {
     data: ServiceCreateManyCategoryInput | ServiceCreateManyCategoryInput[]
     skipDuplicates?: boolean
+  }
+
+  export type GalleryItemUpsertWithoutServiceCategoryImagesInput = {
+    update: XOR<GalleryItemUpdateWithoutServiceCategoryImagesInput, GalleryItemUncheckedUpdateWithoutServiceCategoryImagesInput>
+    create: XOR<GalleryItemCreateWithoutServiceCategoryImagesInput, GalleryItemUncheckedCreateWithoutServiceCategoryImagesInput>
+    where?: GalleryItemWhereInput
+  }
+
+  export type GalleryItemUpdateToOneWithWhereWithoutServiceCategoryImagesInput = {
+    where?: GalleryItemWhereInput
+    data: XOR<GalleryItemUpdateWithoutServiceCategoryImagesInput, GalleryItemUncheckedUpdateWithoutServiceCategoryImagesInput>
+  }
+
+  export type GalleryItemUpdateWithoutServiceCategoryImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    altText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAvatars?: UserUpdateManyWithoutAvatarNestedInput
+    blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
+    blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
+    companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
+    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+  }
+
+  export type GalleryItemUncheckedUpdateWithoutServiceCategoryImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    altText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAvatars?: UserUncheckedUpdateManyWithoutAvatarNestedInput
+    blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
+    companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type ServiceUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -26564,16 +27143,43 @@ export namespace Prisma {
     data: XOR<ServiceUpdateManyMutationInput, ServiceUncheckedUpdateManyWithoutCategoryInput>
   }
 
-  export type ServiceScalarWhereInput = {
-    AND?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
-    OR?: ServiceScalarWhereInput[]
-    NOT?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
-    id?: IntFilter<"Service"> | number
-    title?: StringFilter<"Service"> | string
-    description?: StringNullableFilter<"Service"> | string | null
-    categoryId?: IntFilter<"Service"> | number
-    createdAt?: DateTimeFilter<"Service"> | Date | string
-    updatedAt?: DateTimeFilter<"Service"> | Date | string
+  export type GalleryItemCreateWithoutServiceImagesInput = {
+    id?: string
+    url: string
+    altText: string
+    description?: string | null
+    publicId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAvatars?: UserCreateNestedManyWithoutAvatarInput
+    blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
+    blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
+    companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
+    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+  }
+
+  export type GalleryItemUncheckedCreateWithoutServiceImagesInput = {
+    id?: string
+    url: string
+    altText: string
+    description?: string | null
+    publicId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAvatars?: UserUncheckedCreateNestedManyWithoutAvatarInput
+    blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
+    blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
+    companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
+    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+  }
+
+  export type GalleryItemCreateOrConnectWithoutServiceImagesInput = {
+    where: GalleryItemWhereUniqueInput
+    create: XOR<GalleryItemCreateWithoutServiceImagesInput, GalleryItemUncheckedCreateWithoutServiceImagesInput>
   }
 
   export type ServiceCategoryCreateWithoutServicesInput = {
@@ -26581,12 +27187,14 @@ export namespace Prisma {
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    image?: GalleryItemCreateNestedOneWithoutServiceCategoryImagesInput
   }
 
   export type ServiceCategoryUncheckedCreateWithoutServicesInput = {
     id?: number
     name: string
     slug: string
+    image_id?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -26627,6 +27235,51 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type GalleryItemUpsertWithoutServiceImagesInput = {
+    update: XOR<GalleryItemUpdateWithoutServiceImagesInput, GalleryItemUncheckedUpdateWithoutServiceImagesInput>
+    create: XOR<GalleryItemCreateWithoutServiceImagesInput, GalleryItemUncheckedCreateWithoutServiceImagesInput>
+    where?: GalleryItemWhereInput
+  }
+
+  export type GalleryItemUpdateToOneWithWhereWithoutServiceImagesInput = {
+    where?: GalleryItemWhereInput
+    data: XOR<GalleryItemUpdateWithoutServiceImagesInput, GalleryItemUncheckedUpdateWithoutServiceImagesInput>
+  }
+
+  export type GalleryItemUpdateWithoutServiceImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    altText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAvatars?: UserUpdateManyWithoutAvatarNestedInput
+    blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
+    blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
+    companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
+    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+  }
+
+  export type GalleryItemUncheckedUpdateWithoutServiceImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    altText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAvatars?: UserUncheckedUpdateManyWithoutAvatarNestedInput
+    blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
+    companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+  }
+
   export type ServiceCategoryUpsertWithoutServicesInput = {
     update: XOR<ServiceCategoryUpdateWithoutServicesInput, ServiceCategoryUncheckedUpdateWithoutServicesInput>
     create: XOR<ServiceCategoryCreateWithoutServicesInput, ServiceCategoryUncheckedCreateWithoutServicesInput>
@@ -26643,12 +27296,14 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: GalleryItemUpdateOneWithoutServiceCategoryImagesNestedInput
   }
 
   export type ServiceCategoryUncheckedUpdateWithoutServicesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -26697,6 +27352,8 @@ export namespace Prisma {
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutTeamFeaturedImagesInput = {
@@ -26712,6 +27369,8 @@ export namespace Prisma {
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutTeamFeaturedImagesInput = {
@@ -26743,6 +27402,8 @@ export namespace Prisma {
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutTeamFeaturedImagesInput = {
@@ -26758,6 +27419,8 @@ export namespace Prisma {
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type ServiceCreateWithoutContactSubmissionsInput = {
@@ -26765,6 +27428,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    image?: GalleryItemCreateNestedOneWithoutServiceImagesInput
     category: ServiceCategoryCreateNestedOneWithoutServicesInput
   }
 
@@ -26772,6 +27436,7 @@ export namespace Prisma {
     id?: number
     title: string
     description?: string | null
+    image_id?: string | null
     categoryId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -26798,6 +27463,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: GalleryItemUpdateOneWithoutServiceImagesNestedInput
     category?: ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
   }
 
@@ -26805,6 +27471,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27125,6 +27792,23 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ServiceCategoryCreateManyImageInput = {
+    id?: number
+    name: string
+    slug: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ServiceCreateManyImageInput = {
+    id?: number
+    title: string
+    description?: string | null
+    categoryId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type UserUpdateWithoutAvatarInput = {
     username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -27337,6 +28021,59 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ServiceCategoryUpdateWithoutImageInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    services?: ServiceUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type ServiceCategoryUncheckedUpdateWithoutImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    services?: ServiceUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type ServiceCategoryUncheckedUpdateManyWithoutImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceUpdateWithoutImageInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: ServiceCategoryUpdateOneRequiredWithoutServicesNestedInput
+    contactSubmissions?: ContactUsUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceUncheckedUpdateWithoutImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    contactSubmissions?: ContactUsUncheckedUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceUncheckedUpdateManyWithoutImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BlogCreateManyAuthorInput = {
     blog_id?: number
     title: string
@@ -27541,6 +28278,7 @@ export namespace Prisma {
     id?: number
     title: string
     description?: string | null
+    image_id?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -27550,6 +28288,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: GalleryItemUpdateOneWithoutServiceImagesNestedInput
     contactSubmissions?: ContactUsUpdateManyWithoutServiceNestedInput
   }
 
@@ -27557,6 +28296,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     contactSubmissions?: ContactUsUncheckedUpdateManyWithoutServiceNestedInput
@@ -27566,6 +28306,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

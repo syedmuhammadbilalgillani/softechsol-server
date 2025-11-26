@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import logger from "@/utils/logger";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -41,6 +42,21 @@ const ServiceCategoryComponent = ({
         {
           label: "Slug",
           key: "slug",
+        },
+        {
+          label: "Image",
+          key: "image",
+          render: (row: any) => (
+            <Image
+              src={row?.image?.url || "/logo.svg"}
+              alt={row?.image?.altText || "Service Category Image"}
+              width={50}
+              height={50}
+              onError={(e) => {
+                e.currentTarget.src = "/logo.svg";
+              }}
+            />
+          ),
         },
         {
           label: "Actions",

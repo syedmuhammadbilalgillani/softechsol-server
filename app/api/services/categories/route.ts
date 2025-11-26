@@ -6,16 +6,27 @@ import { revalidateTag } from "@/lib/revalidate";
 // CREATE Category
 export async function POST(req: Request) {
   try {
-    const { name, slug } = await req.json();
+    const { name, slug, image } = await req.json();
+
+    logger.info(name, "name");
+    logger.info(slug, "slug");
+    logger.info(image, "image");
 
     const category = await prisma.serviceCategory.create({
-      data: { name, slug },
+      data: {
+        name,
+        slug,
+        image: {
+          connect: { id: image },
+        },
+      },
     });
 
     await revalidateTag("categories-with-services");
 
     return NextResponse.json(category);
   } catch (error) {
+    logger.info(error, "error");
     return NextResponse.json(
       { error: "Failed to create category" },
       { status: 500 }
@@ -26,11 +37,17 @@ export async function POST(req: Request) {
 // UPDATE Category
 export async function PUT(req: Request) {
   try {
-    const { id, name, slug } = await req.json();
+    const { id, name, slug, image } = await req.json();
 
     const category = await prisma.serviceCategory.update({
       where: { id },
-      data: { name, slug },
+      data: {
+        name,
+        slug,
+        image: {
+          connect: { id: image },
+        },
+      },
     });
     await revalidateTag("categories-with-services");
 
@@ -78,9 +95,9 @@ export async function DELETE(req: Request) {
 
     if (linkedServices > 0) {
       return NextResponse.json(
-        { 
+        {
           error: "Cannot delete category",
-          message: `This category is linked to ${linkedServices} service(s). Please remove or reassign the services before deleting the category.`
+          message: `This category is linked to ${linkedServices} service(s). Please remove or reassign the services before deleting the category.`,
         },
         { status: 409 } // Conflict status code
       );
@@ -100,9 +117,10 @@ export async function DELETE(req: Request) {
     // Handle Prisma foreign key constraint error
     if (error.code === "P2003") {
       return NextResponse.json(
-        { 
+        {
           error: "Cannot delete category",
-          message: "This category is linked to one or more services. Please remove or reassign the services first."
+          message:
+            "This category is linked to one or more services. Please remove or reassign the services first.",
         },
         { status: 409 }
       );
@@ -118,7 +136,10 @@ export async function DELETE(req: Request) {
 
     // Handle other errors
     return NextResponse.json(
-      { error: "Failed to delete category", message: error.message || "An unexpected error occurred" },
+      {
+        error: "Failed to delete category",
+        message: error.message || "An unexpected error occurred",
+      },
       { status: 500 }
     );
   }

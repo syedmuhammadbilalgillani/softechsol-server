@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { DynamicForm } from "@/components/dynamic-form"; // adjust path if different
+import { DynamicForm, FieldConfig } from "@/components/dynamic-form"; // adjust path if different
 import { Button } from "@/components/ui/button";
 import logger from "@/utils/logger";
 import {
@@ -18,10 +18,18 @@ import { PencilIcon, PlusIcon } from "lucide-react";
 export interface ServiceCategoryFormValues {
   name: string;
   slug: string;
+  image: string;
 }
 
-export interface ServiceCategoryInitialData extends ServiceCategoryFormValues {
+export interface ServiceCategoryInitialData {
   id: string;
+  name: string;
+  slug: string;
+  image: {
+    id: string;
+    url?: string;
+    altText?: string;
+  };
 }
 
 interface ServiceCategoryFormProps {
@@ -29,7 +37,7 @@ interface ServiceCategoryFormProps {
   onSuccess?: (data: any) => void;
 }
 
-const serviceCategoryFields = [
+const serviceCategoryFields: FieldConfig[] = [
   {
     name: "name",
     label: "Category Name",
@@ -47,6 +55,14 @@ const serviceCategoryFields = [
     placeholder: "category-slug",
     className: "col-span-2",
   },
+  {
+    name: "image",
+    label: "Image",
+    type: "media",
+    required: true,
+    placeholder: "Select image",
+    className: "col-span-2",
+  },
 ];
 
 export const ServiceCategoryForm: React.FC<ServiceCategoryFormProps> = ({
@@ -61,6 +77,7 @@ export const ServiceCategoryForm: React.FC<ServiceCategoryFormProps> = ({
   const defaultValues: ServiceCategoryFormValues = {
     name: initialData?.name ?? "",
     slug: initialData?.slug ?? "",
+    image: initialData?.image?.id ?? "",
   };
 
   const handleSubmit = async (values: ServiceCategoryFormValues) => {
@@ -75,7 +92,7 @@ export const ServiceCategoryForm: React.FC<ServiceCategoryFormProps> = ({
           isUpdateMode ? { id: initialData?.id, ...values } : { ...values }
         ),
       });
-
+      logger.info(res, "res");
       const data = await res.json();
 
       if (!res.ok) {
@@ -88,7 +105,7 @@ export const ServiceCategoryForm: React.FC<ServiceCategoryFormProps> = ({
       toast.success("Category saved successfully");
       setIsOpen(false);
     } catch (error) {
-      logger.error(error);
+      logger.info(error, "error");
     }
   };
 

@@ -32,12 +32,14 @@ model GalleryItem {
   updatedAt   DateTime @updatedAt
 
   // Relations to all models using images
-  userAvatars           User[]         @relation("UserAvatar")
-  blogFeaturedImages    Blog[]         @relation("BlogFeaturedImage")
-  blogOgImages          Blog[]         @relation("BlogOgImage")
-  companyFeaturedImages MyCompanies[]  @relation("CompanyFeaturedImage")
+  userAvatars           User[]            @relation("UserAvatar")
+  blogFeaturedImages    Blog[]            @relation("BlogFeaturedImage")
+  blogOgImages          Blog[]            @relation("BlogOgImage")
+  companyFeaturedImages MyCompanies[]     @relation("CompanyFeaturedImage")
   projectImages         ProjectImage[]
-  teamFeaturedImages    Team[]         @relation("TeamFeaturedImage")
+  teamFeaturedImages    Team[]            @relation("TeamFeaturedImage")
+  serviceCategoryImages ServiceCategory[] @relation("ServiceCategoryImage")
+  serviceImages         Service[]         @relation("ServiceImage")
 
   @@index([publicId])
   @@index([url])
@@ -183,9 +185,11 @@ model ProjectImage {
 }
 
 model ServiceCategory {
-  id       Int       @id @default(autoincrement())
+  id       Int          @id @default(autoincrement())
   name     String
-  slug     String    @unique
+  slug     String       @unique
+  image    GalleryItem? @relation("ServiceCategoryImage", fields: [image_id], references: [id], onDelete: SetNull)
+  image_id String?
   services Service[]
 
   createdAt DateTime @default(now())
@@ -196,6 +200,8 @@ model Service {
   id                 Int             @id @default(autoincrement())
   title              String
   description        String?
+  image              GalleryItem?    @relation("ServiceImage", fields: [image_id], references: [id], onDelete: SetNull)
+  image_id           String?
   categoryId         Int
   category           ServiceCategory @relation(fields: [categoryId], references: [id])
   createdAt          DateTime        @default(now())

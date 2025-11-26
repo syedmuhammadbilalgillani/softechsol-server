@@ -8,7 +8,11 @@ import ServiceCategoryComponent from "./service-category-component";
 export const dynamic = "force-dynamic";
 
 const ServiceCategoryPage = async () => {
-  const categories = await prisma.serviceCategory.findMany();
+  const categories = await prisma.serviceCategory.findMany({
+    include: {
+      image: true,
+    },
+  });
   logger.info(categories);
   return (
     <>
