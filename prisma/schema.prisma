@@ -40,6 +40,7 @@ model GalleryItem {
   teamFeaturedImages         Team[]             @relation("TeamFeaturedImage")
   serviceCategoryImages      ServiceCategory[]  @relation("ServiceCategoryImage")
   serviceImages              Service[]          @relation("ServiceImage")
+  podcastImages              Podcast[]          @relation("PodcastImage")
   
   @@index([publicId])
   @@index([url])
@@ -303,4 +304,24 @@ model Job {
   @@index([is_featured])
   @@index([job_type])
   @@index([location])
+}
+// Podcast model for listing podcast cards
+model Podcast {
+  id              Int          @id @default(autoincrement())
+  title           String
+  description     String?      @db.Text
+  url             String       // Podcast URL (external link)
+  image           GalleryItem? @relation("PodcastImage", fields: [image_id], references: [id], onDelete: SetNull)
+  image_id        String?
+  status          Status       @default(DRAFT)
+  is_featured     Boolean      @default(false)
+  publish_date    DateTime?
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @updatedAt
+
+  
+  @@index([status])
+  @@index([publish_date])
+  @@index([is_featured])
+  @@index([image_id])
 }

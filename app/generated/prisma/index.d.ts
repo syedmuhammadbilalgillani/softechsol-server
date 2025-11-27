@@ -88,6 +88,11 @@ export type JobCategoryRelation = $Result.DefaultSelection<Prisma.$JobCategoryRe
  * 
  */
 export type Job = $Result.DefaultSelection<Prisma.$JobPayload>
+/**
+ * Model Podcast
+ * 
+ */
+export type Podcast = $Result.DefaultSelection<Prisma.$PodcastPayload>
 
 /**
  * Enums
@@ -387,6 +392,16 @@ export class PrismaClient<
     * ```
     */
   get job(): Prisma.JobDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.podcast`: Exposes CRUD operations for the **Podcast** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Podcasts
+    * const podcasts = await prisma.podcast.findMany()
+    * ```
+    */
+  get podcast(): Prisma.PodcastDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -842,7 +857,8 @@ export namespace Prisma {
     ContactUs: 'ContactUs',
     JobCategory: 'JobCategory',
     JobCategoryRelation: 'JobCategoryRelation',
-    Job: 'Job'
+    Job: 'Job',
+    Podcast: 'Podcast'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -861,7 +877,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "project" | "projectImage" | "serviceCategory" | "service" | "team" | "contactUs" | "jobCategory" | "jobCategoryRelation" | "job"
+      modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "project" | "projectImage" | "serviceCategory" | "service" | "team" | "contactUs" | "jobCategory" | "jobCategoryRelation" | "job" | "podcast"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1975,6 +1991,80 @@ export namespace Prisma {
           }
         }
       }
+      Podcast: {
+        payload: Prisma.$PodcastPayload<ExtArgs>
+        fields: Prisma.PodcastFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PodcastFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PodcastFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>
+          }
+          findFirst: {
+            args: Prisma.PodcastFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PodcastFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>
+          }
+          findMany: {
+            args: Prisma.PodcastFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>[]
+          }
+          create: {
+            args: Prisma.PodcastCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>
+          }
+          createMany: {
+            args: Prisma.PodcastCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PodcastCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>[]
+          }
+          delete: {
+            args: Prisma.PodcastDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>
+          }
+          update: {
+            args: Prisma.PodcastUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>
+          }
+          deleteMany: {
+            args: Prisma.PodcastDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PodcastUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PodcastUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>[]
+          }
+          upsert: {
+            args: Prisma.PodcastUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PodcastPayload>
+          }
+          aggregate: {
+            args: Prisma.PodcastAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePodcast>
+          }
+          groupBy: {
+            args: Prisma.PodcastGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PodcastGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PodcastCountArgs<ExtArgs>
+            result: $Utils.Optional<PodcastCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2086,6 +2176,7 @@ export namespace Prisma {
     jobCategory?: JobCategoryOmit
     jobCategoryRelation?: JobCategoryRelationOmit
     job?: JobOmit
+    podcast?: PodcastOmit
   }
 
   /* Types for Logging */
@@ -2174,6 +2265,7 @@ export namespace Prisma {
     teamFeaturedImages: number
     serviceCategoryImages: number
     serviceImages: number
+    podcastImages: number
   }
 
   export type GalleryItemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2185,6 +2277,7 @@ export namespace Prisma {
     teamFeaturedImages?: boolean | GalleryItemCountOutputTypeCountTeamFeaturedImagesArgs
     serviceCategoryImages?: boolean | GalleryItemCountOutputTypeCountServiceCategoryImagesArgs
     serviceImages?: boolean | GalleryItemCountOutputTypeCountServiceImagesArgs
+    podcastImages?: boolean | GalleryItemCountOutputTypeCountPodcastImagesArgs
   }
 
   // Custom InputTypes
@@ -2252,6 +2345,13 @@ export namespace Prisma {
    */
   export type GalleryItemCountOutputTypeCountServiceImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ServiceWhereInput
+  }
+
+  /**
+   * GalleryItemCountOutputType without action
+   */
+  export type GalleryItemCountOutputTypeCountPodcastImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PodcastWhereInput
   }
 
 
@@ -2704,6 +2804,7 @@ export namespace Prisma {
     teamFeaturedImages?: boolean | GalleryItem$teamFeaturedImagesArgs<ExtArgs>
     serviceCategoryImages?: boolean | GalleryItem$serviceCategoryImagesArgs<ExtArgs>
     serviceImages?: boolean | GalleryItem$serviceImagesArgs<ExtArgs>
+    podcastImages?: boolean | GalleryItem$podcastImagesArgs<ExtArgs>
     _count?: boolean | GalleryItemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["galleryItem"]>
 
@@ -2747,6 +2848,7 @@ export namespace Prisma {
     teamFeaturedImages?: boolean | GalleryItem$teamFeaturedImagesArgs<ExtArgs>
     serviceCategoryImages?: boolean | GalleryItem$serviceCategoryImagesArgs<ExtArgs>
     serviceImages?: boolean | GalleryItem$serviceImagesArgs<ExtArgs>
+    podcastImages?: boolean | GalleryItem$podcastImagesArgs<ExtArgs>
     _count?: boolean | GalleryItemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GalleryItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2763,6 +2865,7 @@ export namespace Prisma {
       teamFeaturedImages: Prisma.$TeamPayload<ExtArgs>[]
       serviceCategoryImages: Prisma.$ServiceCategoryPayload<ExtArgs>[]
       serviceImages: Prisma.$ServicePayload<ExtArgs>[]
+      podcastImages: Prisma.$PodcastPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3174,6 +3277,7 @@ export namespace Prisma {
     teamFeaturedImages<T extends GalleryItem$teamFeaturedImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$teamFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     serviceCategoryImages<T extends GalleryItem$serviceCategoryImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$serviceCategoryImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     serviceImages<T extends GalleryItem$serviceImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$serviceImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    podcastImages<T extends GalleryItem$podcastImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$podcastImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3787,6 +3891,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
+  }
+
+  /**
+   * GalleryItem.podcastImages
+   */
+  export type GalleryItem$podcastImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    where?: PodcastWhereInput
+    orderBy?: PodcastOrderByWithRelationInput | PodcastOrderByWithRelationInput[]
+    cursor?: PodcastWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PodcastScalarFieldEnum | PodcastScalarFieldEnum[]
   }
 
   /**
@@ -20298,6 +20426,1182 @@ export namespace Prisma {
 
 
   /**
+   * Model Podcast
+   */
+
+  export type AggregatePodcast = {
+    _count: PodcastCountAggregateOutputType | null
+    _avg: PodcastAvgAggregateOutputType | null
+    _sum: PodcastSumAggregateOutputType | null
+    _min: PodcastMinAggregateOutputType | null
+    _max: PodcastMaxAggregateOutputType | null
+  }
+
+  export type PodcastAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type PodcastSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type PodcastMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    url: string | null
+    image_id: string | null
+    status: $Enums.Status | null
+    is_featured: boolean | null
+    publish_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type PodcastMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    description: string | null
+    url: string | null
+    image_id: string | null
+    status: $Enums.Status | null
+    is_featured: boolean | null
+    publish_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type PodcastCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    url: number
+    image_id: number
+    status: number
+    is_featured: number
+    publish_date: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type PodcastAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type PodcastSumAggregateInputType = {
+    id?: true
+  }
+
+  export type PodcastMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    url?: true
+    image_id?: true
+    status?: true
+    is_featured?: true
+    publish_date?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type PodcastMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    url?: true
+    image_id?: true
+    status?: true
+    is_featured?: true
+    publish_date?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type PodcastCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    url?: true
+    image_id?: true
+    status?: true
+    is_featured?: true
+    publish_date?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type PodcastAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Podcast to aggregate.
+     */
+    where?: PodcastWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Podcasts to fetch.
+     */
+    orderBy?: PodcastOrderByWithRelationInput | PodcastOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PodcastWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Podcasts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Podcasts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Podcasts
+    **/
+    _count?: true | PodcastCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PodcastAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PodcastSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PodcastMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PodcastMaxAggregateInputType
+  }
+
+  export type GetPodcastAggregateType<T extends PodcastAggregateArgs> = {
+        [P in keyof T & keyof AggregatePodcast]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePodcast[P]>
+      : GetScalarType<T[P], AggregatePodcast[P]>
+  }
+
+
+
+
+  export type PodcastGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PodcastWhereInput
+    orderBy?: PodcastOrderByWithAggregationInput | PodcastOrderByWithAggregationInput[]
+    by: PodcastScalarFieldEnum[] | PodcastScalarFieldEnum
+    having?: PodcastScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PodcastCountAggregateInputType | true
+    _avg?: PodcastAvgAggregateInputType
+    _sum?: PodcastSumAggregateInputType
+    _min?: PodcastMinAggregateInputType
+    _max?: PodcastMaxAggregateInputType
+  }
+
+  export type PodcastGroupByOutputType = {
+    id: number
+    title: string
+    description: string | null
+    url: string
+    image_id: string | null
+    status: $Enums.Status
+    is_featured: boolean
+    publish_date: Date | null
+    created_at: Date
+    updated_at: Date
+    _count: PodcastCountAggregateOutputType | null
+    _avg: PodcastAvgAggregateOutputType | null
+    _sum: PodcastSumAggregateOutputType | null
+    _min: PodcastMinAggregateOutputType | null
+    _max: PodcastMaxAggregateOutputType | null
+  }
+
+  type GetPodcastGroupByPayload<T extends PodcastGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PodcastGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PodcastGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PodcastGroupByOutputType[P]>
+            : GetScalarType<T[P], PodcastGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PodcastSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    url?: boolean
+    image_id?: boolean
+    status?: boolean
+    is_featured?: boolean
+    publish_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    image?: boolean | Podcast$imageArgs<ExtArgs>
+  }, ExtArgs["result"]["podcast"]>
+
+  export type PodcastSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    url?: boolean
+    image_id?: boolean
+    status?: boolean
+    is_featured?: boolean
+    publish_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    image?: boolean | Podcast$imageArgs<ExtArgs>
+  }, ExtArgs["result"]["podcast"]>
+
+  export type PodcastSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    url?: boolean
+    image_id?: boolean
+    status?: boolean
+    is_featured?: boolean
+    publish_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    image?: boolean | Podcast$imageArgs<ExtArgs>
+  }, ExtArgs["result"]["podcast"]>
+
+  export type PodcastSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    url?: boolean
+    image_id?: boolean
+    status?: boolean
+    is_featured?: boolean
+    publish_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type PodcastOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "url" | "image_id" | "status" | "is_featured" | "publish_date" | "created_at" | "updated_at", ExtArgs["result"]["podcast"]>
+  export type PodcastInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Podcast$imageArgs<ExtArgs>
+  }
+  export type PodcastIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Podcast$imageArgs<ExtArgs>
+  }
+  export type PodcastIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Podcast$imageArgs<ExtArgs>
+  }
+
+  export type $PodcastPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Podcast"
+    objects: {
+      image: Prisma.$GalleryItemPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      description: string | null
+      url: string
+      image_id: string | null
+      status: $Enums.Status
+      is_featured: boolean
+      publish_date: Date | null
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["podcast"]>
+    composites: {}
+  }
+
+  type PodcastGetPayload<S extends boolean | null | undefined | PodcastDefaultArgs> = $Result.GetResult<Prisma.$PodcastPayload, S>
+
+  type PodcastCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PodcastFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PodcastCountAggregateInputType | true
+    }
+
+  export interface PodcastDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Podcast'], meta: { name: 'Podcast' } }
+    /**
+     * Find zero or one Podcast that matches the filter.
+     * @param {PodcastFindUniqueArgs} args - Arguments to find a Podcast
+     * @example
+     * // Get one Podcast
+     * const podcast = await prisma.podcast.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PodcastFindUniqueArgs>(args: SelectSubset<T, PodcastFindUniqueArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Podcast that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PodcastFindUniqueOrThrowArgs} args - Arguments to find a Podcast
+     * @example
+     * // Get one Podcast
+     * const podcast = await prisma.podcast.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PodcastFindUniqueOrThrowArgs>(args: SelectSubset<T, PodcastFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Podcast that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PodcastFindFirstArgs} args - Arguments to find a Podcast
+     * @example
+     * // Get one Podcast
+     * const podcast = await prisma.podcast.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PodcastFindFirstArgs>(args?: SelectSubset<T, PodcastFindFirstArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Podcast that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PodcastFindFirstOrThrowArgs} args - Arguments to find a Podcast
+     * @example
+     * // Get one Podcast
+     * const podcast = await prisma.podcast.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PodcastFindFirstOrThrowArgs>(args?: SelectSubset<T, PodcastFindFirstOrThrowArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Podcasts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PodcastFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Podcasts
+     * const podcasts = await prisma.podcast.findMany()
+     * 
+     * // Get first 10 Podcasts
+     * const podcasts = await prisma.podcast.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const podcastWithIdOnly = await prisma.podcast.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PodcastFindManyArgs>(args?: SelectSubset<T, PodcastFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Podcast.
+     * @param {PodcastCreateArgs} args - Arguments to create a Podcast.
+     * @example
+     * // Create one Podcast
+     * const Podcast = await prisma.podcast.create({
+     *   data: {
+     *     // ... data to create a Podcast
+     *   }
+     * })
+     * 
+     */
+    create<T extends PodcastCreateArgs>(args: SelectSubset<T, PodcastCreateArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Podcasts.
+     * @param {PodcastCreateManyArgs} args - Arguments to create many Podcasts.
+     * @example
+     * // Create many Podcasts
+     * const podcast = await prisma.podcast.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PodcastCreateManyArgs>(args?: SelectSubset<T, PodcastCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Podcasts and returns the data saved in the database.
+     * @param {PodcastCreateManyAndReturnArgs} args - Arguments to create many Podcasts.
+     * @example
+     * // Create many Podcasts
+     * const podcast = await prisma.podcast.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Podcasts and only return the `id`
+     * const podcastWithIdOnly = await prisma.podcast.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PodcastCreateManyAndReturnArgs>(args?: SelectSubset<T, PodcastCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Podcast.
+     * @param {PodcastDeleteArgs} args - Arguments to delete one Podcast.
+     * @example
+     * // Delete one Podcast
+     * const Podcast = await prisma.podcast.delete({
+     *   where: {
+     *     // ... filter to delete one Podcast
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PodcastDeleteArgs>(args: SelectSubset<T, PodcastDeleteArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Podcast.
+     * @param {PodcastUpdateArgs} args - Arguments to update one Podcast.
+     * @example
+     * // Update one Podcast
+     * const podcast = await prisma.podcast.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PodcastUpdateArgs>(args: SelectSubset<T, PodcastUpdateArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Podcasts.
+     * @param {PodcastDeleteManyArgs} args - Arguments to filter Podcasts to delete.
+     * @example
+     * // Delete a few Podcasts
+     * const { count } = await prisma.podcast.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PodcastDeleteManyArgs>(args?: SelectSubset<T, PodcastDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Podcasts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PodcastUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Podcasts
+     * const podcast = await prisma.podcast.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PodcastUpdateManyArgs>(args: SelectSubset<T, PodcastUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Podcasts and returns the data updated in the database.
+     * @param {PodcastUpdateManyAndReturnArgs} args - Arguments to update many Podcasts.
+     * @example
+     * // Update many Podcasts
+     * const podcast = await prisma.podcast.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Podcasts and only return the `id`
+     * const podcastWithIdOnly = await prisma.podcast.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PodcastUpdateManyAndReturnArgs>(args: SelectSubset<T, PodcastUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Podcast.
+     * @param {PodcastUpsertArgs} args - Arguments to update or create a Podcast.
+     * @example
+     * // Update or create a Podcast
+     * const podcast = await prisma.podcast.upsert({
+     *   create: {
+     *     // ... data to create a Podcast
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Podcast we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PodcastUpsertArgs>(args: SelectSubset<T, PodcastUpsertArgs<ExtArgs>>): Prisma__PodcastClient<$Result.GetResult<Prisma.$PodcastPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Podcasts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PodcastCountArgs} args - Arguments to filter Podcasts to count.
+     * @example
+     * // Count the number of Podcasts
+     * const count = await prisma.podcast.count({
+     *   where: {
+     *     // ... the filter for the Podcasts we want to count
+     *   }
+     * })
+    **/
+    count<T extends PodcastCountArgs>(
+      args?: Subset<T, PodcastCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PodcastCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Podcast.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PodcastAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PodcastAggregateArgs>(args: Subset<T, PodcastAggregateArgs>): Prisma.PrismaPromise<GetPodcastAggregateType<T>>
+
+    /**
+     * Group by Podcast.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PodcastGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PodcastGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PodcastGroupByArgs['orderBy'] }
+        : { orderBy?: PodcastGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PodcastGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPodcastGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Podcast model
+   */
+  readonly fields: PodcastFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Podcast.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PodcastClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    image<T extends Podcast$imageArgs<ExtArgs> = {}>(args?: Subset<T, Podcast$imageArgs<ExtArgs>>): Prisma__GalleryItemClient<$Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Podcast model
+   */
+  interface PodcastFieldRefs {
+    readonly id: FieldRef<"Podcast", 'Int'>
+    readonly title: FieldRef<"Podcast", 'String'>
+    readonly description: FieldRef<"Podcast", 'String'>
+    readonly url: FieldRef<"Podcast", 'String'>
+    readonly image_id: FieldRef<"Podcast", 'String'>
+    readonly status: FieldRef<"Podcast", 'Status'>
+    readonly is_featured: FieldRef<"Podcast", 'Boolean'>
+    readonly publish_date: FieldRef<"Podcast", 'DateTime'>
+    readonly created_at: FieldRef<"Podcast", 'DateTime'>
+    readonly updated_at: FieldRef<"Podcast", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Podcast findUnique
+   */
+  export type PodcastFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * Filter, which Podcast to fetch.
+     */
+    where: PodcastWhereUniqueInput
+  }
+
+  /**
+   * Podcast findUniqueOrThrow
+   */
+  export type PodcastFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * Filter, which Podcast to fetch.
+     */
+    where: PodcastWhereUniqueInput
+  }
+
+  /**
+   * Podcast findFirst
+   */
+  export type PodcastFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * Filter, which Podcast to fetch.
+     */
+    where?: PodcastWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Podcasts to fetch.
+     */
+    orderBy?: PodcastOrderByWithRelationInput | PodcastOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Podcasts.
+     */
+    cursor?: PodcastWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Podcasts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Podcasts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Podcasts.
+     */
+    distinct?: PodcastScalarFieldEnum | PodcastScalarFieldEnum[]
+  }
+
+  /**
+   * Podcast findFirstOrThrow
+   */
+  export type PodcastFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * Filter, which Podcast to fetch.
+     */
+    where?: PodcastWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Podcasts to fetch.
+     */
+    orderBy?: PodcastOrderByWithRelationInput | PodcastOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Podcasts.
+     */
+    cursor?: PodcastWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Podcasts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Podcasts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Podcasts.
+     */
+    distinct?: PodcastScalarFieldEnum | PodcastScalarFieldEnum[]
+  }
+
+  /**
+   * Podcast findMany
+   */
+  export type PodcastFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * Filter, which Podcasts to fetch.
+     */
+    where?: PodcastWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Podcasts to fetch.
+     */
+    orderBy?: PodcastOrderByWithRelationInput | PodcastOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Podcasts.
+     */
+    cursor?: PodcastWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Podcasts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Podcasts.
+     */
+    skip?: number
+    distinct?: PodcastScalarFieldEnum | PodcastScalarFieldEnum[]
+  }
+
+  /**
+   * Podcast create
+   */
+  export type PodcastCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Podcast.
+     */
+    data: XOR<PodcastCreateInput, PodcastUncheckedCreateInput>
+  }
+
+  /**
+   * Podcast createMany
+   */
+  export type PodcastCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Podcasts.
+     */
+    data: PodcastCreateManyInput | PodcastCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Podcast createManyAndReturn
+   */
+  export type PodcastCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * The data used to create many Podcasts.
+     */
+    data: PodcastCreateManyInput | PodcastCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Podcast update
+   */
+  export type PodcastUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Podcast.
+     */
+    data: XOR<PodcastUpdateInput, PodcastUncheckedUpdateInput>
+    /**
+     * Choose, which Podcast to update.
+     */
+    where: PodcastWhereUniqueInput
+  }
+
+  /**
+   * Podcast updateMany
+   */
+  export type PodcastUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Podcasts.
+     */
+    data: XOR<PodcastUpdateManyMutationInput, PodcastUncheckedUpdateManyInput>
+    /**
+     * Filter which Podcasts to update
+     */
+    where?: PodcastWhereInput
+    /**
+     * Limit how many Podcasts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Podcast updateManyAndReturn
+   */
+  export type PodcastUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * The data used to update Podcasts.
+     */
+    data: XOR<PodcastUpdateManyMutationInput, PodcastUncheckedUpdateManyInput>
+    /**
+     * Filter which Podcasts to update
+     */
+    where?: PodcastWhereInput
+    /**
+     * Limit how many Podcasts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Podcast upsert
+   */
+  export type PodcastUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Podcast to update in case it exists.
+     */
+    where: PodcastWhereUniqueInput
+    /**
+     * In case the Podcast found by the `where` argument doesn't exist, create a new Podcast with this data.
+     */
+    create: XOR<PodcastCreateInput, PodcastUncheckedCreateInput>
+    /**
+     * In case the Podcast was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PodcastUpdateInput, PodcastUncheckedUpdateInput>
+  }
+
+  /**
+   * Podcast delete
+   */
+  export type PodcastDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+    /**
+     * Filter which Podcast to delete.
+     */
+    where: PodcastWhereUniqueInput
+  }
+
+  /**
+   * Podcast deleteMany
+   */
+  export type PodcastDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Podcasts to delete
+     */
+    where?: PodcastWhereInput
+    /**
+     * Limit how many Podcasts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Podcast.image
+   */
+  export type Podcast$imageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GalleryItem
+     */
+    select?: GalleryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GalleryItem
+     */
+    omit?: GalleryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GalleryItemInclude<ExtArgs> | null
+    where?: GalleryItemWhereInput
+  }
+
+  /**
+   * Podcast without action
+   */
+  export type PodcastDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Podcast
+     */
+    select?: PodcastSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Podcast
+     */
+    omit?: PodcastOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PodcastInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -20534,6 +21838,22 @@ export namespace Prisma {
   export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
 
 
+  export const PodcastScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    url: 'url',
+    image_id: 'image_id',
+    status: 'status',
+    is_featured: 'is_featured',
+    publish_date: 'publish_date',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type PodcastScalarFieldEnum = (typeof PodcastScalarFieldEnum)[keyof typeof PodcastScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -20676,6 +21996,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamListRelationFilter
     serviceCategoryImages?: ServiceCategoryListRelationFilter
     serviceImages?: ServiceListRelationFilter
+    podcastImages?: PodcastListRelationFilter
   }
 
   export type GalleryItemOrderByWithRelationInput = {
@@ -20694,6 +22015,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamOrderByRelationAggregateInput
     serviceCategoryImages?: ServiceCategoryOrderByRelationAggregateInput
     serviceImages?: ServiceOrderByRelationAggregateInput
+    podcastImages?: PodcastOrderByRelationAggregateInput
   }
 
   export type GalleryItemWhereUniqueInput = Prisma.AtLeast<{
@@ -20715,6 +22037,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamListRelationFilter
     serviceCategoryImages?: ServiceCategoryListRelationFilter
     serviceImages?: ServiceListRelationFilter
+    podcastImages?: PodcastListRelationFilter
   }, "id" | "publicId">
 
   export type GalleryItemOrderByWithAggregationInput = {
@@ -21860,6 +23183,88 @@ export namespace Prisma {
     meta_keywords?: StringNullableWithAggregatesFilter<"Job"> | string | null
   }
 
+  export type PodcastWhereInput = {
+    AND?: PodcastWhereInput | PodcastWhereInput[]
+    OR?: PodcastWhereInput[]
+    NOT?: PodcastWhereInput | PodcastWhereInput[]
+    id?: IntFilter<"Podcast"> | number
+    title?: StringFilter<"Podcast"> | string
+    description?: StringNullableFilter<"Podcast"> | string | null
+    url?: StringFilter<"Podcast"> | string
+    image_id?: StringNullableFilter<"Podcast"> | string | null
+    status?: EnumStatusFilter<"Podcast"> | $Enums.Status
+    is_featured?: BoolFilter<"Podcast"> | boolean
+    publish_date?: DateTimeNullableFilter<"Podcast"> | Date | string | null
+    created_at?: DateTimeFilter<"Podcast"> | Date | string
+    updated_at?: DateTimeFilter<"Podcast"> | Date | string
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
+  }
+
+  export type PodcastOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    url?: SortOrder
+    image_id?: SortOrderInput | SortOrder
+    status?: SortOrder
+    is_featured?: SortOrder
+    publish_date?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    image?: GalleryItemOrderByWithRelationInput
+  }
+
+  export type PodcastWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PodcastWhereInput | PodcastWhereInput[]
+    OR?: PodcastWhereInput[]
+    NOT?: PodcastWhereInput | PodcastWhereInput[]
+    title?: StringFilter<"Podcast"> | string
+    description?: StringNullableFilter<"Podcast"> | string | null
+    url?: StringFilter<"Podcast"> | string
+    image_id?: StringNullableFilter<"Podcast"> | string | null
+    status?: EnumStatusFilter<"Podcast"> | $Enums.Status
+    is_featured?: BoolFilter<"Podcast"> | boolean
+    publish_date?: DateTimeNullableFilter<"Podcast"> | Date | string | null
+    created_at?: DateTimeFilter<"Podcast"> | Date | string
+    updated_at?: DateTimeFilter<"Podcast"> | Date | string
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
+  }, "id">
+
+  export type PodcastOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    url?: SortOrder
+    image_id?: SortOrderInput | SortOrder
+    status?: SortOrder
+    is_featured?: SortOrder
+    publish_date?: SortOrderInput | SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: PodcastCountOrderByAggregateInput
+    _avg?: PodcastAvgOrderByAggregateInput
+    _max?: PodcastMaxOrderByAggregateInput
+    _min?: PodcastMinOrderByAggregateInput
+    _sum?: PodcastSumOrderByAggregateInput
+  }
+
+  export type PodcastScalarWhereWithAggregatesInput = {
+    AND?: PodcastScalarWhereWithAggregatesInput | PodcastScalarWhereWithAggregatesInput[]
+    OR?: PodcastScalarWhereWithAggregatesInput[]
+    NOT?: PodcastScalarWhereWithAggregatesInput | PodcastScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Podcast"> | number
+    title?: StringWithAggregatesFilter<"Podcast"> | string
+    description?: StringNullableWithAggregatesFilter<"Podcast"> | string | null
+    url?: StringWithAggregatesFilter<"Podcast"> | string
+    image_id?: StringNullableWithAggregatesFilter<"Podcast"> | string | null
+    status?: EnumStatusWithAggregatesFilter<"Podcast"> | $Enums.Status
+    is_featured?: BoolWithAggregatesFilter<"Podcast"> | boolean
+    publish_date?: DateTimeNullableWithAggregatesFilter<"Podcast"> | Date | string | null
+    created_at?: DateTimeWithAggregatesFilter<"Podcast"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Podcast"> | Date | string
+  }
+
   export type GalleryItemCreateInput = {
     id?: string
     url: string
@@ -21876,6 +23281,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateInput = {
@@ -21894,6 +23300,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUpdateInput = {
@@ -21912,6 +23319,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateInput = {
@@ -21930,6 +23338,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemCreateManyInput = {
@@ -23125,6 +24534,93 @@ export namespace Prisma {
     meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type PodcastCreateInput = {
+    title: string
+    description?: string | null
+    url: string
+    status?: $Enums.Status
+    is_featured?: boolean
+    publish_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+    image?: GalleryItemCreateNestedOneWithoutPodcastImagesInput
+  }
+
+  export type PodcastUncheckedCreateInput = {
+    id?: number
+    title: string
+    description?: string | null
+    url: string
+    image_id?: string | null
+    status?: $Enums.Status
+    is_featured?: boolean
+    publish_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PodcastUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_featured?: BoolFieldUpdateOperationsInput | boolean
+    publish_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: GalleryItemUpdateOneWithoutPodcastImagesNestedInput
+  }
+
+  export type PodcastUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_featured?: BoolFieldUpdateOperationsInput | boolean
+    publish_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PodcastCreateManyInput = {
+    id?: number
+    title: string
+    description?: string | null
+    url: string
+    image_id?: string | null
+    status?: $Enums.Status
+    is_featured?: boolean
+    publish_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PodcastUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_featured?: BoolFieldUpdateOperationsInput | boolean
+    publish_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PodcastUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_featured?: BoolFieldUpdateOperationsInput | boolean
+    publish_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -23208,6 +24704,12 @@ export namespace Prisma {
     none?: ServiceWhereInput
   }
 
+  export type PodcastListRelationFilter = {
+    every?: PodcastWhereInput
+    some?: PodcastWhereInput
+    none?: PodcastWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -23238,6 +24740,10 @@ export namespace Prisma {
   }
 
   export type ServiceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PodcastOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -24193,6 +25699,53 @@ export namespace Prisma {
     salary_max?: SortOrder
   }
 
+  export type PodcastCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    url?: SortOrder
+    image_id?: SortOrder
+    status?: SortOrder
+    is_featured?: SortOrder
+    publish_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PodcastAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type PodcastMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    url?: SortOrder
+    image_id?: SortOrder
+    status?: SortOrder
+    is_featured?: SortOrder
+    publish_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PodcastMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    url?: SortOrder
+    image_id?: SortOrder
+    status?: SortOrder
+    is_featured?: SortOrder
+    publish_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type PodcastSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type UserCreateNestedManyWithoutAvatarInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput> | UserCreateWithoutAvatarInput[] | UserUncheckedCreateWithoutAvatarInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput | UserCreateOrConnectWithoutAvatarInput[]
@@ -24249,6 +25802,13 @@ export namespace Prisma {
     connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
   }
 
+  export type PodcastCreateNestedManyWithoutImageInput = {
+    create?: XOR<PodcastCreateWithoutImageInput, PodcastUncheckedCreateWithoutImageInput> | PodcastCreateWithoutImageInput[] | PodcastUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: PodcastCreateOrConnectWithoutImageInput | PodcastCreateOrConnectWithoutImageInput[]
+    createMany?: PodcastCreateManyImageInputEnvelope
+    connect?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutAvatarInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput> | UserCreateWithoutAvatarInput[] | UserUncheckedCreateWithoutAvatarInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput | UserCreateOrConnectWithoutAvatarInput[]
@@ -24303,6 +25863,13 @@ export namespace Prisma {
     connectOrCreate?: ServiceCreateOrConnectWithoutImageInput | ServiceCreateOrConnectWithoutImageInput[]
     createMany?: ServiceCreateManyImageInputEnvelope
     connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+  }
+
+  export type PodcastUncheckedCreateNestedManyWithoutImageInput = {
+    create?: XOR<PodcastCreateWithoutImageInput, PodcastUncheckedCreateWithoutImageInput> | PodcastCreateWithoutImageInput[] | PodcastUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: PodcastCreateOrConnectWithoutImageInput | PodcastCreateOrConnectWithoutImageInput[]
+    createMany?: PodcastCreateManyImageInputEnvelope
+    connect?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -24429,6 +25996,20 @@ export namespace Prisma {
     deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
   }
 
+  export type PodcastUpdateManyWithoutImageNestedInput = {
+    create?: XOR<PodcastCreateWithoutImageInput, PodcastUncheckedCreateWithoutImageInput> | PodcastCreateWithoutImageInput[] | PodcastUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: PodcastCreateOrConnectWithoutImageInput | PodcastCreateOrConnectWithoutImageInput[]
+    upsert?: PodcastUpsertWithWhereUniqueWithoutImageInput | PodcastUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: PodcastCreateManyImageInputEnvelope
+    set?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    disconnect?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    delete?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    connect?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    update?: PodcastUpdateWithWhereUniqueWithoutImageInput | PodcastUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: PodcastUpdateManyWithWhereWithoutImageInput | PodcastUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: PodcastScalarWhereInput | PodcastScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutAvatarNestedInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput> | UserCreateWithoutAvatarInput[] | UserUncheckedCreateWithoutAvatarInput[]
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput | UserCreateOrConnectWithoutAvatarInput[]
@@ -24539,6 +26120,20 @@ export namespace Prisma {
     update?: ServiceUpdateWithWhereUniqueWithoutImageInput | ServiceUpdateWithWhereUniqueWithoutImageInput[]
     updateMany?: ServiceUpdateManyWithWhereWithoutImageInput | ServiceUpdateManyWithWhereWithoutImageInput[]
     deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+  }
+
+  export type PodcastUncheckedUpdateManyWithoutImageNestedInput = {
+    create?: XOR<PodcastCreateWithoutImageInput, PodcastUncheckedCreateWithoutImageInput> | PodcastCreateWithoutImageInput[] | PodcastUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: PodcastCreateOrConnectWithoutImageInput | PodcastCreateOrConnectWithoutImageInput[]
+    upsert?: PodcastUpsertWithWhereUniqueWithoutImageInput | PodcastUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: PodcastCreateManyImageInputEnvelope
+    set?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    disconnect?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    delete?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    connect?: PodcastWhereUniqueInput | PodcastWhereUniqueInput[]
+    update?: PodcastUpdateWithWhereUniqueWithoutImageInput | PodcastUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: PodcastUpdateManyWithWhereWithoutImageInput | PodcastUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: PodcastScalarWhereInput | PodcastScalarWhereInput[]
   }
 
   export type GalleryItemCreateNestedOneWithoutUserAvatarsInput = {
@@ -25207,6 +26802,22 @@ export namespace Prisma {
     deleteMany?: JobCategoryRelationScalarWhereInput | JobCategoryRelationScalarWhereInput[]
   }
 
+  export type GalleryItemCreateNestedOneWithoutPodcastImagesInput = {
+    create?: XOR<GalleryItemCreateWithoutPodcastImagesInput, GalleryItemUncheckedCreateWithoutPodcastImagesInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutPodcastImagesInput
+    connect?: GalleryItemWhereUniqueInput
+  }
+
+  export type GalleryItemUpdateOneWithoutPodcastImagesNestedInput = {
+    create?: XOR<GalleryItemCreateWithoutPodcastImagesInput, GalleryItemUncheckedCreateWithoutPodcastImagesInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutPodcastImagesInput
+    upsert?: GalleryItemUpsertWithoutPodcastImagesInput
+    disconnect?: GalleryItemWhereInput | boolean
+    delete?: GalleryItemWhereInput | boolean
+    connect?: GalleryItemWhereUniqueInput
+    update?: XOR<XOR<GalleryItemUpdateToOneWithWhereWithoutPodcastImagesInput, GalleryItemUpdateWithoutPodcastImagesInput>, GalleryItemUncheckedUpdateWithoutPodcastImagesInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -25700,6 +27311,39 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PodcastCreateWithoutImageInput = {
+    title: string
+    description?: string | null
+    url: string
+    status?: $Enums.Status
+    is_featured?: boolean
+    publish_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PodcastUncheckedCreateWithoutImageInput = {
+    id?: number
+    title: string
+    description?: string | null
+    url: string
+    status?: $Enums.Status
+    is_featured?: boolean
+    publish_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type PodcastCreateOrConnectWithoutImageInput = {
+    where: PodcastWhereUniqueInput
+    create: XOR<PodcastCreateWithoutImageInput, PodcastUncheckedCreateWithoutImageInput>
+  }
+
+  export type PodcastCreateManyImageInputEnvelope = {
+    data: PodcastCreateManyImageInput | PodcastCreateManyImageInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithWhereUniqueWithoutAvatarInput = {
     where: UserWhereUniqueInput
     update: XOR<UserUpdateWithoutAvatarInput, UserUncheckedUpdateWithoutAvatarInput>
@@ -25925,6 +27569,38 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Service"> | Date | string
   }
 
+  export type PodcastUpsertWithWhereUniqueWithoutImageInput = {
+    where: PodcastWhereUniqueInput
+    update: XOR<PodcastUpdateWithoutImageInput, PodcastUncheckedUpdateWithoutImageInput>
+    create: XOR<PodcastCreateWithoutImageInput, PodcastUncheckedCreateWithoutImageInput>
+  }
+
+  export type PodcastUpdateWithWhereUniqueWithoutImageInput = {
+    where: PodcastWhereUniqueInput
+    data: XOR<PodcastUpdateWithoutImageInput, PodcastUncheckedUpdateWithoutImageInput>
+  }
+
+  export type PodcastUpdateManyWithWhereWithoutImageInput = {
+    where: PodcastScalarWhereInput
+    data: XOR<PodcastUpdateManyMutationInput, PodcastUncheckedUpdateManyWithoutImageInput>
+  }
+
+  export type PodcastScalarWhereInput = {
+    AND?: PodcastScalarWhereInput | PodcastScalarWhereInput[]
+    OR?: PodcastScalarWhereInput[]
+    NOT?: PodcastScalarWhereInput | PodcastScalarWhereInput[]
+    id?: IntFilter<"Podcast"> | number
+    title?: StringFilter<"Podcast"> | string
+    description?: StringNullableFilter<"Podcast"> | string | null
+    url?: StringFilter<"Podcast"> | string
+    image_id?: StringNullableFilter<"Podcast"> | string | null
+    status?: EnumStatusFilter<"Podcast"> | $Enums.Status
+    is_featured?: BoolFilter<"Podcast"> | boolean
+    publish_date?: DateTimeNullableFilter<"Podcast"> | Date | string | null
+    created_at?: DateTimeFilter<"Podcast"> | Date | string
+    updated_at?: DateTimeFilter<"Podcast"> | Date | string
+  }
+
   export type GalleryItemCreateWithoutUserAvatarsInput = {
     id?: string
     url: string
@@ -25940,6 +27616,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutUserAvatarsInput = {
@@ -25957,6 +27634,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutUserAvatarsInput = {
@@ -26037,6 +27715,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutUserAvatarsInput = {
@@ -26054,6 +27733,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type BlogUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -26285,6 +27965,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutCompanyFeaturedImagesInput = {
@@ -26302,6 +27983,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutCompanyFeaturedImagesInput = {
@@ -26335,6 +28017,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutCompanyFeaturedImagesInput = {
@@ -26352,6 +28035,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type BlogCreateWithoutCategoriesInput = {
@@ -26537,6 +28221,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutBlogFeaturedImagesInput = {
@@ -26554,6 +28239,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutBlogFeaturedImagesInput = {
@@ -26576,6 +28262,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutBlogOgImagesInput = {
@@ -26593,6 +28280,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutBlogOgImagesInput = {
@@ -26680,6 +28368,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutBlogFeaturedImagesInput = {
@@ -26697,6 +28386,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUpsertWithoutBlogOgImagesInput = {
@@ -26725,6 +28415,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutBlogOgImagesInput = {
@@ -26742,6 +28433,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type UserUpsertWithoutBlogsInput = {
@@ -26897,6 +28589,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutProjectImagesInput = {
@@ -26914,6 +28607,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutProjectImagesInput = {
@@ -26995,6 +28689,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutProjectImagesInput = {
@@ -27012,6 +28707,7 @@ export namespace Prisma {
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemCreateWithoutServiceCategoryImagesInput = {
@@ -27029,6 +28725,7 @@ export namespace Prisma {
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutServiceCategoryImagesInput = {
@@ -27046,6 +28743,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutServiceCategoryImagesInput = {
@@ -27108,6 +28806,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutServiceCategoryImagesInput = {
@@ -27125,6 +28824,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type ServiceUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -27158,6 +28858,7 @@ export namespace Prisma {
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutServiceImagesInput = {
@@ -27175,6 +28876,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutServiceImagesInput = {
@@ -27261,6 +28963,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutServiceImagesInput = {
@@ -27278,6 +28981,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type ServiceCategoryUpsertWithoutServicesInput = {
@@ -27354,6 +29058,7 @@ export namespace Prisma {
     projectImages?: ProjectImageCreateNestedManyWithoutImageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemUncheckedCreateWithoutTeamFeaturedImagesInput = {
@@ -27371,6 +29076,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+    podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
   export type GalleryItemCreateOrConnectWithoutTeamFeaturedImagesInput = {
@@ -27404,6 +29110,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
   export type GalleryItemUncheckedUpdateWithoutTeamFeaturedImagesInput = {
@@ -27421,6 +29128,7 @@ export namespace Prisma {
     projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+    podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
   }
 
   export type ServiceCreateWithoutContactSubmissionsInput = {
@@ -27722,6 +29430,94 @@ export namespace Prisma {
     data: XOR<JobCategoryRelationUpdateManyMutationInput, JobCategoryRelationUncheckedUpdateManyWithoutJobInput>
   }
 
+  export type GalleryItemCreateWithoutPodcastImagesInput = {
+    id?: string
+    url: string
+    altText: string
+    description?: string | null
+    publicId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAvatars?: UserCreateNestedManyWithoutAvatarInput
+    blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
+    blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
+    companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
+    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceCreateNestedManyWithoutImageInput
+  }
+
+  export type GalleryItemUncheckedCreateWithoutPodcastImagesInput = {
+    id?: string
+    url: string
+    altText: string
+    description?: string | null
+    publicId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userAvatars?: UserUncheckedCreateNestedManyWithoutAvatarInput
+    blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
+    blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
+    companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
+    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
+    serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
+    serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
+  }
+
+  export type GalleryItemCreateOrConnectWithoutPodcastImagesInput = {
+    where: GalleryItemWhereUniqueInput
+    create: XOR<GalleryItemCreateWithoutPodcastImagesInput, GalleryItemUncheckedCreateWithoutPodcastImagesInput>
+  }
+
+  export type GalleryItemUpsertWithoutPodcastImagesInput = {
+    update: XOR<GalleryItemUpdateWithoutPodcastImagesInput, GalleryItemUncheckedUpdateWithoutPodcastImagesInput>
+    create: XOR<GalleryItemCreateWithoutPodcastImagesInput, GalleryItemUncheckedCreateWithoutPodcastImagesInput>
+    where?: GalleryItemWhereInput
+  }
+
+  export type GalleryItemUpdateToOneWithWhereWithoutPodcastImagesInput = {
+    where?: GalleryItemWhereInput
+    data: XOR<GalleryItemUpdateWithoutPodcastImagesInput, GalleryItemUncheckedUpdateWithoutPodcastImagesInput>
+  }
+
+  export type GalleryItemUpdateWithoutPodcastImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    altText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAvatars?: UserUpdateManyWithoutAvatarNestedInput
+    blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
+    blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
+    companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
+    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUpdateManyWithoutImageNestedInput
+  }
+
+  export type GalleryItemUncheckedUpdateWithoutPodcastImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    altText?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userAvatars?: UserUncheckedUpdateManyWithoutAvatarNestedInput
+    blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
+    companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
+    serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
+    serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
+  }
+
   export type UserCreateManyAvatarInput = {
     user_id?: number
     username: string
@@ -27807,6 +29603,18 @@ export namespace Prisma {
     categoryId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type PodcastCreateManyImageInput = {
+    id?: number
+    title: string
+    description?: string | null
+    url: string
+    status?: $Enums.Status
+    is_featured?: boolean
+    publish_date?: Date | string | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserUpdateWithoutAvatarInput = {
@@ -28072,6 +29880,41 @@ export namespace Prisma {
     categoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PodcastUpdateWithoutImageInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_featured?: BoolFieldUpdateOperationsInput | boolean
+    publish_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PodcastUncheckedUpdateWithoutImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_featured?: BoolFieldUpdateOperationsInput | boolean
+    publish_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PodcastUncheckedUpdateManyWithoutImageInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    is_featured?: BoolFieldUpdateOperationsInput | boolean
+    publish_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BlogCreateManyAuthorInput = {

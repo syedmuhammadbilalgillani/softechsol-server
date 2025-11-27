@@ -7,6 +7,7 @@ import {
   Newspaper,
   Tag,
   Type,
+  Radio, // Add this import for podcast icon
 } from "lucide-react";
 
 export const navigation = [
@@ -47,6 +48,12 @@ export const navigation = [
         icon: Building2,
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
+      },
+      {
+        title: "Podcasts", // Add this
+        url: "/podcasts",
+        icon: Radio, // or use Headphones, Mic, etc.
+        isActive: false,
       },
       {
         title: "Projects",

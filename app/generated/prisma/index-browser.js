@@ -299,6 +299,19 @@ exports.Prisma.JobScalarFieldEnum = {
   meta_keywords: 'meta_keywords'
 };
 
+exports.Prisma.PodcastScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  url: 'url',
+  image_id: 'image_id',
+  status: 'status',
+  is_featured: 'is_featured',
+  publish_date: 'publish_date',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -340,7 +353,8 @@ exports.Prisma.ModelName = {
   ContactUs: 'ContactUs',
   JobCategory: 'JobCategory',
   JobCategoryRelation: 'JobCategoryRelation',
-  Job: 'Job'
+  Job: 'Job',
+  Podcast: 'Podcast'
 };
 
 /**
