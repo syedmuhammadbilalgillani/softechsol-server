@@ -8,9 +8,9 @@ import {
   Tag,
   Type,
   Radio,
-  Layers, // For Service Categories
-  Wrench, // For Services
-  Users, // For Teams
+  Layers,
+  Wrench,
+  Users,
 } from "lucide-react";
 
 export const navigation = [

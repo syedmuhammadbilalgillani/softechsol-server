@@ -2,6 +2,7 @@
 
 import { Blog } from "@/app/generated/prisma/client";
 import DataTable from "@/components/data-table";
+import BlogForm from "@/components/forms/blog-form";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import axios from "axios";
@@ -10,9 +11,10 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
 
-const BlogPageComponent = ({ blogs }: { blogs: Blog[] }) => {
+const BlogPageComponent = ({ blogs, categories }: { blogs: Blog[]; categories: any[] }) => {
   const [loading, setloading] = useState(false);
   const router = useRouter();
+  
   const handleDelete = async (id: string) => {
     try {
       setloading(true);
@@ -25,6 +27,25 @@ const BlogPageComponent = ({ blogs }: { blogs: Blog[] }) => {
       setloading(false);
     }
   };
+
+  // Transform blog data for the form
+  const transformBlogForForm = (blog: Blog & { categories?: any[] }) => {
+    return {
+      blog_id: blog.blog_id,
+      title: blog.title,
+      excerpt: blog.excerpt,
+      content: blog.content,
+      featured_image_id: blog.featured_image_id,
+      status: blog.status,
+      publish_date: blog.publish_date?.toISOString() || null,
+      meta_title: blog.meta_title,
+      meta_description: blog.meta_description,
+      meta_keywords: blog.meta_keywords,
+      og_image_id: blog.og_image_id,
+      category_ids: blog.categories?.map((cat: any) => cat.category_id) || [],
+    };
+  };
+
   return (
     <div>
       <DataTable
@@ -48,7 +69,12 @@ const BlogPageComponent = ({ blogs }: { blogs: Blog[] }) => {
             label: "Actions",
             key: "actions",
             render: (row: any) => (
-              <div>
+              <div className="flex gap-2">
+                <BlogForm
+                  categories={categories}
+                  initialData={transformBlogForForm(row)}
+                  onSuccess={() => router.refresh()}
+                />
                 <Button
                   variant={"destructive"}
                   onClick={() => handleDelete(row.blog_id)}

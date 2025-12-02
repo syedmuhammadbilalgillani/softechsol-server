@@ -27,7 +27,7 @@ const BlogPage = async () => {
     <div className="p-5">
       <PageHeader heading="Blogs" paragraph="Create and manage your blogs" />
       <BlogForm categories={categories} />
-      <BlogPageComponent blogs={blogs} />
+      <BlogPageComponent blogs={blogs} categories={categories} />
     </div>
   );
 };
