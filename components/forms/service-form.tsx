@@ -19,6 +19,7 @@ export interface ServiceFormValues {
   title: string;
   description: string;
   categoryId: string;
+  image: string;
 }
 
 export interface ServiceInitialData extends ServiceFormValues {
@@ -44,10 +45,11 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   const router = useRouter();
   const isUpdateMode = !!initialData?.id;
   const [isOpen, setIsOpen] = useState(false);
-  const defaultValues: ServiceFormValues = {
+  const defaultValues: any = {
     title: initialData?.title ?? "",
     description: initialData?.description ?? "",
     categoryId: initialData?.categoryId ?? "",
+    image: initialData?.image ?? "",
   };
 
   const fields = [
@@ -77,6 +79,14 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
         value: c.id,
       })),
       placeholder: "Select a category",
+      className: "col-span-2",
+    },
+    {
+      name: "image",
+      label: "Image",
+      type: "media" as const,
+      required: true,
+      placeholder: "Select image",
       className: "col-span-2",
     },
   ];
@@ -115,7 +125,7 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">
-        {isUpdateMode ? (
+          {isUpdateMode ? (
             <PencilIcon className="w-4 h-4" />
           ) : (
             <PlusIcon className="w-4 h-4" />

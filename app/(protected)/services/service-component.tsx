@@ -4,6 +4,7 @@ import DataTable from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { toast } from "sonner";
@@ -30,6 +31,21 @@ const ServiceComponent = ({ services }: { services: Service[] }) => {
           label: "Category",
           key: "category.name",
           render: (row: any) => row?.category?.name,
+        },
+        {
+          label: "Image",
+          key: "image.url",
+          render: (row: any) => (
+            <Image
+              src={row?.image?.url}
+              alt={row?.image?.alt || "Service Image"}
+              width={100}
+              height={100}
+              onError={(e) => {
+                e.currentTarget.src = "/placeholder.svg";
+              }}
+            />
+          ),
         },
         {
           label: "Actions",

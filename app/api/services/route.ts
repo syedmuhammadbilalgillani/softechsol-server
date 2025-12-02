@@ -17,9 +17,7 @@ export async function POST(req: Request) {
         description,
         categoryId: Number(categoryId),
         ...(image && {
-          image: {
-            connect: { id: image },
-          },
+          image_id: image,
         }),
       },
     });
@@ -45,9 +43,9 @@ export async function PUT(req: Request) {
         title,
         description,
         categoryId,
-        image: {
-          connect: { id: image },
-        },
+        ...(image && {
+          image_id: image,
+        }),
       },
     });
     await revalidateTag("categories-with-services");

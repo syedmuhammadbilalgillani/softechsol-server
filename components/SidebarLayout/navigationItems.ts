@@ -7,7 +7,10 @@ import {
   Newspaper,
   Tag,
   Type,
-  Radio, // Add this import for podcast icon
+  Radio,
+  Layers, // For Service Categories
+  Wrench, // For Services
+  Users, // For Teams
 } from "lucide-react";
 
 export const navigation = [
@@ -50,9 +53,9 @@ export const navigation = [
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
-        title: "Podcasts", // Add this
+        title: "Podcasts",
         url: "/podcasts",
-        icon: Radio, // or use Headphones, Mic, etc.
+        icon: Radio,
         isActive: false,
       },
       {
@@ -65,14 +68,14 @@ export const navigation = [
       {
         title: "Service Categories",
         url: "/services/category",
-        icon: Type,
+        icon: Layers,
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
         title: "Services",
         url: "/services",
-        icon: Type,
+        icon: Wrench,
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
@@ -93,7 +96,7 @@ export const navigation = [
       {
         title: "Teams",
         url: "/teams",
-        icon: Briefcase,
+        icon: Users,
         isActive: false,
         // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },

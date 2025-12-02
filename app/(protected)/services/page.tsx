@@ -23,6 +23,7 @@ const ServicePage = async () => {
   const services = await prisma.service.findMany({
     include: {
       category: true,
+      image: true,
     },
   });
   logger.info(services);

@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 import React from "react";
 import TeamComponent from "./team-component";
 import logger from "@/utils/logger";
-
+export const dynamic = "force-dynamic";
 const TeamsPage = async () => {
   const teams = await prisma.team.findMany({
     include: {
