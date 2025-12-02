@@ -171,7 +171,7 @@ const BlogForm = ({
       category_ids: Array.isArray(data.category_ids)
         ? data.category_ids
         : [data.category_ids],
-    };
+    } as any;
 
     if (isUpdateMode && initialData) {
       payload.id = initialData.blog_id;
