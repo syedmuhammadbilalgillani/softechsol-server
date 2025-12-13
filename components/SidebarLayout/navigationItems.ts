@@ -11,6 +11,7 @@ import {
   Layers,
   Wrench,
   Users,
+  Database,
 } from "lucide-react";
 
 export const navigation = [
@@ -22,35 +23,30 @@ export const navigation = [
         url: "/",
         icon: Home,
         isActive: true,
-        // requiredPermissions: [PERMISSIONS.DASHBOARD],
       },
       {
         title: "Category",
         url: "/category",
         icon: Type,
         isActive: false,
-        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
         title: "Blog",
         url: "/blogs",
         icon: Newspaper,
         isActive: false,
-        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
         title: "Gallery",
         url: "/gallery",
         icon: Image,
         isActive: false,
-        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
         title: "Companies",
         url: "/companies",
         icon: Building2,
         isActive: false,
-        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
         title: "Podcasts",
@@ -63,7 +59,6 @@ export const navigation = [
         url: "/projects",
         icon: Folder,
         isActive: false,
-        // requiredPermissions: [PERMISSIONS.CATEGORYMANAGEMENT],
       },
       {
         title: "Service Categories",

@@ -81,6 +81,8 @@ const updateImage = async (
       overwrite: true, // Ensures the file will be overwritten
       folder: "techsol", // Optional: specify a folder in Cloudinary
       use_filename: true, // Optional: use the original filename
+      quality_analysis: true,
+      quality: 100,
     });
 
     logger.debug("Image updated successfully");

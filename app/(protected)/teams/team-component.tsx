@@ -35,8 +35,8 @@ const TeamComponent = ({ teams }: { teams: Team[] }) => {
           key: "featured_image.url",
           render: (row: any) => (
             <Image
-              src={row.featured_image.url}
-              alt={row.title}
+              src={row?.featured_image?.url}
+              alt={row?.title}
               width={100}
               height={100}
               className="w-14 h-14 object-cover rounded-full"
