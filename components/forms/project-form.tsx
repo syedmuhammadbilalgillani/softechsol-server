@@ -95,14 +95,14 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
     {
       name: "challenges",
       label: "Challenges",
-      type: "textarea",
+      type: "joditEditor",
       placeholder: "Key challenges",
       className: "col-span-2",
     },
     {
       name: "solution",
       label: "Solution",
-      type: "textarea",
+      type: "joditEditor",
       placeholder: "Our solution",
       className: "col-span-2",
     },
