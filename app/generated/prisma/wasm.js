@@ -339,7 +339,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\syedm\\Desktop\\softechsol\\company-site\\app\\generated\\prisma",
+      "value": "/root/softechsol-server/app/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -348,7 +348,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       },
       {
@@ -357,7 +357,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\syedm\\Desktop\\softechsol\\company-site\\prisma\\schema.prisma",
+    "sourceFilePath": "/root/softechsol-server/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
