@@ -4,6 +4,8 @@ import { getGalleryItems } from "@/lib/prisma-gallery";
 import logger from "@/utils/logger";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { tmpdir } from "os";
+import { join } from "path";
 
 const bodySchema = z.object({
   altText: z.string().min(1),
@@ -34,7 +36,7 @@ export async function POST(req: NextRequest) {
   // Save file to a temp path so Cloudinary SDK can read it
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
-  const tmpPath = `/tmp/${crypto.randomUUID()}-${file.name}`;
+  const tmpPath = join(tmpdir(), `${crypto.randomUUID()}-${file.name}`);
   await import("fs/promises").then((fs) => fs.writeFile(tmpPath, buffer));
 
   try {
