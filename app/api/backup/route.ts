@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@/app/generated/prisma/client";
 import logger from "@/utils/logger";
-
+import dotenv from "dotenv";
+dotenv.config();
 // Create a separate Prisma client without Accelerate for backup operations
 // Accelerate has limitations with long-running transactions
 // Use the same DATABASE_URL from environment to ensure same connection
@@ -9,7 +10,7 @@ const getPrismaBackup = () => {
   return new PrismaClient({
     datasources: {
       db: {
-        url: "postgres://postgres:daskhkasdhkjsay36248768687476dsbgbveu65&8@72.61.146.192:5432/softechsol_db?schema=public",
+        url: process.env.DATABASE_URL,
       },
     },
     log: process.env.NODE_ENV === "development" ? ["error", "warn"] : ["error"],
@@ -274,8 +275,6 @@ export async function POST(request: Request) {
                       id: item.id,
                       url: item.url,
                       altText: item.altText,
-                      description: item.description,
-                      publicId: item.publicId,
                       createdAt: new Date(item.createdAt),
                       updatedAt: new Date(item.updatedAt),
                     },

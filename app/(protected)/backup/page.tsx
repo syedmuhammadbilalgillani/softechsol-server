@@ -18,7 +18,9 @@ export default function BackupPage() {
         heading="Database Backup & Restore"
         paragraph="Export your database as a backup file or restore from a previous backup"
       />
-      <BackupRestore />
+      <div className="mt-4">
+        <BackupRestore />
+      </div>
     </div>
   );
 }

@@ -169,7 +169,7 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/signin",
   },
-  secret: process.env.NEXTAUTH_SECRET || process.env.NEXT_PUBLIC_NEXTAUTH_SECRET, // Use NEXTAUTH_SECRET first, fallback to NEXT_PUBLIC
+  secret: process.env.NEXTAUTH_SECRET || process.env.NEXTAUTH_SECRET, // Use NEXTAUTH_SECRET first, fallback to NEXT_PUBLIC
   debug: process.env.NODE_ENV !== "production",
   cookies: {
     sessionToken: {

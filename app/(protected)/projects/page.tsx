@@ -41,15 +41,15 @@ const ProjectsPage = async () => {
   logger.info(data, "data");
 
   return (
-    <main>
-      <PageHeader heading="Projects" />
-      <div className="flex flex-col gap-4">
+    <div className="p-5">
+      <div className="flex justify-between items-center gap-5">
+        <PageHeader heading="Projects" paragraph="Manage your projects" />
         <ProjectForm />
       </div>
-      <div>
+      <div className="mt-4">
         <ProjectPageComponent data={data} />
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-const isDev = process.env.NEXT_PUBLIC_NODE_ENV !== "production";
+const isDev = process.env.NODE_ENV !== "production";
 
 const logger = {
   info: (msg: any, ...optionalParams: any[]) => {

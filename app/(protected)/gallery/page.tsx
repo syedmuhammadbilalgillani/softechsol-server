@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
 import GalleryPageComponent from "./gallery-page-component";
 import type { Metadata } from "next";
+import { GalleryForm } from "@/components/forms/gallery-form";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 100;
@@ -21,12 +22,16 @@ const GalleryPage = async () => {
   logger.debug(galleryItems, "galleryItems");
 
   return (
-    <>
-      <PageHeader heading="Gallery" paragraph="Manage your gallery images" />
-      <div className="space-y-2">
+    <div className="p-5">
+      <div className="flex justify-between items-center gap-5">
+        <PageHeader heading="Gallery" paragraph="Manage your gallery images" />
+        <GalleryForm mode="create" />
+      </div>
+
+      <div className="mt-4">
         <GalleryPageComponent galleryItems={galleryItems} />
       </div>
-    </>
+    </div>
   );
 };
 

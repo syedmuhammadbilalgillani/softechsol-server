@@ -2,7 +2,6 @@ import { ContactUsForm } from "@/components/forms/contact-form";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
-import React from "react";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -32,12 +31,12 @@ const ContactPage = async () => {
   });
   logger.debug(services, "services");
   return (
-    <main>
-      <div>
-        <PageHeader heading="Contact Forms" paragraph="" />
+    <div className="p-5">
+      <PageHeader heading="Contact Forms" paragraph="View and manage contact form submissions" />
+      <div className="mt-4">
         <ContactUsForm services={[]} />
       </div>
-    </main>
+    </div>
   );
 };
 

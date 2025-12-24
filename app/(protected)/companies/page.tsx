@@ -27,19 +27,19 @@ const MyCompanies = async () => {
   });
   logger.info(companies, "companies");
   return (
-    <div>
+    <div className="p-5">
       <div className="flex justify-between items-center gap-5">
-        <div>
-          <PageHeader
-            heading="My Companies"
-            paragraph="Manage your companies"
-          />
-        </div>
+        <PageHeader
+          heading="My Companies"
+          paragraph="Manage your companies"
+        />
         <CompaniesForm />
       </div>
-      <Suspense>
-        <CompanyPage companies={companies} />
-      </Suspense>
+      <div className="mt-4">
+        <Suspense>
+          <CompanyPage companies={companies} />
+        </Suspense>
+      </div>
     </div>
   );
 };

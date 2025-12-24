@@ -25,9 +25,13 @@ const BlogPage = async () => {
 
   return (
     <div className="p-5">
-      <PageHeader heading="Blogs" paragraph="Create and manage your blogs" />
-      <BlogForm categories={categories} />
-      <BlogPageComponent blogs={blogs} categories={categories} />
+      <div className="flex justify-between items-center gap-5">
+        <PageHeader heading="Blogs" paragraph="Create and manage your blogs" />
+        <BlogForm categories={categories} />
+      </div>
+      <div className="mt-4">
+        <BlogPageComponent blogs={blogs} categories={categories} />
+      </div>
     </div>
   );
 };

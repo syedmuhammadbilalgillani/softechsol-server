@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   },
 };
 // Add the plugin only for server-side builds
-if (process.env.NEXT_PUBLIC_NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   const { PrismaPlugin } = require("@prisma/nextjs-monorepo-workaround-plugin");
   nextConfig.webpack = (config, { isServer }) => {
     if (isServer) {

@@ -1,23 +1,19 @@
-import { uploadImage } from "@/lib/cloudinaryService";
+import { uploadImage } from "@/lib/file-manager";
 import prisma from "@/lib/prisma";
 import { getGalleryItems } from "@/lib/prisma-gallery";
 import logger from "@/utils/logger";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { tmpdir } from "os";
-import { join } from "path";
 
 const bodySchema = z.object({
   altText: z.string().min(1),
-  description: z.string().optional(),
 });
 
 export async function POST(req: NextRequest) {
-  // Expect multipart/form-data with "file", "altText", "description"
+  // Expect multipart/form-data with "file", "altText"
   const form = await req.formData();
   const file = form.get("file") as File | null;
   const altText = form.get("altText");
-  const description = form.get("description") ?? undefined;
 
   if (!file)
     return NextResponse.json(
@@ -25,7 +21,7 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
 
-  const parsed = bodySchema.safeParse({ altText, description });
+  const parsed = bodySchema.safeParse({ altText });
   if (!parsed.success) {
     return NextResponse.json(
       { errors: parsed.error.flatten() },
@@ -33,24 +29,18 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Save file to a temp path so Cloudinary SDK can read it
-  const arrayBuffer = await file.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-  const tmpPath = join(tmpdir(), `${crypto.randomUUID()}-${file.name}`);
-  await import("fs/promises").then((fs) => fs.writeFile(tmpPath, buffer));
-
   try {
-    const uploaded = await uploadImage(tmpPath); // returns { public_id, url, secure_url, ... }
+    // Generate a unique publicId (cuid-like) for the file
+    
+    // Upload image using file-manager
+    const uploaded = await uploadImage(file, "gallery");
     logger.debug("Uploaded gallery image:", uploaded);
     logger.debug("Parsed data:", parsed.data);
+    
     const item = await prisma.galleryItem.create({
       data: {
-        url: uploaded.secure_url ?? uploaded.url,
+        url: uploaded.url,
         altText: parsed.data.altText,
-        description: parsed.data.description || null,
-        publicId: uploaded.public_id,
-        createdAt: new Date(),
-        updatedAt: new Date(),
       },
     });
     return NextResponse.json(item, { status: 201 });

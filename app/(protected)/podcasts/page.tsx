@@ -29,19 +29,19 @@ const Podcasts = async () => {
   });
   logger.info(podcasts, "podcasts");
   return (
-    <div>
+    <div className="p-5">
       <div className="flex justify-between items-center gap-5">
-        <div>
-          <PageHeader
-            heading="Podcasts"
-            paragraph="Manage your podcasts"
-          />
-        </div>
+        <PageHeader
+          heading="Podcasts"
+          paragraph="Manage your podcasts"
+        />
         <PodcastsForm />
       </div>
-      <Suspense>
-        <PodcastPage podcasts={podcasts} />
-      </Suspense>
+      <div className="mt-4">
+        <Suspense>
+          <PodcastPage podcasts={podcasts} />
+        </Suspense>
+      </div>
     </div>
   );
 };

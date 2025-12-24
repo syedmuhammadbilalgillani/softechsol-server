@@ -38,16 +38,16 @@ export const SidebarHead = () => {
   // const isStoreEdit = hasPermission(PERMISSIONS.STOREMANAGEMENT);
 
   return (
-    <div className="flex flex-col items-center justify-center py-4 px-2 rounded-lg transition-colors duration-200 cursor-pointer group">
+    <div className="flex flex-col items-center justify-center py-4 px-2 rounded-lg transition-colors duration-200  group">
       <div className="relative mb-2">
         {/* {companyLogo} */}
         {/* {isStoreEdit && ( */}
-        <div
-          onClick={() => router.push("/admin/store/edit")}
+        {/* <div
+          // onClick={() => router.push("/admin/store/edit")}
           className="absolute -bottom-1 -right-1 bg-gray-100 dark:bg-gray-700 p-0.5 px-2 rounded-full shadow-sm border border-gray-200 dark:border-gray-600 group-amber-500 dark:group-amber-500 transition-colors duration-200"
         >
           <i className="fa-duotone fa-solid fa-pen text-xs rounded-full"></i>
-        </div>
+        </div> */}
         {/* // )} */}
       </div>
 
@@ -189,7 +189,7 @@ export const SidebarFooterMenu = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 side="top"
-                className="w-[--radix-popper-anchor-width]"
+                className="w-full"
               >
                 <LogoutButton />
 

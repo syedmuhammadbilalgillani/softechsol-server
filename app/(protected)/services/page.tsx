@@ -2,7 +2,6 @@ import { ServiceForm } from "@/components/forms/service-form";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
-import React from "react";
 import ServiceComponent from "./service-component";
 import type { Metadata } from "next";
 
@@ -28,8 +27,8 @@ const ServicePage = async () => {
   });
   logger.info(services);
   return (
-    <main className="p-5">
-      <div className="flex justify-between items-center gap-2">
+    <div className="p-5">
+      <div className="flex justify-between items-center gap-5">
         <PageHeader
           heading="Services"
           paragraph="Our services are designed to help you achieve your goals."
@@ -41,8 +40,10 @@ const ServicePage = async () => {
           }))}
         />
       </div>
-      <ServiceComponent services={services} />
-    </main>
+      <div className="mt-4">
+        <ServiceComponent services={services} />
+      </div>
+    </div>
   );
 };
 

@@ -23,13 +23,11 @@ enum Status {
 
 // Centralized Gallery/Media Management
 model GalleryItem {
-  id          String   @id @default(cuid())
-  url         String
-  altText     String
-  description String?
-  publicId    String   @unique
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(cuid())
+  url       String
+  altText   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   // Relations to all models using images
   userAvatars           User[]            @relation("UserAvatar")
@@ -42,7 +40,6 @@ model GalleryItem {
   serviceImages         Service[]         @relation("ServiceImage")
   podcastImages         Podcast[]         @relation("PodcastImage")
 
-  @@index([publicId])
   @@index([url])
   @@index([altText])
 }

@@ -27,16 +27,15 @@ const CategoryPageComponent = async () => {
   logger.info(categories, "categories");
 
   return (
-    <>
+    <div className="p-5">
       <div className="flex justify-between items-center gap-5">
-        <div>
-          <PageHeader heading="Category" paragraph="Manage your categories" />
-        </div>
+        <PageHeader heading="Category" paragraph="Manage your categories" />
         <CategoryForm className="w-fit" />
       </div>
-
-      <CategoryPage categories={categories as unknown as Category[]} />
-    </>
+      <div className="mt-4">
+        <CategoryPage categories={categories as unknown as Category[]} />
+      </div>
+    </div>
   );
 };
 

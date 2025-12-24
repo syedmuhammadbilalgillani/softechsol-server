@@ -25,7 +25,6 @@ const GalleryPageComponent = ({
   };
   return (
     <>
-      <GalleryForm mode="create" />
       <div>
         <DataTable
           data={galleryItems}
@@ -54,19 +53,12 @@ const GalleryPageComponent = ({
             {
               label: "Actions",
               key: "actions",
-              render: (item: {
-                id: string;
-                altText: string;
-                publicId: string;
-                description: string | null;
-                url: string;
-              }) => (
+              render: (item: { id: string; altText: string; url: string }) => (
                 <div className="flex gap-2">
                   <GalleryForm
                     mode="update"
                     initialData={{
                       altText: item.altText,
-                      description: item.description ?? "",
                       id: item.id,
                     }}
                   />

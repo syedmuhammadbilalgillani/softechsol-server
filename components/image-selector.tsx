@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { UploadCloud } from "lucide-react";
 import logger from "@/utils/logger";
+import { GalleryForm } from "@/components/forms/gallery-form";
 
 type Image = {
   id: string;
@@ -68,6 +69,11 @@ export function ImageSelector({ name, multiple = false }: Props) {
       fetchImages();
     }
   }, [open]);
+
+  // Handle successful image upload
+  const handleUploadSuccess = () => {
+    fetchImages();
+  };
 
   // Sync form value to local state (when form value changes externally)
   useEffect(() => {
@@ -197,10 +203,10 @@ export function ImageSelector({ name, multiple = false }: Props) {
       >
         <DialogTrigger asChild>
           <div
-            className={`border-2 border-dashed rounded-2xl p-4 flex flex-col gap-3 items-center justify-center cursor-pointer transition hover:bg-gray-50 ${
+            className={`border-2 border-dashed rounded-xl p-6 flex flex-col gap-3 items-center justify-center cursor-pointer transition-all duration-200 ${
               currentSelectedImages.length
-                ? "border-blue-400"
-                : "border-gray-300 hover:border-blue-400"
+                ? "border-blue-400 bg-blue-50/50 hover:bg-blue-50"
+                : "border-gray-300 hover:border-blue-400 hover:bg-gray-50"
             }`}
           >
             {currentSelectedImages.length ? (
@@ -208,83 +214,143 @@ export function ImageSelector({ name, multiple = false }: Props) {
                 {currentSelectedImages.map((img) => (
                   <div
                     key={img.id}
-                    className="relative w-28 h-24 rounded-lg overflow-hidden shadow-sm"
+                    className="relative w-32 h-28 rounded-lg overflow-hidden shadow-md group"
                   >
                     <img
                       src={img.url}
                       alt={img.altText}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 flex items-center justify-center text-xs text-white">
-                      Change
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <span className="text-xs font-medium text-white bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                        Change
+                      </span>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="flex flex-col items-center gap-2 text-gray-500">
-                <UploadCloud className="w-10 h-10 text-gray-400" />
-                <p className="text-sm">
-                  Click to {multiple ? "select images" : "select an image"}
-                </p>
+              <div className="flex flex-col items-center gap-3 text-gray-500">
+                <div className="p-4 rounded-full bg-gray-100">
+                  <UploadCloud className="w-8 h-8 text-gray-400" />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm font-medium text-gray-700">
+                    Click to {multiple ? "select images" : "select an image"}
+                  </p>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Or upload a new image
+                  </p>
+                </div>
               </div>
             )}
           </div>
         </DialogTrigger>
 
-        <DialogContent className="w-full max-w-4xl mx-auto p-6">
-          <DialogHeader>
-            <DialogTitle>
-              {multiple ? "Select Images" : "Select an Image"}
-            </DialogTitle>
+        <DialogContent className="w-full max-w-6xl mx-auto p-6 max-h-[90vh] flex flex-col">
+          <DialogHeader className="shrink-0">
+            <div className="flex items-center justify-between">
+              <DialogTitle>
+                {multiple ? "Select Images" : "Select an Image"}
+              </DialogTitle>
+              <GalleryForm mode="create" onSuccess={handleUploadSuccess} />
+            </div>
           </DialogHeader>
 
-          <div className="grid grid-cols-2  gap-4 mt-4">
-            {images.length === 0 ? (
-              <p className="col-span-full text-center text-gray-500">
-                No images available
-              </p>
-            ) : (
-              images.map((image) => {
-                const isSelected = multiple
-                  ? selectedImageIds.includes(image.id)
-                  : selectedImageId === image.id;
+          <div className="overflow-y-auto flex-1 mt-4">
+            <div
+              className={`grid gap-4 ${
+                images.length === 0
+                  ? "grid-cols-1"
+                  : images.length === 1
+                  ? "grid-cols-1 sm:grid-cols-2"
+                  : images.length === 2
+                  ? "grid-cols-1 sm:grid-cols-2"
+                  : images.length <= 4
+                  ? "grid-cols-2 sm:grid-cols-3"
+                  : images.length <= 9
+                  ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+                  : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+              }`}
+            >
+              {images.length === 0 ? (
+                <div className="col-span-full flex flex-col items-center justify-center py-12 px-4 text-center">
+                  <UploadCloud className="w-16 h-16 text-gray-300 mb-4" />
+                  <p className="text-gray-500 text-lg font-medium mb-2">
+                    No images available
+                  </p>
+                  <p className="text-gray-400 text-sm mb-4">
+                    Upload your first image to get started
+                  </p>
+                  <GalleryForm mode="create" onSuccess={handleUploadSuccess} />
+                </div>
+              ) : (
+                images.map((image) => {
+                  const isSelected = multiple
+                    ? selectedImageIds.includes(image.id)
+                    : selectedImageId === image.id;
 
-                const onClick = () => {
-                  logger.info(
-                    { imageId: image.id, isSelected, multiple },
-                    "Image clicked"
+                  const onClick = () => {
+                    logger.info(
+                      { imageId: image.id, isSelected, multiple },
+                      "Image clicked"
+                    );
+                    if (multiple) {
+                      handleToggleMultiple(image.id);
+                    } else {
+                      handleSelectSingle(image.id);
+                    }
+                  };
+
+                  return (
+                    <button
+                      type="button"
+                      key={image.id}
+                      onClick={onClick}
+                      className={`group relative border-2 rounded-xl cursor-pointer overflow-hidden transition-all duration-200 transform hover:scale-[1.02] ${
+                        isSelected
+                          ? "border-blue-500 ring-4 ring-blue-200 shadow-lg"
+                          : "border-gray-200 hover:border-blue-400 hover:shadow-md"
+                      }`}
+                    >
+                      <div className="aspect-square relative bg-gray-100">
+                        <img
+                          src={image.url}
+                          alt={image.altText}
+                          className="w-full h-full object-cover"
+                        />
+                        {isSelected && (
+                          <div className="absolute inset-0 bg-blue-500/20 flex items-center justify-center">
+                            <div className="bg-blue-500 rounded-full p-1.5">
+                              <svg
+                                className="w-5 h-5 text-white"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path d="M5 13l4 4L19 7"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        )}
+                        {!isSelected && (
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200" />
+                        )}
+                      </div>
+                      {/* <div className="p-2 bg-white">
+                        <p className="text-center text-xs font-medium text-gray-700 truncate">
+                          {image.altText}
+                        </p>
+                      </div> */}
+                    </button>
                   );
-                  if (multiple) {
-                    handleToggleMultiple(image.id);
-                  } else {
-                    handleSelectSingle(image.id);
-                  }
-                };
-
-                return (
-                  <button
-                    type="button"
-                    key={image.id}
-                    onClick={onClick}
-                    className={`border-2 p-1 rounded-lg cursor-pointer overflow-hidden transition ${
-                      isSelected
-                        ? "border-blue-500 ring-2 ring-blue-300"
-                        : "border-gray-200 hover:border-blue-400"
-                    }`}
-                  >
-                    <img
-                      src={image.url}
-                      alt={image.altText}
-                      className="w-full h-28 object-cover rounded-md"
-                    />
-                    <p className="mt-1 text-center text-xs text-gray-500 truncate">
-                      {image.altText}
-                    </p>
-                  </button>
-                );
-              })
-            )}
+                })
+              )}
+            </div>
           </div>
         </DialogContent>
       </Dialog>

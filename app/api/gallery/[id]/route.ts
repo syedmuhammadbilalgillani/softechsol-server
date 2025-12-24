@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { deleteImage, updateImage } from "@/lib/cloudinaryService";
+import { deleteImage, updateImage } from "@/lib/file-manager";
 import { z } from "zod";
 import { headers } from "next/headers";
 
 const updateSchema = z.object({
   altText: z.string().min(1),
-  description: z.string().optional(),
 });
 
 export async function PUT(
@@ -24,21 +23,18 @@ export async function PUT(
   // Support both multipart (with new image) and JSON (meta only)
   const contentType = (await headers()).get("content-type") || "";
   let altText: unknown,
-    description: unknown,
     file: File | null = null;
 
   if (contentType.includes("multipart/form-data")) {
     const form = await req.formData();
     file = form.get("file") as File | null; // optional
     altText = form.get("altText");
-    description = form.get("description") ?? undefined;
   } else {
     const body = await req.json();
     altText = body.altText;
-    description = body.description;
   }
 
-  const parsed = updateSchema.safeParse({ altText, description });
+  const parsed = updateSchema.safeParse({ altText });
   if (!parsed.success)
     return NextResponse.json(
       { errors: parsed.error.flatten() },
@@ -52,15 +48,9 @@ export async function PUT(
   let newUrl = existing.url;
 
   if (file) {
-    // write to /tmp
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const tmpPath = `/tmp/${crypto.randomUUID()}-${file.name}`;
-    await import("fs/promises").then((fs) => fs.writeFile(tmpPath, buffer));
-
-    // overwrite on Cloudinary using same publicId
-    const updated = await updateImage(tmpPath, existing.publicId);
-    newUrl = updated.secure_url ?? updated.url;
+    // Update image using file-manager (deletes old, uploads new)
+    const updated = await updateImage(file, existing.url, "gallery");
+    newUrl = updated.url;
   }
 
   const item = await prisma.galleryItem.update({
@@ -68,7 +58,6 @@ export async function PUT(
     data: {
       url: newUrl,
       altText: parsed.data.altText,
-      description: parsed.data.description || null,
     },
   });
 
@@ -91,9 +80,10 @@ export async function DELETE(
     return NextResponse.json({ message: "Not found" }, { status: 404 });
 
   try {
-    await deleteImage(existing.publicId);
+    // Delete image file using file-manager
+    await deleteImage(existing.url);
   } catch {
-    // still attempt DB delete even if cloud deletion reports "not found"
+    // still attempt DB delete even if file deletion reports "not found"
   }
 
   await prisma.galleryItem.delete({ where: { id } });

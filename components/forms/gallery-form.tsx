@@ -16,17 +16,20 @@ import {
   DialogDescription,
 } from "../ui/dialog";
 import { PencilIcon, PlusIcon } from "lucide-react";
+import { useFormContext } from "react-hook-form";
 
-type GalleryFormProps =
+type GalleryFormProps = {
+  onSuccess?: () => void;
+} & (
   | { mode: "create" }
   | {
       mode: "update";
       initialData: {
         id: string;
         altText: string;
-        description?: string | null;
       };
-    };
+    }
+);
 
 const galleryFields: FieldConfig[] = [
   {
@@ -43,14 +46,38 @@ const galleryFields: FieldConfig[] = [
     label: "Alt Text",
     required: true,
   },
-
-  {
-    name: "description",
-    type: "textarea",
-    label: "Description",
-    required: false,
-  },
 ];
+
+// Submit button component that uses form context
+function GalleryFormSubmitButton({ 
+  onSubmit, 
+  pending,
+  mode 
+}: { 
+  onSubmit: (data: any) => void;
+  pending: boolean;
+  mode: "create" | "update";
+}) {
+  const { handleSubmit } = useFormContext();
+  
+  return (
+    <Button 
+      type="button" 
+      disabled={pending} 
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleSubmit(onSubmit)(e);
+      }}
+    >
+      {pending
+        ? "Saving…"
+        : mode === "create"
+        ? "Create"
+        : "Update"}
+    </Button>
+  );
+}
 
 export function GalleryForm(props: GalleryFormProps) {
   const [open, setOpen] = useState(false);
@@ -61,7 +88,6 @@ export function GalleryForm(props: GalleryFormProps) {
     props.mode === "update"
       ? {
           altText: props.initialData.altText,
-          description: props.initialData.description ?? "",
         }
       : {};
 
@@ -76,9 +102,6 @@ export function GalleryForm(props: GalleryFormProps) {
             formData.append("file", values.file[0]);
           }
           formData.append("altText", values.altText);
-          if (values.description) {
-            formData.append("description", values.description);
-          }
 
           response = await fetch(
             props.mode === "create"
@@ -95,7 +118,6 @@ export function GalleryForm(props: GalleryFormProps) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               altText: values.altText,
-              description: values.description,
             }),
           });
         }
@@ -112,6 +134,7 @@ export function GalleryForm(props: GalleryFormProps) {
         );
         router.refresh();
         setOpen(false);
+        props.onSuccess?.();
       } catch (error: any) {
         toast.error(error.message ?? "Something went wrong");
       }
@@ -121,7 +144,10 @@ export function GalleryForm(props: GalleryFormProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button
+          type="button"
+          variant="outline"
+        >
           {props.mode === "create" ? (
             <PlusIcon className="w-4 h-4" />
           ) : (
@@ -149,13 +175,11 @@ export function GalleryForm(props: GalleryFormProps) {
           parentClassName="grid gap-4"
           formId="gallery-form"
           submitButton={
-            <Button type="submit" disabled={pending} form="gallery-form">
-              {pending
-                ? "Saving…"
-                : props.mode === "create"
-                ? "Create"
-                : "Update"}
-            </Button>
+            <GalleryFormSubmitButton 
+              onSubmit={handleSubmit}
+              pending={pending}
+              mode={props.mode}
+            />
           }
         />
         <DialogFooter>

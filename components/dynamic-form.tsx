@@ -431,11 +431,25 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
     });
   };
 
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Get form data and submit without event bubbling
+    handleSubmit(onSubmit)(e);
+  };
+
+  const handleButtonSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    methods.handleSubmit(onSubmit)(e as any);
+  };
+
   return (
     <FormProvider {...methods}>
       <form
         id={formId}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleFormSubmit}
+        onClick={(e) => e.stopPropagation()}
         className={`${parentClassName ? parentClassName : "grid gap-4"}`}
       >
         {renderFields(currentFields)}
@@ -466,8 +480,8 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
           ) : (
             submitButton || (
               <Button
-                type="submit"
-                onClick={methods.handleSubmit(onSubmit)}
+                type="button"
+                onClick={handleButtonSubmit}
                 className="flex-1"
               >
                 Submit

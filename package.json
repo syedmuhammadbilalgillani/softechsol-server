@@ -7,6 +7,12 @@
     "build": "prisma generate && next build",
     "start": "next start -p 3001",
     "lint": "eslint",
+    "create-admin": "tsx scripts/create-admin.ts",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate dev",
+    "push": "prisma migrate deploy",
+    "studio": "prisma studio",
+    "reset": "prisma migrate reset",
     "postinstall": "prisma generate"
   },
   "dependencies": {

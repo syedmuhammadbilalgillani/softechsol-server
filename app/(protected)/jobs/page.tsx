@@ -32,16 +32,15 @@ const JobsPageComponent = async () => {
   logger.info(categories, "job categories");
 
   return (
-    <>
+    <div className="p-5">
       <div className="flex justify-between items-center gap-5">
-        <div>
-          <PageHeader heading="Jobs" paragraph="Manage your job postings" />
-        </div>
+        <PageHeader heading="Jobs" paragraph="Manage your job postings" />
         <JobForm className="w-fit" categories={categories} />
       </div>
-
-      <JobsPage jobs={jobs as any} categories={categories as any} />
-    </>
+      <div className="mt-4">
+        <JobsPage jobs={jobs as any} categories={categories as any} />
+      </div>
+    </div>
   );
 };
 

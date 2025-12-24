@@ -32,7 +32,7 @@ export async function middleware(req: NextRequest) {
   let token;
   try {
     // Use the same secret as auth config
-    const secret = process.env.NEXTAUTH_SECRET || process.env.NEXT_PUBLIC_NEXTAUTH_SECRET;
+    const secret = process.env.NEXTAUTH_SECRET || process.env.NEXTAUTH_SECRET;
     
     if (!secret) {
       logger.error("[Middleware] NEXTAUTH_SECRET is not set!");

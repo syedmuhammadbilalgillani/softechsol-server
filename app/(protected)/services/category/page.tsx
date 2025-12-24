@@ -2,7 +2,6 @@ import { ServiceCategoryForm } from "@/components/forms/service-category-form";
 import { PageHeader } from "@/components/page-header";
 import prisma from "@/lib/prisma";
 import logger from "@/utils/logger";
-import React from "react";
 import ServiceCategoryComponent from "./service-category-component";
 
 export const dynamic = "force-dynamic";
@@ -15,18 +14,18 @@ const ServiceCategoryPage = async () => {
   });
   logger.info(categories);
   return (
-    <>
-      <main>
-        <div className="flex justify-between items-center">
-          <PageHeader
-            heading="Service Categories"
-            paragraph="Manage your service categories here"
-          />
-          <ServiceCategoryForm />
-        </div>
+    <div className="p-5">
+      <div className="flex justify-between items-center gap-5">
+        <PageHeader
+          heading="Service Categories"
+          paragraph="Manage your service categories here"
+        />
+        <ServiceCategoryForm />
+      </div>
+      <div className="mt-4">
         <ServiceCategoryComponent categories={categories} />
-      </main>
-    </>
+      </div>
+    </div>
   );
 };
 
