@@ -3,7 +3,8 @@ import bcrypt from "bcryptjs";
 import logger from "@/utils/logger";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import dotenv from "dotenv";
+dotenv.config();
 const attemptBackendLogin = async (email: string, password: string) => {
   const user = await prisma.user.findUnique({
     where: { email },
@@ -99,7 +100,9 @@ export const authOptions: NextAuthOptions = {
           let user;
 
           if (isRegister) {
-            const [firstName, ...rest] = (fullName ?? "").split(" ").filter(Boolean);
+            const [firstName, ...rest] = (fullName ?? "")
+              .split(" ")
+              .filter(Boolean);
             user = await attemptBackendRegister({
               email,
               username: username ?? "",
@@ -169,7 +172,7 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/signin",
   },
-  secret: process.env.NEXTAUTH_SECRET || process.env.NEXTAUTH_SECRET, // Use NEXTAUTH_SECRET first, fallback to NEXT_PUBLIC
+  secret: process.env.NEXTAUTH_SECRET, // Use NEXTAUTH_SECRET first, fallback to NEXT_PUBLIC
   debug: process.env.NODE_ENV !== "production",
   cookies: {
     sessionToken: {
