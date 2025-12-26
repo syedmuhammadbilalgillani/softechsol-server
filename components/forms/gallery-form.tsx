@@ -16,7 +16,7 @@ import {
   DialogDescription,
 } from "../ui/dialog";
 import { PencilIcon, PlusIcon } from "lucide-react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, FormProvider, useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { UploadIcon } from "lucide-react";
@@ -30,7 +30,7 @@ type GalleryFormProps = {
       initialData: {
         id: string;
         altText: string;
-        url: string; // Add URL to initialData
+        url: string;
       };
     }
 );
@@ -112,22 +112,6 @@ function FileInputWithPreview({
   );
 }
 
-const galleryFields: FieldConfig[] = [
-  {
-    name: "file",
-    type: "input",
-    InputType: "file",
-    label: "Image",
-    required: true,
-  },
-  {
-    name: "altText",
-    type: "input",
-    label: "Alt Text",
-    required: true,
-  },
-];
-
 // Submit button component that uses form context
 function GalleryFormSubmitButton({ 
   onSubmit, 
@@ -170,6 +154,11 @@ export function GalleryForm(props: GalleryFormProps) {
           altText: props.initialData.altText,
         }
       : {};
+
+  // Create form methods at the parent level
+  const methods = useForm({
+    defaultValues,
+  });
 
   const handleSubmit = async (values: Record<string, any>) => {
     startTransition(async () => {
@@ -247,43 +236,44 @@ export function GalleryForm(props: GalleryFormProps) {
               : "Edit the image details"}
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4">
-          {/* Custom file input with preview */}
-          <FileInputWithPreview
-            name="file"
-            label="Image"
-            existingImageUrl={props.mode === "update" ? props.initialData.url : undefined}
-          />
-          
-          {/* Alt text field */}
-          <DynamicForm
-            fields={[
-              {
-                name: "altText",
-                type: "input",
-                label: "Alt Text",
-                required: true,
-              },
-            ]}
-            onSubmit={handleSubmit}
-            defaultValues={defaultValues}
-            isUpdateMode={props.mode === "update"}
-            parentClassName="grid gap-4"
-            formId="gallery-form"
-            submitButton={
+        {/* Wrap everything in FormProvider */}
+        <FormProvider {...methods}>
+          <form
+            onSubmit={methods.handleSubmit(handleSubmit)}
+            className="grid gap-4"
+          >
+            {/* Custom file input with preview */}
+            <FileInputWithPreview
+              name="file"
+              label="Image"
+              existingImageUrl={props.mode === "update" ? props.initialData.url : undefined}
+            />
+            
+            {/* Alt text field */}
+            <div className="space-y-2">
+              <Label className="block font-medium text-sm mb-1">
+                Alt Text
+              </Label>
+              <Input
+                {...methods.register("altText", {
+                  required: "Alt text is required",
+                })}
+                placeholder="Alt text"
+              />
+            </div>
+
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button type="button" variant="outline">Cancel</Button>
+              </DialogClose>
               <GalleryFormSubmitButton 
                 onSubmit={handleSubmit}
                 pending={pending}
                 mode={props.mode}
               />
-            }
-          />
-        </div>
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
-          </DialogClose>
-        </DialogFooter>
+            </DialogFooter>
+          </form>
+        </FormProvider>
       </DialogContent>
     </Dialog>
   );
