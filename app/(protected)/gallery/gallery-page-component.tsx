@@ -58,8 +58,9 @@ const GalleryPageComponent = ({
                   <GalleryForm
                     mode="update"
                     initialData={{
-                      altText: item.altText,
                       id: item.id,
+                      altText: item.altText,
+                      url: item.url, // Add URL here
                     }}
                   />
                   <Button

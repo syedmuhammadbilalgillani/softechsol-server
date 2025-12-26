@@ -4,6 +4,11 @@ import { deleteImage, updateImage } from "@/lib/file-manager";
 import { z } from "zod";
 import { headers } from "next/headers";
 
+export const runtime = 'nodejs';
+export const maxDuration = 30;
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
 const updateSchema = z.object({
   altText: z.string().min(1),
 });
@@ -29,6 +34,14 @@ export async function PUT(
     const form = await req.formData();
     file = form.get("file") as File | null; // optional
     altText = form.get("altText");
+    
+    // Validate file size if file is provided
+    if (file && file.size > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { message: `File size exceeds maximum allowed size of ${MAX_FILE_SIZE / (1024 * 1024)}MB` },
+        { status: 413 }
+      );
+    }
   } else {
     const body = await req.json();
     altText = body.altText;
