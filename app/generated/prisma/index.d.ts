@@ -14591,7 +14591,13 @@ export namespace Prisma {
     id: number | null
     title: string | null
     position: string | null
+    description: string | null
     linkedinUrl: string | null
+    twitterUrl: string | null
+    facebookUrl: string | null
+    instagramUrl: string | null
+    githubUrl: string | null
+    websiteUrl: string | null
     featured_image_id: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14601,7 +14607,13 @@ export namespace Prisma {
     id: number | null
     title: string | null
     position: string | null
+    description: string | null
     linkedinUrl: string | null
+    twitterUrl: string | null
+    facebookUrl: string | null
+    instagramUrl: string | null
+    githubUrl: string | null
+    websiteUrl: string | null
     featured_image_id: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -14611,7 +14623,13 @@ export namespace Prisma {
     id: number
     title: number
     position: number
+    description: number
     linkedinUrl: number
+    twitterUrl: number
+    facebookUrl: number
+    instagramUrl: number
+    githubUrl: number
+    websiteUrl: number
     featured_image_id: number
     createdAt: number
     updatedAt: number
@@ -14631,7 +14649,13 @@ export namespace Prisma {
     id?: true
     title?: true
     position?: true
+    description?: true
     linkedinUrl?: true
+    twitterUrl?: true
+    facebookUrl?: true
+    instagramUrl?: true
+    githubUrl?: true
+    websiteUrl?: true
     featured_image_id?: true
     createdAt?: true
     updatedAt?: true
@@ -14641,7 +14665,13 @@ export namespace Prisma {
     id?: true
     title?: true
     position?: true
+    description?: true
     linkedinUrl?: true
+    twitterUrl?: true
+    facebookUrl?: true
+    instagramUrl?: true
+    githubUrl?: true
+    websiteUrl?: true
     featured_image_id?: true
     createdAt?: true
     updatedAt?: true
@@ -14651,7 +14681,13 @@ export namespace Prisma {
     id?: true
     title?: true
     position?: true
+    description?: true
     linkedinUrl?: true
+    twitterUrl?: true
+    facebookUrl?: true
+    instagramUrl?: true
+    githubUrl?: true
+    websiteUrl?: true
     featured_image_id?: true
     createdAt?: true
     updatedAt?: true
@@ -14748,7 +14784,13 @@ export namespace Prisma {
     id: number
     title: string
     position: string
+    description: string | null
     linkedinUrl: string | null
+    twitterUrl: string | null
+    facebookUrl: string | null
+    instagramUrl: string | null
+    githubUrl: string | null
+    websiteUrl: string | null
     featured_image_id: string | null
     createdAt: Date
     updatedAt: Date
@@ -14777,7 +14819,13 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     position?: boolean
+    description?: boolean
     linkedinUrl?: boolean
+    twitterUrl?: boolean
+    facebookUrl?: boolean
+    instagramUrl?: boolean
+    githubUrl?: boolean
+    websiteUrl?: boolean
     featured_image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -14788,7 +14836,13 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     position?: boolean
+    description?: boolean
     linkedinUrl?: boolean
+    twitterUrl?: boolean
+    facebookUrl?: boolean
+    instagramUrl?: boolean
+    githubUrl?: boolean
+    websiteUrl?: boolean
     featured_image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -14799,7 +14853,13 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     position?: boolean
+    description?: boolean
     linkedinUrl?: boolean
+    twitterUrl?: boolean
+    facebookUrl?: boolean
+    instagramUrl?: boolean
+    githubUrl?: boolean
+    websiteUrl?: boolean
     featured_image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -14810,13 +14870,19 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     position?: boolean
+    description?: boolean
     linkedinUrl?: boolean
+    twitterUrl?: boolean
+    facebookUrl?: boolean
+    instagramUrl?: boolean
+    githubUrl?: boolean
+    websiteUrl?: boolean
     featured_image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TeamOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "position" | "linkedinUrl" | "featured_image_id" | "createdAt" | "updatedAt", ExtArgs["result"]["team"]>
+  export type TeamOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "position" | "description" | "linkedinUrl" | "twitterUrl" | "facebookUrl" | "instagramUrl" | "githubUrl" | "websiteUrl" | "featured_image_id" | "createdAt" | "updatedAt", ExtArgs["result"]["team"]>
   export type TeamInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     featured_image?: boolean | Team$featured_imageArgs<ExtArgs>
   }
@@ -14836,7 +14902,13 @@ export namespace Prisma {
       id: number
       title: string
       position: string
+      description: string | null
       linkedinUrl: string | null
+      twitterUrl: string | null
+      facebookUrl: string | null
+      instagramUrl: string | null
+      githubUrl: string | null
+      websiteUrl: string | null
       featured_image_id: string | null
       createdAt: Date
       updatedAt: Date
@@ -15267,7 +15339,13 @@ export namespace Prisma {
     readonly id: FieldRef<"Team", 'Int'>
     readonly title: FieldRef<"Team", 'String'>
     readonly position: FieldRef<"Team", 'String'>
+    readonly description: FieldRef<"Team", 'String'>
     readonly linkedinUrl: FieldRef<"Team", 'String'>
+    readonly twitterUrl: FieldRef<"Team", 'String'>
+    readonly facebookUrl: FieldRef<"Team", 'String'>
+    readonly instagramUrl: FieldRef<"Team", 'String'>
+    readonly githubUrl: FieldRef<"Team", 'String'>
+    readonly websiteUrl: FieldRef<"Team", 'String'>
     readonly featured_image_id: FieldRef<"Team", 'String'>
     readonly createdAt: FieldRef<"Team", 'DateTime'>
     readonly updatedAt: FieldRef<"Team", 'DateTime'>
@@ -21737,7 +21815,13 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     position: 'position',
+    description: 'description',
     linkedinUrl: 'linkedinUrl',
+    twitterUrl: 'twitterUrl',
+    facebookUrl: 'facebookUrl',
+    instagramUrl: 'instagramUrl',
+    githubUrl: 'githubUrl',
+    websiteUrl: 'websiteUrl',
     featured_image_id: 'featured_image_id',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -22753,7 +22837,13 @@ export namespace Prisma {
     id?: IntFilter<"Team"> | number
     title?: StringFilter<"Team"> | string
     position?: StringFilter<"Team"> | string
+    description?: StringNullableFilter<"Team"> | string | null
     linkedinUrl?: StringNullableFilter<"Team"> | string | null
+    twitterUrl?: StringNullableFilter<"Team"> | string | null
+    facebookUrl?: StringNullableFilter<"Team"> | string | null
+    instagramUrl?: StringNullableFilter<"Team"> | string | null
+    githubUrl?: StringNullableFilter<"Team"> | string | null
+    websiteUrl?: StringNullableFilter<"Team"> | string | null
     featured_image_id?: StringNullableFilter<"Team"> | string | null
     createdAt?: DateTimeFilter<"Team"> | Date | string
     updatedAt?: DateTimeFilter<"Team"> | Date | string
@@ -22764,7 +22854,13 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     position?: SortOrder
+    description?: SortOrderInput | SortOrder
     linkedinUrl?: SortOrderInput | SortOrder
+    twitterUrl?: SortOrderInput | SortOrder
+    facebookUrl?: SortOrderInput | SortOrder
+    instagramUrl?: SortOrderInput | SortOrder
+    githubUrl?: SortOrderInput | SortOrder
+    websiteUrl?: SortOrderInput | SortOrder
     featured_image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -22778,7 +22874,13 @@ export namespace Prisma {
     NOT?: TeamWhereInput | TeamWhereInput[]
     title?: StringFilter<"Team"> | string
     position?: StringFilter<"Team"> | string
+    description?: StringNullableFilter<"Team"> | string | null
     linkedinUrl?: StringNullableFilter<"Team"> | string | null
+    twitterUrl?: StringNullableFilter<"Team"> | string | null
+    facebookUrl?: StringNullableFilter<"Team"> | string | null
+    instagramUrl?: StringNullableFilter<"Team"> | string | null
+    githubUrl?: StringNullableFilter<"Team"> | string | null
+    websiteUrl?: StringNullableFilter<"Team"> | string | null
     featured_image_id?: StringNullableFilter<"Team"> | string | null
     createdAt?: DateTimeFilter<"Team"> | Date | string
     updatedAt?: DateTimeFilter<"Team"> | Date | string
@@ -22789,7 +22891,13 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     position?: SortOrder
+    description?: SortOrderInput | SortOrder
     linkedinUrl?: SortOrderInput | SortOrder
+    twitterUrl?: SortOrderInput | SortOrder
+    facebookUrl?: SortOrderInput | SortOrder
+    instagramUrl?: SortOrderInput | SortOrder
+    githubUrl?: SortOrderInput | SortOrder
+    websiteUrl?: SortOrderInput | SortOrder
     featured_image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -22807,7 +22915,13 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Team"> | number
     title?: StringWithAggregatesFilter<"Team"> | string
     position?: StringWithAggregatesFilter<"Team"> | string
+    description?: StringNullableWithAggregatesFilter<"Team"> | string | null
     linkedinUrl?: StringNullableWithAggregatesFilter<"Team"> | string | null
+    twitterUrl?: StringNullableWithAggregatesFilter<"Team"> | string | null
+    facebookUrl?: StringNullableWithAggregatesFilter<"Team"> | string | null
+    instagramUrl?: StringNullableWithAggregatesFilter<"Team"> | string | null
+    githubUrl?: StringNullableWithAggregatesFilter<"Team"> | string | null
+    websiteUrl?: StringNullableWithAggregatesFilter<"Team"> | string | null
     featured_image_id?: StringNullableWithAggregatesFilter<"Team"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Team"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Team"> | Date | string
@@ -24059,7 +24173,13 @@ export namespace Prisma {
   export type TeamCreateInput = {
     title: string
     position: string
+    description?: string | null
     linkedinUrl?: string | null
+    twitterUrl?: string | null
+    facebookUrl?: string | null
+    instagramUrl?: string | null
+    githubUrl?: string | null
+    websiteUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     featured_image?: GalleryItemCreateNestedOneWithoutTeamFeaturedImagesInput
@@ -24069,7 +24189,13 @@ export namespace Prisma {
     id?: number
     title: string
     position: string
+    description?: string | null
     linkedinUrl?: string | null
+    twitterUrl?: string | null
+    facebookUrl?: string | null
+    instagramUrl?: string | null
+    githubUrl?: string | null
+    websiteUrl?: string | null
     featured_image_id?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24078,7 +24204,13 @@ export namespace Prisma {
   export type TeamUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    facebookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     featured_image?: GalleryItemUpdateOneWithoutTeamFeaturedImagesNestedInput
@@ -24088,7 +24220,13 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    facebookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
     featured_image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24098,7 +24236,13 @@ export namespace Prisma {
     id?: number
     title: string
     position: string
+    description?: string | null
     linkedinUrl?: string | null
+    twitterUrl?: string | null
+    facebookUrl?: string | null
+    instagramUrl?: string | null
+    githubUrl?: string | null
+    websiteUrl?: string | null
     featured_image_id?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24107,7 +24251,13 @@ export namespace Prisma {
   export type TeamUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    facebookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -24116,7 +24266,13 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    facebookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
     featured_image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25381,7 +25537,13 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     position?: SortOrder
+    description?: SortOrder
     linkedinUrl?: SortOrder
+    twitterUrl?: SortOrder
+    facebookUrl?: SortOrder
+    instagramUrl?: SortOrder
+    githubUrl?: SortOrder
+    websiteUrl?: SortOrder
     featured_image_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25395,7 +25557,13 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     position?: SortOrder
+    description?: SortOrder
     linkedinUrl?: SortOrder
+    twitterUrl?: SortOrder
+    facebookUrl?: SortOrder
+    instagramUrl?: SortOrder
+    githubUrl?: SortOrder
+    websiteUrl?: SortOrder
     featured_image_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25405,7 +25573,13 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     position?: SortOrder
+    description?: SortOrder
     linkedinUrl?: SortOrder
+    twitterUrl?: SortOrder
+    facebookUrl?: SortOrder
+    instagramUrl?: SortOrder
+    githubUrl?: SortOrder
+    websiteUrl?: SortOrder
     featured_image_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -27173,7 +27347,13 @@ export namespace Prisma {
   export type TeamCreateWithoutFeatured_imageInput = {
     title: string
     position: string
+    description?: string | null
     linkedinUrl?: string | null
+    twitterUrl?: string | null
+    facebookUrl?: string | null
+    instagramUrl?: string | null
+    githubUrl?: string | null
+    websiteUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -27182,7 +27362,13 @@ export namespace Prisma {
     id?: number
     title: string
     position: string
+    description?: string | null
     linkedinUrl?: string | null
+    twitterUrl?: string | null
+    facebookUrl?: string | null
+    instagramUrl?: string | null
+    githubUrl?: string | null
+    websiteUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -27448,7 +27634,13 @@ export namespace Prisma {
     id?: IntFilter<"Team"> | number
     title?: StringFilter<"Team"> | string
     position?: StringFilter<"Team"> | string
+    description?: StringNullableFilter<"Team"> | string | null
     linkedinUrl?: StringNullableFilter<"Team"> | string | null
+    twitterUrl?: StringNullableFilter<"Team"> | string | null
+    facebookUrl?: StringNullableFilter<"Team"> | string | null
+    instagramUrl?: StringNullableFilter<"Team"> | string | null
+    githubUrl?: StringNullableFilter<"Team"> | string | null
+    websiteUrl?: StringNullableFilter<"Team"> | string | null
     featured_image_id?: StringNullableFilter<"Team"> | string | null
     createdAt?: DateTimeFilter<"Team"> | Date | string
     updatedAt?: DateTimeFilter<"Team"> | Date | string
@@ -29453,7 +29645,13 @@ export namespace Prisma {
     id?: number
     title: string
     position: string
+    description?: string | null
     linkedinUrl?: string | null
+    twitterUrl?: string | null
+    facebookUrl?: string | null
+    instagramUrl?: string | null
+    githubUrl?: string | null
+    websiteUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -29676,7 +29874,13 @@ export namespace Prisma {
   export type TeamUpdateWithoutFeatured_imageInput = {
     title?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    facebookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29685,7 +29889,13 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    facebookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29694,7 +29904,13 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     linkedinUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    facebookUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    instagramUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    githubUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

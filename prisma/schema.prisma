@@ -212,7 +212,13 @@ model Team {
   id          Int      @id @default(autoincrement())
   title       String
   position    String
+  description String?  @db.Text
   linkedinUrl String?
+  twitterUrl  String?
+  facebookUrl String?
+  instagramUrl String?
+  githubUrl   String?
+  websiteUrl  String?
   featured_image    GalleryItem? @relation("TeamFeaturedImage", fields: [featured_image_id], references: [id], onDelete: SetNull)
   featured_image_id String?
   createdAt   DateTime @default(now())

@@ -6,11 +6,32 @@ import { revalidateTag } from "@/lib/revalidate";
 // CREATE Team Member
 export async function POST(req: Request) {
   try {
-    const { title, position, linkedinUrl, featured_image_id } =
-      await req.json();
+    const { 
+      title, 
+      position, 
+      description,
+      linkedinUrl, 
+      twitterUrl,
+      facebookUrl,
+      instagramUrl,
+      githubUrl,
+      websiteUrl,
+      featured_image_id 
+    } = await req.json();
 
     const team = await prisma.team.create({
-      data: { title, position, linkedinUrl, featured_image_id },
+      data: { 
+        title, 
+        position, 
+        description,
+        linkedinUrl, 
+        twitterUrl,
+        facebookUrl,
+        instagramUrl,
+        githubUrl,
+        websiteUrl,
+        featured_image_id 
+      },
     });
     await revalidateTag("teams");
 
@@ -27,12 +48,34 @@ export async function POST(req: Request) {
 // UPDATE Team Member
 export async function PUT(req: Request) {
   try {
-    const { id, title, position, linkedinUrl, featured_image_id } =
-      await req.json();
+    const { 
+      id, 
+      title, 
+      position, 
+      description,
+      linkedinUrl, 
+      twitterUrl,
+      facebookUrl,
+      instagramUrl,
+      githubUrl,
+      websiteUrl,
+      featured_image_id 
+    } = await req.json();
 
     const team = await prisma.team.update({
       where: { id },
-      data: { title, position, linkedinUrl, featured_image_id },
+      data: { 
+        title, 
+        position, 
+        description,
+        linkedinUrl, 
+        twitterUrl,
+        facebookUrl,
+        instagramUrl,
+        githubUrl,
+        websiteUrl,
+        featured_image_id 
+      },
     });
 
     await revalidateTag("teams");

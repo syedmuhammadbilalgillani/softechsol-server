@@ -239,7 +239,13 @@ exports.Prisma.TeamScalarFieldEnum = {
   id: 'id',
   title: 'title',
   position: 'position',
+  description: 'description',
   linkedinUrl: 'linkedinUrl',
+  twitterUrl: 'twitterUrl',
+  facebookUrl: 'facebookUrl',
+  instagramUrl: 'instagramUrl',
+  githubUrl: 'githubUrl',
+  websiteUrl: 'websiteUrl',
   featured_image_id: 'featured_image_id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

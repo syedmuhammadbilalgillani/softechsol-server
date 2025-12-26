@@ -19,7 +19,13 @@ import { toast } from "sonner";
 export interface TeamMemberFormValues {
   title: string;
   position: string;
+  description?: string;
   linkedinUrl?: string;
+  twitterUrl?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  githubUrl?: string;
+  websiteUrl?: string;
   featured_image_id?: string;
 }
 
@@ -43,7 +49,13 @@ export const TeamMemberForm: React.FC<TeamMemberFormProps> = ({
   const defaultValues: TeamMemberFormValues = {
     title: initialData?.title ?? "",
     position: initialData?.position ?? "",
+    description: initialData?.description ?? "",
     linkedinUrl: initialData?.linkedinUrl ?? "",
+    twitterUrl: initialData?.twitterUrl ?? "",
+    facebookUrl: initialData?.facebookUrl ?? "",
+    instagramUrl: initialData?.instagramUrl ?? "",
+    githubUrl: initialData?.githubUrl ?? "",
+    websiteUrl: initialData?.websiteUrl ?? "",
     featured_image_id: initialData?.featured_image_id ?? "",
   };
 
@@ -65,10 +77,10 @@ export const TeamMemberForm: React.FC<TeamMemberFormProps> = ({
       className: "col-span-full",
     },
     {
-      name: "linkedinUrl",
-      label: "LinkedIn URL",
-      type: "input",
-      placeholder: "https://linkedin.com/in/username",
+      name: "description",
+      label: "Description",
+      type: "textarea",
+      placeholder: "Enter team member description",
       className: "col-span-full",
     },
     {
@@ -77,6 +89,48 @@ export const TeamMemberForm: React.FC<TeamMemberFormProps> = ({
       type: "media",
       multiple: false, // single image
       className: "col-span-full",
+    },
+    {
+      name: "linkedinUrl",
+      label: "LinkedIn URL",
+      type: "input",
+      placeholder: "https://linkedin.com/in/username",
+      className: "col-span-1",
+    },
+    {
+      name: "twitterUrl",
+      label: "Twitter/X URL",
+      type: "input",
+      placeholder: "https://twitter.com/username",
+      className: "col-span-1",
+    },
+    {
+      name: "facebookUrl",
+      label: "Facebook URL",
+      type: "input",
+      placeholder: "https://facebook.com/username",
+      className: "col-span-1",
+    },
+    {
+      name: "instagramUrl",
+      label: "Instagram URL",
+      type: "input",
+      placeholder: "https://instagram.com/username",
+      className: "col-span-1",
+    },
+    {
+      name: "githubUrl",
+      label: "GitHub URL",
+      type: "input",
+      placeholder: "https://github.com/username",
+      className: "col-span-1",
+    },
+    {
+      name: "websiteUrl",
+      label: "Website URL",
+      type: "input",
+      placeholder: "https://example.com",
+      className: "col-span-1",
     },
   ];
 
@@ -122,7 +176,7 @@ export const TeamMemberForm: React.FC<TeamMemberFormProps> = ({
           {isUpdateMode ? "" : "Add"}
         </Button>
       </DialogTrigger>
-      <DialogContent className="flex flex-col gap-4">
+      <DialogContent className="flex flex-col gap-4 max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             {isUpdateMode ? "Update Team Member" : "Create Team Member"}
@@ -139,6 +193,7 @@ export const TeamMemberForm: React.FC<TeamMemberFormProps> = ({
           formId="team-member-form"
           defaultValues={defaultValues}
           isUpdateMode={isUpdateMode}
+          parentClassName="grid grid-cols-2 gap-4"
           submitButton={
             <Button
               type="submit"
