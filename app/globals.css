@@ -129,3 +129,164 @@
 dark:[&::-webkit-scrollbar-track]:bg-neutral-700
 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500;
 }
+
+@layer components {
+  .neditor-html {
+    @apply leading-relaxed;
+  }
+
+  /* Headings */
+  .neditor-html h1 {
+    @apply text-3xl mt-8 mb-4;
+  }
+
+  .neditor-html h2 {
+    @apply text-2xl mt-6 mb-3;
+  }
+
+  .neditor-html h3 {
+    @apply text-xl mt-5 mb-2;
+  }
+
+  .neditor-html h4 {
+    @apply text-lg mt-4 mb-2;
+  }
+
+  .neditor-html h5 {
+    @apply text-base mt-3 mb-1;
+  }
+
+  .neditor-html h6 {
+    @apply text-sm mt-2 mb-1;
+  }
+
+  /* Paragraphs and text */
+  .neditor-html p {
+    @apply mb-4;
+  }
+
+  .neditor-html strong {
+    @apply font-bold;
+  }
+
+  .neditor-html em {
+    @apply italic;
+  }
+
+  .neditor-html small {
+    @apply text-xs;
+  }
+
+  /* Lists */
+  .neditor-html ul {
+    @apply list-disc ml-5 mb-4;
+  }
+
+  .neditor-html ol {
+    @apply list-decimal ml-5 mb-4;
+  }
+
+  .neditor-html li {
+    @apply mb-1;
+  }
+
+  .neditor-html li > ul,
+  .neditor-html li > ol {
+    @apply mt-1 mb-0 ml-4;
+  }
+
+  /* Links */
+  .neditor-html a {
+    @apply underline;
+  }
+
+  /* Blockquotes */
+  .neditor-html blockquote {
+    @apply pl-4 py-1 my-4;
+  }
+
+  .neditor-html blockquote p {
+    @apply mb-2;
+  }
+
+  /* Code */
+  .neditor-html code {
+    @apply px-1 py-0.5 text-sm;
+  }
+
+  .neditor-html pre {
+    @apply p-4 my-4;
+  }
+
+  .neditor-html pre code {
+    @apply p-0 text-sm;
+  }
+
+  /* Horizontal rule */
+  .neditor-html hr {
+    @apply my-6;
+  }
+
+  /* Tables */
+  .neditor-html table {
+    @apply my-4;
+  }
+
+  .neditor-html th {
+    @apply px-3 py-2;
+  }
+
+  .neditor-html td {
+    @apply px-3 py-2;
+  }
+
+  /* Images */
+  .neditor-html img {
+    @apply my-4;
+  }
+
+  .neditor-html figure {
+    @apply my-4;
+  }
+
+  .neditor-html figcaption {
+    @apply mt-2 text-sm;
+  }
+
+  /* Keyboard */
+  .neditor-html kbd {
+    @apply px-2 py-1 text-xs;
+  }
+
+  /* Mark */
+  .neditor-html mark {
+    @apply px-1;
+  }
+
+  /* Superscript and Subscript */
+  .neditor-html sup {
+    @apply text-xs;
+  }
+
+  .neditor-html sub {
+    @apply text-xs;
+  }
+
+  /* Definition lists */
+  .neditor-html dl {
+    @apply my-4;
+  }
+
+  .neditor-html dt {
+    @apply mt-2;
+  }
+
+  .neditor-html dd {
+    @apply ml-4 mb-2;
+  }
+
+  /* Address */
+  .neditor-html address {
+    @apply my-4;
+  }
+}

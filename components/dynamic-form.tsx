@@ -586,6 +586,7 @@ const JoditEditorComponent: React.FC<{
   return (
     <div>
       <JoditEditor
+        className="neditor-html"
         ref={editor}
         value={content}
         config={config}
