@@ -3,7 +3,7 @@
 import { DynamicForm, FieldConfig } from "@/components/dynamic-form";
 import { Button } from "@/components/ui/button";
 import logger from "@/utils/logger";
-import { Pencil, PencilIcon, Plus, PlusIcon } from "lucide-react";
+import { PencilIcon, PlusIcon } from "lucide-react";
 import React, { useCallback, useState } from "react";
 import {
   Dialog,
@@ -36,24 +36,10 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
       className: "col-span-2",
     },
     {
-      name: "short_description",
-      label: "Short Description",
+      name: "description",
+      label: "Description",
       type: "textarea",
-      placeholder: "Short summary",
-      className: "col-span-2",
-    },
-    {
-      name: "meta_title",
-      label: "Meta Title",
-      type: "input",
-      placeholder: "Meta title",
-      className: "col-span-2",
-    },
-    {
-      name: "meta_description",
-      label: "Meta Description",
-      type: "textarea",
-      placeholder: "Meta description",
+      placeholder: "Project description",
       className: "col-span-2",
     },
     {
@@ -64,81 +50,50 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
       className: "col-span-1",
     },
     {
-      name: "client_name",
-      label: "Client Name",
-      type: "input",
-      placeholder: "Client",
+      name: "status",
+      label: "Status",
+      type: "select",
+      required: true,
+      options: [
+        { label: "Draft", value: "DRAFT" },
+        { label: "Published", value: "PUBLISHED" },
+        { label: "Archived", value: "ARCHIVED" },
+      ],
+      placeholder: "Select status",
       className: "col-span-1",
     },
     {
-      name: "year",
-      label: "Year",
-      type: "input",
-      placeholder: "2024",
-      className: "col-span-1",
-      InputType: "number",
-    },
-    {
-      name: "timeline",
-      label: "Timeline",
-      type: "input",
-      placeholder: "Jan 2024 – Mar 2024",
-      className: "col-span-1",
-    },
-    {
-      name: "overview",
-      label: "Overview",
-      type: "joditEditor",
-      placeholder: "Project overview",
+      name: "technologies",
+      label: "Technologies",
+      type: "textarea",
+      placeholder: "Enter technologies separated by commas (e.g., React, Node.js, TypeScript)",
       className: "col-span-2",
     },
     {
-      name: "challenges",
-      label: "Challenges",
-      type: "joditEditor",
-      placeholder: "Key challenges",
-      className: "col-span-2",
-    },
-    {
-      name: "solution",
-      label: "Solution",
-      type: "joditEditor",
-      placeholder: "Our solution",
-      className: "col-span-2",
-    },
-    {
-      name: "imageIds",
-      label: "Project Images",
+      name: "image_id",
+      label: "Project Image",
       type: "media",
-      multiple: true, // <---- uses multi select
+      multiple: false,
       className: "col-span-2",
     },
   ];
   logger.info(project, "project");
   const defaultValues = project
     ? {
-        title: project.title,
-        short_description: project.short_description ?? "",
+        title: project.title ?? "",
+        description: project.description ?? "",
         url: project.url ?? "",
-        client_name: project.client_name ?? "",
-        year: project.year ?? "",
-        timeline: project.timeline ?? "",
-        overview: project.overview ?? "",
-        challenges: project.challenges ?? "",
-        solution: project.solution ?? "",
-        imageIds: project.images?.map((img: any) => img),
+        status: project.status ?? "DRAFT",
+        technologies: project.technologies?.join(", ") ?? "",
+        image_id: project.image_id ?? "",
       }
     : {
         title: "",
-        short_description: "",
+        description: "",
         url: "",
-        client_name: "",
-        year: "",
-        timeline: "",
-        overview: "",
-        challenges: "",
-        solution: "",
-        imageIds: [] as string[],
+        status: "DRAFT",
+        technologies: "",
+        image_id: "",
       };
 
   logger.info(defaultValues, "defaultValues");
@@ -147,32 +102,26 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
       setloading(true);
       try {
         logger.info(data, "data");
-        logger.info(data.imageIds, "data.imageIds");
-        const images: string[] = Array.isArray(data.imageIds)
-          ? data.imageIds
-          : data.imageIds
-          ? [data.imageIds]
+        
+        // Parse technologies from comma-separated string to array
+        const technologies: string[] = data.technologies
+          ? data.technologies
+              .split(",")
+              .map((tech: string) => tech.trim())
+              .filter((tech: string) => tech.length > 0)
           : [];
-        logger.info(images, "images");
-        logger.info(data, "data");
-        logger.info(isUpdateMode, "isUpdateMode");
-        logger.info(project, "project");
-        logger.info(onSaved, "onSaved");
+
         const payload = {
           title: data.title,
-          short_description: data.short_description || null,
+          description: data.description || null,
           url: data.url || null,
-          client_name: data.client_name || null,
-          year: data.year ? Number(data.year) : null,
-          timeline: data.timeline || null,
-          overview: data.overview || null,
-          challenges: data.challenges || null,
-          solution: data.solution || null,
-          images,
+          status: data.status || "DRAFT",
+          technologies,
+          image_id: data.image_id || null,
         };
 
         const endpoint = isUpdateMode
-          ? `/api/projects/${project!.id}`
+          ? `/api/projects/${project!.project_id}`
           : "/api/projects";
 
         const method = isUpdateMode ? "PUT" : "POST";
@@ -202,7 +151,7 @@ export const ProjectForm: React.FC<Props> = ({ project, onSaved }) => {
         setloading(false);
       }
     },
-    [isUpdateMode, project, onSaved]
+    [isUpdateMode, project, onSaved, router]
   );
 
   return (

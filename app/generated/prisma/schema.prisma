@@ -34,7 +34,7 @@ model GalleryItem {
   blogFeaturedImages    Blog[]            @relation("BlogFeaturedImage")
   blogOgImages          Blog[]            @relation("BlogOgImage")
   companyFeaturedImages MyCompanies[]     @relation("CompanyFeaturedImage")
-  projectImages         ProjectImage[]
+  projectImage          Project[]         @relation("ProjectImage")
   teamFeaturedImages    Team[]            @relation("TeamFeaturedImage")
   serviceCategoryImages ServiceCategory[] @relation("ServiceCategoryImage")
   serviceImages         Service[]         @relation("ServiceImage")
@@ -148,38 +148,19 @@ model Blog {
 }
 
 model Project {
-  project_id        Int            @id @default(autoincrement())
-  title             String
-  slug              String         @unique
-  short_description String?        @db.Text
-  images            ProjectImage[]
-  url               String?
-  client_name       String?
-  year              Int?
-  timeline          String?
-  overview          String?        @db.Text
-  challenges        String?        @db.Text
-  solution          String?        @db.Text
-  created_at        DateTime       @default(now())
-  updated_at        DateTime       @updatedAt
-  meta_title        String?
-  meta_description  String?        @db.Text
-  meta_keywords     String?
-}
+  project_id   Int          @id @default(autoincrement())
+  title        String
+  image        GalleryItem? @relation("ProjectImage", fields: [image_id], references: [id], onDelete: SetNull)
+  image_id     String?
+  description  String?      @db.Text
+  url          String?
+  status       Status       @default(DRAFT)
+  technologies String[]
+  created_at   DateTime     @default(now())
+  updated_at   DateTime     @updatedAt
 
-model ProjectImage {
-  id            String      @id @default(cuid())
-  project       Project     @relation(fields: [project_id], references: [project_id], onDelete: Cascade)
-  project_id    Int
-  image         GalleryItem @relation(fields: [image_id], references: [id], onDelete: Cascade)
-  image_id      String
-  display_order Int         @default(0)
-  created_at    DateTime    @default(now())
-
-  @@unique([project_id, image_id])
-  @@index([project_id])
-  @@index([image_id])
-  @@index([display_order])
+  @@index([url])
+  @@index([description])
 }
 
 model ServiceCategory {

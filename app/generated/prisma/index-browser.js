@@ -192,28 +192,13 @@ exports.Prisma.BlogScalarFieldEnum = {
 exports.Prisma.ProjectScalarFieldEnum = {
   project_id: 'project_id',
   title: 'title',
-  slug: 'slug',
-  short_description: 'short_description',
-  url: 'url',
-  client_name: 'client_name',
-  year: 'year',
-  timeline: 'timeline',
-  overview: 'overview',
-  challenges: 'challenges',
-  solution: 'solution',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  meta_title: 'meta_title',
-  meta_description: 'meta_description',
-  meta_keywords: 'meta_keywords'
-};
-
-exports.Prisma.ProjectImageScalarFieldEnum = {
-  id: 'id',
-  project_id: 'project_id',
   image_id: 'image_id',
-  display_order: 'display_order',
-  created_at: 'created_at'
+  description: 'description',
+  url: 'url',
+  status: 'status',
+  technologies: 'technologies',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.ServiceCategoryScalarFieldEnum = {
@@ -351,7 +336,6 @@ exports.Prisma.ModelName = {
   BlogCategoryRelation: 'BlogCategoryRelation',
   Blog: 'Blog',
   Project: 'Project',
-  ProjectImage: 'ProjectImage',
   ServiceCategory: 'ServiceCategory',
   Service: 'Service',
   Team: 'Team',

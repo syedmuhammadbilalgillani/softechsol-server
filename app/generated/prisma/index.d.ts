@@ -49,11 +49,6 @@ export type Blog = $Result.DefaultSelection<Prisma.$BlogPayload>
  */
 export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
 /**
- * Model ProjectImage
- * 
- */
-export type ProjectImage = $Result.DefaultSelection<Prisma.$ProjectImagePayload>
-/**
  * Model ServiceCategory
  * 
  */
@@ -312,16 +307,6 @@ export class PrismaClient<
     * ```
     */
   get project(): Prisma.ProjectDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.projectImage`: Exposes CRUD operations for the **ProjectImage** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ProjectImages
-    * const projectImages = await prisma.projectImage.findMany()
-    * ```
-    */
-  get projectImage(): Prisma.ProjectImageDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.serviceCategory`: Exposes CRUD operations for the **ServiceCategory** model.
@@ -850,7 +835,6 @@ export namespace Prisma {
     BlogCategoryRelation: 'BlogCategoryRelation',
     Blog: 'Blog',
     Project: 'Project',
-    ProjectImage: 'ProjectImage',
     ServiceCategory: 'ServiceCategory',
     Service: 'Service',
     Team: 'Team',
@@ -877,7 +861,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "project" | "projectImage" | "serviceCategory" | "service" | "team" | "contactUs" | "jobCategory" | "jobCategoryRelation" | "job" | "podcast"
+      modelProps: "galleryItem" | "user" | "blogCategory" | "myCompanies" | "blogCategoryRelation" | "blog" | "project" | "serviceCategory" | "service" | "team" | "contactUs" | "jobCategory" | "jobCategoryRelation" | "job" | "podcast"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1396,80 +1380,6 @@ export namespace Prisma {
           count: {
             args: Prisma.ProjectCountArgs<ExtArgs>
             result: $Utils.Optional<ProjectCountAggregateOutputType> | number
-          }
-        }
-      }
-      ProjectImage: {
-        payload: Prisma.$ProjectImagePayload<ExtArgs>
-        fields: Prisma.ProjectImageFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ProjectImageFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ProjectImageFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>
-          }
-          findFirst: {
-            args: Prisma.ProjectImageFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ProjectImageFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>
-          }
-          findMany: {
-            args: Prisma.ProjectImageFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>[]
-          }
-          create: {
-            args: Prisma.ProjectImageCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>
-          }
-          createMany: {
-            args: Prisma.ProjectImageCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ProjectImageCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>[]
-          }
-          delete: {
-            args: Prisma.ProjectImageDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>
-          }
-          update: {
-            args: Prisma.ProjectImageUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>
-          }
-          deleteMany: {
-            args: Prisma.ProjectImageDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ProjectImageUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.ProjectImageUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>[]
-          }
-          upsert: {
-            args: Prisma.ProjectImageUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ProjectImagePayload>
-          }
-          aggregate: {
-            args: Prisma.ProjectImageAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateProjectImage>
-          }
-          groupBy: {
-            args: Prisma.ProjectImageGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ProjectImageGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ProjectImageCountArgs<ExtArgs>
-            result: $Utils.Optional<ProjectImageCountAggregateOutputType> | number
           }
         }
       }
@@ -2168,7 +2078,6 @@ export namespace Prisma {
     blogCategoryRelation?: BlogCategoryRelationOmit
     blog?: BlogOmit
     project?: ProjectOmit
-    projectImage?: ProjectImageOmit
     serviceCategory?: ServiceCategoryOmit
     service?: ServiceOmit
     team?: TeamOmit
@@ -2261,7 +2170,7 @@ export namespace Prisma {
     blogFeaturedImages: number
     blogOgImages: number
     companyFeaturedImages: number
-    projectImages: number
+    projectImage: number
     teamFeaturedImages: number
     serviceCategoryImages: number
     serviceImages: number
@@ -2273,7 +2182,7 @@ export namespace Prisma {
     blogFeaturedImages?: boolean | GalleryItemCountOutputTypeCountBlogFeaturedImagesArgs
     blogOgImages?: boolean | GalleryItemCountOutputTypeCountBlogOgImagesArgs
     companyFeaturedImages?: boolean | GalleryItemCountOutputTypeCountCompanyFeaturedImagesArgs
-    projectImages?: boolean | GalleryItemCountOutputTypeCountProjectImagesArgs
+    projectImage?: boolean | GalleryItemCountOutputTypeCountProjectImageArgs
     teamFeaturedImages?: boolean | GalleryItemCountOutputTypeCountTeamFeaturedImagesArgs
     serviceCategoryImages?: boolean | GalleryItemCountOutputTypeCountServiceCategoryImagesArgs
     serviceImages?: boolean | GalleryItemCountOutputTypeCountServiceImagesArgs
@@ -2322,8 +2231,8 @@ export namespace Prisma {
   /**
    * GalleryItemCountOutputType without action
    */
-  export type GalleryItemCountOutputTypeCountProjectImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProjectImageWhereInput
+  export type GalleryItemCountOutputTypeCountProjectImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectWhereInput
   }
 
   /**
@@ -2454,37 +2363,6 @@ export namespace Prisma {
    */
   export type BlogCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BlogCategoryRelationWhereInput
-  }
-
-
-  /**
-   * Count Type ProjectCountOutputType
-   */
-
-  export type ProjectCountOutputType = {
-    images: number
-  }
-
-  export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    images?: boolean | ProjectCountOutputTypeCountImagesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * ProjectCountOutputType without action
-   */
-  export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectCountOutputType
-     */
-    select?: ProjectCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * ProjectCountOutputType without action
-   */
-  export type ProjectCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProjectImageWhereInput
   }
 
 
@@ -2784,7 +2662,7 @@ export namespace Prisma {
     blogFeaturedImages?: boolean | GalleryItem$blogFeaturedImagesArgs<ExtArgs>
     blogOgImages?: boolean | GalleryItem$blogOgImagesArgs<ExtArgs>
     companyFeaturedImages?: boolean | GalleryItem$companyFeaturedImagesArgs<ExtArgs>
-    projectImages?: boolean | GalleryItem$projectImagesArgs<ExtArgs>
+    projectImage?: boolean | GalleryItem$projectImageArgs<ExtArgs>
     teamFeaturedImages?: boolean | GalleryItem$teamFeaturedImagesArgs<ExtArgs>
     serviceCategoryImages?: boolean | GalleryItem$serviceCategoryImagesArgs<ExtArgs>
     serviceImages?: boolean | GalleryItem$serviceImagesArgs<ExtArgs>
@@ -2822,7 +2700,7 @@ export namespace Prisma {
     blogFeaturedImages?: boolean | GalleryItem$blogFeaturedImagesArgs<ExtArgs>
     blogOgImages?: boolean | GalleryItem$blogOgImagesArgs<ExtArgs>
     companyFeaturedImages?: boolean | GalleryItem$companyFeaturedImagesArgs<ExtArgs>
-    projectImages?: boolean | GalleryItem$projectImagesArgs<ExtArgs>
+    projectImage?: boolean | GalleryItem$projectImageArgs<ExtArgs>
     teamFeaturedImages?: boolean | GalleryItem$teamFeaturedImagesArgs<ExtArgs>
     serviceCategoryImages?: boolean | GalleryItem$serviceCategoryImagesArgs<ExtArgs>
     serviceImages?: boolean | GalleryItem$serviceImagesArgs<ExtArgs>
@@ -2839,7 +2717,7 @@ export namespace Prisma {
       blogFeaturedImages: Prisma.$BlogPayload<ExtArgs>[]
       blogOgImages: Prisma.$BlogPayload<ExtArgs>[]
       companyFeaturedImages: Prisma.$MyCompaniesPayload<ExtArgs>[]
-      projectImages: Prisma.$ProjectImagePayload<ExtArgs>[]
+      projectImage: Prisma.$ProjectPayload<ExtArgs>[]
       teamFeaturedImages: Prisma.$TeamPayload<ExtArgs>[]
       serviceCategoryImages: Prisma.$ServiceCategoryPayload<ExtArgs>[]
       serviceImages: Prisma.$ServicePayload<ExtArgs>[]
@@ -3249,7 +3127,7 @@ export namespace Prisma {
     blogFeaturedImages<T extends GalleryItem$blogFeaturedImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$blogFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     blogOgImages<T extends GalleryItem$blogOgImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$blogOgImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     companyFeaturedImages<T extends GalleryItem$companyFeaturedImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$companyFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MyCompaniesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    projectImages<T extends GalleryItem$projectImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$projectImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    projectImage<T extends GalleryItem$projectImageArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$projectImageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     teamFeaturedImages<T extends GalleryItem$teamFeaturedImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$teamFeaturedImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     serviceCategoryImages<T extends GalleryItem$serviceCategoryImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$serviceCategoryImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     serviceImages<T extends GalleryItem$serviceImagesArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItem$serviceImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3772,27 +3650,27 @@ export namespace Prisma {
   }
 
   /**
-   * GalleryItem.projectImages
+   * GalleryItem.projectImage
    */
-  export type GalleryItem$projectImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type GalleryItem$projectImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProjectImage
+     * Select specific fields to fetch from the Project
      */
-    select?: ProjectImageSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProjectImage
+     * Omit specific fields from the Project
      */
-    omit?: ProjectImageOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProjectImageInclude<ExtArgs> | null
-    where?: ProjectImageWhereInput
-    orderBy?: ProjectImageOrderByWithRelationInput | ProjectImageOrderByWithRelationInput[]
-    cursor?: ProjectImageWhereUniqueInput
+    include?: ProjectInclude<ExtArgs> | null
+    where?: ProjectWhereInput
+    orderBy?: ProjectOrderByWithRelationInput | ProjectOrderByWithRelationInput[]
+    cursor?: ProjectWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ProjectImageScalarFieldEnum | ProjectImageScalarFieldEnum[]
+    distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
 
   /**
@@ -9893,138 +9771,88 @@ export namespace Prisma {
 
   export type ProjectAvgAggregateOutputType = {
     project_id: number | null
-    year: number | null
   }
 
   export type ProjectSumAggregateOutputType = {
     project_id: number | null
-    year: number | null
   }
 
   export type ProjectMinAggregateOutputType = {
     project_id: number | null
     title: string | null
-    slug: string | null
-    short_description: string | null
+    image_id: string | null
+    description: string | null
     url: string | null
-    client_name: string | null
-    year: number | null
-    timeline: string | null
-    overview: string | null
-    challenges: string | null
-    solution: string | null
+    status: $Enums.Status | null
     created_at: Date | null
     updated_at: Date | null
-    meta_title: string | null
-    meta_description: string | null
-    meta_keywords: string | null
   }
 
   export type ProjectMaxAggregateOutputType = {
     project_id: number | null
     title: string | null
-    slug: string | null
-    short_description: string | null
+    image_id: string | null
+    description: string | null
     url: string | null
-    client_name: string | null
-    year: number | null
-    timeline: string | null
-    overview: string | null
-    challenges: string | null
-    solution: string | null
+    status: $Enums.Status | null
     created_at: Date | null
     updated_at: Date | null
-    meta_title: string | null
-    meta_description: string | null
-    meta_keywords: string | null
   }
 
   export type ProjectCountAggregateOutputType = {
     project_id: number
     title: number
-    slug: number
-    short_description: number
+    image_id: number
+    description: number
     url: number
-    client_name: number
-    year: number
-    timeline: number
-    overview: number
-    challenges: number
-    solution: number
+    status: number
+    technologies: number
     created_at: number
     updated_at: number
-    meta_title: number
-    meta_description: number
-    meta_keywords: number
     _all: number
   }
 
 
   export type ProjectAvgAggregateInputType = {
     project_id?: true
-    year?: true
   }
 
   export type ProjectSumAggregateInputType = {
     project_id?: true
-    year?: true
   }
 
   export type ProjectMinAggregateInputType = {
     project_id?: true
     title?: true
-    slug?: true
-    short_description?: true
+    image_id?: true
+    description?: true
     url?: true
-    client_name?: true
-    year?: true
-    timeline?: true
-    overview?: true
-    challenges?: true
-    solution?: true
+    status?: true
     created_at?: true
     updated_at?: true
-    meta_title?: true
-    meta_description?: true
-    meta_keywords?: true
   }
 
   export type ProjectMaxAggregateInputType = {
     project_id?: true
     title?: true
-    slug?: true
-    short_description?: true
+    image_id?: true
+    description?: true
     url?: true
-    client_name?: true
-    year?: true
-    timeline?: true
-    overview?: true
-    challenges?: true
-    solution?: true
+    status?: true
     created_at?: true
     updated_at?: true
-    meta_title?: true
-    meta_description?: true
-    meta_keywords?: true
   }
 
   export type ProjectCountAggregateInputType = {
     project_id?: true
     title?: true
-    slug?: true
-    short_description?: true
+    image_id?: true
+    description?: true
     url?: true
-    client_name?: true
-    year?: true
-    timeline?: true
-    overview?: true
-    challenges?: true
-    solution?: true
+    status?: true
+    technologies?: true
     created_at?: true
     updated_at?: true
-    meta_title?: true
-    meta_description?: true
-    meta_keywords?: true
     _all?: true
   }
 
@@ -10117,20 +9945,13 @@ export namespace Prisma {
   export type ProjectGroupByOutputType = {
     project_id: number
     title: string
-    slug: string
-    short_description: string | null
+    image_id: string | null
+    description: string | null
     url: string | null
-    client_name: string | null
-    year: number | null
-    timeline: string | null
-    overview: string | null
-    challenges: string | null
-    solution: string | null
+    status: $Enums.Status
+    technologies: string[]
     created_at: Date
     updated_at: Date
-    meta_title: string | null
-    meta_description: string | null
-    meta_keywords: string | null
     _count: ProjectCountAggregateOutputType | null
     _avg: ProjectAvgAggregateOutputType | null
     _sum: ProjectSumAggregateOutputType | null
@@ -10155,111 +9976,80 @@ export namespace Prisma {
   export type ProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     project_id?: boolean
     title?: boolean
-    slug?: boolean
-    short_description?: boolean
+    image_id?: boolean
+    description?: boolean
     url?: boolean
-    client_name?: boolean
-    year?: boolean
-    timeline?: boolean
-    overview?: boolean
-    challenges?: boolean
-    solution?: boolean
+    status?: boolean
+    technologies?: boolean
     created_at?: boolean
     updated_at?: boolean
-    meta_title?: boolean
-    meta_description?: boolean
-    meta_keywords?: boolean
-    images?: boolean | Project$imagesArgs<ExtArgs>
-    _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
+    image?: boolean | Project$imageArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     project_id?: boolean
     title?: boolean
-    slug?: boolean
-    short_description?: boolean
+    image_id?: boolean
+    description?: boolean
     url?: boolean
-    client_name?: boolean
-    year?: boolean
-    timeline?: boolean
-    overview?: boolean
-    challenges?: boolean
-    solution?: boolean
+    status?: boolean
+    technologies?: boolean
     created_at?: boolean
     updated_at?: boolean
-    meta_title?: boolean
-    meta_description?: boolean
-    meta_keywords?: boolean
+    image?: boolean | Project$imageArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     project_id?: boolean
     title?: boolean
-    slug?: boolean
-    short_description?: boolean
+    image_id?: boolean
+    description?: boolean
     url?: boolean
-    client_name?: boolean
-    year?: boolean
-    timeline?: boolean
-    overview?: boolean
-    challenges?: boolean
-    solution?: boolean
+    status?: boolean
+    technologies?: boolean
     created_at?: boolean
     updated_at?: boolean
-    meta_title?: boolean
-    meta_description?: boolean
-    meta_keywords?: boolean
+    image?: boolean | Project$imageArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectScalar = {
     project_id?: boolean
     title?: boolean
-    slug?: boolean
-    short_description?: boolean
+    image_id?: boolean
+    description?: boolean
     url?: boolean
-    client_name?: boolean
-    year?: boolean
-    timeline?: boolean
-    overview?: boolean
-    challenges?: boolean
-    solution?: boolean
+    status?: boolean
+    technologies?: boolean
     created_at?: boolean
     updated_at?: boolean
-    meta_title?: boolean
-    meta_description?: boolean
-    meta_keywords?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"project_id" | "title" | "slug" | "short_description" | "url" | "client_name" | "year" | "timeline" | "overview" | "challenges" | "solution" | "created_at" | "updated_at" | "meta_title" | "meta_description" | "meta_keywords", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"project_id" | "title" | "image_id" | "description" | "url" | "status" | "technologies" | "created_at" | "updated_at", ExtArgs["result"]["project"]>
   export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    images?: boolean | Project$imagesArgs<ExtArgs>
-    _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
+    image?: boolean | Project$imageArgs<ExtArgs>
   }
-  export type ProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Project$imageArgs<ExtArgs>
+  }
+  export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    image?: boolean | Project$imageArgs<ExtArgs>
+  }
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
     objects: {
-      images: Prisma.$ProjectImagePayload<ExtArgs>[]
+      image: Prisma.$GalleryItemPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       project_id: number
       title: string
-      slug: string
-      short_description: string | null
+      image_id: string | null
+      description: string | null
       url: string | null
-      client_name: string | null
-      year: number | null
-      timeline: string | null
-      overview: string | null
-      challenges: string | null
-      solution: string | null
+      status: $Enums.Status
+      technologies: string[]
       created_at: Date
       updated_at: Date
-      meta_title: string | null
-      meta_description: string | null
-      meta_keywords: string | null
     }, ExtArgs["result"]["project"]>
     composites: {}
   }
@@ -10654,7 +10444,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    images<T extends Project$imagesArgs<ExtArgs> = {}>(args?: Subset<T, Project$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    image<T extends Project$imageArgs<ExtArgs> = {}>(args?: Subset<T, Project$imageArgs<ExtArgs>>): Prisma__GalleryItemClient<$Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10686,20 +10476,13 @@ export namespace Prisma {
   interface ProjectFieldRefs {
     readonly project_id: FieldRef<"Project", 'Int'>
     readonly title: FieldRef<"Project", 'String'>
-    readonly slug: FieldRef<"Project", 'String'>
-    readonly short_description: FieldRef<"Project", 'String'>
+    readonly image_id: FieldRef<"Project", 'String'>
+    readonly description: FieldRef<"Project", 'String'>
     readonly url: FieldRef<"Project", 'String'>
-    readonly client_name: FieldRef<"Project", 'String'>
-    readonly year: FieldRef<"Project", 'Int'>
-    readonly timeline: FieldRef<"Project", 'String'>
-    readonly overview: FieldRef<"Project", 'String'>
-    readonly challenges: FieldRef<"Project", 'String'>
-    readonly solution: FieldRef<"Project", 'String'>
+    readonly status: FieldRef<"Project", 'Status'>
+    readonly technologies: FieldRef<"Project", 'String[]'>
     readonly created_at: FieldRef<"Project", 'DateTime'>
     readonly updated_at: FieldRef<"Project", 'DateTime'>
-    readonly meta_title: FieldRef<"Project", 'String'>
-    readonly meta_description: FieldRef<"Project", 'String'>
-    readonly meta_keywords: FieldRef<"Project", 'String'>
   }
     
 
@@ -10949,6 +10732,10 @@ export namespace Prisma {
      */
     data: ProjectCreateManyInput | ProjectCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -11019,6 +10806,10 @@ export namespace Prisma {
      * Limit how many Projects to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -11088,27 +10879,22 @@ export namespace Prisma {
   }
 
   /**
-   * Project.images
+   * Project.image
    */
-  export type Project$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Project$imageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ProjectImage
+     * Select specific fields to fetch from the GalleryItem
      */
-    select?: ProjectImageSelect<ExtArgs> | null
+    select?: GalleryItemSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ProjectImage
+     * Omit specific fields from the GalleryItem
      */
-    omit?: ProjectImageOmit<ExtArgs> | null
+    omit?: GalleryItemOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ProjectImageInclude<ExtArgs> | null
-    where?: ProjectImageWhereInput
-    orderBy?: ProjectImageOrderByWithRelationInput | ProjectImageOrderByWithRelationInput[]
-    cursor?: ProjectImageWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ProjectImageScalarFieldEnum | ProjectImageScalarFieldEnum[]
+    include?: GalleryItemInclude<ExtArgs> | null
+    where?: GalleryItemWhereInput
   }
 
   /**
@@ -11127,1110 +10913,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ProjectInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model ProjectImage
-   */
-
-  export type AggregateProjectImage = {
-    _count: ProjectImageCountAggregateOutputType | null
-    _avg: ProjectImageAvgAggregateOutputType | null
-    _sum: ProjectImageSumAggregateOutputType | null
-    _min: ProjectImageMinAggregateOutputType | null
-    _max: ProjectImageMaxAggregateOutputType | null
-  }
-
-  export type ProjectImageAvgAggregateOutputType = {
-    project_id: number | null
-    display_order: number | null
-  }
-
-  export type ProjectImageSumAggregateOutputType = {
-    project_id: number | null
-    display_order: number | null
-  }
-
-  export type ProjectImageMinAggregateOutputType = {
-    id: string | null
-    project_id: number | null
-    image_id: string | null
-    display_order: number | null
-    created_at: Date | null
-  }
-
-  export type ProjectImageMaxAggregateOutputType = {
-    id: string | null
-    project_id: number | null
-    image_id: string | null
-    display_order: number | null
-    created_at: Date | null
-  }
-
-  export type ProjectImageCountAggregateOutputType = {
-    id: number
-    project_id: number
-    image_id: number
-    display_order: number
-    created_at: number
-    _all: number
-  }
-
-
-  export type ProjectImageAvgAggregateInputType = {
-    project_id?: true
-    display_order?: true
-  }
-
-  export type ProjectImageSumAggregateInputType = {
-    project_id?: true
-    display_order?: true
-  }
-
-  export type ProjectImageMinAggregateInputType = {
-    id?: true
-    project_id?: true
-    image_id?: true
-    display_order?: true
-    created_at?: true
-  }
-
-  export type ProjectImageMaxAggregateInputType = {
-    id?: true
-    project_id?: true
-    image_id?: true
-    display_order?: true
-    created_at?: true
-  }
-
-  export type ProjectImageCountAggregateInputType = {
-    id?: true
-    project_id?: true
-    image_id?: true
-    display_order?: true
-    created_at?: true
-    _all?: true
-  }
-
-  export type ProjectImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ProjectImage to aggregate.
-     */
-    where?: ProjectImageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ProjectImages to fetch.
-     */
-    orderBy?: ProjectImageOrderByWithRelationInput | ProjectImageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ProjectImageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ProjectImages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ProjectImages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ProjectImages
-    **/
-    _count?: true | ProjectImageCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ProjectImageAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ProjectImageSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ProjectImageMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ProjectImageMaxAggregateInputType
-  }
-
-  export type GetProjectImageAggregateType<T extends ProjectImageAggregateArgs> = {
-        [P in keyof T & keyof AggregateProjectImage]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProjectImage[P]>
-      : GetScalarType<T[P], AggregateProjectImage[P]>
-  }
-
-
-
-
-  export type ProjectImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ProjectImageWhereInput
-    orderBy?: ProjectImageOrderByWithAggregationInput | ProjectImageOrderByWithAggregationInput[]
-    by: ProjectImageScalarFieldEnum[] | ProjectImageScalarFieldEnum
-    having?: ProjectImageScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ProjectImageCountAggregateInputType | true
-    _avg?: ProjectImageAvgAggregateInputType
-    _sum?: ProjectImageSumAggregateInputType
-    _min?: ProjectImageMinAggregateInputType
-    _max?: ProjectImageMaxAggregateInputType
-  }
-
-  export type ProjectImageGroupByOutputType = {
-    id: string
-    project_id: number
-    image_id: string
-    display_order: number
-    created_at: Date
-    _count: ProjectImageCountAggregateOutputType | null
-    _avg: ProjectImageAvgAggregateOutputType | null
-    _sum: ProjectImageSumAggregateOutputType | null
-    _min: ProjectImageMinAggregateOutputType | null
-    _max: ProjectImageMaxAggregateOutputType | null
-  }
-
-  type GetProjectImageGroupByPayload<T extends ProjectImageGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ProjectImageGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ProjectImageGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ProjectImageGroupByOutputType[P]>
-            : GetScalarType<T[P], ProjectImageGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ProjectImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    project_id?: boolean
-    image_id?: boolean
-    display_order?: boolean
-    created_at?: boolean
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
-    image?: boolean | GalleryItemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["projectImage"]>
-
-  export type ProjectImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    project_id?: boolean
-    image_id?: boolean
-    display_order?: boolean
-    created_at?: boolean
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
-    image?: boolean | GalleryItemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["projectImage"]>
-
-  export type ProjectImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    project_id?: boolean
-    image_id?: boolean
-    display_order?: boolean
-    created_at?: boolean
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
-    image?: boolean | GalleryItemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["projectImage"]>
-
-  export type ProjectImageSelectScalar = {
-    id?: boolean
-    project_id?: boolean
-    image_id?: boolean
-    display_order?: boolean
-    created_at?: boolean
-  }
-
-  export type ProjectImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_id" | "image_id" | "display_order" | "created_at", ExtArgs["result"]["projectImage"]>
-  export type ProjectImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
-    image?: boolean | GalleryItemDefaultArgs<ExtArgs>
-  }
-  export type ProjectImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
-    image?: boolean | GalleryItemDefaultArgs<ExtArgs>
-  }
-  export type ProjectImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    project?: boolean | ProjectDefaultArgs<ExtArgs>
-    image?: boolean | GalleryItemDefaultArgs<ExtArgs>
-  }
-
-  export type $ProjectImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ProjectImage"
-    objects: {
-      project: Prisma.$ProjectPayload<ExtArgs>
-      image: Prisma.$GalleryItemPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      project_id: number
-      image_id: string
-      display_order: number
-      created_at: Date
-    }, ExtArgs["result"]["projectImage"]>
-    composites: {}
-  }
-
-  type ProjectImageGetPayload<S extends boolean | null | undefined | ProjectImageDefaultArgs> = $Result.GetResult<Prisma.$ProjectImagePayload, S>
-
-  type ProjectImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ProjectImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ProjectImageCountAggregateInputType | true
-    }
-
-  export interface ProjectImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProjectImage'], meta: { name: 'ProjectImage' } }
-    /**
-     * Find zero or one ProjectImage that matches the filter.
-     * @param {ProjectImageFindUniqueArgs} args - Arguments to find a ProjectImage
-     * @example
-     * // Get one ProjectImage
-     * const projectImage = await prisma.projectImage.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ProjectImageFindUniqueArgs>(args: SelectSubset<T, ProjectImageFindUniqueArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one ProjectImage that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ProjectImageFindUniqueOrThrowArgs} args - Arguments to find a ProjectImage
-     * @example
-     * // Get one ProjectImage
-     * const projectImage = await prisma.projectImage.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ProjectImageFindUniqueOrThrowArgs>(args: SelectSubset<T, ProjectImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ProjectImage that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectImageFindFirstArgs} args - Arguments to find a ProjectImage
-     * @example
-     * // Get one ProjectImage
-     * const projectImage = await prisma.projectImage.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ProjectImageFindFirstArgs>(args?: SelectSubset<T, ProjectImageFindFirstArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ProjectImage that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectImageFindFirstOrThrowArgs} args - Arguments to find a ProjectImage
-     * @example
-     * // Get one ProjectImage
-     * const projectImage = await prisma.projectImage.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ProjectImageFindFirstOrThrowArgs>(args?: SelectSubset<T, ProjectImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more ProjectImages that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectImageFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ProjectImages
-     * const projectImages = await prisma.projectImage.findMany()
-     * 
-     * // Get first 10 ProjectImages
-     * const projectImages = await prisma.projectImage.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const projectImageWithIdOnly = await prisma.projectImage.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ProjectImageFindManyArgs>(args?: SelectSubset<T, ProjectImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a ProjectImage.
-     * @param {ProjectImageCreateArgs} args - Arguments to create a ProjectImage.
-     * @example
-     * // Create one ProjectImage
-     * const ProjectImage = await prisma.projectImage.create({
-     *   data: {
-     *     // ... data to create a ProjectImage
-     *   }
-     * })
-     * 
-     */
-    create<T extends ProjectImageCreateArgs>(args: SelectSubset<T, ProjectImageCreateArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many ProjectImages.
-     * @param {ProjectImageCreateManyArgs} args - Arguments to create many ProjectImages.
-     * @example
-     * // Create many ProjectImages
-     * const projectImage = await prisma.projectImage.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ProjectImageCreateManyArgs>(args?: SelectSubset<T, ProjectImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many ProjectImages and returns the data saved in the database.
-     * @param {ProjectImageCreateManyAndReturnArgs} args - Arguments to create many ProjectImages.
-     * @example
-     * // Create many ProjectImages
-     * const projectImage = await prisma.projectImage.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many ProjectImages and only return the `id`
-     * const projectImageWithIdOnly = await prisma.projectImage.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends ProjectImageCreateManyAndReturnArgs>(args?: SelectSubset<T, ProjectImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a ProjectImage.
-     * @param {ProjectImageDeleteArgs} args - Arguments to delete one ProjectImage.
-     * @example
-     * // Delete one ProjectImage
-     * const ProjectImage = await prisma.projectImage.delete({
-     *   where: {
-     *     // ... filter to delete one ProjectImage
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ProjectImageDeleteArgs>(args: SelectSubset<T, ProjectImageDeleteArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one ProjectImage.
-     * @param {ProjectImageUpdateArgs} args - Arguments to update one ProjectImage.
-     * @example
-     * // Update one ProjectImage
-     * const projectImage = await prisma.projectImage.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ProjectImageUpdateArgs>(args: SelectSubset<T, ProjectImageUpdateArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more ProjectImages.
-     * @param {ProjectImageDeleteManyArgs} args - Arguments to filter ProjectImages to delete.
-     * @example
-     * // Delete a few ProjectImages
-     * const { count } = await prisma.projectImage.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ProjectImageDeleteManyArgs>(args?: SelectSubset<T, ProjectImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ProjectImages.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectImageUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ProjectImages
-     * const projectImage = await prisma.projectImage.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ProjectImageUpdateManyArgs>(args: SelectSubset<T, ProjectImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ProjectImages and returns the data updated in the database.
-     * @param {ProjectImageUpdateManyAndReturnArgs} args - Arguments to update many ProjectImages.
-     * @example
-     * // Update many ProjectImages
-     * const projectImage = await prisma.projectImage.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more ProjectImages and only return the `id`
-     * const projectImageWithIdOnly = await prisma.projectImage.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ProjectImageUpdateManyAndReturnArgs>(args: SelectSubset<T, ProjectImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one ProjectImage.
-     * @param {ProjectImageUpsertArgs} args - Arguments to update or create a ProjectImage.
-     * @example
-     * // Update or create a ProjectImage
-     * const projectImage = await prisma.projectImage.upsert({
-     *   create: {
-     *     // ... data to create a ProjectImage
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ProjectImage we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ProjectImageUpsertArgs>(args: SelectSubset<T, ProjectImageUpsertArgs<ExtArgs>>): Prisma__ProjectImageClient<$Result.GetResult<Prisma.$ProjectImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of ProjectImages.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectImageCountArgs} args - Arguments to filter ProjectImages to count.
-     * @example
-     * // Count the number of ProjectImages
-     * const count = await prisma.projectImage.count({
-     *   where: {
-     *     // ... the filter for the ProjectImages we want to count
-     *   }
-     * })
-    **/
-    count<T extends ProjectImageCountArgs>(
-      args?: Subset<T, ProjectImageCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ProjectImageCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ProjectImage.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ProjectImageAggregateArgs>(args: Subset<T, ProjectImageAggregateArgs>): Prisma.PrismaPromise<GetProjectImageAggregateType<T>>
-
-    /**
-     * Group by ProjectImage.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectImageGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ProjectImageGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ProjectImageGroupByArgs['orderBy'] }
-        : { orderBy?: ProjectImageGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ProjectImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProjectImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ProjectImage model
-   */
-  readonly fields: ProjectImageFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ProjectImage.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ProjectImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    image<T extends GalleryItemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GalleryItemDefaultArgs<ExtArgs>>): Prisma__GalleryItemClient<$Result.GetResult<Prisma.$GalleryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the ProjectImage model
-   */
-  interface ProjectImageFieldRefs {
-    readonly id: FieldRef<"ProjectImage", 'String'>
-    readonly project_id: FieldRef<"ProjectImage", 'Int'>
-    readonly image_id: FieldRef<"ProjectImage", 'String'>
-    readonly display_order: FieldRef<"ProjectImage", 'Int'>
-    readonly created_at: FieldRef<"ProjectImage", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ProjectImage findUnique
-   */
-  export type ProjectImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * Filter, which ProjectImage to fetch.
-     */
-    where: ProjectImageWhereUniqueInput
-  }
-
-  /**
-   * ProjectImage findUniqueOrThrow
-   */
-  export type ProjectImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * Filter, which ProjectImage to fetch.
-     */
-    where: ProjectImageWhereUniqueInput
-  }
-
-  /**
-   * ProjectImage findFirst
-   */
-  export type ProjectImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * Filter, which ProjectImage to fetch.
-     */
-    where?: ProjectImageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ProjectImages to fetch.
-     */
-    orderBy?: ProjectImageOrderByWithRelationInput | ProjectImageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ProjectImages.
-     */
-    cursor?: ProjectImageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ProjectImages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ProjectImages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ProjectImages.
-     */
-    distinct?: ProjectImageScalarFieldEnum | ProjectImageScalarFieldEnum[]
-  }
-
-  /**
-   * ProjectImage findFirstOrThrow
-   */
-  export type ProjectImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * Filter, which ProjectImage to fetch.
-     */
-    where?: ProjectImageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ProjectImages to fetch.
-     */
-    orderBy?: ProjectImageOrderByWithRelationInput | ProjectImageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ProjectImages.
-     */
-    cursor?: ProjectImageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ProjectImages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ProjectImages.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ProjectImages.
-     */
-    distinct?: ProjectImageScalarFieldEnum | ProjectImageScalarFieldEnum[]
-  }
-
-  /**
-   * ProjectImage findMany
-   */
-  export type ProjectImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * Filter, which ProjectImages to fetch.
-     */
-    where?: ProjectImageWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ProjectImages to fetch.
-     */
-    orderBy?: ProjectImageOrderByWithRelationInput | ProjectImageOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ProjectImages.
-     */
-    cursor?: ProjectImageWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ProjectImages from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ProjectImages.
-     */
-    skip?: number
-    distinct?: ProjectImageScalarFieldEnum | ProjectImageScalarFieldEnum[]
-  }
-
-  /**
-   * ProjectImage create
-   */
-  export type ProjectImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ProjectImage.
-     */
-    data: XOR<ProjectImageCreateInput, ProjectImageUncheckedCreateInput>
-  }
-
-  /**
-   * ProjectImage createMany
-   */
-  export type ProjectImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ProjectImages.
-     */
-    data: ProjectImageCreateManyInput | ProjectImageCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ProjectImage createManyAndReturn
-   */
-  export type ProjectImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * The data used to create many ProjectImages.
-     */
-    data: ProjectImageCreateManyInput | ProjectImageCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ProjectImage update
-   */
-  export type ProjectImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ProjectImage.
-     */
-    data: XOR<ProjectImageUpdateInput, ProjectImageUncheckedUpdateInput>
-    /**
-     * Choose, which ProjectImage to update.
-     */
-    where: ProjectImageWhereUniqueInput
-  }
-
-  /**
-   * ProjectImage updateMany
-   */
-  export type ProjectImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ProjectImages.
-     */
-    data: XOR<ProjectImageUpdateManyMutationInput, ProjectImageUncheckedUpdateManyInput>
-    /**
-     * Filter which ProjectImages to update
-     */
-    where?: ProjectImageWhereInput
-    /**
-     * Limit how many ProjectImages to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * ProjectImage updateManyAndReturn
-   */
-  export type ProjectImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * The data used to update ProjectImages.
-     */
-    data: XOR<ProjectImageUpdateManyMutationInput, ProjectImageUncheckedUpdateManyInput>
-    /**
-     * Filter which ProjectImages to update
-     */
-    where?: ProjectImageWhereInput
-    /**
-     * Limit how many ProjectImages to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ProjectImage upsert
-   */
-  export type ProjectImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ProjectImage to update in case it exists.
-     */
-    where: ProjectImageWhereUniqueInput
-    /**
-     * In case the ProjectImage found by the `where` argument doesn't exist, create a new ProjectImage with this data.
-     */
-    create: XOR<ProjectImageCreateInput, ProjectImageUncheckedCreateInput>
-    /**
-     * In case the ProjectImage was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ProjectImageUpdateInput, ProjectImageUncheckedUpdateInput>
-  }
-
-  /**
-   * ProjectImage delete
-   */
-  export type ProjectImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
-    /**
-     * Filter which ProjectImage to delete.
-     */
-    where: ProjectImageWhereUniqueInput
-  }
-
-  /**
-   * ProjectImage deleteMany
-   */
-  export type ProjectImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ProjectImages to delete
-     */
-    where?: ProjectImageWhereInput
-    /**
-     * Limit how many ProjectImages to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * ProjectImage without action
-   */
-  export type ProjectImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ProjectImage
-     */
-    select?: ProjectImageSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ProjectImage
-     */
-    omit?: ProjectImageOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProjectImageInclude<ExtArgs> | null
   }
 
 
@@ -21769,34 +20451,16 @@ export namespace Prisma {
   export const ProjectScalarFieldEnum: {
     project_id: 'project_id',
     title: 'title',
-    slug: 'slug',
-    short_description: 'short_description',
+    image_id: 'image_id',
+    description: 'description',
     url: 'url',
-    client_name: 'client_name',
-    year: 'year',
-    timeline: 'timeline',
-    overview: 'overview',
-    challenges: 'challenges',
-    solution: 'solution',
+    status: 'status',
+    technologies: 'technologies',
     created_at: 'created_at',
-    updated_at: 'updated_at',
-    meta_title: 'meta_title',
-    meta_description: 'meta_description',
-    meta_keywords: 'meta_keywords'
+    updated_at: 'updated_at'
   };
 
   export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
-
-
-  export const ProjectImageScalarFieldEnum: {
-    id: 'id',
-    project_id: 'project_id',
-    image_id: 'image_id',
-    display_order: 'display_order',
-    created_at: 'created_at'
-  };
-
-  export type ProjectImageScalarFieldEnum = (typeof ProjectImageScalarFieldEnum)[keyof typeof ProjectImageScalarFieldEnum]
 
 
   export const ServiceCategoryScalarFieldEnum: {
@@ -22060,7 +20724,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogListRelationFilter
     blogOgImages?: BlogListRelationFilter
     companyFeaturedImages?: MyCompaniesListRelationFilter
-    projectImages?: ProjectImageListRelationFilter
+    projectImage?: ProjectListRelationFilter
     teamFeaturedImages?: TeamListRelationFilter
     serviceCategoryImages?: ServiceCategoryListRelationFilter
     serviceImages?: ServiceListRelationFilter
@@ -22077,7 +20741,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogOrderByRelationAggregateInput
     blogOgImages?: BlogOrderByRelationAggregateInput
     companyFeaturedImages?: MyCompaniesOrderByRelationAggregateInput
-    projectImages?: ProjectImageOrderByRelationAggregateInput
+    projectImage?: ProjectOrderByRelationAggregateInput
     teamFeaturedImages?: TeamOrderByRelationAggregateInput
     serviceCategoryImages?: ServiceCategoryOrderByRelationAggregateInput
     serviceImages?: ServiceOrderByRelationAggregateInput
@@ -22097,7 +20761,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogListRelationFilter
     blogOgImages?: BlogListRelationFilter
     companyFeaturedImages?: MyCompaniesListRelationFilter
-    projectImages?: ProjectImageListRelationFilter
+    projectImage?: ProjectListRelationFilter
     teamFeaturedImages?: TeamListRelationFilter
     serviceCategoryImages?: ServiceCategoryListRelationFilter
     serviceImages?: ServiceListRelationFilter
@@ -22539,83 +21203,55 @@ export namespace Prisma {
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     project_id?: IntFilter<"Project"> | number
     title?: StringFilter<"Project"> | string
-    slug?: StringFilter<"Project"> | string
-    short_description?: StringNullableFilter<"Project"> | string | null
+    image_id?: StringNullableFilter<"Project"> | string | null
+    description?: StringNullableFilter<"Project"> | string | null
     url?: StringNullableFilter<"Project"> | string | null
-    client_name?: StringNullableFilter<"Project"> | string | null
-    year?: IntNullableFilter<"Project"> | number | null
-    timeline?: StringNullableFilter<"Project"> | string | null
-    overview?: StringNullableFilter<"Project"> | string | null
-    challenges?: StringNullableFilter<"Project"> | string | null
-    solution?: StringNullableFilter<"Project"> | string | null
+    status?: EnumStatusFilter<"Project"> | $Enums.Status
+    technologies?: StringNullableListFilter<"Project">
     created_at?: DateTimeFilter<"Project"> | Date | string
     updated_at?: DateTimeFilter<"Project"> | Date | string
-    meta_title?: StringNullableFilter<"Project"> | string | null
-    meta_description?: StringNullableFilter<"Project"> | string | null
-    meta_keywords?: StringNullableFilter<"Project"> | string | null
-    images?: ProjectImageListRelationFilter
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
   }
 
   export type ProjectOrderByWithRelationInput = {
     project_id?: SortOrder
     title?: SortOrder
-    slug?: SortOrder
-    short_description?: SortOrderInput | SortOrder
+    image_id?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
-    client_name?: SortOrderInput | SortOrder
-    year?: SortOrderInput | SortOrder
-    timeline?: SortOrderInput | SortOrder
-    overview?: SortOrderInput | SortOrder
-    challenges?: SortOrderInput | SortOrder
-    solution?: SortOrderInput | SortOrder
+    status?: SortOrder
+    technologies?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    meta_title?: SortOrderInput | SortOrder
-    meta_description?: SortOrderInput | SortOrder
-    meta_keywords?: SortOrderInput | SortOrder
-    images?: ProjectImageOrderByRelationAggregateInput
+    image?: GalleryItemOrderByWithRelationInput
   }
 
   export type ProjectWhereUniqueInput = Prisma.AtLeast<{
     project_id?: number
-    slug?: string
     AND?: ProjectWhereInput | ProjectWhereInput[]
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     title?: StringFilter<"Project"> | string
-    short_description?: StringNullableFilter<"Project"> | string | null
+    image_id?: StringNullableFilter<"Project"> | string | null
+    description?: StringNullableFilter<"Project"> | string | null
     url?: StringNullableFilter<"Project"> | string | null
-    client_name?: StringNullableFilter<"Project"> | string | null
-    year?: IntNullableFilter<"Project"> | number | null
-    timeline?: StringNullableFilter<"Project"> | string | null
-    overview?: StringNullableFilter<"Project"> | string | null
-    challenges?: StringNullableFilter<"Project"> | string | null
-    solution?: StringNullableFilter<"Project"> | string | null
+    status?: EnumStatusFilter<"Project"> | $Enums.Status
+    technologies?: StringNullableListFilter<"Project">
     created_at?: DateTimeFilter<"Project"> | Date | string
     updated_at?: DateTimeFilter<"Project"> | Date | string
-    meta_title?: StringNullableFilter<"Project"> | string | null
-    meta_description?: StringNullableFilter<"Project"> | string | null
-    meta_keywords?: StringNullableFilter<"Project"> | string | null
-    images?: ProjectImageListRelationFilter
-  }, "project_id" | "slug">
+    image?: XOR<GalleryItemNullableScalarRelationFilter, GalleryItemWhereInput> | null
+  }, "project_id">
 
   export type ProjectOrderByWithAggregationInput = {
     project_id?: SortOrder
     title?: SortOrder
-    slug?: SortOrder
-    short_description?: SortOrderInput | SortOrder
+    image_id?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     url?: SortOrderInput | SortOrder
-    client_name?: SortOrderInput | SortOrder
-    year?: SortOrderInput | SortOrder
-    timeline?: SortOrderInput | SortOrder
-    overview?: SortOrderInput | SortOrder
-    challenges?: SortOrderInput | SortOrder
-    solution?: SortOrderInput | SortOrder
+    status?: SortOrder
+    technologies?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    meta_title?: SortOrderInput | SortOrder
-    meta_description?: SortOrderInput | SortOrder
-    meta_keywords?: SortOrderInput | SortOrder
     _count?: ProjectCountOrderByAggregateInput
     _avg?: ProjectAvgOrderByAggregateInput
     _max?: ProjectMaxOrderByAggregateInput
@@ -22629,81 +21265,13 @@ export namespace Prisma {
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     project_id?: IntWithAggregatesFilter<"Project"> | number
     title?: StringWithAggregatesFilter<"Project"> | string
-    slug?: StringWithAggregatesFilter<"Project"> | string
-    short_description?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    image_id?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Project"> | string | null
     url?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    client_name?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    year?: IntNullableWithAggregatesFilter<"Project"> | number | null
-    timeline?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    overview?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    challenges?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    solution?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    status?: EnumStatusWithAggregatesFilter<"Project"> | $Enums.Status
+    technologies?: StringNullableListFilter<"Project">
     created_at?: DateTimeWithAggregatesFilter<"Project"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Project"> | Date | string
-    meta_title?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    meta_description?: StringNullableWithAggregatesFilter<"Project"> | string | null
-    meta_keywords?: StringNullableWithAggregatesFilter<"Project"> | string | null
-  }
-
-  export type ProjectImageWhereInput = {
-    AND?: ProjectImageWhereInput | ProjectImageWhereInput[]
-    OR?: ProjectImageWhereInput[]
-    NOT?: ProjectImageWhereInput | ProjectImageWhereInput[]
-    id?: StringFilter<"ProjectImage"> | string
-    project_id?: IntFilter<"ProjectImage"> | number
-    image_id?: StringFilter<"ProjectImage"> | string
-    display_order?: IntFilter<"ProjectImage"> | number
-    created_at?: DateTimeFilter<"ProjectImage"> | Date | string
-    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
-    image?: XOR<GalleryItemScalarRelationFilter, GalleryItemWhereInput>
-  }
-
-  export type ProjectImageOrderByWithRelationInput = {
-    id?: SortOrder
-    project_id?: SortOrder
-    image_id?: SortOrder
-    display_order?: SortOrder
-    created_at?: SortOrder
-    project?: ProjectOrderByWithRelationInput
-    image?: GalleryItemOrderByWithRelationInput
-  }
-
-  export type ProjectImageWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    project_id_image_id?: ProjectImageProject_idImage_idCompoundUniqueInput
-    AND?: ProjectImageWhereInput | ProjectImageWhereInput[]
-    OR?: ProjectImageWhereInput[]
-    NOT?: ProjectImageWhereInput | ProjectImageWhereInput[]
-    project_id?: IntFilter<"ProjectImage"> | number
-    image_id?: StringFilter<"ProjectImage"> | string
-    display_order?: IntFilter<"ProjectImage"> | number
-    created_at?: DateTimeFilter<"ProjectImage"> | Date | string
-    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
-    image?: XOR<GalleryItemScalarRelationFilter, GalleryItemWhereInput>
-  }, "id" | "project_id_image_id">
-
-  export type ProjectImageOrderByWithAggregationInput = {
-    id?: SortOrder
-    project_id?: SortOrder
-    image_id?: SortOrder
-    display_order?: SortOrder
-    created_at?: SortOrder
-    _count?: ProjectImageCountOrderByAggregateInput
-    _avg?: ProjectImageAvgOrderByAggregateInput
-    _max?: ProjectImageMaxOrderByAggregateInput
-    _min?: ProjectImageMinOrderByAggregateInput
-    _sum?: ProjectImageSumOrderByAggregateInput
-  }
-
-  export type ProjectImageScalarWhereWithAggregatesInput = {
-    AND?: ProjectImageScalarWhereWithAggregatesInput | ProjectImageScalarWhereWithAggregatesInput[]
-    OR?: ProjectImageScalarWhereWithAggregatesInput[]
-    NOT?: ProjectImageScalarWhereWithAggregatesInput | ProjectImageScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ProjectImage"> | string
-    project_id?: IntWithAggregatesFilter<"ProjectImage"> | number
-    image_id?: StringWithAggregatesFilter<"ProjectImage"> | string
-    display_order?: IntWithAggregatesFilter<"ProjectImage"> | number
-    created_at?: DateTimeWithAggregatesFilter<"ProjectImage"> | Date | string
   }
 
   export type ServiceCategoryWhereInput = {
@@ -23370,7 +21938,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
@@ -23387,7 +21955,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
@@ -23404,7 +21972,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
@@ -23421,7 +21989,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
@@ -23871,190 +22439,82 @@ export namespace Prisma {
 
   export type ProjectCreateInput = {
     title: string
-    slug: string
-    short_description?: string | null
+    description?: string | null
     url?: string | null
-    client_name?: string | null
-    year?: number | null
-    timeline?: string | null
-    overview?: string | null
-    challenges?: string | null
-    solution?: string | null
+    status?: $Enums.Status
+    technologies?: ProjectCreatetechnologiesInput | string[]
     created_at?: Date | string
     updated_at?: Date | string
-    meta_title?: string | null
-    meta_description?: string | null
-    meta_keywords?: string | null
-    images?: ProjectImageCreateNestedManyWithoutProjectInput
+    image?: GalleryItemCreateNestedOneWithoutProjectImageInput
   }
 
   export type ProjectUncheckedCreateInput = {
     project_id?: number
     title: string
-    slug: string
-    short_description?: string | null
+    image_id?: string | null
+    description?: string | null
     url?: string | null
-    client_name?: string | null
-    year?: number | null
-    timeline?: string | null
-    overview?: string | null
-    challenges?: string | null
-    solution?: string | null
+    status?: $Enums.Status
+    technologies?: ProjectCreatetechnologiesInput | string[]
     created_at?: Date | string
     updated_at?: Date | string
-    meta_title?: string | null
-    meta_description?: string | null
-    meta_keywords?: string | null
-    images?: ProjectImageUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    short_description?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
-    client_name?: NullableStringFieldUpdateOperationsInput | string | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    timeline?: NullableStringFieldUpdateOperationsInput | string | null
-    overview?: NullableStringFieldUpdateOperationsInput | string | null
-    challenges?: NullableStringFieldUpdateOperationsInput | string | null
-    solution?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: ProjectImageUpdateManyWithoutProjectNestedInput
+    image?: GalleryItemUpdateOneWithoutProjectImageNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
     project_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    short_description?: NullableStringFieldUpdateOperationsInput | string | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
-    client_name?: NullableStringFieldUpdateOperationsInput | string | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    timeline?: NullableStringFieldUpdateOperationsInput | string | null
-    overview?: NullableStringFieldUpdateOperationsInput | string | null
-    challenges?: NullableStringFieldUpdateOperationsInput | string | null
-    solution?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
-    images?: ProjectImageUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
     project_id?: number
     title: string
-    slug: string
-    short_description?: string | null
+    image_id?: string | null
+    description?: string | null
     url?: string | null
-    client_name?: string | null
-    year?: number | null
-    timeline?: string | null
-    overview?: string | null
-    challenges?: string | null
-    solution?: string | null
+    status?: $Enums.Status
+    technologies?: ProjectCreatetechnologiesInput | string[]
     created_at?: Date | string
     updated_at?: Date | string
-    meta_title?: string | null
-    meta_description?: string | null
-    meta_keywords?: string | null
   }
 
   export type ProjectUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    short_description?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
-    client_name?: NullableStringFieldUpdateOperationsInput | string | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    timeline?: NullableStringFieldUpdateOperationsInput | string | null
-    overview?: NullableStringFieldUpdateOperationsInput | string | null
-    challenges?: NullableStringFieldUpdateOperationsInput | string | null
-    solution?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectUncheckedUpdateManyInput = {
     project_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    short_description?: NullableStringFieldUpdateOperationsInput | string | null
+    image_id?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     url?: NullableStringFieldUpdateOperationsInput | string | null
-    client_name?: NullableStringFieldUpdateOperationsInput | string | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    timeline?: NullableStringFieldUpdateOperationsInput | string | null
-    overview?: NullableStringFieldUpdateOperationsInput | string | null
-    challenges?: NullableStringFieldUpdateOperationsInput | string | null
-    solution?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type ProjectImageCreateInput = {
-    id?: string
-    display_order?: number
-    created_at?: Date | string
-    project: ProjectCreateNestedOneWithoutImagesInput
-    image: GalleryItemCreateNestedOneWithoutProjectImagesInput
-  }
-
-  export type ProjectImageUncheckedCreateInput = {
-    id?: string
-    project_id: number
-    image_id: string
-    display_order?: number
-    created_at?: Date | string
-  }
-
-  export type ProjectImageUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneRequiredWithoutImagesNestedInput
-    image?: GalleryItemUpdateOneRequiredWithoutProjectImagesNestedInput
-  }
-
-  export type ProjectImageUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    project_id?: IntFieldUpdateOperationsInput | number
-    image_id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectImageCreateManyInput = {
-    id?: string
-    project_id: number
-    image_id: string
-    display_order?: number
-    created_at?: Date | string
-  }
-
-  export type ProjectImageUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectImageUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    project_id?: IntFieldUpdateOperationsInput | number
-    image_id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ServiceCategoryCreateInput = {
@@ -24795,10 +23255,10 @@ export namespace Prisma {
     none?: MyCompaniesWhereInput
   }
 
-  export type ProjectImageListRelationFilter = {
-    every?: ProjectImageWhereInput
-    some?: ProjectImageWhereInput
-    none?: ProjectImageWhereInput
+  export type ProjectListRelationFilter = {
+    every?: ProjectWhereInput
+    some?: ProjectWhereInput
+    none?: ProjectWhereInput
   }
 
   export type TeamListRelationFilter = {
@@ -24837,7 +23297,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ProjectImageOrderByRelationAggregateInput = {
+  export type ProjectOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -25353,120 +23813,54 @@ export namespace Prisma {
     _max?: NestedEnumStatusFilter<$PrismaModel>
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type ProjectCountOrderByAggregateInput = {
     project_id?: SortOrder
     title?: SortOrder
-    slug?: SortOrder
-    short_description?: SortOrder
+    image_id?: SortOrder
+    description?: SortOrder
     url?: SortOrder
-    client_name?: SortOrder
-    year?: SortOrder
-    timeline?: SortOrder
-    overview?: SortOrder
-    challenges?: SortOrder
-    solution?: SortOrder
+    status?: SortOrder
+    technologies?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    meta_title?: SortOrder
-    meta_description?: SortOrder
-    meta_keywords?: SortOrder
   }
 
   export type ProjectAvgOrderByAggregateInput = {
     project_id?: SortOrder
-    year?: SortOrder
   }
 
   export type ProjectMaxOrderByAggregateInput = {
     project_id?: SortOrder
     title?: SortOrder
-    slug?: SortOrder
-    short_description?: SortOrder
+    image_id?: SortOrder
+    description?: SortOrder
     url?: SortOrder
-    client_name?: SortOrder
-    year?: SortOrder
-    timeline?: SortOrder
-    overview?: SortOrder
-    challenges?: SortOrder
-    solution?: SortOrder
+    status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    meta_title?: SortOrder
-    meta_description?: SortOrder
-    meta_keywords?: SortOrder
   }
 
   export type ProjectMinOrderByAggregateInput = {
     project_id?: SortOrder
     title?: SortOrder
-    slug?: SortOrder
-    short_description?: SortOrder
+    image_id?: SortOrder
+    description?: SortOrder
     url?: SortOrder
-    client_name?: SortOrder
-    year?: SortOrder
-    timeline?: SortOrder
-    overview?: SortOrder
-    challenges?: SortOrder
-    solution?: SortOrder
+    status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    meta_title?: SortOrder
-    meta_description?: SortOrder
-    meta_keywords?: SortOrder
   }
 
   export type ProjectSumOrderByAggregateInput = {
     project_id?: SortOrder
-    year?: SortOrder
-  }
-
-  export type ProjectScalarRelationFilter = {
-    is?: ProjectWhereInput
-    isNot?: ProjectWhereInput
-  }
-
-  export type GalleryItemScalarRelationFilter = {
-    is?: GalleryItemWhereInput
-    isNot?: GalleryItemWhereInput
-  }
-
-  export type ProjectImageProject_idImage_idCompoundUniqueInput = {
-    project_id: number
-    image_id: string
-  }
-
-  export type ProjectImageCountOrderByAggregateInput = {
-    id?: SortOrder
-    project_id?: SortOrder
-    image_id?: SortOrder
-    display_order?: SortOrder
-    created_at?: SortOrder
-  }
-
-  export type ProjectImageAvgOrderByAggregateInput = {
-    project_id?: SortOrder
-    display_order?: SortOrder
-  }
-
-  export type ProjectImageMaxOrderByAggregateInput = {
-    id?: SortOrder
-    project_id?: SortOrder
-    image_id?: SortOrder
-    display_order?: SortOrder
-    created_at?: SortOrder
-  }
-
-  export type ProjectImageMinOrderByAggregateInput = {
-    id?: SortOrder
-    project_id?: SortOrder
-    image_id?: SortOrder
-    display_order?: SortOrder
-    created_at?: SortOrder
-  }
-
-  export type ProjectImageSumOrderByAggregateInput = {
-    project_id?: SortOrder
-    display_order?: SortOrder
   }
 
   export type ServiceCategoryCountOrderByAggregateInput = {
@@ -25919,11 +24313,11 @@ export namespace Prisma {
     connect?: MyCompaniesWhereUniqueInput | MyCompaniesWhereUniqueInput[]
   }
 
-  export type ProjectImageCreateNestedManyWithoutImageInput = {
-    create?: XOR<ProjectImageCreateWithoutImageInput, ProjectImageUncheckedCreateWithoutImageInput> | ProjectImageCreateWithoutImageInput[] | ProjectImageUncheckedCreateWithoutImageInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutImageInput | ProjectImageCreateOrConnectWithoutImageInput[]
-    createMany?: ProjectImageCreateManyImageInputEnvelope
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
+  export type ProjectCreateNestedManyWithoutImageInput = {
+    create?: XOR<ProjectCreateWithoutImageInput, ProjectUncheckedCreateWithoutImageInput> | ProjectCreateWithoutImageInput[] | ProjectUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ProjectCreateOrConnectWithoutImageInput | ProjectCreateOrConnectWithoutImageInput[]
+    createMany?: ProjectCreateManyImageInputEnvelope
+    connect?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
   }
 
   export type TeamCreateNestedManyWithoutFeatured_imageInput = {
@@ -25982,11 +24376,11 @@ export namespace Prisma {
     connect?: MyCompaniesWhereUniqueInput | MyCompaniesWhereUniqueInput[]
   }
 
-  export type ProjectImageUncheckedCreateNestedManyWithoutImageInput = {
-    create?: XOR<ProjectImageCreateWithoutImageInput, ProjectImageUncheckedCreateWithoutImageInput> | ProjectImageCreateWithoutImageInput[] | ProjectImageUncheckedCreateWithoutImageInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutImageInput | ProjectImageCreateOrConnectWithoutImageInput[]
-    createMany?: ProjectImageCreateManyImageInputEnvelope
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
+  export type ProjectUncheckedCreateNestedManyWithoutImageInput = {
+    create?: XOR<ProjectCreateWithoutImageInput, ProjectUncheckedCreateWithoutImageInput> | ProjectCreateWithoutImageInput[] | ProjectUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ProjectCreateOrConnectWithoutImageInput | ProjectCreateOrConnectWithoutImageInput[]
+    createMany?: ProjectCreateManyImageInputEnvelope
+    connect?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
   }
 
   export type TeamUncheckedCreateNestedManyWithoutFeatured_imageInput = {
@@ -26081,18 +24475,18 @@ export namespace Prisma {
     deleteMany?: MyCompaniesScalarWhereInput | MyCompaniesScalarWhereInput[]
   }
 
-  export type ProjectImageUpdateManyWithoutImageNestedInput = {
-    create?: XOR<ProjectImageCreateWithoutImageInput, ProjectImageUncheckedCreateWithoutImageInput> | ProjectImageCreateWithoutImageInput[] | ProjectImageUncheckedCreateWithoutImageInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutImageInput | ProjectImageCreateOrConnectWithoutImageInput[]
-    upsert?: ProjectImageUpsertWithWhereUniqueWithoutImageInput | ProjectImageUpsertWithWhereUniqueWithoutImageInput[]
-    createMany?: ProjectImageCreateManyImageInputEnvelope
-    set?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    disconnect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    delete?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    update?: ProjectImageUpdateWithWhereUniqueWithoutImageInput | ProjectImageUpdateWithWhereUniqueWithoutImageInput[]
-    updateMany?: ProjectImageUpdateManyWithWhereWithoutImageInput | ProjectImageUpdateManyWithWhereWithoutImageInput[]
-    deleteMany?: ProjectImageScalarWhereInput | ProjectImageScalarWhereInput[]
+  export type ProjectUpdateManyWithoutImageNestedInput = {
+    create?: XOR<ProjectCreateWithoutImageInput, ProjectUncheckedCreateWithoutImageInput> | ProjectCreateWithoutImageInput[] | ProjectUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ProjectCreateOrConnectWithoutImageInput | ProjectCreateOrConnectWithoutImageInput[]
+    upsert?: ProjectUpsertWithWhereUniqueWithoutImageInput | ProjectUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: ProjectCreateManyImageInputEnvelope
+    set?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    disconnect?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    delete?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    connect?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    update?: ProjectUpdateWithWhereUniqueWithoutImageInput | ProjectUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: ProjectUpdateManyWithWhereWithoutImageInput | ProjectUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: ProjectScalarWhereInput | ProjectScalarWhereInput[]
   }
 
   export type TeamUpdateManyWithoutFeatured_imageNestedInput = {
@@ -26207,18 +24601,18 @@ export namespace Prisma {
     deleteMany?: MyCompaniesScalarWhereInput | MyCompaniesScalarWhereInput[]
   }
 
-  export type ProjectImageUncheckedUpdateManyWithoutImageNestedInput = {
-    create?: XOR<ProjectImageCreateWithoutImageInput, ProjectImageUncheckedCreateWithoutImageInput> | ProjectImageCreateWithoutImageInput[] | ProjectImageUncheckedCreateWithoutImageInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutImageInput | ProjectImageCreateOrConnectWithoutImageInput[]
-    upsert?: ProjectImageUpsertWithWhereUniqueWithoutImageInput | ProjectImageUpsertWithWhereUniqueWithoutImageInput[]
-    createMany?: ProjectImageCreateManyImageInputEnvelope
-    set?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    disconnect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    delete?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    update?: ProjectImageUpdateWithWhereUniqueWithoutImageInput | ProjectImageUpdateWithWhereUniqueWithoutImageInput[]
-    updateMany?: ProjectImageUpdateManyWithWhereWithoutImageInput | ProjectImageUpdateManyWithWhereWithoutImageInput[]
-    deleteMany?: ProjectImageScalarWhereInput | ProjectImageScalarWhereInput[]
+  export type ProjectUncheckedUpdateManyWithoutImageNestedInput = {
+    create?: XOR<ProjectCreateWithoutImageInput, ProjectUncheckedCreateWithoutImageInput> | ProjectCreateWithoutImageInput[] | ProjectUncheckedCreateWithoutImageInput[]
+    connectOrCreate?: ProjectCreateOrConnectWithoutImageInput | ProjectCreateOrConnectWithoutImageInput[]
+    upsert?: ProjectUpsertWithWhereUniqueWithoutImageInput | ProjectUpsertWithWhereUniqueWithoutImageInput[]
+    createMany?: ProjectCreateManyImageInputEnvelope
+    set?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    disconnect?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    delete?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    connect?: ProjectWhereUniqueInput | ProjectWhereUniqueInput[]
+    update?: ProjectUpdateWithWhereUniqueWithoutImageInput | ProjectUpdateWithWhereUniqueWithoutImageInput[]
+    updateMany?: ProjectUpdateManyWithWhereWithoutImageInput | ProjectUpdateManyWithWhereWithoutImageInput[]
+    deleteMany?: ProjectScalarWhereInput | ProjectScalarWhereInput[]
   }
 
   export type TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput = {
@@ -26603,74 +24997,29 @@ export namespace Prisma {
     deleteMany?: BlogCategoryRelationScalarWhereInput | BlogCategoryRelationScalarWhereInput[]
   }
 
-  export type ProjectImageCreateNestedManyWithoutProjectInput = {
-    create?: XOR<ProjectImageCreateWithoutProjectInput, ProjectImageUncheckedCreateWithoutProjectInput> | ProjectImageCreateWithoutProjectInput[] | ProjectImageUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutProjectInput | ProjectImageCreateOrConnectWithoutProjectInput[]
-    createMany?: ProjectImageCreateManyProjectInputEnvelope
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
+  export type ProjectCreatetechnologiesInput = {
+    set: string[]
   }
 
-  export type ProjectImageUncheckedCreateNestedManyWithoutProjectInput = {
-    create?: XOR<ProjectImageCreateWithoutProjectInput, ProjectImageUncheckedCreateWithoutProjectInput> | ProjectImageCreateWithoutProjectInput[] | ProjectImageUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutProjectInput | ProjectImageCreateOrConnectWithoutProjectInput[]
-    createMany?: ProjectImageCreateManyProjectInputEnvelope
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-  }
-
-  export type ProjectImageUpdateManyWithoutProjectNestedInput = {
-    create?: XOR<ProjectImageCreateWithoutProjectInput, ProjectImageUncheckedCreateWithoutProjectInput> | ProjectImageCreateWithoutProjectInput[] | ProjectImageUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutProjectInput | ProjectImageCreateOrConnectWithoutProjectInput[]
-    upsert?: ProjectImageUpsertWithWhereUniqueWithoutProjectInput | ProjectImageUpsertWithWhereUniqueWithoutProjectInput[]
-    createMany?: ProjectImageCreateManyProjectInputEnvelope
-    set?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    disconnect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    delete?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    update?: ProjectImageUpdateWithWhereUniqueWithoutProjectInput | ProjectImageUpdateWithWhereUniqueWithoutProjectInput[]
-    updateMany?: ProjectImageUpdateManyWithWhereWithoutProjectInput | ProjectImageUpdateManyWithWhereWithoutProjectInput[]
-    deleteMany?: ProjectImageScalarWhereInput | ProjectImageScalarWhereInput[]
-  }
-
-  export type ProjectImageUncheckedUpdateManyWithoutProjectNestedInput = {
-    create?: XOR<ProjectImageCreateWithoutProjectInput, ProjectImageUncheckedCreateWithoutProjectInput> | ProjectImageCreateWithoutProjectInput[] | ProjectImageUncheckedCreateWithoutProjectInput[]
-    connectOrCreate?: ProjectImageCreateOrConnectWithoutProjectInput | ProjectImageCreateOrConnectWithoutProjectInput[]
-    upsert?: ProjectImageUpsertWithWhereUniqueWithoutProjectInput | ProjectImageUpsertWithWhereUniqueWithoutProjectInput[]
-    createMany?: ProjectImageCreateManyProjectInputEnvelope
-    set?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    disconnect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    delete?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    connect?: ProjectImageWhereUniqueInput | ProjectImageWhereUniqueInput[]
-    update?: ProjectImageUpdateWithWhereUniqueWithoutProjectInput | ProjectImageUpdateWithWhereUniqueWithoutProjectInput[]
-    updateMany?: ProjectImageUpdateManyWithWhereWithoutProjectInput | ProjectImageUpdateManyWithWhereWithoutProjectInput[]
-    deleteMany?: ProjectImageScalarWhereInput | ProjectImageScalarWhereInput[]
-  }
-
-  export type ProjectCreateNestedOneWithoutImagesInput = {
-    create?: XOR<ProjectCreateWithoutImagesInput, ProjectUncheckedCreateWithoutImagesInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutImagesInput
-    connect?: ProjectWhereUniqueInput
-  }
-
-  export type GalleryItemCreateNestedOneWithoutProjectImagesInput = {
-    create?: XOR<GalleryItemCreateWithoutProjectImagesInput, GalleryItemUncheckedCreateWithoutProjectImagesInput>
-    connectOrCreate?: GalleryItemCreateOrConnectWithoutProjectImagesInput
+  export type GalleryItemCreateNestedOneWithoutProjectImageInput = {
+    create?: XOR<GalleryItemCreateWithoutProjectImageInput, GalleryItemUncheckedCreateWithoutProjectImageInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutProjectImageInput
     connect?: GalleryItemWhereUniqueInput
   }
 
-  export type ProjectUpdateOneRequiredWithoutImagesNestedInput = {
-    create?: XOR<ProjectCreateWithoutImagesInput, ProjectUncheckedCreateWithoutImagesInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutImagesInput
-    upsert?: ProjectUpsertWithoutImagesInput
-    connect?: ProjectWhereUniqueInput
-    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutImagesInput, ProjectUpdateWithoutImagesInput>, ProjectUncheckedUpdateWithoutImagesInput>
+  export type ProjectUpdatetechnologiesInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
-  export type GalleryItemUpdateOneRequiredWithoutProjectImagesNestedInput = {
-    create?: XOR<GalleryItemCreateWithoutProjectImagesInput, GalleryItemUncheckedCreateWithoutProjectImagesInput>
-    connectOrCreate?: GalleryItemCreateOrConnectWithoutProjectImagesInput
-    upsert?: GalleryItemUpsertWithoutProjectImagesInput
+  export type GalleryItemUpdateOneWithoutProjectImageNestedInput = {
+    create?: XOR<GalleryItemCreateWithoutProjectImageInput, GalleryItemUncheckedCreateWithoutProjectImageInput>
+    connectOrCreate?: GalleryItemCreateOrConnectWithoutProjectImageInput
+    upsert?: GalleryItemUpsertWithoutProjectImageInput
+    disconnect?: GalleryItemWhereInput | boolean
+    delete?: GalleryItemWhereInput | boolean
     connect?: GalleryItemWhereUniqueInput
-    update?: XOR<XOR<GalleryItemUpdateToOneWithWhereWithoutProjectImagesInput, GalleryItemUpdateWithoutProjectImagesInput>, GalleryItemUncheckedUpdateWithoutProjectImagesInput>
+    update?: XOR<XOR<GalleryItemUpdateToOneWithWhereWithoutProjectImageInput, GalleryItemUpdateWithoutProjectImageInput>, GalleryItemUncheckedUpdateWithoutProjectImageInput>
   }
 
   export type GalleryItemCreateNestedOneWithoutServiceCategoryImagesInput = {
@@ -27349,27 +25698,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ProjectImageCreateWithoutImageInput = {
-    id?: string
-    display_order?: number
+  export type ProjectCreateWithoutImageInput = {
+    title: string
+    description?: string | null
+    url?: string | null
+    status?: $Enums.Status
+    technologies?: ProjectCreatetechnologiesInput | string[]
     created_at?: Date | string
-    project: ProjectCreateNestedOneWithoutImagesInput
+    updated_at?: Date | string
   }
 
-  export type ProjectImageUncheckedCreateWithoutImageInput = {
-    id?: string
-    project_id: number
-    display_order?: number
+  export type ProjectUncheckedCreateWithoutImageInput = {
+    project_id?: number
+    title: string
+    description?: string | null
+    url?: string | null
+    status?: $Enums.Status
+    technologies?: ProjectCreatetechnologiesInput | string[]
     created_at?: Date | string
+    updated_at?: Date | string
   }
 
-  export type ProjectImageCreateOrConnectWithoutImageInput = {
-    where: ProjectImageWhereUniqueInput
-    create: XOR<ProjectImageCreateWithoutImageInput, ProjectImageUncheckedCreateWithoutImageInput>
+  export type ProjectCreateOrConnectWithoutImageInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutImageInput, ProjectUncheckedCreateWithoutImageInput>
   }
 
-  export type ProjectImageCreateManyImageInputEnvelope = {
-    data: ProjectImageCreateManyImageInput | ProjectImageCreateManyImageInput[]
+  export type ProjectCreateManyImageInputEnvelope = {
+    data: ProjectCreateManyImageInput | ProjectCreateManyImageInput[]
     skipDuplicates?: boolean
   }
 
@@ -27615,31 +25971,35 @@ export namespace Prisma {
     featured_image_id?: StringNullableFilter<"MyCompanies"> | string | null
   }
 
-  export type ProjectImageUpsertWithWhereUniqueWithoutImageInput = {
-    where: ProjectImageWhereUniqueInput
-    update: XOR<ProjectImageUpdateWithoutImageInput, ProjectImageUncheckedUpdateWithoutImageInput>
-    create: XOR<ProjectImageCreateWithoutImageInput, ProjectImageUncheckedCreateWithoutImageInput>
+  export type ProjectUpsertWithWhereUniqueWithoutImageInput = {
+    where: ProjectWhereUniqueInput
+    update: XOR<ProjectUpdateWithoutImageInput, ProjectUncheckedUpdateWithoutImageInput>
+    create: XOR<ProjectCreateWithoutImageInput, ProjectUncheckedCreateWithoutImageInput>
   }
 
-  export type ProjectImageUpdateWithWhereUniqueWithoutImageInput = {
-    where: ProjectImageWhereUniqueInput
-    data: XOR<ProjectImageUpdateWithoutImageInput, ProjectImageUncheckedUpdateWithoutImageInput>
+  export type ProjectUpdateWithWhereUniqueWithoutImageInput = {
+    where: ProjectWhereUniqueInput
+    data: XOR<ProjectUpdateWithoutImageInput, ProjectUncheckedUpdateWithoutImageInput>
   }
 
-  export type ProjectImageUpdateManyWithWhereWithoutImageInput = {
-    where: ProjectImageScalarWhereInput
-    data: XOR<ProjectImageUpdateManyMutationInput, ProjectImageUncheckedUpdateManyWithoutImageInput>
+  export type ProjectUpdateManyWithWhereWithoutImageInput = {
+    where: ProjectScalarWhereInput
+    data: XOR<ProjectUpdateManyMutationInput, ProjectUncheckedUpdateManyWithoutImageInput>
   }
 
-  export type ProjectImageScalarWhereInput = {
-    AND?: ProjectImageScalarWhereInput | ProjectImageScalarWhereInput[]
-    OR?: ProjectImageScalarWhereInput[]
-    NOT?: ProjectImageScalarWhereInput | ProjectImageScalarWhereInput[]
-    id?: StringFilter<"ProjectImage"> | string
-    project_id?: IntFilter<"ProjectImage"> | number
-    image_id?: StringFilter<"ProjectImage"> | string
-    display_order?: IntFilter<"ProjectImage"> | number
-    created_at?: DateTimeFilter<"ProjectImage"> | Date | string
+  export type ProjectScalarWhereInput = {
+    AND?: ProjectScalarWhereInput | ProjectScalarWhereInput[]
+    OR?: ProjectScalarWhereInput[]
+    NOT?: ProjectScalarWhereInput | ProjectScalarWhereInput[]
+    project_id?: IntFilter<"Project"> | number
+    title?: StringFilter<"Project"> | string
+    image_id?: StringNullableFilter<"Project"> | string | null
+    description?: StringNullableFilter<"Project"> | string | null
+    url?: StringNullableFilter<"Project"> | string | null
+    status?: EnumStatusFilter<"Project"> | $Enums.Status
+    technologies?: StringNullableListFilter<"Project">
+    created_at?: DateTimeFilter<"Project"> | Date | string
+    updated_at?: DateTimeFilter<"Project"> | Date | string
   }
 
   export type TeamUpsertWithWhereUniqueWithoutFeatured_imageInput = {
@@ -27776,7 +26136,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
@@ -27792,7 +26152,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
@@ -27871,7 +26231,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
@@ -27887,7 +26247,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
@@ -28117,7 +26477,7 @@ export namespace Prisma {
     userAvatars?: UserCreateNestedManyWithoutAvatarInput
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
@@ -28133,7 +26493,7 @@ export namespace Prisma {
     userAvatars?: UserUncheckedCreateNestedManyWithoutAvatarInput
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
@@ -28165,7 +26525,7 @@ export namespace Prisma {
     userAvatars?: UserUpdateManyWithoutAvatarNestedInput
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
@@ -28181,7 +26541,7 @@ export namespace Prisma {
     userAvatars?: UserUncheckedUpdateManyWithoutAvatarNestedInput
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
@@ -28365,7 +26725,7 @@ export namespace Prisma {
     userAvatars?: UserCreateNestedManyWithoutAvatarInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
@@ -28381,7 +26741,7 @@ export namespace Prisma {
     userAvatars?: UserUncheckedCreateNestedManyWithoutAvatarInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
@@ -28402,7 +26762,7 @@ export namespace Prisma {
     userAvatars?: UserCreateNestedManyWithoutAvatarInput
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
@@ -28418,7 +26778,7 @@ export namespace Prisma {
     userAvatars?: UserUncheckedCreateNestedManyWithoutAvatarInput
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
@@ -28504,7 +26864,7 @@ export namespace Prisma {
     userAvatars?: UserUpdateManyWithoutAvatarNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
@@ -28520,7 +26880,7 @@ export namespace Prisma {
     userAvatars?: UserUncheckedUpdateManyWithoutAvatarNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
@@ -28547,7 +26907,7 @@ export namespace Prisma {
     userAvatars?: UserUpdateManyWithoutAvatarNestedInput
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
@@ -28563,7 +26923,7 @@ export namespace Prisma {
     userAvatars?: UserUncheckedUpdateManyWithoutAvatarNestedInput
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
@@ -28626,89 +26986,7 @@ export namespace Prisma {
     data: XOR<BlogCategoryRelationUpdateManyMutationInput, BlogCategoryRelationUncheckedUpdateManyWithoutBlogInput>
   }
 
-  export type ProjectImageCreateWithoutProjectInput = {
-    id?: string
-    display_order?: number
-    created_at?: Date | string
-    image: GalleryItemCreateNestedOneWithoutProjectImagesInput
-  }
-
-  export type ProjectImageUncheckedCreateWithoutProjectInput = {
-    id?: string
-    image_id: string
-    display_order?: number
-    created_at?: Date | string
-  }
-
-  export type ProjectImageCreateOrConnectWithoutProjectInput = {
-    where: ProjectImageWhereUniqueInput
-    create: XOR<ProjectImageCreateWithoutProjectInput, ProjectImageUncheckedCreateWithoutProjectInput>
-  }
-
-  export type ProjectImageCreateManyProjectInputEnvelope = {
-    data: ProjectImageCreateManyProjectInput | ProjectImageCreateManyProjectInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ProjectImageUpsertWithWhereUniqueWithoutProjectInput = {
-    where: ProjectImageWhereUniqueInput
-    update: XOR<ProjectImageUpdateWithoutProjectInput, ProjectImageUncheckedUpdateWithoutProjectInput>
-    create: XOR<ProjectImageCreateWithoutProjectInput, ProjectImageUncheckedCreateWithoutProjectInput>
-  }
-
-  export type ProjectImageUpdateWithWhereUniqueWithoutProjectInput = {
-    where: ProjectImageWhereUniqueInput
-    data: XOR<ProjectImageUpdateWithoutProjectInput, ProjectImageUncheckedUpdateWithoutProjectInput>
-  }
-
-  export type ProjectImageUpdateManyWithWhereWithoutProjectInput = {
-    where: ProjectImageScalarWhereInput
-    data: XOR<ProjectImageUpdateManyMutationInput, ProjectImageUncheckedUpdateManyWithoutProjectInput>
-  }
-
-  export type ProjectCreateWithoutImagesInput = {
-    title: string
-    slug: string
-    short_description?: string | null
-    url?: string | null
-    client_name?: string | null
-    year?: number | null
-    timeline?: string | null
-    overview?: string | null
-    challenges?: string | null
-    solution?: string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    meta_title?: string | null
-    meta_description?: string | null
-    meta_keywords?: string | null
-  }
-
-  export type ProjectUncheckedCreateWithoutImagesInput = {
-    project_id?: number
-    title: string
-    slug: string
-    short_description?: string | null
-    url?: string | null
-    client_name?: string | null
-    year?: number | null
-    timeline?: string | null
-    overview?: string | null
-    challenges?: string | null
-    solution?: string | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    meta_title?: string | null
-    meta_description?: string | null
-    meta_keywords?: string | null
-  }
-
-  export type ProjectCreateOrConnectWithoutImagesInput = {
-    where: ProjectWhereUniqueInput
-    create: XOR<ProjectCreateWithoutImagesInput, ProjectUncheckedCreateWithoutImagesInput>
-  }
-
-  export type GalleryItemCreateWithoutProjectImagesInput = {
+  export type GalleryItemCreateWithoutProjectImageInput = {
     id?: string
     url: string
     altText: string
@@ -28724,7 +27002,7 @@ export namespace Prisma {
     podcastImages?: PodcastCreateNestedManyWithoutImageInput
   }
 
-  export type GalleryItemUncheckedCreateWithoutProjectImagesInput = {
+  export type GalleryItemUncheckedCreateWithoutProjectImageInput = {
     id?: string
     url: string
     altText: string
@@ -28740,71 +27018,23 @@ export namespace Prisma {
     podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
   }
 
-  export type GalleryItemCreateOrConnectWithoutProjectImagesInput = {
+  export type GalleryItemCreateOrConnectWithoutProjectImageInput = {
     where: GalleryItemWhereUniqueInput
-    create: XOR<GalleryItemCreateWithoutProjectImagesInput, GalleryItemUncheckedCreateWithoutProjectImagesInput>
+    create: XOR<GalleryItemCreateWithoutProjectImageInput, GalleryItemUncheckedCreateWithoutProjectImageInput>
   }
 
-  export type ProjectUpsertWithoutImagesInput = {
-    update: XOR<ProjectUpdateWithoutImagesInput, ProjectUncheckedUpdateWithoutImagesInput>
-    create: XOR<ProjectCreateWithoutImagesInput, ProjectUncheckedCreateWithoutImagesInput>
-    where?: ProjectWhereInput
-  }
-
-  export type ProjectUpdateToOneWithWhereWithoutImagesInput = {
-    where?: ProjectWhereInput
-    data: XOR<ProjectUpdateWithoutImagesInput, ProjectUncheckedUpdateWithoutImagesInput>
-  }
-
-  export type ProjectUpdateWithoutImagesInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    short_description?: NullableStringFieldUpdateOperationsInput | string | null
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    client_name?: NullableStringFieldUpdateOperationsInput | string | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    timeline?: NullableStringFieldUpdateOperationsInput | string | null
-    overview?: NullableStringFieldUpdateOperationsInput | string | null
-    challenges?: NullableStringFieldUpdateOperationsInput | string | null
-    solution?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type ProjectUncheckedUpdateWithoutImagesInput = {
-    project_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    short_description?: NullableStringFieldUpdateOperationsInput | string | null
-    url?: NullableStringFieldUpdateOperationsInput | string | null
-    client_name?: NullableStringFieldUpdateOperationsInput | string | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    timeline?: NullableStringFieldUpdateOperationsInput | string | null
-    overview?: NullableStringFieldUpdateOperationsInput | string | null
-    challenges?: NullableStringFieldUpdateOperationsInput | string | null
-    solution?: NullableStringFieldUpdateOperationsInput | string | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    meta_title?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_description?: NullableStringFieldUpdateOperationsInput | string | null
-    meta_keywords?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type GalleryItemUpsertWithoutProjectImagesInput = {
-    update: XOR<GalleryItemUpdateWithoutProjectImagesInput, GalleryItemUncheckedUpdateWithoutProjectImagesInput>
-    create: XOR<GalleryItemCreateWithoutProjectImagesInput, GalleryItemUncheckedCreateWithoutProjectImagesInput>
+  export type GalleryItemUpsertWithoutProjectImageInput = {
+    update: XOR<GalleryItemUpdateWithoutProjectImageInput, GalleryItemUncheckedUpdateWithoutProjectImageInput>
+    create: XOR<GalleryItemCreateWithoutProjectImageInput, GalleryItemUncheckedCreateWithoutProjectImageInput>
     where?: GalleryItemWhereInput
   }
 
-  export type GalleryItemUpdateToOneWithWhereWithoutProjectImagesInput = {
+  export type GalleryItemUpdateToOneWithWhereWithoutProjectImageInput = {
     where?: GalleryItemWhereInput
-    data: XOR<GalleryItemUpdateWithoutProjectImagesInput, GalleryItemUncheckedUpdateWithoutProjectImagesInput>
+    data: XOR<GalleryItemUpdateWithoutProjectImageInput, GalleryItemUncheckedUpdateWithoutProjectImageInput>
   }
 
-  export type GalleryItemUpdateWithoutProjectImagesInput = {
+  export type GalleryItemUpdateWithoutProjectImageInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     altText?: StringFieldUpdateOperationsInput | string
@@ -28820,7 +27050,7 @@ export namespace Prisma {
     podcastImages?: PodcastUpdateManyWithoutImageNestedInput
   }
 
-  export type GalleryItemUncheckedUpdateWithoutProjectImagesInput = {
+  export type GalleryItemUncheckedUpdateWithoutProjectImageInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     altText?: StringFieldUpdateOperationsInput | string
@@ -28846,7 +27076,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
     podcastImages?: PodcastCreateNestedManyWithoutImageInput
@@ -28862,7 +27092,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
     podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
@@ -28923,7 +27153,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
     podcastImages?: PodcastUpdateManyWithoutImageNestedInput
@@ -28939,7 +27169,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
     podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
@@ -28971,7 +27201,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     podcastImages?: PodcastCreateNestedManyWithoutImageInput
@@ -28987,7 +27217,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
@@ -29074,7 +27304,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     podcastImages?: PodcastUpdateManyWithoutImageNestedInput
@@ -29090,7 +27320,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
@@ -29167,7 +27397,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
     podcastImages?: PodcastCreateNestedManyWithoutImageInput
@@ -29183,7 +27413,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
     podcastImages?: PodcastUncheckedCreateNestedManyWithoutImageInput
@@ -29215,7 +27445,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
     podcastImages?: PodcastUpdateManyWithoutImageNestedInput
@@ -29231,7 +27461,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
     podcastImages?: PodcastUncheckedUpdateManyWithoutImageNestedInput
@@ -29546,7 +27776,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageCreateNestedManyWithoutImageInput
+    projectImage?: ProjectCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryCreateNestedManyWithoutImageInput
     serviceImages?: ServiceCreateNestedManyWithoutImageInput
@@ -29562,7 +27792,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedCreateNestedManyWithoutFeatured_imageInput
     blogOgImages?: BlogUncheckedCreateNestedManyWithoutOg_imageInput
     companyFeaturedImages?: MyCompaniesUncheckedCreateNestedManyWithoutFeatured_imageInput
-    projectImages?: ProjectImageUncheckedCreateNestedManyWithoutImageInput
+    projectImage?: ProjectUncheckedCreateNestedManyWithoutImageInput
     teamFeaturedImages?: TeamUncheckedCreateNestedManyWithoutFeatured_imageInput
     serviceCategoryImages?: ServiceCategoryUncheckedCreateNestedManyWithoutImageInput
     serviceImages?: ServiceUncheckedCreateNestedManyWithoutImageInput
@@ -29594,7 +27824,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUpdateManyWithoutImageNestedInput
@@ -29610,7 +27840,7 @@ export namespace Prisma {
     blogFeaturedImages?: BlogUncheckedUpdateManyWithoutFeatured_imageNestedInput
     blogOgImages?: BlogUncheckedUpdateManyWithoutOg_imageNestedInput
     companyFeaturedImages?: MyCompaniesUncheckedUpdateManyWithoutFeatured_imageNestedInput
-    projectImages?: ProjectImageUncheckedUpdateManyWithoutImageNestedInput
+    projectImage?: ProjectUncheckedUpdateManyWithoutImageNestedInput
     teamFeaturedImages?: TeamUncheckedUpdateManyWithoutFeatured_imageNestedInput
     serviceCategoryImages?: ServiceCategoryUncheckedUpdateManyWithoutImageNestedInput
     serviceImages?: ServiceUncheckedUpdateManyWithoutImageNestedInput
@@ -29670,11 +27900,15 @@ export namespace Prisma {
     company_id?: number
   }
 
-  export type ProjectImageCreateManyImageInput = {
-    id?: string
-    project_id: number
-    display_order?: number
+  export type ProjectCreateManyImageInput = {
+    project_id?: number
+    title: string
+    description?: string | null
+    url?: string | null
+    status?: $Enums.Status
+    technologies?: ProjectCreatetechnologiesInput | string[]
     created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type TeamCreateManyFeatured_imageInput = {
@@ -29887,25 +28121,36 @@ export namespace Prisma {
     company_id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ProjectImageUpdateWithoutImageInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
+  export type ProjectUpdateWithoutImageInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneRequiredWithoutImagesNestedInput
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProjectImageUncheckedUpdateWithoutImageInput = {
-    id?: StringFieldUpdateOperationsInput | string
+  export type ProjectUncheckedUpdateWithoutImageInput = {
     project_id?: IntFieldUpdateOperationsInput | number
-    display_order?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ProjectImageUncheckedUpdateManyWithoutImageInput = {
-    id?: StringFieldUpdateOperationsInput | string
+  export type ProjectUncheckedUpdateManyWithoutImageInput = {
     project_id?: IntFieldUpdateOperationsInput | number
-    display_order?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TeamUpdateWithoutFeatured_imageInput = {
@@ -30213,34 +28458,6 @@ export namespace Prisma {
   export type BlogCategoryRelationUncheckedUpdateManyWithoutBlogInput = {
     category_id?: IntFieldUpdateOperationsInput | number
     assigned_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectImageCreateManyProjectInput = {
-    id?: string
-    image_id: string
-    display_order?: number
-    created_at?: Date | string
-  }
-
-  export type ProjectImageUpdateWithoutProjectInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: GalleryItemUpdateOneRequiredWithoutProjectImagesNestedInput
-  }
-
-  export type ProjectImageUncheckedUpdateWithoutProjectInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    image_id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ProjectImageUncheckedUpdateManyWithoutProjectInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    image_id?: StringFieldUpdateOperationsInput | string
-    display_order?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ServiceCreateManyCategoryInput = {

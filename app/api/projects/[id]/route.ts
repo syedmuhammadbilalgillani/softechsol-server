@@ -5,15 +5,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 type UpdateProjectBody = {
   title?: string;
-  short_description?: string | null;
+  image_id?: string | null;
+  description?: string | null;
   url?: string | null;
-  client_name?: string | null;
-  year?: number | null;
-  timeline?: string | null;
-  overview?: string | null;
-  challenges?: string | null;
-  solution?: string | null;
-  images?: string[]; // GalleryItem IDs to fully replace
+  status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+  technologies?: string[];
 };
 
 export async function PUT(
@@ -22,27 +18,10 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    // if (Number(id)) {
-    //   return NextResponse.json(
-    //     { message: "Invalid project id" },
-    //     { status: 400 }
-    //   );
-    // }
 
     const body = (await req.json()) as UpdateProjectBody;
 
-    const {
-      images,
-      title,
-      short_description,
-      url,
-      client_name,
-      year,
-      timeline,
-      overview,
-      challenges,
-      solution,
-    } = body;
+    const { title, image_id, description, url, status, technologies } = body;
 
     // Ensure project exists
     const existing = await prisma.project.findUnique({
@@ -56,50 +35,34 @@ export async function PUT(
       );
     }
 
-    const result = await prisma.$transaction(async (tx) => {
-      // If images array is provided, we fully replace them
-      if (Array.isArray(images)) {
-        await tx.projectImage.deleteMany({
-          where: { project_id: Number(id) },
-        });
+    // Build update data object, only including fields that are provided
+    const updateData: {
+      title?: string;
+      image_id?: string | null;
+      description?: string | null;
+      url?: string | null;
+      status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+      technologies?: string[];
+    } = {};
 
-        if (images.length > 0) {
-          await tx.projectImage.createMany({
-            data: images.map((imageId, index) => ({
-              project_id: Number(id),
-              image_id: imageId,
-              display_order: index,
-            })),
-          });
-        }
-      }
+    if (title !== undefined) updateData.title = title;
+    if (image_id !== undefined) updateData.image_id = image_id || null;
+    if (description !== undefined) updateData.description = description || null;
+    if (url !== undefined) updateData.url = url || null;
+    if (status !== undefined) updateData.status = status;
+    if (technologies !== undefined) updateData.technologies = technologies;
 
-      const updated = await tx.project.update({
-        where: { project_id: Number(id) },
-        data: {
-          title,
-          short_description,
-          url,
-          client_name,
-          year: year ?? null,
-          timeline,
-          overview,
-          challenges,
-          solution,
-        },
-        include: {
-          images: {
-            include: { image: true },
-            orderBy: { display_order: "asc" },
-          },
-        },
-      });
-
-      return updated;
+    const updated = await prisma.project.update({
+      where: { project_id: Number(id) },
+      data: updateData,
+      include: {
+        image: true,
+      },
     });
+
     await revalidateTag("projects-list");
 
-    return NextResponse.json(result, { status: 200 });
+    return NextResponse.json(updated, { status: 200 });
   } catch (error) {
     logger.error("Error updating project", error);
     return NextResponse.json(

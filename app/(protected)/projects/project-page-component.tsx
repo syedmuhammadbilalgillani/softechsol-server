@@ -31,8 +31,52 @@ const ProjectPageComponent = ({ data }: { data: any }) => {
       key: "title",
     },
     {
-      label: "Short Description",
-      key: "short_description",
+      label: "Description",
+      key: "description",
+      render: (row) => (
+        <div className="max-w-md truncate">
+          {row.description || "-"}
+        </div>
+      ),
+    },
+    {
+      label: "URL",
+      key: "url",
+      render: (row) => (
+        <a
+          href={row.url || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline truncate max-w-xs block"
+          onClick={(e) => !row.url && e.preventDefault()}
+        >
+          {row.url || "-"}
+        </a>
+      ),
+    },
+    {
+      label: "Status",
+      key: "status",
+    },
+    {
+      label: "Technologies",
+      key: "technologies",
+      render: (row) => (
+        <div className="flex flex-wrap gap-1">
+          {row.technologies && row.technologies.length > 0 ? (
+            row.technologies.map((tech: string, index: number) => (
+              <span
+                key={index}
+                className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"
+              >
+                {tech}
+              </span>
+            ))
+          ) : (
+            <span className="text-gray-400">-</span>
+          )}
+        </div>
+      ),
     },
     // {
     //   label: "URL",

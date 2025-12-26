@@ -2,23 +2,14 @@ import prisma from "@/lib/prisma";
 import { revalidateTag } from "@/lib/revalidate";
 import logger from "@/utils/logger";
 import { NextRequest, NextResponse } from "next/server";
-import slugify from "slugify";
 
 type CreateProjectBody = {
   title: string;
-  slug: string;
-  meta_title: string;
-  meta_description: string;
-  meta_keywords: string;
-  short_description?: string;
+  image_id?: string;
+  description?: string;
   url?: string;
-  client_name?: string;
-  year?: number | null;
-  timeline?: string | null;
-  overview?: string | null;
-  challenges?: string | null;
-  solution?: string | null;
-  images?: string[]; // GalleryItem IDs
+  status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+  technologies?: string[];
 };
 
 export async function POST(req: NextRequest) {
@@ -33,53 +24,28 @@ export async function POST(req: NextRequest) {
     }
 
     const {
-      images = [],
       title,
-      short_description,
+      image_id,
+      description,
       url,
-      client_name,
-      year,
-      timeline,
-      overview,
-      meta_title,
-      meta_description,
-      meta_keywords,
-      challenges,
-      solution,
+      status = "DRAFT",
+      technologies = [],
     } = body;
 
     const project = await prisma.project.create({
       data: {
         title,
-        slug: slugify(title, { lower: true, strict: true, locale: "en" }),
-        short_description,
+        image_id: image_id || null,
+        description,
         url,
-        client_name,
-        year: year ?? null,
-        timeline,
-        meta_title,
-        meta_description,
-        meta_keywords,
-        overview,
-        challenges,
-        solution,
-        images:
-          images.length > 0
-            ? {
-                create: images.map((imageId, index) => ({
-                  image: { connect: { id: imageId } },
-                  display_order: index,
-                })),
-              }
-            : undefined,
+        status,
+        technologies,
       },
       include: {
-        images: {
-          include: { image: true },
-          orderBy: { display_order: "asc" },
-        },
+        image: true,
       },
     });
+
     await revalidateTag("projects-list");
     return NextResponse.json(project, { status: 201 });
   } catch (error) {
