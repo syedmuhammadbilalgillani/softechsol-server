@@ -219,6 +219,7 @@ exports.Prisma.ProjectImageScalarFieldEnum = {
 exports.Prisma.ServiceCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
   slug: 'slug',
   image_id: 'image_id',
   createdAt: 'createdAt',

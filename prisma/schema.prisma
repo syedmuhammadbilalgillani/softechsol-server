@@ -186,6 +186,7 @@ model ProjectImage {
 model ServiceCategory {
   id        Int       @id @default(autoincrement())
   name      String
+  description String? @default("")
   slug      String    @unique
   image     GalleryItem? @relation("ServiceCategoryImage", fields: [image_id], references: [id], onDelete: SetNull)
   image_id  String?

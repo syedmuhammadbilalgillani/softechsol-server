@@ -12257,6 +12257,7 @@ export namespace Prisma {
   export type ServiceCategoryMinAggregateOutputType = {
     id: number | null
     name: string | null
+    description: string | null
     slug: string | null
     image_id: string | null
     createdAt: Date | null
@@ -12266,6 +12267,7 @@ export namespace Prisma {
   export type ServiceCategoryMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    description: string | null
     slug: string | null
     image_id: string | null
     createdAt: Date | null
@@ -12275,6 +12277,7 @@ export namespace Prisma {
   export type ServiceCategoryCountAggregateOutputType = {
     id: number
     name: number
+    description: number
     slug: number
     image_id: number
     createdAt: number
@@ -12294,6 +12297,7 @@ export namespace Prisma {
   export type ServiceCategoryMinAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     slug?: true
     image_id?: true
     createdAt?: true
@@ -12303,6 +12307,7 @@ export namespace Prisma {
   export type ServiceCategoryMaxAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     slug?: true
     image_id?: true
     createdAt?: true
@@ -12312,6 +12317,7 @@ export namespace Prisma {
   export type ServiceCategoryCountAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     slug?: true
     image_id?: true
     createdAt?: true
@@ -12408,6 +12414,7 @@ export namespace Prisma {
   export type ServiceCategoryGroupByOutputType = {
     id: number
     name: string
+    description: string | null
     slug: string
     image_id: string | null
     createdAt: Date
@@ -12436,6 +12443,7 @@ export namespace Prisma {
   export type ServiceCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
@@ -12448,6 +12456,7 @@ export namespace Prisma {
   export type ServiceCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
@@ -12458,6 +12467,7 @@ export namespace Prisma {
   export type ServiceCategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
@@ -12468,13 +12478,14 @@ export namespace Prisma {
   export type ServiceCategorySelectScalar = {
     id?: boolean
     name?: boolean
+    description?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ServiceCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "image_id" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
+  export type ServiceCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "slug" | "image_id" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
   export type ServiceCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     image?: boolean | ServiceCategory$imageArgs<ExtArgs>
     services?: boolean | ServiceCategory$servicesArgs<ExtArgs>
@@ -12496,6 +12507,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      description: string | null
       slug: string
       image_id: string | null
       createdAt: Date
@@ -12927,6 +12939,7 @@ export namespace Prisma {
   interface ServiceCategoryFieldRefs {
     readonly id: FieldRef<"ServiceCategory", 'Int'>
     readonly name: FieldRef<"ServiceCategory", 'String'>
+    readonly description: FieldRef<"ServiceCategory", 'String'>
     readonly slug: FieldRef<"ServiceCategory", 'String'>
     readonly image_id: FieldRef<"ServiceCategory", 'String'>
     readonly createdAt: FieldRef<"ServiceCategory", 'DateTime'>
@@ -21789,6 +21802,7 @@ export namespace Prisma {
   export const ServiceCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    description: 'description',
     slug: 'slug',
     image_id: 'image_id',
     createdAt: 'createdAt',
@@ -22698,6 +22712,7 @@ export namespace Prisma {
     NOT?: ServiceCategoryWhereInput | ServiceCategoryWhereInput[]
     id?: IntFilter<"ServiceCategory"> | number
     name?: StringFilter<"ServiceCategory"> | string
+    description?: StringNullableFilter<"ServiceCategory"> | string | null
     slug?: StringFilter<"ServiceCategory"> | string
     image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
@@ -22709,6 +22724,7 @@ export namespace Prisma {
   export type ServiceCategoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     slug?: SortOrder
     image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -22724,6 +22740,7 @@ export namespace Prisma {
     OR?: ServiceCategoryWhereInput[]
     NOT?: ServiceCategoryWhereInput | ServiceCategoryWhereInput[]
     name?: StringFilter<"ServiceCategory"> | string
+    description?: StringNullableFilter<"ServiceCategory"> | string | null
     image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
     updatedAt?: DateTimeFilter<"ServiceCategory"> | Date | string
@@ -22734,6 +22751,7 @@ export namespace Prisma {
   export type ServiceCategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     slug?: SortOrder
     image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -22751,6 +22769,7 @@ export namespace Prisma {
     NOT?: ServiceCategoryScalarWhereWithAggregatesInput | ServiceCategoryScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ServiceCategory"> | number
     name?: StringWithAggregatesFilter<"ServiceCategory"> | string
+    description?: StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
     slug?: StringWithAggregatesFilter<"ServiceCategory"> | string
     image_id?: StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
@@ -24040,6 +24059,7 @@ export namespace Prisma {
 
   export type ServiceCategoryCreateInput = {
     name: string
+    description?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -24050,6 +24070,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedCreateInput = {
     id?: number
     name: string
+    description?: string | null
     slug: string
     image_id?: string | null
     createdAt?: Date | string
@@ -24059,6 +24080,7 @@ export namespace Prisma {
 
   export type ServiceCategoryUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24069,6 +24091,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24079,6 +24102,7 @@ export namespace Prisma {
   export type ServiceCategoryCreateManyInput = {
     id?: number
     name: string
+    description?: string | null
     slug: string
     image_id?: string | null
     createdAt?: Date | string
@@ -24087,6 +24111,7 @@ export namespace Prisma {
 
   export type ServiceCategoryUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24095,6 +24120,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25446,6 +25472,7 @@ export namespace Prisma {
   export type ServiceCategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     slug?: SortOrder
     image_id?: SortOrder
     createdAt?: SortOrder
@@ -25459,6 +25486,7 @@ export namespace Prisma {
   export type ServiceCategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     slug?: SortOrder
     image_id?: SortOrder
     createdAt?: SortOrder
@@ -25468,6 +25496,7 @@ export namespace Prisma {
   export type ServiceCategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     slug?: SortOrder
     image_id?: SortOrder
     createdAt?: SortOrder
@@ -27385,6 +27414,7 @@ export namespace Prisma {
 
   export type ServiceCategoryCreateWithoutImageInput = {
     name: string
+    description?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27394,6 +27424,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedCreateWithoutImageInput = {
     id?: number
     name: string
+    description?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27668,6 +27699,7 @@ export namespace Prisma {
     NOT?: ServiceCategoryScalarWhereInput | ServiceCategoryScalarWhereInput[]
     id?: IntFilter<"ServiceCategory"> | number
     name?: StringFilter<"ServiceCategory"> | string
+    description?: StringNullableFilter<"ServiceCategory"> | string | null
     slug?: StringFilter<"ServiceCategory"> | string
     image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
@@ -28968,6 +29000,7 @@ export namespace Prisma {
 
   export type ServiceCategoryCreateWithoutServicesInput = {
     name: string
+    description?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -28977,6 +29010,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedCreateWithoutServicesInput = {
     id?: number
     name: string
+    description?: string | null
     slug: string
     image_id?: string | null
     createdAt?: Date | string
@@ -29075,6 +29109,7 @@ export namespace Prisma {
 
   export type ServiceCategoryUpdateWithoutServicesInput = {
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29084,6 +29119,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedUpdateWithoutServicesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29659,6 +29695,7 @@ export namespace Prisma {
   export type ServiceCategoryCreateManyImageInput = {
     id?: number
     name: string
+    description?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -29917,6 +29954,7 @@ export namespace Prisma {
 
   export type ServiceCategoryUpdateWithoutImageInput = {
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29926,6 +29964,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedUpdateWithoutImageInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29935,6 +29974,7 @@ export namespace Prisma {
   export type ServiceCategoryUncheckedUpdateManyWithoutImageInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
