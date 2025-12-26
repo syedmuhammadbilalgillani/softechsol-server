@@ -1,6 +1,5 @@
-import dotenv from "dotenv";
-dotenv.config();
-
+// Note: dotenv.config() is not needed in Next.js - env vars are loaded automatically
+// Also, it's not compatible with Edge Runtime (used by middleware)
 const isDev = process.env.NODE_ENV === "development";
 
 const logger = {
