@@ -79,10 +79,7 @@ export async function GET(request: Request) {
           orderBy: { created_at: "asc" },
         }),
 
-        // 10. Project Images (depends on Project and GalleryItem)
-        projectImages: await prismaBackup.projectImage.findMany({
-          orderBy: { created_at: "asc" },
-        }),
+    
 
         // 11. Blogs (depends on User, GalleryItem, BlogCategory)
         blogs: await prismaBackup.blog.findMany({
@@ -128,7 +125,6 @@ export async function GET(request: Request) {
       podcasts: backupData.data.podcasts.length,
       companies: backupData.data.companies.length,
       projects: backupData.data.projects.length,
-      projectImages: backupData.data.projectImages.length,
       blogs: backupData.data.blogs.length,
       blogCategoryRelations: backupData.data.blogCategoryRelations.length,
       jobCategories: backupData.data.jobCategories.length,
@@ -632,20 +628,13 @@ export async function POST(request: Request) {
                     data: {
                       project_id: project.project_id,
                       title: project.title,
-                      slug: project.slug,
-                      short_description: project.short_description,
                       url: project.url,
-                      client_name: project.client_name,
-                      year: project.year,
-                      timeline: project.timeline,
-                      overview: project.overview,
-                      challenges: project.challenges,
-                      solution: project.solution,
+                      image_id: project.image_id,
+                      description: project.description,
+                      status: project.status,
+                      technologies: project.technologies,
                       created_at: new Date(project.created_at),
                       updated_at: new Date(project.updated_at),
-                      meta_title: project.meta_title,
-                      meta_description: project.meta_description,
-                      meta_keywords: project.meta_keywords,
                     },
                   });
                 } catch (projectError: any) {
@@ -665,48 +654,7 @@ export async function POST(request: Request) {
             }
           }
 
-          // 10. Import Project Images
-          if (backupData.data.projectImages?.length > 0) {
-            logger.info("[Backup API] Importing Project Images", {
-              count: backupData.data.projectImages.length,
-            });
-            try {
-              await tx.projectImage.deleteMany({});
-
-              for (const projectImage of backupData.data.projectImages) {
-                try {
-                  await tx.projectImage.create({
-                    data: {
-                      id: projectImage.id,
-                      project_id: projectImage.project_id,
-                      image_id: projectImage.image_id,
-                      display_order: projectImage.display_order,
-                      created_at: new Date(projectImage.created_at),
-                    },
-                  });
-                } catch (imgError: any) {
-                  logger.warn("[Backup API] Failed to import project image", {
-                    id: projectImage.id,
-                    error: imgError.message,
-                  });
-                  importResults.errors.push(
-                    `ProjectImage ${projectImage.id}: ${imgError.message}`
-                  );
-                }
-              }
-              importResults.created.projectImages =
-                backupData.data.projectImages.length;
-            } catch (error: any) {
-              logger.error(
-                "[Backup API] Error importing Project Images",
-                error
-              );
-              throw new Error(
-                `Failed to import Project Images: ${error.message}`
-              );
-            }
-          }
-
+       
           // 11. Import Blogs
           if (backupData.data.blogs?.length > 0) {
             logger.info("[Backup API] Importing Blogs", {
