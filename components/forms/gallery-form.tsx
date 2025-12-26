@@ -1,9 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useTransition, useEffect } from "react";
+import { useState, useTransition, useEffect, useRef } from "react";
 import { toast } from "sonner";
-import { DynamicForm, FieldConfig } from "@/components/dynamic-form";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -39,20 +38,30 @@ type GalleryFormProps = {
 function FileInputWithPreview({ 
   name, 
   label, 
-  existingImageUrl 
+  existingImageUrl,
+  required = false
 }: { 
   name: string; 
   label: string;
   existingImageUrl?: string;
+  required?: boolean;
 }) {
-  const { register, setValue, watch } = useFormContext();
-  const file = watch(name) as File | File[] | undefined;
+  const { setValue, watch, formState: { errors }, setError, clearErrors } = useFormContext();
+  const file = watch(name);
   const [preview, setPreview] = useState<string | null>(existingImageUrl || null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Handle file selection
   useEffect(() => {
     if (file) {
-      const fileObj = Array.isArray(file) ? file[0] : file;
+      const fileObj = file instanceof FileList 
+        ? file[0] 
+        : Array.isArray(file) 
+        ? file[0] 
+        : file instanceof File 
+        ? file 
+        : null;
+      
       if (fileObj instanceof File) {
         const url = URL.createObjectURL(fileObj);
         setPreview(url);
@@ -60,22 +69,43 @@ function FileInputWithPreview({
       }
     } else if (existingImageUrl) {
       setPreview(existingImageUrl);
+    } else {
+      setPreview(null);
     }
   }, [file, existingImageUrl]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selected = e.target.files?.[0];
-    if (selected instanceof File) {
-      setValue(name, selected, { shouldValidate: true });
-      const url = URL.createObjectURL(selected);
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile instanceof File) {
+      // Store the File object directly
+      setValue(name, selectedFile, { 
+        shouldValidate: true,
+        shouldDirty: true,
+      });
+      // Clear any previous errors
+      clearErrors(name);
+      const url = URL.createObjectURL(selectedFile);
       setPreview(url);
+    } else {
+      setValue(name, null, { shouldValidate: true });
+      setPreview(existingImageUrl || null);
+      // Set error if required
+      if (required) {
+        setError(name, {
+          type: "required",
+          message: `${label} is required`,
+        });
+      }
     }
   };
+
+  const error = errors[name]?.message as string;
 
   return (
     <div className="space-y-2">
       <Label className="block font-medium text-sm mb-1">
         {label}
+        {required && <span className="text-red-500 ml-1">*</span>}
       </Label>
       <div className="flex flex-col gap-4">
         {/* Preview */}
@@ -100,13 +130,17 @@ function FileInputWithPreview({
             {preview ? "Change Image" : "Select Image"}
           </span>
           <input
+            ref={fileInputRef}
             type="file"
             accept="image/*"
             className="hidden"
-            {...register(name)}
             onChange={handleChange}
+            required={required}
           />
         </label>
+        {error && (
+          <p className="text-red-500 text-sm mt-1">{error}</p>
+        )}
       </div>
     </div>
   );
@@ -126,13 +160,8 @@ function GalleryFormSubmitButton({
   
   return (
     <Button 
-      type="button" 
+      type="submit"
       disabled={pending} 
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleSubmit(onSubmit)(e);
-      }}
     >
       {pending
         ? "Saving…"
@@ -152,43 +181,93 @@ export function GalleryForm(props: GalleryFormProps) {
     props.mode === "update"
       ? {
           altText: props.initialData.altText,
+          file: null,
         }
-      : {};
+      : {
+          altText: "",
+          file: null,
+        };
 
-  // Create form methods at the parent level
+  // Create form methods at the parent level with validation rules
   const methods = useForm({
     defaultValues,
+    mode: "onChange", // Validate on change for better UX
   });
 
+  // Reset form when dialog opens/closes
+  useEffect(() => {
+    if (open) {
+      const newDefaults = props.mode === "update"
+        ? {
+            altText: props.initialData.altText,
+            file: null,
+          }
+        : {
+            altText: "",
+            file: null,
+          };
+      methods.reset(newDefaults);
+    }
+  }, [open, props.mode]);
+
   const handleSubmit = async (values: Record<string, any>) => {
+    // Validate file in create mode before submitting
+    if (props.mode === "create") {
+      const file = values.file instanceof File ? values.file : null;
+      if (!file) {
+        methods.setError("file", {
+          type: "required",
+          message: "Image is required",
+        });
+        toast.error("Please select an image file");
+        return;
+      }
+    }
+
     startTransition(async () => {
       try {
         let response: Response;
 
-        if (props.mode === "create" || values.file?.[0]) {
-          const formData = new FormData();
-          if (values.file?.[0]) {
-            formData.append("file", values.file[0]);
-          }
-          formData.append("altText", values.altText);
+        // Get file - it should be a File object directly
+        const file = values.file instanceof File ? values.file : null;
 
-          response = await fetch(
-            props.mode === "create"
-              ? "/api/gallery"
-              : `/api/gallery/${props.initialData.id}`,
-            {
-              method: props.mode === "create" ? "POST" : "PUT",
-              body: formData,
-            }
-          );
-        } else {
-          response = await fetch(`/api/gallery/${props.initialData.id}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              altText: values.altText,
-            }),
+        // In create mode, file is required
+        if (props.mode === "create") {
+          if (!file) {
+            toast.error("Please select an image file");
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("altText", values.altText || "");
+
+          response = await fetch("/api/gallery", {
+            method: "POST",
+            body: formData,
           });
+        } else {
+          // Update mode
+          if (file) {
+            // New file provided
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("altText", values.altText || "");
+
+            response = await fetch(`/api/gallery/${props.initialData.id}`, {
+              method: "PUT",
+              body: formData,
+            });
+          } else {
+            // Only update alt text
+            response = await fetch(`/api/gallery/${props.initialData.id}`, {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                altText: values.altText || "",
+              }),
+            });
+          }
         }
 
         if (!response.ok) {
@@ -203,6 +282,7 @@ export function GalleryForm(props: GalleryFormProps) {
         );
         router.refresh();
         setOpen(false);
+        methods.reset();
         props.onSuccess?.();
       } catch (error: any) {
         toast.error(error.message ?? "Something went wrong");
@@ -247,12 +327,13 @@ export function GalleryForm(props: GalleryFormProps) {
               name="file"
               label="Image"
               existingImageUrl={props.mode === "update" ? props.initialData.url : undefined}
+              required={props.mode === "create"}
             />
             
             {/* Alt text field */}
             <div className="space-y-2">
               <Label className="block font-medium text-sm mb-1">
-                Alt Text
+                Alt Text <span className="text-red-500">*</span>
               </Label>
               <Input
                 {...methods.register("altText", {
@@ -260,6 +341,11 @@ export function GalleryForm(props: GalleryFormProps) {
                 })}
                 placeholder="Alt text"
               />
+              {methods.formState.errors.altText && (
+                <p className="text-red-500 text-sm mt-1">
+                  {methods.formState.errors.altText.message as string}
+                </p>
+              )}
             </div>
 
             <DialogFooter>
