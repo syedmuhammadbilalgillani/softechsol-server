@@ -5,9 +5,16 @@ import logger from "@/utils/logger";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
+// Ensure Node.js runtime for larger file uploads
+export const runtime = 'nodejs';
+export const maxDuration = 30; // Increase timeout for large uploads
+
 const bodySchema = z.object({
   altText: z.string().min(1),
 });
+
+// Maximum file size: 10MB (adjust as needed)
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
 
 export async function POST(req: NextRequest) {
   // Expect multipart/form-data with "file", "altText"
@@ -21,6 +28,14 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
 
+  // Validate file size
+  if (file.size > MAX_FILE_SIZE) {
+    return NextResponse.json(
+      { message: `File size exceeds maximum allowed size of ${MAX_FILE_SIZE / (1024 * 1024)}MB` },
+      { status: 413 }
+    );
+  }
+
   const parsed = bodySchema.safeParse({ altText });
   if (!parsed.success) {
     return NextResponse.json(
@@ -30,8 +45,6 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    // Generate a unique publicId (cuid-like) for the file
-    
     // Upload image using file-manager
     const uploaded = await uploadImage(file, "gallery");
     logger.debug("Uploaded gallery image:", uploaded);
