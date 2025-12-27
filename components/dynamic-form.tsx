@@ -28,6 +28,7 @@ import { MultiSelect } from "./ui/multi-select";
 import { PhoneInput } from "./ui/phone-input";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Switch } from "./ui/switch";
+import Editor from "./editor";
 
 const JoditEditor = dynamic(() => import("jodit-react"), {
   ssr: false,
@@ -48,7 +49,8 @@ export interface FieldConfig {
     | "countryPhone"
     | "joditEditor" // Add this new type
     | "media" // Add this new type
-    | "multiSelect"; // Add this new type
+    | "multiSelect" // Add this new type
+    | "tiptapEditor"; // Add this new type
 
   required?: boolean;
   options?: { label: string; value: string }[];
@@ -198,6 +200,26 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
                 })}
                 placeholder={field.placeholder || field.label}
                 rows={5}
+              />
+              {showError && (
+                <p className="text-red-500 text-sm mt-1">{error}</p>
+              )}
+            </div>
+          );
+        case "tiptapEditor":
+          return (
+            <div key={field.name} className={field.className}>
+              <Label className="block font-medium text-sm mb-1">
+                {field.label}
+              </Label>
+              <Editor
+                {...register(field.name, {
+                  required: isRequired && `${field.label} is required`,
+                })}
+                content={methods.watch(field.name)}
+                onChange={(content) => setValue(field.name, content)}
+                // placeholder={field.placeholder || field.label}
+                // rows={5}
               />
               {showError && (
                 <p className="text-red-500 text-sm mt-1">{error}</p>

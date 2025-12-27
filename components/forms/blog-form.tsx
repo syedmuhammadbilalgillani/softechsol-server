@@ -80,7 +80,7 @@ const BlogForm = ({
     {
       name: "content",
       label: "Content",
-      type: "joditEditor",
+      type: "tiptapEditor",
       required: true,
       placeholder: "Enter blog content",
     },
