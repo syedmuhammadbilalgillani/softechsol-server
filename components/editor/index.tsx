@@ -8,6 +8,7 @@ import { FontFamily } from "@tiptap/extension-font-family";
 import Heading from "@tiptap/extension-heading";
 import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
+import Link from "@tiptap/extension-link";
 import ListItem from "@tiptap/extension-list-item";
 import OrderedList from "@tiptap/extension-ordered-list";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -52,6 +53,12 @@ export const Editor = ({ content, onChange }: TiptapProps) => {
         allowBase64: true,
         HTMLAttributes: {
           class: "w-full h-auto object-contain my-3",
+        },
+      }),
+      Link.configure({
+        openOnClick: false,
+        HTMLAttributes: {
+          class: "text-blue-600 underline cursor-pointer",
         },
       }),
       Blockquote,

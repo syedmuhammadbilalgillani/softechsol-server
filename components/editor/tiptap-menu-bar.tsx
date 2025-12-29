@@ -40,6 +40,7 @@ import {
   Highlighter,
   ImageIcon,
   Italic,
+  Link as LinkIcon,
   List,
   ListOrdered,
   Moon,
@@ -75,6 +76,11 @@ export const TiptapMenuBar = ({
   const [imageFile, setImageFile] = useState<File | string | null>(null);
   const [uploadOption, setUploadOption] = useState<"system" | "url">("system");
   const [isUploading, setIsUploading] = useState(false);
+
+  // link dialog state
+  const [linkDialogOpen, setLinkDialogOpen] = useState(false);
+  const [linkUrl, setLinkUrl] = useState("");
+  const [linkText, setLinkText] = useState("");
 
   // Theme management
   useEffect(() => {
@@ -143,6 +149,55 @@ export const TiptapMenuBar = ({
       setIsUploading(false);
     }
   };
+
+  const handleInsertLink = () => {
+    if (!editor || !linkUrl.trim()) return;
+
+    const selectedText = editor.state.doc.textBetween(
+      editor.state.selection.from,
+      editor.state.selection.to
+    );
+
+    // If there's selected text, use it as link text, otherwise use the provided linkText or URL
+    const textToUse = selectedText || linkText || linkUrl;
+
+    if (selectedText) {
+      // If text is selected, convert it to a link
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: linkUrl })
+        .run();
+    } else {
+      // If no text is selected, insert the link text with the URL
+      editor
+        .chain()
+        .focus()
+        .insertContent(`<a href="${linkUrl}">${textToUse}</a>`)
+        .run();
+    }
+
+    setLinkDialogOpen(false);
+    setLinkUrl("");
+    setLinkText("");
+  };
+
+  const handleRemoveLink = () => {
+    if (!editor) return;
+    editor.chain().focus().unsetLink().run();
+    setLinkDialogOpen(false);
+    setLinkUrl("");
+    setLinkText("");
+  };
+
+  // Reset link dialog state when it closes
+  useEffect(() => {
+    if (!linkDialogOpen) {
+      setLinkUrl("");
+      setLinkText("");
+    }
+  }, [linkDialogOpen]);
 
   if (!editor || !mounted) {
     return null;
@@ -608,6 +663,111 @@ export const TiptapMenuBar = ({
         >
           <Code className="h-4 w-4" />
         </Button>
+        <div className="w-px h-6 bg-gray-300 dark:bg-gray-700 mx-1" />
+        <Dialog open={linkDialogOpen} onOpenChange={setLinkDialogOpen}>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={(event) => {
+              event.preventDefault();
+              // Get selected text if any
+              const selectedText = editor.state.doc.textBetween(
+                editor.state.selection.from,
+                editor.state.selection.to
+              );
+              setLinkText(selectedText);
+              // Get existing link URL if cursor is on a link
+              const attrs = editor.getAttributes("link");
+              setLinkUrl(attrs.href || "");
+              setLinkDialogOpen(true);
+            }}
+            className={
+              editor.isActive("link") ? "bg-gray-200 dark:bg-gray-700" : ""
+            }
+            title="Insert Link"
+          >
+            <LinkIcon className="h-4 w-4" />
+          </Button>
+
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>
+                {editor.isActive("link") ? "Edit Link" : "Insert Link"}
+              </DialogTitle>
+            </DialogHeader>
+
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label htmlFor="link-url" className="text-sm font-medium">
+                  URL
+                </label>
+                <input
+                  id="link-url"
+                  type="url"
+                  placeholder="https://example.com"
+                  value={linkUrl}
+                  onChange={(e) => setLinkUrl(e.target.value)}
+                  className="block w-full text-sm border border-gray-300 rounded-md p-2 dark:bg-gray-800 dark:border-gray-600"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      handleInsertLink();
+                    }
+                  }}
+                />
+              </div>
+
+              {!editor.state.doc.textBetween(
+                editor.state.selection.from,
+                editor.state.selection.to
+              ) && (
+                <div className="space-y-2">
+                  <label htmlFor="link-text" className="text-sm font-medium">
+                    Link Text (optional)
+                  </label>
+                  <input
+                    id="link-text"
+                    type="text"
+                    placeholder="Link text"
+                    value={linkText}
+                    onChange={(e) => setLinkText(e.target.value)}
+                    className="block w-full text-sm border border-gray-300 rounded-md p-2 dark:bg-gray-800 dark:border-gray-600"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Leave empty to use URL as link text
+                  </p>
+                </div>
+              )}
+
+              {editor.isActive("link") && (
+                <Button
+                  type="button"
+                  variant="destructive"
+                  size="sm"
+                  onClick={handleRemoveLink}
+                  className="w-full"
+                >
+                  Remove Link
+                </Button>
+              )}
+            </div>
+
+            <DialogFooter className="mt-4 flex gap-2 justify-end">
+              <DialogClose asChild>
+                <Button type="button" variant="outline">
+                  Cancel
+                </Button>
+              </DialogClose>
+              <Button
+                type="button"
+                onClick={handleInsertLink}
+                disabled={!linkUrl.trim()}
+              >
+                {editor.isActive("link") ? "Update Link" : "Insert Link"}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
         <Dialog open={imageDialogOpen} onOpenChange={setImageDialogOpen}>
           <Button
             asChild
