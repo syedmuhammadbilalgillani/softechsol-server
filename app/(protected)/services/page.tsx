@@ -10,7 +10,8 @@ export const revalidate = 100;
 
 export const metadata: Metadata = {
   title: "Services Management - Softech Solutions",
-  description: "Manage services and service categories offered by Softech Solutions",
+  description:
+    "Manage services and service categories offered by Softech Solutions",
   robots: {
     index: false,
     follow: false,
@@ -18,7 +19,12 @@ export const metadata: Metadata = {
 };
 
 const ServicePage = async () => {
-  const categories = await prisma.serviceCategory.findMany();
+  const categories = await prisma.serviceCategory.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
+  });
   const services = await prisma.service.findMany({
     include: {
       category: true,
