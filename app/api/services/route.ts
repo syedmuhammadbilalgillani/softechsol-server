@@ -38,11 +38,11 @@ export async function PUT(req: Request) {
     const { id, title, description, categoryId, image } = await req.json();
 
     const service = await prisma.service.update({
-      where: { id },
+      where: { id: Number(id) },
       data: {
         title,
         description,
-        categoryId,
+        categoryId: Number(categoryId),
         ...(image && {
           image_id: image,
         }),

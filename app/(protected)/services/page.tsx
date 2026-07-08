@@ -32,6 +32,10 @@ const ServicePage = async () => {
     },
   });
   logger.info(services);
+  const categoryOptions = categories.map((category) => ({
+    id: category.id.toString(),
+    name: category.name,
+  }));
   return (
     <div className="p-5">
       <div className="flex justify-between items-center gap-5">
@@ -39,15 +43,10 @@ const ServicePage = async () => {
           heading="Services"
           paragraph="Our services are designed to help you achieve your goals."
         />
-        <ServiceForm
-          categories={categories.map((category) => ({
-            id: category.id.toString(),
-            name: category.name,
-          }))}
-        />
+        <ServiceForm categories={categoryOptions} />
       </div>
       <div className="mt-4">
-        <ServiceComponent services={services} />
+        <ServiceComponent services={services} categories={categoryOptions} />
       </div>
     </div>
   );

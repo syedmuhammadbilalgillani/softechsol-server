@@ -1,6 +1,7 @@
 "use client";
 import { Service } from "@/app/generated/prisma/client";
 import DataTable from "@/components/data-table";
+import { ServiceForm } from "@/components/forms/service-form";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
@@ -9,7 +10,13 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { toast } from "sonner";
 
-const ServiceComponent = ({ services }: { services: Service[] }) => {
+const ServiceComponent = ({
+  services,
+  categories,
+}: {
+  services: Service[];
+  categories: { id: string; name: string }[];
+}) => {
   const router = useRouter();
   const handleDelete = async (id: string) => {
     try {
@@ -58,6 +65,16 @@ const ServiceComponent = ({ services }: { services: Service[] }) => {
               >
                 <Trash2 className="w-4 h-4" />
               </Button>
+              <ServiceForm
+                categories={categories}
+                initialData={{
+                  id: row?.id.toString(),
+                  title: row?.title ?? "",
+                  description: row?.description ?? "",
+                  categoryId: row?.categoryId?.toString() ?? "",
+                  image: row?.image_id ?? "",
+                }}
+              />
             </div>
           ),
         },
