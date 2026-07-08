@@ -59,6 +59,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.8
         version: 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@tiptap/core':
+        specifier: 3.27.2
+        version: 3.27.2(@tiptap/pm@3.27.2)
       '@tiptap/extension-blockquote':
         specifier: ^3.13.0
         version: 3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))
@@ -69,7 +72,7 @@ importers:
         specifier: ^3.13.0
         version: 3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))(@tiptap/pm@3.27.2)
       '@tiptap/extension-color':
-        specifier: ^3.13.0
+        specifier: 3.27.2
         version: 3.27.2(@tiptap/extension-text-style@3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2)))
       '@tiptap/extension-font-family':
         specifier: ^3.13.0
@@ -84,7 +87,7 @@ importers:
         specifier: ^3.13.0
         version: 3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))
       '@tiptap/extension-link':
-        specifier: ^3.14.0
+        specifier: 3.27.2
         version: 3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))(@tiptap/pm@3.27.2)
       '@tiptap/extension-list-item':
         specifier: ^3.13.0
@@ -98,14 +101,17 @@ importers:
       '@tiptap/extension-text-align':
         specifier: ^3.13.0
         version: 3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))
+      '@tiptap/extension-text-style':
+        specifier: 3.27.2
+        version: 3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))
       '@tiptap/extension-underline':
         specifier: ^3.13.0
         version: 3.27.2(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))
       '@tiptap/react':
-        specifier: ^3.13.0
+        specifier: 3.27.2
         version: 3.27.2(@floating-ui/dom@1.7.6)(@tiptap/core@3.27.2(@tiptap/pm@3.27.2))(@tiptap/pm@3.27.2)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@tiptap/starter-kit':
-        specifier: ^3.13.0
+        specifier: 3.27.2
         version: 3.27.2
       axios:
         specifier: ^1.13.2
