@@ -64,7 +64,7 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
     {
       name: "description",
       label: "Description",
-      type: "textarea" as const,
+      type: "tiptapEditor" as const,
       required: true,
       placeholder: "Describe the service",
       className: "col-span-2",
