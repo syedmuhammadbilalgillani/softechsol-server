@@ -5047,8 +5047,6 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
-    color: string | null
-    icon: string | null
     parent_id: number | null
     is_active: boolean | null
     created_at: Date | null
@@ -5062,8 +5060,6 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
-    color: string | null
-    icon: string | null
     parent_id: number | null
     is_active: boolean | null
     created_at: Date | null
@@ -5077,8 +5073,6 @@ export namespace Prisma {
     name: number
     slug: number
     description: number
-    color: number
-    icon: number
     parent_id: number
     is_active: number
     created_at: number
@@ -5104,8 +5098,6 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
-    color?: true
-    icon?: true
     parent_id?: true
     is_active?: true
     created_at?: true
@@ -5119,8 +5111,6 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
-    color?: true
-    icon?: true
     parent_id?: true
     is_active?: true
     created_at?: true
@@ -5134,8 +5124,6 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
-    color?: true
-    icon?: true
     parent_id?: true
     is_active?: true
     created_at?: true
@@ -5236,8 +5224,6 @@ export namespace Prisma {
     name: string
     slug: string
     description: string | null
-    color: string | null
-    icon: string | null
     parent_id: number | null
     is_active: boolean
     created_at: Date
@@ -5270,8 +5256,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
-    color?: boolean
-    icon?: boolean
     parent_id?: boolean
     is_active?: boolean
     created_at?: boolean
@@ -5289,8 +5273,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
-    color?: boolean
-    icon?: boolean
     parent_id?: boolean
     is_active?: boolean
     created_at?: boolean
@@ -5305,8 +5287,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
-    color?: boolean
-    icon?: boolean
     parent_id?: boolean
     is_active?: boolean
     created_at?: boolean
@@ -5321,8 +5301,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
-    color?: boolean
-    icon?: boolean
     parent_id?: boolean
     is_active?: boolean
     created_at?: boolean
@@ -5331,7 +5309,7 @@ export namespace Prisma {
     meta_description?: boolean
   }
 
-  export type BlogCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"category_id" | "name" | "slug" | "description" | "color" | "icon" | "parent_id" | "is_active" | "created_at" | "updated_at" | "meta_title" | "meta_description", ExtArgs["result"]["blogCategory"]>
+  export type BlogCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"category_id" | "name" | "slug" | "description" | "parent_id" | "is_active" | "created_at" | "updated_at" | "meta_title" | "meta_description", ExtArgs["result"]["blogCategory"]>
   export type BlogCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | BlogCategory$parentArgs<ExtArgs>
     children?: boolean | BlogCategory$childrenArgs<ExtArgs>
@@ -5357,8 +5335,6 @@ export namespace Prisma {
       name: string
       slug: string
       description: string | null
-      color: string | null
-      icon: string | null
       parent_id: number | null
       is_active: boolean
       created_at: Date
@@ -5795,8 +5771,6 @@ export namespace Prisma {
     readonly name: FieldRef<"BlogCategory", 'String'>
     readonly slug: FieldRef<"BlogCategory", 'String'>
     readonly description: FieldRef<"BlogCategory", 'String'>
-    readonly color: FieldRef<"BlogCategory", 'String'>
-    readonly icon: FieldRef<"BlogCategory", 'String'>
     readonly parent_id: FieldRef<"BlogCategory", 'Int'>
     readonly is_active: FieldRef<"BlogCategory", 'Boolean'>
     readonly created_at: FieldRef<"BlogCategory", 'DateTime'>
@@ -20396,8 +20370,6 @@ export namespace Prisma {
     name: 'name',
     slug: 'slug',
     description: 'description',
-    color: 'color',
-    icon: 'icon',
     parent_id: 'parent_id',
     is_active: 'is_active',
     created_at: 'created_at',
@@ -20893,8 +20865,6 @@ export namespace Prisma {
     name?: StringFilter<"BlogCategory"> | string
     slug?: StringFilter<"BlogCategory"> | string
     description?: StringNullableFilter<"BlogCategory"> | string | null
-    color?: StringNullableFilter<"BlogCategory"> | string | null
-    icon?: StringNullableFilter<"BlogCategory"> | string | null
     parent_id?: IntNullableFilter<"BlogCategory"> | number | null
     is_active?: BoolFilter<"BlogCategory"> | boolean
     created_at?: DateTimeFilter<"BlogCategory"> | Date | string
@@ -20911,8 +20881,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
-    color?: SortOrderInput | SortOrder
-    icon?: SortOrderInput | SortOrder
     parent_id?: SortOrderInput | SortOrder
     is_active?: SortOrder
     created_at?: SortOrder
@@ -20932,8 +20900,6 @@ export namespace Prisma {
     OR?: BlogCategoryWhereInput[]
     NOT?: BlogCategoryWhereInput | BlogCategoryWhereInput[]
     description?: StringNullableFilter<"BlogCategory"> | string | null
-    color?: StringNullableFilter<"BlogCategory"> | string | null
-    icon?: StringNullableFilter<"BlogCategory"> | string | null
     parent_id?: IntNullableFilter<"BlogCategory"> | number | null
     is_active?: BoolFilter<"BlogCategory"> | boolean
     created_at?: DateTimeFilter<"BlogCategory"> | Date | string
@@ -20950,8 +20916,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
-    color?: SortOrderInput | SortOrder
-    icon?: SortOrderInput | SortOrder
     parent_id?: SortOrderInput | SortOrder
     is_active?: SortOrder
     created_at?: SortOrder
@@ -20973,8 +20937,6 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"BlogCategory"> | string
     slug?: StringWithAggregatesFilter<"BlogCategory"> | string
     description?: StringNullableWithAggregatesFilter<"BlogCategory"> | string | null
-    color?: StringNullableWithAggregatesFilter<"BlogCategory"> | string | null
-    icon?: StringNullableWithAggregatesFilter<"BlogCategory"> | string | null
     parent_id?: IntNullableWithAggregatesFilter<"BlogCategory"> | number | null
     is_active?: BoolWithAggregatesFilter<"BlogCategory"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"BlogCategory"> | Date | string
@@ -22129,8 +22091,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     is_active?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -22146,8 +22106,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     parent_id?: number | null
     is_active?: boolean
     created_at?: Date | string
@@ -22162,8 +22120,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22179,8 +22135,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     parent_id?: NullableIntFieldUpdateOperationsInput | number | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22196,8 +22150,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     parent_id?: number | null
     is_active?: boolean
     created_at?: Date | string
@@ -22210,8 +22162,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22224,8 +22174,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     parent_id?: NullableIntFieldUpdateOperationsInput | number | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23592,8 +23540,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
-    color?: SortOrder
-    icon?: SortOrder
     parent_id?: SortOrder
     is_active?: SortOrder
     created_at?: SortOrder
@@ -23612,8 +23558,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
-    color?: SortOrder
-    icon?: SortOrder
     parent_id?: SortOrder
     is_active?: SortOrder
     created_at?: SortOrder
@@ -23627,8 +23571,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
-    color?: SortOrder
-    icon?: SortOrder
     parent_id?: SortOrder
     is_active?: SortOrder
     created_at?: SortOrder
@@ -26274,8 +26216,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     is_active?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -26290,8 +26230,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     parent_id?: number | null
     is_active?: boolean
     created_at?: Date | string
@@ -26310,8 +26248,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     is_active?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -26326,8 +26262,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     is_active?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -26382,8 +26316,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26398,8 +26330,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     parent_id?: NullableIntFieldUpdateOperationsInput | number | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26433,8 +26363,6 @@ export namespace Prisma {
     name?: StringFilter<"BlogCategory"> | string
     slug?: StringFilter<"BlogCategory"> | string
     description?: StringNullableFilter<"BlogCategory"> | string | null
-    color?: StringNullableFilter<"BlogCategory"> | string | null
-    icon?: StringNullableFilter<"BlogCategory"> | string | null
     parent_id?: IntNullableFilter<"BlogCategory"> | number | null
     is_active?: BoolFilter<"BlogCategory"> | boolean
     created_at?: DateTimeFilter<"BlogCategory"> | Date | string
@@ -26594,8 +26522,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     is_active?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -26610,8 +26536,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     parent_id?: number | null
     is_active?: boolean
     created_at?: Date | string
@@ -26689,8 +26613,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26705,8 +26627,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     parent_id?: NullableIntFieldUpdateOperationsInput | number | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28366,8 +28286,6 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
-    color?: string | null
-    icon?: string | null
     is_active?: boolean
     created_at?: Date | string
     updated_at?: Date | string
@@ -28384,8 +28302,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28400,8 +28316,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28416,8 +28330,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    color?: NullableStringFieldUpdateOperationsInput | string | null
-    icon?: NullableStringFieldUpdateOperationsInput | string | null
     is_active?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string

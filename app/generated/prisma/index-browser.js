@@ -149,8 +149,6 @@ exports.Prisma.BlogCategoryScalarFieldEnum = {
   name: 'name',
   slug: 'slug',
   description: 'description',
-  color: 'color',
-  icon: 'icon',
   parent_id: 'parent_id',
   is_active: 'is_active',
   created_at: 'created_at',

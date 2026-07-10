@@ -73,8 +73,6 @@ model BlogCategory {
   name        String         @unique
   slug        String         @unique
   description String?        @db.Text
-  color       String?
-  icon        String? // Icon name or emoji (keeping as string for icon names)
   parent_id   Int?
   parent      BlogCategory?  @relation("BlogCategoryHierarchy", fields: [parent_id], references: [category_id], onDelete: SetNull)
   children    BlogCategory[] @relation("BlogCategoryHierarchy")
