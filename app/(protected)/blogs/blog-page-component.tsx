@@ -7,14 +7,21 @@ import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/utils";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
 
-const BlogPageComponent = ({ blogs, categories }: { blogs: Blog[]; categories: any[] }) => {
+const BlogPageComponent = ({
+  blogs,
+  categories,
+}: {
+  blogs: Blog[];
+  categories: any[];
+}) => {
   const [loading, setloading] = useState(false);
   const router = useRouter();
-  
+
   const handleDelete = async (id: string) => {
     try {
       setloading(true);
@@ -70,11 +77,9 @@ const BlogPageComponent = ({ blogs, categories }: { blogs: Blog[]; categories: a
             key: "actions",
             render: (row: any) => (
               <div className="flex gap-2">
-                <BlogForm
-                  categories={categories}
-                  initialData={transformBlogForForm(row)}
-                  onSuccess={() => router.refresh()}
-                />
+                <Button>
+                  <Link href={`/blogs/${row.blog_id}?mode=update`}>Edit</Link>
+                </Button>
                 <Button
                   variant={"destructive"}
                   onClick={() => handleDelete(row.blog_id)}

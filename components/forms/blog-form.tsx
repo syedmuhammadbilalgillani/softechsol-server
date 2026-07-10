@@ -191,14 +191,14 @@ const BlogForm = ({
         toast.success(
           isUpdateMode
             ? "Blog updated successfully!"
-            : "Blog created successfully!"
+            : "Blog created successfully!",
         );
         setIsOpen(false);
         onSuccess?.();
       }
     } catch (error) {
       toast.error(
-        isUpdateMode ? "Failed to update blog" : "Failed to create blog"
+        isUpdateMode ? "Failed to update blog" : "Failed to create blog",
       );
       logger.error(error);
     } finally {
@@ -207,43 +207,24 @@ const BlogForm = ({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" className={cn(className, "")}>
-          {isUpdateMode ? (
-            <PencilIcon className="w-4 h-4" />
-          ) : (
-            <PlusIcon className="w-4 h-4" />
-          )}
-          {isUpdateMode ? "" : "Add"}
+    <DynamicForm
+      fields={formFields}
+      onSubmit={onSubmit}
+      formId="blog"
+      defaultValues={defaultValues}
+      isUpdateMode={isUpdateMode}
+      submitButton={
+        <Button type="submit" form="blog" disabled={loading}>
+          {loading
+            ? isUpdateMode
+              ? "Updating..."
+              : "Submitting..."
+            : isUpdateMode
+              ? "Update Blog"
+              : "Create Blog"}
         </Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>
-            {isUpdateMode ? "Edit Blog" : "Create Blog"}
-          </DialogTitle>
-        </DialogHeader>
-        <DynamicForm
-          fields={formFields}
-          onSubmit={onSubmit}
-          formId="blog"
-          defaultValues={defaultValues}
-          isUpdateMode={isUpdateMode}
-          submitButton={
-            <Button type="submit" form="blog" disabled={loading}>
-              {loading
-                ? isUpdateMode
-                  ? "Updating..."
-                  : "Submitting..."
-                : isUpdateMode
-                ? "Update Blog"
-                : "Create Blog"}
-            </Button>
-          }
-        />
-      </DialogContent>
-    </Dialog>
+      }
+    />
   );
 };
 
