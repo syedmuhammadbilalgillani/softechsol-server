@@ -364,8 +364,6 @@ export async function POST(request: Request) {
                       name: category.name,
                       slug: category.slug,
                       description: category.description,
-                      color: category.color,
-                      icon: category.icon,
                       parent_id: category.parent_id,
                       is_active: category.is_active,
                       created_at: new Date(category.created_at),
