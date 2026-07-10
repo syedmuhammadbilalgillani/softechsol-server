@@ -17,6 +17,10 @@ import { TextStyle } from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { Table } from "@tiptap/extension-table";
+import TableRow from "@tiptap/extension-table-row";
+import TableHeader from "@tiptap/extension-table-header";
+import TableCell from "@tiptap/extension-table-cell";
 import React, { useEffect } from "react";
 import { TiptapMenuBar } from "./tiptap-menu-bar";
 
@@ -68,6 +72,12 @@ export const Editor = ({ content, onChange }: TiptapProps) => {
       OrderedList.configure({
         itemTypeName: "listItem",
       }),
+      Table.configure({
+        resizable: true,
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
     ],
     content: content,
     onUpdate: ({ editor }) => {

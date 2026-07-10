@@ -19,6 +19,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Type } from "lucide-react";
@@ -49,6 +50,7 @@ import {
   Redo,
   Strikethrough,
   Sun,
+  Table as TableIcon,
   Underline,
   Undo,
 } from "lucide-react";
@@ -663,6 +665,107 @@ export const TiptapMenuBar = ({
         >
           <Code className="h-4 w-4" />
         </Button>
+        <div className="w-px h-6 bg-gray-300 dark:bg-gray-700 mx-1" />
+
+        {/* Table */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              title="Table"
+              className={editor.isActive("table") ? "bg-gray-200 dark:bg-gray-700" : ""}
+            >
+              <TableIcon className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-56">
+            <DropdownMenuItem
+              onClick={() =>
+                editor
+                  .chain()
+                  .focus()
+                  .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+                  .run()
+              }
+            >
+              Insert table
+            </DropdownMenuItem>
+
+            {editor.isActive("table") && (
+              <>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().addColumnBefore().run()}
+                >
+                  Add column before
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().addColumnAfter().run()}
+                >
+                  Add column after
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().deleteColumn().run()}
+                >
+                  Delete column
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().addRowBefore().run()}
+                >
+                  Add row before
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().addRowAfter().run()}
+                >
+                  Add row after
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().deleteRow().run()}
+                >
+                  Delete row
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().mergeCells().run()}
+                  disabled={!editor.can().mergeCells()}
+                >
+                  Merge cells
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().splitCell().run()}
+                  disabled={!editor.can().splitCell()}
+                >
+                  Split cell
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().toggleHeaderRow().run()}
+                >
+                  Toggle header row
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().toggleHeaderColumn().run()}
+                >
+                  Toggle header column
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => editor.chain().focus().deleteTable().run()}
+                  className="text-red-600 dark:text-red-400"
+                >
+                  Delete table
+                </DropdownMenuItem>
+              </>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         <div className="w-px h-6 bg-gray-300 dark:bg-gray-700 mx-1" />
         <Dialog open={linkDialogOpen} onOpenChange={setLinkDialogOpen}>
           <Button
