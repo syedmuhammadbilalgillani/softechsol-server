@@ -54,20 +54,6 @@ const CategoryForm = ({
       placeholder: "Enter category description",
     },
     {
-      name: "color",
-      label: "Category Color (e.g., #3B82F6)",
-      type: "input",
-      required: true,
-      placeholder: "Enter category color",
-    },
-    {
-      name: "icon",
-      label: "Category Icon (e.g., 💻 or icon name)",
-      type: "input",
-      required: true,
-      placeholder: "Enter category icon",
-    },
-    {
       name: "meta_title",
       label: "Meta Title (Optional)",
       type: "input",

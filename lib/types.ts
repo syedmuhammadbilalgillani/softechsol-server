@@ -3,8 +3,6 @@ export interface Category {
     name: string
     slug: string
     description: string
-    color: string
-    icon: string
     parent_id: any
     display_order: number
     is_active: boolean
