@@ -10940,6 +10940,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     description: string | null
+    shortDescription: string | null
     slug: string | null
     image_id: string | null
     createdAt: Date | null
@@ -10950,6 +10951,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     description: string | null
+    shortDescription: string | null
     slug: string | null
     image_id: string | null
     createdAt: Date | null
@@ -10960,6 +10962,7 @@ export namespace Prisma {
     id: number
     name: number
     description: number
+    shortDescription: number
     slug: number
     image_id: number
     createdAt: number
@@ -10980,6 +10983,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    shortDescription?: true
     slug?: true
     image_id?: true
     createdAt?: true
@@ -10990,6 +10994,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    shortDescription?: true
     slug?: true
     image_id?: true
     createdAt?: true
@@ -11000,6 +11005,7 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
+    shortDescription?: true
     slug?: true
     image_id?: true
     createdAt?: true
@@ -11097,6 +11103,7 @@ export namespace Prisma {
     id: number
     name: string
     description: string | null
+    shortDescription: string | null
     slug: string
     image_id: string | null
     createdAt: Date
@@ -11126,6 +11133,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    shortDescription?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
@@ -11139,6 +11147,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    shortDescription?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
@@ -11150,6 +11159,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    shortDescription?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
@@ -11161,13 +11171,14 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     description?: boolean
+    shortDescription?: boolean
     slug?: boolean
     image_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ServiceCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "slug" | "image_id" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
+  export type ServiceCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "shortDescription" | "slug" | "image_id" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
   export type ServiceCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     image?: boolean | ServiceCategory$imageArgs<ExtArgs>
     services?: boolean | ServiceCategory$servicesArgs<ExtArgs>
@@ -11190,6 +11201,7 @@ export namespace Prisma {
       id: number
       name: string
       description: string | null
+      shortDescription: string | null
       slug: string
       image_id: string | null
       createdAt: Date
@@ -11622,6 +11634,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ServiceCategory", 'Int'>
     readonly name: FieldRef<"ServiceCategory", 'String'>
     readonly description: FieldRef<"ServiceCategory", 'String'>
+    readonly shortDescription: FieldRef<"ServiceCategory", 'String'>
     readonly slug: FieldRef<"ServiceCategory", 'String'>
     readonly image_id: FieldRef<"ServiceCategory", 'String'>
     readonly createdAt: FieldRef<"ServiceCategory", 'DateTime'>
@@ -12108,7 +12121,6 @@ export namespace Prisma {
   export type ServiceMinAggregateOutputType = {
     id: number | null
     title: string | null
-    shortDescription: string | null
     description: string | null
     image_id: string | null
     categoryId: number | null
@@ -12119,7 +12131,6 @@ export namespace Prisma {
   export type ServiceMaxAggregateOutputType = {
     id: number | null
     title: string | null
-    shortDescription: string | null
     description: string | null
     image_id: string | null
     categoryId: number | null
@@ -12130,7 +12141,6 @@ export namespace Prisma {
   export type ServiceCountAggregateOutputType = {
     id: number
     title: number
-    shortDescription: number
     description: number
     image_id: number
     categoryId: number
@@ -12153,7 +12163,6 @@ export namespace Prisma {
   export type ServiceMinAggregateInputType = {
     id?: true
     title?: true
-    shortDescription?: true
     description?: true
     image_id?: true
     categoryId?: true
@@ -12164,7 +12173,6 @@ export namespace Prisma {
   export type ServiceMaxAggregateInputType = {
     id?: true
     title?: true
-    shortDescription?: true
     description?: true
     image_id?: true
     categoryId?: true
@@ -12175,7 +12183,6 @@ export namespace Prisma {
   export type ServiceCountAggregateInputType = {
     id?: true
     title?: true
-    shortDescription?: true
     description?: true
     image_id?: true
     categoryId?: true
@@ -12273,7 +12280,6 @@ export namespace Prisma {
   export type ServiceGroupByOutputType = {
     id: number
     title: string
-    shortDescription: string | null
     description: string | null
     image_id: string | null
     categoryId: number
@@ -12303,7 +12309,6 @@ export namespace Prisma {
   export type ServiceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    shortDescription?: boolean
     description?: boolean
     image_id?: boolean
     categoryId?: boolean
@@ -12318,7 +12323,6 @@ export namespace Prisma {
   export type ServiceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    shortDescription?: boolean
     description?: boolean
     image_id?: boolean
     categoryId?: boolean
@@ -12331,7 +12335,6 @@ export namespace Prisma {
   export type ServiceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    shortDescription?: boolean
     description?: boolean
     image_id?: boolean
     categoryId?: boolean
@@ -12344,7 +12347,6 @@ export namespace Prisma {
   export type ServiceSelectScalar = {
     id?: boolean
     title?: boolean
-    shortDescription?: boolean
     description?: boolean
     image_id?: boolean
     categoryId?: boolean
@@ -12352,7 +12354,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "shortDescription" | "description" | "image_id" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
+  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "image_id" | "categoryId" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
   export type ServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     image?: boolean | Service$imageArgs<ExtArgs>
     category?: boolean | ServiceCategoryDefaultArgs<ExtArgs>
@@ -12378,7 +12380,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
-      shortDescription: string | null
       description: string | null
       image_id: string | null
       categoryId: number
@@ -12812,7 +12813,6 @@ export namespace Prisma {
   interface ServiceFieldRefs {
     readonly id: FieldRef<"Service", 'Int'>
     readonly title: FieldRef<"Service", 'String'>
-    readonly shortDescription: FieldRef<"Service", 'String'>
     readonly description: FieldRef<"Service", 'String'>
     readonly image_id: FieldRef<"Service", 'String'>
     readonly categoryId: FieldRef<"Service", 'Int'>
@@ -20480,6 +20480,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
+    shortDescription: 'shortDescription',
     slug: 'slug',
     image_id: 'image_id',
     createdAt: 'createdAt',
@@ -20492,7 +20493,6 @@ export namespace Prisma {
   export const ServiceScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    shortDescription: 'shortDescription',
     description: 'description',
     image_id: 'image_id',
     categoryId: 'categoryId',
@@ -21295,6 +21295,7 @@ export namespace Prisma {
     id?: IntFilter<"ServiceCategory"> | number
     name?: StringFilter<"ServiceCategory"> | string
     description?: StringNullableFilter<"ServiceCategory"> | string | null
+    shortDescription?: StringNullableFilter<"ServiceCategory"> | string | null
     slug?: StringFilter<"ServiceCategory"> | string
     image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
@@ -21307,6 +21308,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    shortDescription?: SortOrderInput | SortOrder
     slug?: SortOrder
     image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -21323,6 +21325,7 @@ export namespace Prisma {
     NOT?: ServiceCategoryWhereInput | ServiceCategoryWhereInput[]
     name?: StringFilter<"ServiceCategory"> | string
     description?: StringNullableFilter<"ServiceCategory"> | string | null
+    shortDescription?: StringNullableFilter<"ServiceCategory"> | string | null
     image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
     updatedAt?: DateTimeFilter<"ServiceCategory"> | Date | string
@@ -21334,6 +21337,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrderInput | SortOrder
+    shortDescription?: SortOrderInput | SortOrder
     slug?: SortOrder
     image_id?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -21352,6 +21356,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ServiceCategory"> | number
     name?: StringWithAggregatesFilter<"ServiceCategory"> | string
     description?: StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
+    shortDescription?: StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
     slug?: StringWithAggregatesFilter<"ServiceCategory"> | string
     image_id?: StringNullableWithAggregatesFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ServiceCategory"> | Date | string
@@ -21364,7 +21369,6 @@ export namespace Prisma {
     NOT?: ServiceWhereInput | ServiceWhereInput[]
     id?: IntFilter<"Service"> | number
     title?: StringFilter<"Service"> | string
-    shortDescription?: StringNullableFilter<"Service"> | string | null
     description?: StringNullableFilter<"Service"> | string | null
     image_id?: StringNullableFilter<"Service"> | string | null
     categoryId?: IntFilter<"Service"> | number
@@ -21378,7 +21382,6 @@ export namespace Prisma {
   export type ServiceOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    shortDescription?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     image_id?: SortOrderInput | SortOrder
     categoryId?: SortOrder
@@ -21395,7 +21398,6 @@ export namespace Prisma {
     OR?: ServiceWhereInput[]
     NOT?: ServiceWhereInput | ServiceWhereInput[]
     title?: StringFilter<"Service"> | string
-    shortDescription?: StringNullableFilter<"Service"> | string | null
     description?: StringNullableFilter<"Service"> | string | null
     image_id?: StringNullableFilter<"Service"> | string | null
     categoryId?: IntFilter<"Service"> | number
@@ -21409,7 +21411,6 @@ export namespace Prisma {
   export type ServiceOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    shortDescription?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     image_id?: SortOrderInput | SortOrder
     categoryId?: SortOrder
@@ -21428,7 +21429,6 @@ export namespace Prisma {
     NOT?: ServiceScalarWhereWithAggregatesInput | ServiceScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Service"> | number
     title?: StringWithAggregatesFilter<"Service"> | string
-    shortDescription?: StringNullableWithAggregatesFilter<"Service"> | string | null
     description?: StringNullableWithAggregatesFilter<"Service"> | string | null
     image_id?: StringNullableWithAggregatesFilter<"Service"> | string | null
     categoryId?: IntWithAggregatesFilter<"Service"> | number
@@ -22539,6 +22539,7 @@ export namespace Prisma {
   export type ServiceCategoryCreateInput = {
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22550,6 +22551,7 @@ export namespace Prisma {
     id?: number
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     image_id?: string | null
     createdAt?: Date | string
@@ -22560,6 +22562,7 @@ export namespace Prisma {
   export type ServiceCategoryUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22571,6 +22574,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22582,6 +22586,7 @@ export namespace Prisma {
     id?: number
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     image_id?: string | null
     createdAt?: Date | string
@@ -22591,6 +22596,7 @@ export namespace Prisma {
   export type ServiceCategoryUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22600,6 +22606,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22608,7 +22615,6 @@ export namespace Prisma {
 
   export type ServiceCreateInput = {
     title: string
-    shortDescription?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -22620,7 +22626,6 @@ export namespace Prisma {
   export type ServiceUncheckedCreateInput = {
     id?: number
     title: string
-    shortDescription?: string | null
     description?: string | null
     image_id?: string | null
     categoryId: number
@@ -22631,7 +22636,6 @@ export namespace Prisma {
 
   export type ServiceUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22643,7 +22647,6 @@ export namespace Prisma {
   export type ServiceUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
@@ -22655,7 +22658,6 @@ export namespace Prisma {
   export type ServiceCreateManyInput = {
     id?: number
     title: string
-    shortDescription?: string | null
     description?: string | null
     image_id?: string | null
     categoryId: number
@@ -22665,7 +22667,6 @@ export namespace Prisma {
 
   export type ServiceUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22674,7 +22675,6 @@ export namespace Prisma {
   export type ServiceUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
@@ -23893,6 +23893,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     slug?: SortOrder
     image_id?: SortOrder
     createdAt?: SortOrder
@@ -23907,6 +23908,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     slug?: SortOrder
     image_id?: SortOrder
     createdAt?: SortOrder
@@ -23917,6 +23919,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
+    shortDescription?: SortOrder
     slug?: SortOrder
     image_id?: SortOrder
     createdAt?: SortOrder
@@ -23945,7 +23948,6 @@ export namespace Prisma {
   export type ServiceCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    shortDescription?: SortOrder
     description?: SortOrder
     image_id?: SortOrder
     categoryId?: SortOrder
@@ -23961,7 +23963,6 @@ export namespace Prisma {
   export type ServiceMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    shortDescription?: SortOrder
     description?: SortOrder
     image_id?: SortOrder
     categoryId?: SortOrder
@@ -23972,7 +23973,6 @@ export namespace Prisma {
   export type ServiceMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    shortDescription?: SortOrder
     description?: SortOrder
     image_id?: SortOrder
     categoryId?: SortOrder
@@ -25800,6 +25800,7 @@ export namespace Prisma {
   export type ServiceCategoryCreateWithoutImageInput = {
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25810,6 +25811,7 @@ export namespace Prisma {
     id?: number
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25828,7 +25830,6 @@ export namespace Prisma {
 
   export type ServiceCreateWithoutImageInput = {
     title: string
-    shortDescription?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -25839,7 +25840,6 @@ export namespace Prisma {
   export type ServiceUncheckedCreateWithoutImageInput = {
     id?: number
     title: string
-    shortDescription?: string | null
     description?: string | null
     categoryId: number
     createdAt?: Date | string
@@ -26091,6 +26091,7 @@ export namespace Prisma {
     id?: IntFilter<"ServiceCategory"> | number
     name?: StringFilter<"ServiceCategory"> | string
     description?: StringNullableFilter<"ServiceCategory"> | string | null
+    shortDescription?: StringNullableFilter<"ServiceCategory"> | string | null
     slug?: StringFilter<"ServiceCategory"> | string
     image_id?: StringNullableFilter<"ServiceCategory"> | string | null
     createdAt?: DateTimeFilter<"ServiceCategory"> | Date | string
@@ -26119,7 +26120,6 @@ export namespace Prisma {
     NOT?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
     id?: IntFilter<"Service"> | number
     title?: StringFilter<"Service"> | string
-    shortDescription?: StringNullableFilter<"Service"> | string | null
     description?: StringNullableFilter<"Service"> | string | null
     image_id?: StringNullableFilter<"Service"> | string | null
     categoryId?: IntFilter<"Service"> | number
@@ -27137,7 +27137,6 @@ export namespace Prisma {
 
   export type ServiceCreateWithoutCategoryInput = {
     title: string
-    shortDescription?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27148,7 +27147,6 @@ export namespace Prisma {
   export type ServiceUncheckedCreateWithoutCategoryInput = {
     id?: number
     title: string
-    shortDescription?: string | null
     description?: string | null
     image_id?: string | null
     createdAt?: Date | string
@@ -27265,6 +27263,7 @@ export namespace Prisma {
   export type ServiceCategoryCreateWithoutServicesInput = {
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27275,6 +27274,7 @@ export namespace Prisma {
     id?: number
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     image_id?: string | null
     createdAt?: Date | string
@@ -27374,6 +27374,7 @@ export namespace Prisma {
   export type ServiceCategoryUpdateWithoutServicesInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27384,6 +27385,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27503,7 +27505,6 @@ export namespace Prisma {
 
   export type ServiceCreateWithoutContactSubmissionsInput = {
     title: string
-    shortDescription?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27514,7 +27515,6 @@ export namespace Prisma {
   export type ServiceUncheckedCreateWithoutContactSubmissionsInput = {
     id?: number
     title: string
-    shortDescription?: string | null
     description?: string | null
     image_id?: string | null
     categoryId: number
@@ -27540,7 +27540,6 @@ export namespace Prisma {
 
   export type ServiceUpdateWithoutContactSubmissionsInput = {
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27551,7 +27550,6 @@ export namespace Prisma {
   export type ServiceUncheckedUpdateWithoutContactSubmissionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
@@ -27968,6 +27966,7 @@ export namespace Prisma {
     id?: number
     name: string
     description?: string | null
+    shortDescription?: string | null
     slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -27976,7 +27975,6 @@ export namespace Prisma {
   export type ServiceCreateManyImageInput = {
     id?: number
     title: string
-    shortDescription?: string | null
     description?: string | null
     categoryId: number
     createdAt?: Date | string
@@ -28239,6 +28237,7 @@ export namespace Prisma {
   export type ServiceCategoryUpdateWithoutImageInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28249,6 +28248,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28259,6 +28259,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28266,7 +28267,6 @@ export namespace Prisma {
 
   export type ServiceUpdateWithoutImageInput = {
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28277,7 +28277,6 @@ export namespace Prisma {
   export type ServiceUncheckedUpdateWithoutImageInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28288,7 +28287,6 @@ export namespace Prisma {
   export type ServiceUncheckedUpdateManyWithoutImageInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     categoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28505,7 +28503,6 @@ export namespace Prisma {
   export type ServiceCreateManyCategoryInput = {
     id?: number
     title: string
-    shortDescription?: string | null
     description?: string | null
     image_id?: string | null
     createdAt?: Date | string
@@ -28514,7 +28511,6 @@ export namespace Prisma {
 
   export type ServiceUpdateWithoutCategoryInput = {
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28525,7 +28521,6 @@ export namespace Prisma {
   export type ServiceUncheckedUpdateWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28536,7 +28531,6 @@ export namespace Prisma {
   export type ServiceUncheckedUpdateManyWithoutCategoryInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    shortDescription?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     image_id?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

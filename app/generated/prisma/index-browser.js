@@ -205,6 +205,7 @@ exports.Prisma.ServiceCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
+  shortDescription: 'shortDescription',
   slug: 'slug',
   image_id: 'image_id',
   createdAt: 'createdAt',
@@ -214,7 +215,6 @@ exports.Prisma.ServiceCategoryScalarFieldEnum = {
 exports.Prisma.ServiceScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  shortDescription: 'shortDescription',
   description: 'description',
   image_id: 'image_id',
   categoryId: 'categoryId',
