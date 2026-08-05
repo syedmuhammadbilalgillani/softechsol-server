@@ -20,6 +20,7 @@ export interface ServiceCategoryFormValues {
   slug: string;
   image: string;
   description: string;
+  shortDescription?: string;
 }
 
 export interface ServiceCategoryInitialData {
@@ -32,6 +33,7 @@ export interface ServiceCategoryInitialData {
     altText?: string;
   };
   description: string;
+  shortDescription?: string;
 }
 
 interface ServiceCategoryFormProps {
@@ -66,6 +68,14 @@ const serviceCategoryFields: FieldConfig[] = [
     className: "col-span-2",
   },
   {
+    name: "shortDescription",
+    label: "Short Description",
+    type: "textarea",
+    required: false,
+    placeholder: "Enter short description",
+    className: "col-span-2",
+  },
+  {
     name: "description",
     label: "Description",
     type: "textarea",
@@ -89,6 +99,7 @@ export const ServiceCategoryForm: React.FC<ServiceCategoryFormProps> = ({
     slug: initialData?.slug ?? "",
     image: initialData?.image?.id ?? "",
     description: initialData?.description ?? "",
+    shortDescription: initialData?.shortDescription ?? "",
   };
 
   const handleSubmit = async (values: ServiceCategoryFormValues) => {
