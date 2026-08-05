@@ -17,6 +17,7 @@ import {
 
 export interface ServiceFormValues {
   title: string;
+  shortDescription: string;
   description: string;
   categoryId: string;
   image: string;
@@ -47,6 +48,7 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const defaultValues: any = {
     title: initialData?.title ?? "",
+    shortDescription: initialData?.shortDescription ?? "",
     description: initialData?.description ?? "",
     categoryId: initialData?.categoryId ?? "",
     image: initialData?.image ?? "",
@@ -59,6 +61,14 @@ export const ServiceForm: React.FC<ServiceFormProps> = ({
       type: "input" as const,
       required: true,
       placeholder: "Enter service title",
+      className: "col-span-2",
+    },
+    {
+      name: "shortDescription",
+      label: "Short Description",
+      type: "textarea" as const,
+      required: false,
+      placeholder: "Enter short description",
       className: "col-span-2",
     },
     {

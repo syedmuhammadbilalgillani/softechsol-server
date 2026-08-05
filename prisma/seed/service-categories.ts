@@ -6,6 +6,7 @@ export type ServiceCategorySeed = {
   description: string;
   services: {
     title: string;
+    shortDescription?: string;
     description: string;
   }[];
 };
@@ -151,7 +152,10 @@ export async function seedServiceCategories(prisma: PrismaClient) {
       if (existingService) {
         await prisma.service.update({
           where: { id: existingService.id },
-          data: { description: service.description },
+          data: {
+            description: service.description,
+            shortDescription: service.shortDescription || null,
+          },
         });
         results.servicesUpdated++;
       } else {
@@ -159,6 +163,7 @@ export async function seedServiceCategories(prisma: PrismaClient) {
           data: {
             title: service.title,
             description: service.description,
+            shortDescription: service.shortDescription || null,
             categoryId: savedCategory.id,
           },
         });

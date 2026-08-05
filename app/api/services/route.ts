@@ -6,14 +6,16 @@ import { revalidateTag } from "@/lib/revalidate";
 // CREATE Service
 export async function POST(req: Request) {
   try {
-    const { title, description, categoryId, image } = await req.json();
+    const { title, shortDescription, description, categoryId, image } = await req.json();
     logger.info(title, "title");
+    logger.info(shortDescription, "shortDescription");
     logger.info(description, "description");
     logger.info(categoryId, "categoryId");
     logger.info(image, "image");
     const service = await prisma.service.create({
       data: {
         title,
+        shortDescription,
         description,
         categoryId: Number(categoryId),
         ...(image && {
@@ -35,12 +37,13 @@ export async function POST(req: Request) {
 // UPDATE Service
 export async function PUT(req: Request) {
   try {
-    const { id, title, description, categoryId, image } = await req.json();
+    const { id, title, shortDescription, description, categoryId, image } = await req.json();
 
     const service = await prisma.service.update({
       where: { id: Number(id) },
       data: {
         title,
+        shortDescription,
         description,
         categoryId: Number(categoryId),
         ...(image && {

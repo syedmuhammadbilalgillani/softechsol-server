@@ -179,6 +179,7 @@ model ServiceCategory {
 model Service {
   id                 Int             @id @default(autoincrement())
   title              String
+  shortDescription   String?
   description        String?
   image              GalleryItem?    @relation("ServiceImage", fields: [image_id], references: [id], onDelete: SetNull)
   image_id           String?
