@@ -164,13 +164,14 @@ model Project {
 }
 
 model ServiceCategory {
-  id          Int          @id @default(autoincrement())
-  name        String
-  description String?      @default("")
-  slug        String       @unique
-  image       GalleryItem? @relation("ServiceCategoryImage", fields: [image_id], references: [id], onDelete: SetNull)
-  image_id    String?
-  services    Service[]
+  id               Int          @id @default(autoincrement())
+  name             String
+  description      String?      @default("")
+  shortDescription String?
+  slug             String       @unique
+  image            GalleryItem? @relation("ServiceCategoryImage", fields: [image_id], references: [id], onDelete: SetNull)
+  image_id         String?
+  services         Service[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -179,7 +180,6 @@ model ServiceCategory {
 model Service {
   id                 Int             @id @default(autoincrement())
   title              String
-  shortDescription   String?
   description        String?
   image              GalleryItem?    @relation("ServiceImage", fields: [image_id], references: [id], onDelete: SetNull)
   image_id           String?

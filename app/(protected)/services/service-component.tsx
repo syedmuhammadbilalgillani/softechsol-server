@@ -33,7 +33,6 @@ const ServiceComponent = ({
     <DataTable
       columns={[
         { label: "Title", key: "title" },
-        { label: "Short Description", key: "shortDescription" },
         { label: "Description", key: "description" },
         {
           label: "Category",
@@ -71,7 +70,6 @@ const ServiceComponent = ({
                 initialData={{
                   id: row?.id.toString(),
                   title: row?.title ?? "",
-                  shortDescription: row?.shortDescription ?? "",
                   description: row?.description ?? "",
                   categoryId: row?.categoryId?.toString() ?? "",
                   image: row?.image_id ?? "",

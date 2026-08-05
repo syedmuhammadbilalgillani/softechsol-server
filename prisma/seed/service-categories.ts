@@ -4,9 +4,9 @@ export type ServiceCategorySeed = {
   name: string;
   slug: string;
   description: string;
+  shortDescription?: string;
   services: {
     title: string;
-    shortDescription?: string;
     description: string;
   }[];
 };
@@ -128,10 +128,12 @@ export async function seedServiceCategories(prisma: PrismaClient) {
         name: category.name,
         slug: category.slug,
         description: category.description,
+        shortDescription: category.shortDescription || null,
       },
       update: {
         name: category.name,
         description: category.description,
+        shortDescription: category.shortDescription || null,
       },
     });
 
@@ -154,7 +156,6 @@ export async function seedServiceCategories(prisma: PrismaClient) {
           where: { id: existingService.id },
           data: {
             description: service.description,
-            shortDescription: service.shortDescription || null,
           },
         });
         results.servicesUpdated++;
@@ -163,7 +164,6 @@ export async function seedServiceCategories(prisma: PrismaClient) {
           data: {
             title: service.title,
             description: service.description,
-            shortDescription: service.shortDescription || null,
             categoryId: savedCategory.id,
           },
         });

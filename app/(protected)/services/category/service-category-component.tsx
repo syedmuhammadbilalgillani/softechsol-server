@@ -40,6 +40,10 @@ const ServiceCategoryComponent = ({
           key: "name",
         },
         {
+          label: "Short Description",
+          key: "shortDescription",
+        },
+        {
           label: "Slug",
           key: "slug",
         },

@@ -6,12 +6,13 @@ import { revalidateTag } from "@/lib/revalidate";
 // CREATE Category
 export async function POST(req: Request) {
   try {
-    const { name, slug, image, description } = await req.json();
+    const { name, slug, image, description, shortDescription } = await req.json();
 
     logger.info(name, "name");
     logger.info(slug, "slug");
     logger.info(image, "image");
     logger.info(description, "description");
+    logger.info(shortDescription, "shortDescription");
 
     const category = await prisma.serviceCategory.create({
       data: {
@@ -21,6 +22,7 @@ export async function POST(req: Request) {
           connect: { id: image },
         },
         description,
+        shortDescription,
       },
     });
 
@@ -39,7 +41,7 @@ export async function POST(req: Request) {
 // UPDATE Category
 export async function PUT(req: Request) {
   try {
-    const { id, name, slug, image, description } = await req.json();
+    const { id, name, slug, image, description, shortDescription } = await req.json();
 
     const category = await prisma.serviceCategory.update({
       where: { id },
@@ -50,6 +52,7 @@ export async function PUT(req: Request) {
           connect: { id: image },
         },
         description,
+        shortDescription,
       },
     });
     await revalidateTag("categories-with-services");
