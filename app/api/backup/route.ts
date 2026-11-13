@@ -7,6 +7,10 @@ import path from "path";
 import { existsSync } from "fs";
 import { mkdir, writeFile } from "fs/promises";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const maxDuration = 300; // 5 minutes timeout for large database & asset imports
+
 dotenv.config();
 // Create a separate Prisma client without Accelerate for backup operations
 // Accelerate has limitations with long-running transactions
