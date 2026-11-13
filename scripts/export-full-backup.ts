@@ -105,14 +105,77 @@ async function exportFullBackup() {
     await writeFile(jsonPath, jsonBuffer);
     console.log(`📄 Saved JSON dump to: ${jsonPath}`);
 
+    const storagePath = process.env.STORAGE_BASE_PATH
+      ? path.resolve(process.env.STORAGE_BASE_PATH)
+      : path.join(process.cwd(), "public", "storage");
+
+    // Ensure all physical assets exist locally (download missing remote assets from live server)
+    console.log("\n🔍 Syncing physical assets from remote server if missing locally...");
+    const galleryStorageDir = path.join(storagePath, "gallery");
+    await mkdir(galleryStorageDir, { recursive: true });
+
+    let downloadedCount = 0;
+    for (const item of galleryItems) {
+      if (!item.url) continue;
+
+      let filename = "";
+      let downloadUrls: string[] = [];
+
+      if (
+        item.url.startsWith("/api/storage/gallery/") ||
+        item.url.startsWith("/storage/gallery/")
+      ) {
+        filename = path.basename(item.url);
+        downloadUrls = [
+          `https://admin.softechsol.com/api/storage/gallery/${filename}`,
+          `https://admin.softechsol.com/storage/gallery/${filename}`,
+          `https://softechsol.com/api/storage/gallery/${filename}`,
+          `https://softechsol.com/storage/gallery/${filename}`,
+        ];
+      } else if (
+        item.url.startsWith("http://") ||
+        item.url.startsWith("https://")
+      ) {
+        filename = path.basename(new URL(item.url).pathname);
+        downloadUrls = [item.url];
+      }
+
+      if (filename) {
+        const localFilePath = path.join(galleryStorageDir, filename);
+        if (!existsSync(localFilePath)) {
+          let downloaded = false;
+          for (const dUrl of downloadUrls) {
+            try {
+              const res = await fetch(dUrl, { signal: AbortSignal.timeout(10000) });
+              if (res.ok) {
+                const arrayBuf = await res.arrayBuffer();
+                await writeFile(localFilePath, Buffer.from(arrayBuf));
+                downloadedCount++;
+                downloaded = true;
+                console.log(`  ✅ Downloaded asset: ${filename}`);
+                break;
+              }
+            } catch (err: any) {
+              // try next fallback url
+            }
+          }
+          if (!downloaded) {
+            console.log(`  ⚠️ Could not fetch remote asset: ${filename}`);
+          }
+        }
+      }
+    }
+
+    if (downloadedCount > 0) {
+      console.log(`✅ Successfully synced ${downloadedCount} missing assets into local public/storage/gallery!`);
+    } else {
+      console.log(`✅ All referenced physical assets already exist locally.`);
+    }
+
     // Create ZIP archive
     console.log("\n📦 Packaging ZIP bundle with uploaded assets...");
     const zip = new AdmZip();
     zip.addFile("database.json", jsonBuffer);
-
-    const storagePath = process.env.STORAGE_BASE_PATH
-      ? path.resolve(process.env.STORAGE_BASE_PATH)
-      : path.join(process.cwd(), "public", "storage");
 
     let assetsCount = 0;
     if (existsSync(storagePath)) {

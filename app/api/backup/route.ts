@@ -176,6 +176,54 @@ export async function GET(request: Request) {
       ? path.resolve(process.env.STORAGE_BASE_PATH)
       : path.join(process.cwd(), "public", "storage");
 
+    const galleryStorageDir = path.join(storagePath, "gallery");
+    await mkdir(galleryStorageDir, { recursive: true });
+
+    // Sync any missing assets from production server into local public/storage
+    for (const item of backupData.data.galleryItems) {
+      if (!item.url) continue;
+
+      let filename = "";
+      let downloadUrls: string[] = [];
+
+      if (
+        item.url.startsWith("/api/storage/gallery/") ||
+        item.url.startsWith("/storage/gallery/")
+      ) {
+        filename = path.basename(item.url);
+        downloadUrls = [
+          `https://admin.softechsol.com/api/storage/gallery/${filename}`,
+          `https://admin.softechsol.com/storage/gallery/${filename}`,
+          `https://softechsol.com/api/storage/gallery/${filename}`,
+          `https://softechsol.com/storage/gallery/${filename}`,
+        ];
+      } else if (
+        item.url.startsWith("http://") ||
+        item.url.startsWith("https://")
+      ) {
+        filename = path.basename(new URL(item.url).pathname);
+        downloadUrls = [item.url];
+      }
+
+      if (filename) {
+        const localFilePath = path.join(galleryStorageDir, filename);
+        if (!existsSync(localFilePath)) {
+          for (const dUrl of downloadUrls) {
+            try {
+              const res = await fetch(dUrl, { signal: AbortSignal.timeout(8000) });
+              if (res.ok) {
+                const arrayBuf = await res.arrayBuffer();
+                await writeFile(localFilePath, Buffer.from(arrayBuf));
+                break;
+              }
+            } catch {
+              // try next url
+            }
+          }
+        }
+      }
+    }
+
     let assetsCount = 0;
     if (existsSync(storagePath)) {
       zip.addLocalFolder(storagePath, "storage");
