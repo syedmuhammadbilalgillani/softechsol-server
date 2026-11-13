@@ -330,7 +330,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\syedm\\Desktop\\softechsol\\company-site\\app\\generated\\prisma",
+      "value": "C:\\Users\\syedm\\Desktop\\Old Data\\backup\\backup\\02-9-2026\\softechsol\\sts\\company-site\\app\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -348,7 +348,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\syedm\\Desktop\\softechsol\\company-site\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\syedm\\Desktop\\Old Data\\backup\\backup\\02-9-2026\\softechsol\\sts\\company-site\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

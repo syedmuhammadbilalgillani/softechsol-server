@@ -2,6 +2,11 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@/app/generated/prisma/client";
 import logger from "@/utils/logger";
 import dotenv from "dotenv";
+import AdmZip from "adm-zip";
+import path from "path";
+import { existsSync } from "fs";
+import { mkdir, writeFile } from "fs/promises";
+
 dotenv.config();
 // Create a separate Prisma client without Accelerate for backup operations
 // Accelerate has limitations with long-running transactions
@@ -145,14 +150,67 @@ export async function GET(request: Request) {
       duration: `${duration}ms`,
     });
 
-    // Return as JSON file download
-    return new NextResponse(JSON.stringify(backupData, null, 2), {
+    const { searchParams } = new URL(request.url);
+    const format = searchParams.get("format") || searchParams.get("type") || "zip";
+    const dateStr = new Date().toISOString().split("T")[0];
+
+    // Return as JSON file download if requested
+    if (format === "json") {
+      return new NextResponse(JSON.stringify(backupData, null, 2), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Disposition": `attachment; filename="db-backup-${dateStr}.json"`,
+        },
+      });
+    }
+
+    // Default: Return as Full ZIP bundle (database.json + public/storage assets + manifest.json)
+    const zip = new AdmZip();
+    zip.addFile(
+      "database.json",
+      Buffer.from(JSON.stringify(backupData, null, 2), "utf-8")
+    );
+
+    const storagePath = process.env.STORAGE_BASE_PATH
+      ? path.resolve(process.env.STORAGE_BASE_PATH)
+      : path.join(process.cwd(), "public", "storage");
+
+    let assetsCount = 0;
+    if (existsSync(storagePath)) {
+      zip.addLocalFolder(storagePath, "storage");
+      assetsCount = zip
+        .getEntries()
+        .filter((e) => e.entryName.startsWith("storage/") && !e.isDirectory).length;
+    }
+
+    const manifest = {
+      version: "2.0",
+      type: "full-backup",
+      exportedAt: new Date().toISOString(),
+      recordCounts,
+      totalRecords,
+      totalAssets: assetsCount,
+    };
+    zip.addFile(
+      "manifest.json",
+      Buffer.from(JSON.stringify(manifest, null, 2), "utf-8")
+    );
+
+    const zipBuffer = zip.toBuffer();
+
+    logger.info("[Backup API] Full backup zip generated", {
+      totalRecords,
+      assetsCount,
+      zipSize: `${(zipBuffer.length / (1024 * 1024)).toFixed(2)} MB`,
+    });
+
+    return new NextResponse(new Uint8Array(zipBuffer), {
       status: 200,
       headers: {
-        "Content-Type": "application/json",
-        "Content-Disposition": `attachment; filename="db-backup-${
-          new Date().toISOString().split("T")[0]
-        }.json"`,
+        "Content-Type": "application/zip",
+        "Content-Disposition": `attachment; filename="full-backup-${dateStr}.zip"`,
+        "Content-Length": zipBuffer.length.toString(),
       },
     });
   } catch (error: any) {
@@ -187,23 +245,100 @@ export async function POST(request: Request) {
   const prismaBackup = getPrismaBackup();
 
   try {
-    // Parse request body
-    let backupData;
-    try {
-      const body = await request.json();
-      backupData = body;
-      logger.info("[Backup API] Backup data received", {
-        version: backupData.version,
-        exportedAt: backupData.exportedAt,
-      });
-    } catch (parseError: any) {
-      logger.error("[Backup API] Failed to parse request body", {
-        error: parseError.message,
-      });
-      return NextResponse.json(
-        { error: "Invalid JSON in request body" },
-        { status: 400 }
-      );
+    // Parse request body or multipart form
+    let backupData: any = null;
+    let assetsCount = 0;
+    const contentType = request.headers.get("content-type") || "";
+
+    const targetStoragePath = process.env.STORAGE_BASE_PATH
+      ? path.resolve(process.env.STORAGE_BASE_PATH)
+      : path.join(process.cwd(), "public", "storage");
+
+    if (contentType.includes("multipart/form-data")) {
+      const formData = await request.formData();
+      const file = formData.get("file") as File | null;
+      if (!file) {
+        return NextResponse.json(
+          { error: "No backup file uploaded" },
+          { status: 400 }
+        );
+      }
+
+      if (file.name.endsWith(".zip")) {
+        const arrayBuffer = await file.arrayBuffer();
+        const zip = new AdmZip(Buffer.from(arrayBuffer));
+
+        // Find database.json inside the zip
+        const dbEntry =
+          zip.getEntry("database.json") ||
+          zip
+            .getEntries()
+            .find(
+              (e) =>
+                e.entryName.endsWith(".json") &&
+                !e.entryName.includes("manifest")
+            );
+
+        if (!dbEntry) {
+          return NextResponse.json(
+            { error: "No database.json found inside the zip archive" },
+            { status: 400 }
+          );
+        }
+
+        try {
+          backupData = JSON.parse(zip.readAsText(dbEntry));
+        } catch {
+          return NextResponse.json(
+            { error: "Invalid database.json format inside zip" },
+            { status: 400 }
+          );
+        }
+
+        // Extract assets under storage/ to targetStoragePath
+        for (const entry of zip.getEntries()) {
+          if (entry.entryName.startsWith("storage/") && !entry.isDirectory) {
+            const relativeName = entry.entryName.replace(/^storage\//, "");
+            const outPath = path.join(targetStoragePath, relativeName);
+            await mkdir(path.dirname(outPath), { recursive: true });
+            await writeFile(outPath, entry.getData());
+            assetsCount++;
+          }
+        }
+        logger.info("[Backup API] Extracted assets from zip archive", {
+          count: assetsCount,
+          targetStoragePath,
+        });
+      } else if (file.name.endsWith(".json")) {
+        const text = await file.text();
+        try {
+          backupData = JSON.parse(text);
+        } catch {
+          return NextResponse.json(
+            { error: "Invalid JSON in uploaded file" },
+            { status: 400 }
+          );
+        }
+      } else {
+        return NextResponse.json(
+          { error: "Unsupported file type. Please upload a .zip or .json file." },
+          { status: 400 }
+        );
+      }
+    } else {
+      // Direct JSON body
+      try {
+        const body = await request.json();
+        backupData = body;
+      } catch (parseError: any) {
+        logger.error("[Backup API] Failed to parse request body", {
+          error: parseError.message,
+        });
+        return NextResponse.json(
+          { error: "Invalid JSON in request body" },
+          { status: 400 }
+        );
+      }
     }
 
     // Validate backup data structure
@@ -218,6 +353,7 @@ export async function POST(request: Request) {
     logger.info("[Backup API] Starting database import", {
       version: backupData.version,
       exportedAt: backupData.exportedAt,
+      assetsCount,
     });
 
     // Use transaction with increased timeout and without Accelerate
@@ -229,6 +365,23 @@ export async function POST(request: Request) {
         };
 
         try {
+          // Clear all existing data in reverse dependency order
+          await tx.contactUs.deleteMany({});
+          await tx.blogCategoryRelation.deleteMany({});
+          await tx.jobCategoryRelation.deleteMany({});
+          await tx.blog.deleteMany({});
+          await tx.job.deleteMany({});
+          await tx.jobCategory.deleteMany({});
+          await tx.service.deleteMany({});
+          await tx.serviceCategory.deleteMany({});
+          await tx.team.deleteMany({});
+          await tx.podcast.deleteMany({});
+          await tx.myCompanies.deleteMany({});
+          await tx.project.deleteMany({});
+          await tx.blogCategory.deleteMany({});
+          await tx.user.deleteMany({});
+          await tx.galleryItem.deleteMany({});
+
           // Helper function to batch create items
           const batchCreate = async <T extends { id: any }>(
             model: any,
@@ -262,8 +415,6 @@ export async function POST(request: Request) {
               count: backupData.data.galleryItems.length,
             });
             try {
-              await tx.galleryItem.deleteMany({});
-
               for (const item of backupData.data.galleryItems) {
                 try {
                   await tx.galleryItem.create({
@@ -301,8 +452,6 @@ export async function POST(request: Request) {
               count: backupData.data.users.length,
             });
             try {
-              await tx.user.deleteMany({});
-
               // Reset sequence for auto-increment
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "User_user_id_seq" RESTART WITH 1`
@@ -313,14 +462,19 @@ export async function POST(request: Request) {
                   await tx.user.create({
                     data: {
                       user_id: user.user_id,
-                      username: user.username,
+                      username:
+                        user.username ||
+                        (user.email
+                          ? user.email.split("@")[0]
+                          : `user_${user.user_id}`),
                       email: user.email,
                       password: user.password,
-                      role: user.role,
-                      first_name: user.first_name,
-                      last_name: user.last_name,
-                      avatar_id: user.avatar_id,
-                      is_active: user.is_active,
+                      role: user.role || "EDITOR",
+                      first_name: user.first_name || null,
+                      last_name: user.last_name || null,
+                      avatar_id: user.avatar_id || null,
+                      is_active:
+                        user.is_active !== undefined ? user.is_active : true,
                       last_login: user.last_login
                         ? new Date(user.last_login)
                         : null,
@@ -351,7 +505,6 @@ export async function POST(request: Request) {
               count: backupData.data.blogCategories.length,
             });
             try {
-              await tx.blogCategory.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "BlogCategory_category_id_seq" RESTART WITH 1`
               );
@@ -403,7 +556,6 @@ export async function POST(request: Request) {
               count: backupData.data.serviceCategories.length,
             });
             try {
-              await tx.serviceCategory.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "ServiceCategory_id_seq" RESTART WITH 1`
               );
@@ -452,7 +604,6 @@ export async function POST(request: Request) {
               count: backupData.data.services.length,
             });
             try {
-              await tx.service.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "Service_id_seq" RESTART WITH 1`
               );
@@ -493,7 +644,6 @@ export async function POST(request: Request) {
               count: backupData.data.teams.length,
             });
             try {
-              await tx.team.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "Team_id_seq" RESTART WITH 1`
               );
@@ -534,7 +684,6 @@ export async function POST(request: Request) {
               count: backupData.data.podcasts.length,
             });
             try {
-              await tx.podcast.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "Podcast_id_seq" RESTART WITH 1`
               );
@@ -580,7 +729,6 @@ export async function POST(request: Request) {
               count: backupData.data.companies.length,
             });
             try {
-              await tx.myCompanies.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "MyCompanies_company_id_seq" RESTART WITH 1`
               );
@@ -617,7 +765,6 @@ export async function POST(request: Request) {
               count: backupData.data.projects.length,
             });
             try {
-              await tx.project.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "Project_project_id_seq" RESTART WITH 1`
               );
@@ -661,7 +808,6 @@ export async function POST(request: Request) {
               count: backupData.data.blogs.length,
             });
             try {
-              await tx.blog.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "Blog_blog_id_seq" RESTART WITH 1`
               );
@@ -713,8 +859,6 @@ export async function POST(request: Request) {
               count: backupData.data.blogCategoryRelations.length,
             });
             try {
-              await tx.blogCategoryRelation.deleteMany({});
-
               for (const relation of backupData.data.blogCategoryRelations) {
                 try {
                   await tx.blogCategoryRelation.create({
@@ -757,7 +901,6 @@ export async function POST(request: Request) {
               count: backupData.data.jobCategories.length,
             });
             try {
-              await tx.jobCategory.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "JobCategory_category_id_seq" RESTART WITH 1`
               );
@@ -802,7 +945,6 @@ export async function POST(request: Request) {
               count: backupData.data.jobs.length,
             });
             try {
-              await tx.job.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "Job_job_id_seq" RESTART WITH 1`
               );
@@ -863,8 +1005,6 @@ export async function POST(request: Request) {
               count: backupData.data.jobCategoryRelations.length,
             });
             try {
-              await tx.jobCategoryRelation.deleteMany({});
-
               for (const relation of backupData.data.jobCategoryRelations) {
                 try {
                   await tx.jobCategoryRelation.create({
@@ -907,38 +1047,29 @@ export async function POST(request: Request) {
               count: backupData.data.contactUs.length,
             });
             try {
-              await tx.contactUs.deleteMany({});
               await tx.$executeRawUnsafe(
                 `ALTER SEQUENCE "ContactUs_contact_id_seq" RESTART WITH 1`
               );
 
-              for (const contact of backupData.data.contactUs) {
-                try {
-                  await tx.contactUs.create({
-                    data: {
-                      contact_id: contact.contact_id,
-                      name: contact.name,
-                      email: contact.email,
-                      phone: contact.phone,
-                      service_id: contact.service_id,
-                      status: contact.status,
-                      submitted_at: new Date(contact.submitted_at),
-                      responded_at: contact.responded_at
-                        ? new Date(contact.responded_at)
-                        : null,
-                      notes: contact.notes,
-                    },
-                  });
-                } catch (contactError: any) {
-                  logger.warn("[Backup API] Failed to import contact", {
-                    id: contact.contact_id,
-                    error: contactError.message,
-                  });
-                  importResults.errors.push(
-                    `ContactUs ${contact.contact_id}: ${contactError.message}`
-                  );
-                }
-              }
+              const contactData = backupData.data.contactUs.map((contact: any) => ({
+                contact_id: contact.contact_id,
+                name: contact.name,
+                email: contact.email,
+                phone: contact.phone || null,
+                service_id: contact.service_id || null,
+                status: contact.status || "NEW",
+                submitted_at: new Date(contact.submitted_at),
+                responded_at: contact.responded_at
+                  ? new Date(contact.responded_at)
+                  : null,
+                notes: contact.notes || null,
+              }));
+
+              await tx.contactUs.createMany({
+                data: contactData,
+                skipDuplicates: true,
+              });
+
               importResults.created.contactUs =
                 backupData.data.contactUs.length;
             } catch (error: any) {
@@ -975,9 +1106,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       {
-        message: "Database import completed",
+        message: "Database and assets import completed successfully",
         created: result.created,
         totalCreated,
+        assetsExtracted: assetsCount,
         errors: result.errors.length > 0 ? result.errors : undefined,
         duration: `${duration}ms`,
       },
