@@ -41,6 +41,5 @@ next-env.d.ts
 /public/storage
 /app/generated
 config.bat
-.env
 /backups
 *.zip
